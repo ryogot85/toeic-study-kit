@@ -1,0 +1,282 @@
+<!doctype html>
+<html lang="ja" data-build="20260925-094318">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="theme-color" content="#F2F3F1" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#111315" media="(prefers-color-scheme: dark)">
+<link rel="manifest" href="manifest.webmanifest">
+<link rel="icon" href="icons/icon-192.png">
+<link rel="apple-touch-icon" href="icons/apple-touch-icon.png">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-title" content="TOEIC Kit">
+<meta name="apple-mobile-web-app-status-bar-style" content="default">
+<style>:root{color-scheme:light;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}body{margin:0}img{max-width:100%}[hidden]{display:none!important}</style>
+<title>TOEIC Study Kit</title>
+<style>
+:root{
+  --bg:#F2F3F1; --surface:#FFFFFF; --sunk:#ECEEEB; --line:#DEE1E4;
+  --ink:#16191C; --ink-2:#5B6167; --ink-3:#8A9096;
+  --drill:#C8466A; --recall:#0C7A62; --phrase:#CF2E2E;
+  --ok:#1F8A5B; --ok-soft:#DFF3E8; --warn:#A86A12; --warn-soft:#F6EBD6; --danger:#B8322F;
+  --f:system-ui,-apple-system,"Hiragino Sans","Yu Gothic UI","Meiryo",sans-serif;
+  --mono:ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;
+}
+@media (prefers-color-scheme: dark){
+  :root:not([data-theme="light"]){
+    color-scheme:dark;
+    --bg:#111315; --surface:#181B1E; --sunk:#1F2327; --line:#2B3035;
+    --ink:#E7EAEC; --ink-2:#A5ACB2; --ink-3:#767D84;
+    --drill:#EC809A; --recall:#4CCAA8; --phrase:#FF6F66;
+    --ok:#58C995; --ok-soft:#153326; --warn:#E0A64E; --warn-soft:#35280F; --danger:#F2807A;
+  }
+}
+:root[data-theme="dark"]{
+  color-scheme:dark;
+  --bg:#111315; --surface:#181B1E; --sunk:#1F2327; --line:#2B3035;
+  --ink:#E7EAEC; --ink-2:#A5ACB2; --ink-3:#767D84;
+  --drill:#EC809A; --recall:#4CCAA8; --phrase:#FF6F66;
+  --ok:#58C995; --ok-soft:#153326; --warn:#E0A64E; --warn-soft:#35280F; --danger:#F2807A;
+}
+*{box-sizing:border-box}
+body{background:var(--bg);color:var(--ink);font-family:var(--f);font-size:15px;line-height:1.65;-webkit-font-smoothing:antialiased}
+button,input{font:inherit;color:inherit}
+button{cursor:pointer}
+:focus-visible{outline:2px solid var(--recall);outline-offset:2px}
+h1,h2{margin:0;line-height:1.3;text-wrap:balance}
+p{margin:0}
+.wrap{max-width:720px;margin:0 auto;padding-inline:16px;padding-block:22px 60px;display:flex;flex-direction:column;gap:16px}
+header{display:flex;align-items:flex-end;justify-content:space-between;gap:12px;flex-wrap:wrap}
+header h1{font-size:24px;font-weight:800;letter-spacing:-.01em}
+header .sub{font-size:13px;color:var(--ink-2)}
+.dd{font-family:var(--mono);font-size:30px;font-weight:600;line-height:1}
+.dd small{font-family:var(--f);font-size:12.5px;color:var(--ink-2);font-weight:400;margin-left:4px}
+.pills{display:flex;gap:8px;flex-wrap:wrap}
+.pill{display:inline-flex;align-items:center;gap:6px;border-radius:99px;padding:3px 11px;font-size:12.5px;background:var(--sunk);color:var(--ink-2)}
+.pill.ok{background:var(--ok-soft);color:var(--ok)}
+.pill.warn,.pill.wait{background:var(--warn-soft);color:var(--warn)}
+.apps{display:flex;flex-direction:column;gap:10px}
+.app{display:grid;grid-template-columns:auto 1fr auto;gap:14px;align-items:center;background:var(--surface);border:1px solid var(--line);border-radius:16px;padding:16px 18px;text-decoration:none;color:inherit}
+.app:hover{border-color:var(--ink-3)}
+.mark{width:40px;height:40px;border-radius:50%;display:grid;place-items:center;border:2px solid currentColor}
+.mark i{width:18px;height:18px;border-radius:50%;background:currentColor}
+.app b{display:block;font-size:17px}
+.app .what{font-size:13px;color:var(--ink-2)}
+.app .st{font-family:var(--mono);font-size:12.5px;color:var(--ink);margin-top:2px}
+.app .go{font-size:20px;color:var(--ink-3)}
+.card{background:var(--surface);border:1px solid var(--line);border-radius:16px;padding:16px 18px}
+.card h2{font-size:15.5px;margin-bottom:8px}
+.note{font-size:13px;color:var(--ink-2)}
+ol{margin:6px 0 0;padding-left:20px;font-size:14px}
+ol li{margin:3px 0}
+.row{display:flex;gap:10px;flex-wrap:wrap;align-items:center}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:6px;border:1px solid var(--line);background:var(--surface);border-radius:10px;padding:8px 14px;font-size:14px;min-height:40px}
+.btn:hover{border-color:var(--ink-3)}
+.btn.primary{background:var(--ink);color:var(--bg);border-color:var(--ink);font-weight:700}
+.btn.danger{border-color:var(--danger);color:var(--danger)}
+.btn.ghost{border-color:transparent;color:var(--ink-2)}
+label.btn{cursor:pointer}
+label.btn input{position:absolute;width:1px;height:1px;opacity:0}
+.links a{color:inherit}
+.links li{margin:4px 0}
+.toast{position:fixed;left:50%;bottom:calc(env(safe-area-inset-bottom,0px) + 18px);transform:translateX(-50%);background:var(--ink);color:var(--bg);padding:8px 14px;border-radius:10px;font-size:13.5px;max-width:calc(100vw - 32px)}
+footer{font-size:12px;color:var(--ink-3);text-align:center}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <header>
+    <div>
+      <h1>TOEIC Study Kit</h1>
+      <p class="sub">12月19日の本番に向けた学習アプリ集</p>
+    </div>
+    <div class="dd" id="dd">–<small>日</small></div>
+  </header>
+  <div class="pills"><span class="pill" id="off">オフライン対応を確認中…</span><span class="pill" id="net" hidden>いまはオフラインです</span></div>
+
+  <nav class="apps" aria-label="アプリ">
+    <a class="app" href="recall.html">
+      <span class="mark" style="color:var(--recall)"><i></i></span>
+      <span><b>Recall 1000</b><span class="what">忘れる直前に復習する単語アプリ</span><span class="st" id="sRecall">…</span></span>
+      <span class="go" aria-hidden="true">›</span>
+    </a>
+    <a class="app" href="phrase.html">
+      <span class="mark" style="color:var(--phrase)"><i></i></span>
+      <span><b>Phrase 1000</b><span class="what">フレーズ単語帳（赤シート・聞き流し）</span><span class="st" id="sPhrase">…</span></span>
+      <span class="go" aria-hidden="true">›</span>
+    </a>
+    <a class="app" href="drill.html">
+      <span class="mark" style="color:var(--drill)"><i></i></span>
+      <span><b>TOEIC 800 Drill</b><span class="what">Part 2〜7 の問題演習と復習</span><span class="st" id="sDrill">…</span></span>
+      <span class="go" aria-hidden="true">›</span>
+    </a>
+  </nav>
+
+  <section class="card" id="install">
+    <h2>ホーム画面に追加する</h2>
+    <p class="note">追加して一度開いておくと、電波のない場所でもアプリのように使えます。</p>
+    <div id="ios"><ol><li>Safari でこのページを開く</li><li>下の共有ボタン（□に↑）をタップ</li><li>「ホーム画面に追加」をタップ</li></ol></div>
+    <div id="android"><ol><li>Chrome でこのページを開く</li><li>右上の「︙」メニューをタップ</li><li>「アプリをインストール」または「ホーム画面に追加」をタップ</li></ol></div>
+    <div class="row" style="margin-top:10px"><button class="btn primary" id="installBtn" hidden>このままインストール</button></div>
+  </section>
+
+  <section class="card">
+    <h2>記録のバックアップ</h2>
+    <p class="note">学習の記録はこの端末の中だけに保存されます。機種変更やアプリの削除に備えて、ときどき書き出しておいてください。<span id="last"></span></p>
+    <div class="row" style="margin-top:10px">
+      <button class="btn" id="exp">バックアップを書き出す</button>
+      <label class="btn ghost">バックアップから復元<input type="file" id="imp" accept="application/json,.json"></label>
+    </div>
+    <div id="confirm" style="margin-top:10px"></div>
+  </section>
+
+  <section class="card">
+    <h2>Claude の機能はオンライン版で</h2>
+    <p class="note">AI による問題作成・覚え方・ストーリーは、claude.ai 上のオンライン版だけで使えます（ログインが必要）。オンライン版の記録はこのキットとは別に保存されます。</p>
+    <ul class="links note" style="margin:8px 0 0;padding-left:18px">
+      <li><a href="https://claude.ai/artifact/H6E3DUdDDLFCwMrc8z1RoW" target="_blank" rel="noopener">Recall 1000（オンライン版）</a></li>
+      <li><a href="https://claude.ai/artifact/5vUZkbRaTDoUGKzoYZwVb7" target="_blank" rel="noopener">Phrase 1000（オンライン版）</a></li>
+      <li><a href="https://claude.ai/artifact/HM8FMrSPnyuqAKXspJdbHB" target="_blank" rel="noopener">TOEIC 800 Drill（オンライン版）</a></li>
+    </ul>
+  </section>
+  <footer id="ver"></footer>
+</div>
+<div class="toast" id="toast" hidden></div>
+
+<script>
+(function () {
+  'use strict';
+  var EXAM = '2026-12-19', PREFIXES = ['toeic800:', 'recall1000:', 'phrase1000:'];
+  var $ = function (s) { return document.querySelector(s); };
+  var pad = function (n) { return String(n).padStart(2, '0'); };
+  var d0 = new Date(), today = d0.getFullYear() + '-' + pad(d0.getMonth() + 1) + '-' + pad(d0.getDate());
+  var diff = function (a, b) { var x = a.split('-').map(Number), y = b.split('-').map(Number); return Math.round((Date.UTC(y[0], y[1] - 1, y[2]) - Date.UTC(x[0], x[1] - 1, x[2])) / 86400000); };
+  var parse = function (s) { try { return JSON.parse(s); } catch (e) { return null; } };
+  var esc = function (s) { return String(s == null ? '' : s).replace(/[&<>"']/g, function (c) { return { '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c]; }); };
+  var tt = null;
+  function toast(m) { var t = $('#toast'); t.textContent = m; t.hidden = false; clearTimeout(tt); tt = setTimeout(function () { t.hidden = true; }, 2600); }
+  function readAll() {
+    var out = {};
+    try { for (var i = 0; i < localStorage.length; i++) { var k = localStorage.key(i); if (k && PREFIXES.some(function (p) { return k.indexOf(p) === 0; })) out[k] = localStorage.getItem(k); } } catch (e) { /* storage blocked */ }
+    return out;
+  }
+
+  var left = diff(today, EXAM);
+  $('#dd').innerHTML = (left > 0 ? left : 0) + '<small>' + (left > 0 ? '日で本番' : left === 0 ? '本番当日' : '本番終了') + '</small>';
+
+  function stats() {
+    var all = readAll(), rDue = 0, rLearned = 0, pChk = 0, dDue = 0, dN = 0;
+    Object.keys(all).forEach(function (k) {
+      if (k.indexOf('recall1000:cards/') === 0) { var c = parse(all[k]); if (c && (c.st === 'R' || c.st === 'K')) { rLearned++; if (c.due <= today) rDue++; } }
+      else if (k === 'phrase1000:marks/all') { var m = (parse(all[k]) || {}).m || {}; Object.keys(m).forEach(function (id) { if (m[id] & 1) pChk++; }); }
+      else if (k.indexOf('toeic800:review/') === 0) { var r = parse(all[k]); if (r && !r.done && r.due <= today) dDue++; }
+      else if (k === 'toeic800:meta/stats') { var s = parse(all[k]); if (s && s.parts) Object.keys(s.parts).forEach(function (p) { dN += s.parts[p].n || 0; }); }
+    });
+    $('#sRecall').textContent = rLearned ? '今日の復習 ' + rDue + '語・学習済み ' + rLearned + '/1000' : 'まだ学習していません';
+    $('#sPhrase').textContent = pChk ? '1周目チェック ' + pChk + '/1000' : 'チェックはまだありません';
+    $('#sDrill').textContent = dN ? '今日の復習 ' + dDue + '問・累計 ' + dN + '問' : 'まだ解いていません';
+  }
+
+  async function offline() {
+    var el = $('#off');
+    function set(cls, txt) { el.className = 'pill ' + cls; el.textContent = txt; }
+    if (!('serviceWorker' in navigator) || !window.caches || location.protocol.indexOf('http') !== 0) { set('warn', 'このページはオフライン保存に対応していません'); return; }
+    try {
+      var keys = await caches.keys(), k = keys.filter(function (x) { return x.indexOf('kit-') === 0 && x !== 'kit-fonts'; })[0];
+      if (k) {
+        var c = await caches.open(k);
+        var hits = await Promise.all(['index.html', 'drill.html', 'recall.html', 'phrase.html'].map(function (u) { return c.match(u); }));
+        if (hits.every(Boolean)) { set('ok', 'オフライン対応：準備完了'); return; }
+      }
+      set('wait', 'オフライン用に保存しています…');
+      setTimeout(offline, 2000);
+    } catch (e) { set('warn', 'オフライン保存を確認できません'); }
+  }
+  function net() { $('#net').hidden = navigator.onLine !== false; }
+  window.addEventListener('online', net); window.addEventListener('offline', net); net();
+
+  var standalone = (window.matchMedia && matchMedia('(display-mode: standalone)').matches) || navigator.standalone === true;
+  var ios = /iPhone|iPad|iPod/.test(navigator.userAgent) || (navigator.platform === 'MacIntel' && navigator.maxTouchPoints > 1);
+  var android = /Android/.test(navigator.userAgent);
+  if (standalone) $('#install').hidden = true;
+  else if (ios) $('#android').hidden = true;
+  else if (android) $('#ios').hidden = true;
+  var deferred = null;
+  window.addEventListener('beforeinstallprompt', function (e) { e.preventDefault(); deferred = e; $('#installBtn').hidden = false; });
+  $('#installBtn').onclick = async function () { if (!deferred) return; deferred.prompt(); try { await deferred.userChoice; } catch (e) { /* ignore */ } deferred = null; $('#installBtn').hidden = true; };
+
+  function showLast() {
+    var v = null; try { v = localStorage.getItem('kit:lastBackup'); } catch (e) { /* ignore */ }
+    $('#last').textContent = v ? '（前回：' + v.slice(0, 10) + '）' : '';
+  }
+  function marked() { try { localStorage.setItem('kit:lastBackup', new Date().toISOString()); } catch (e) { /* ignore */ } showLast(); toast('バックアップを書き出しました'); }
+  $('#exp').onclick = async function () {
+    var data = readAll();
+    if (!Object.keys(data).length) { toast('まだ書き出す記録がありません'); return; }
+    var name = 'toeic-kit-backup-' + today + '.json';
+    var blob = new Blob([JSON.stringify({ kind: 'toeic-study-kit-backup', version: 1, exported: new Date().toISOString(), data: data })], { type: 'application/json' });
+    try {
+      var file = new File([blob], name, { type: 'application/json' });
+      if (matchMedia('(pointer: coarse)').matches && navigator.canShare && navigator.canShare({ files: [file] })) { await navigator.share({ files: [file], title: name }); marked(); return; }
+    } catch (e) { if (e && e.name === 'AbortError') return; }
+    var a = document.createElement('a'); a.href = URL.createObjectURL(blob); a.download = name; document.body.appendChild(a); a.click();
+    setTimeout(function () { URL.revokeObjectURL(a.href); a.remove(); }, 1500);
+    marked();
+  };
+  $('#imp').onchange = function (e) {
+    var f = e.target.files && e.target.files[0]; e.target.value = '';
+    if (!f) return;
+    var r = new FileReader();
+    r.onload = function () {
+      var obj = parse(r.result);
+      if (!obj || obj.kind !== 'toeic-study-kit-backup' || !obj.data || typeof obj.data !== 'object') { toast('このファイルはキットのバックアップではありません'); return; }
+      var n = Object.keys(obj.data).length;
+      $('#confirm').innerHTML = '<p class="note">' + esc(String(obj.exported || '').slice(0, 10)) + ' のバックアップ（' + n + '件）で、この端末の記録を置き換えますか？</p><div class="row" style="margin-top:8px"><button class="btn danger" id="yes">置き換える</button><button class="btn ghost" id="no">やめる</button></div>';
+      $('#yes').onclick = function () {
+        try {
+          Object.keys(readAll()).forEach(function (k) { localStorage.removeItem(k); });
+          Object.keys(obj.data).forEach(function (k) { if (PREFIXES.some(function (p) { return k.indexOf(p) === 0; }) && typeof obj.data[k] === 'string') localStorage.setItem(k, obj.data[k]); });
+          $('#confirm').innerHTML = ''; stats(); toast('復元しました');
+        } catch (err) { toast('復元できませんでした（端末の保存領域が足りない可能性があります）'); }
+      };
+      $('#no').onclick = function () { $('#confirm').innerHTML = ''; };
+    };
+    r.readAsText(f);
+  };
+
+  $('#ver').textContent = 'build ' + (document.documentElement.getAttribute('data-build') || '');
+  stats(); showLast(); offline();
+  if (navigator.serviceWorker) navigator.serviceWorker.addEventListener('controllerchange', offline);
+  window.addEventListener('pageshow', stats);
+})();
+</script>
+<script>
+/* pwa.js — offline kit glue shared by every page: service worker, link back to the kit home, persistent storage */
+(function () {
+  'use strict';
+  if ('serviceWorker' in navigator && location.protocol.indexOf('http') === 0) {
+    window.addEventListener('load', function () { navigator.serviceWorker.register('sw.js').catch(function () { /* offline cache is optional */ }); });
+  }
+  try {
+    if (navigator.storage && navigator.storage.persist) {
+      navigator.storage.persisted().then(function (p) { if (!p) return navigator.storage.persist(); }).catch(function () {});
+    }
+  } catch (e) { /* ignore */ }
+  function addHome() {
+    var top = document.querySelector('.top-in');
+    if (!top || document.querySelector('.kit-home')) return;
+    var a = document.createElement('a');
+    a.href = './';
+    a.className = 'kit-home';
+    a.textContent = '‹ Kit';
+    a.setAttribute('aria-label', 'TOEIC Study Kit のホームに戻る');
+    a.style.cssText = 'font:600 13px/1 system-ui,-apple-system,sans-serif;color:inherit;opacity:.7;text-decoration:none;padding:10px 6px 10px 0;white-space:nowrap';
+    top.insertBefore(a, top.firstChild);
+  }
+  if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', addHome); else addHome();
+})();
+
+</script>
+</body>
+</html>

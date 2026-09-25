@@ -1,0 +1,1917 @@
+<!doctype html>
+<html lang="ja" data-build="20260925-094318">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="theme-color" content="#FBF8F8" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#141416" media="(prefers-color-scheme: dark)">
+<link rel="manifest" href="manifest.webmanifest">
+<link rel="icon" href="icons/icon-192.png">
+<link rel="apple-touch-icon" href="icons/apple-touch-icon.png">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-title" content="TOEIC Kit">
+<meta name="apple-mobile-web-app-status-bar-style" content="default">
+<style>:root{color-scheme:light;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}body{margin:0}img{max-width:100%}[hidden]{display:none!important}</style>
+<title>TOEIC 800 Drill</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=BIZ+UDPGothic:wght@400;700&family=IBM+Plex+Mono:wght@400;500;600&family=Source+Serif+4:opsz,wght@8..60,400;8..60,600&display=swap">
+<style>
+:root{
+  --paper:#FBF8F8; --surface:#FFFFFF; --sunk:#F4EFF0; --line:#E9DFE1;
+  --ink:#222428; --ink-2:#5E6168; --ink-3:#8A8D94;
+  --drop:#C8466A; --drop-soft:#F6E1E7; --rule:#EDCFD7;
+  --graphite:#2B2E33; --on-graphite:#FFFFFF;
+  --ok:#1C7C5C; --ok-soft:#DDF0E8; --ng:#B8322F; --ng-soft:#F8E0DE; --warn:#9A6210; --warn-soft:#F6EAD3;
+  --hl:#FBE7A6; --focus:#2D6CDF;
+  --f-jp:"BIZ UDPGothic","Hiragino Sans","Yu Gothic UI","Meiryo",system-ui,sans-serif;
+  --f-en:"Source Serif 4","Georgia","Times New Roman",serif;
+  --f-mono:"IBM Plex Mono","Consolas","Menlo",monospace;
+  --r:10px;
+}
+@media (prefers-color-scheme: dark){
+  :root:not([data-theme="light"]){
+    color-scheme:dark;
+    --paper:#141416; --surface:#1C1C20; --sunk:#232228; --line:#34313A;
+    --ink:#ECEAE8; --ink-2:#A9A7AE; --ink-3:#7D7B83;
+    --drop:#EC809A; --drop-soft:#3A2129; --rule:#4E2E38;
+    --graphite:#E9E6E2; --on-graphite:#17171A;
+    --ok:#5CC9A0; --ok-soft:#173127; --ng:#F2807A; --ng-soft:#3A1D1C; --warn:#E2AA55; --warn-soft:#352812;
+    --hl:#5B4A12; --focus:#7FA8FF;
+  }
+}
+:root[data-theme="dark"]{
+  color-scheme:dark;
+  --paper:#141416; --surface:#1C1C20; --sunk:#232228; --line:#34313A;
+  --ink:#ECEAE8; --ink-2:#A9A7AE; --ink-3:#7D7B83;
+  --drop:#EC809A; --drop-soft:#3A2129; --rule:#4E2E38;
+  --graphite:#E9E6E2; --on-graphite:#17171A;
+  --ok:#5CC9A0; --ok-soft:#173127; --ng:#F2807A; --ng-soft:#3A1D1C; --warn:#E2AA55; --warn-soft:#352812;
+  --hl:#5B4A12; --focus:#7FA8FF;
+}
+*{box-sizing:border-box}
+body{background:var(--paper);color:var(--ink);font-family:var(--f-jp);font-size:15px;line-height:1.75;-webkit-font-smoothing:antialiased}
+button,input,select,textarea{font:inherit;color:inherit}
+button{cursor:pointer}
+:focus-visible{outline:2px solid var(--focus);outline-offset:2px}
+h1,h2,h3{text-wrap:balance;line-height:1.35;margin:0}
+p{margin:0}
+.mono{font-family:var(--f-mono);font-variant-numeric:tabular-nums}
+.en{font-family:var(--f-en);font-size:17.5px;line-height:1.7;font-optical-sizing:auto}
+.muted{color:var(--ink-2)}
+.faint{color:var(--ink-3)}
+.label{font-family:var(--f-mono);font-size:11.5px;letter-spacing:.08em;text-transform:uppercase;color:var(--drop)}
+
+/* ---------- frame ---------- */
+.top{position:sticky;top:env(safe-area-inset-top,0px);z-index:20;background:var(--paper);border-bottom:1px solid var(--rule)}
+.top-in{max-width:880px;margin:0 auto;padding-inline:16px;display:flex;align-items:center;gap:14px;min-height:54px;flex-wrap:wrap}
+.brand{display:flex;align-items:baseline;gap:10px;margin-right:auto}
+.brand b{font-family:var(--f-mono);font-weight:600;font-size:14px;letter-spacing:.02em}
+.brand .dd{font-family:var(--f-mono);font-size:12px;color:var(--drop);border:1px solid var(--rule);border-radius:99px;padding:1px 9px}
+.tabs{display:flex;gap:2px}
+.tabs button{background:none;border:0;padding:14px 10px 12px;font-size:14px;color:var(--ink-2);border-bottom:2px solid transparent}
+.tabs button[aria-current="page"]{color:var(--ink);border-bottom-color:var(--drop);font-weight:700}
+.tabs button:hover{color:var(--ink)}
+main{max-width:880px;margin:0 auto;padding-inline:16px;padding-block:22px 80px}
+.banner{max-width:880px;margin:10px auto 0;padding-inline:16px}
+.banner p{background:var(--warn-soft);color:var(--ink);border-radius:8px;padding:8px 12px;font-size:13px}
+.stack{display:flex;flex-direction:column;gap:18px}
+.row{display:flex;gap:10px;align-items:center;flex-wrap:wrap}
+.grid2{display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:14px}
+.grid3{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:12px}
+.card{background:var(--surface);border:1px solid var(--line);border-radius:var(--r);padding:16px 18px}
+.sec-h{display:flex;align-items:baseline;justify-content:space-between;gap:12px;margin-bottom:10px}
+.sec-h h2{font-size:17px}
+hr.rule{border:0;border-top:1px dashed var(--rule);margin:4px 0}
+
+/* ---------- buttons ---------- */
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;border-radius:8px;padding:9px 16px;border:1px solid var(--line);background:var(--surface);font-size:14px;line-height:1.3;min-height:40px}
+.btn:hover{border-color:var(--ink-3)}
+.btn.primary{background:var(--ink);color:var(--paper);border-color:var(--ink);font-weight:700}
+.btn.primary:hover{opacity:.9}
+.btn.drop{background:var(--drop);border-color:var(--drop);color:#fff;font-weight:700}
+.btn.ghost{background:none;border-color:transparent;color:var(--ink-2)}
+.btn.ghost:hover{color:var(--ink);border-color:var(--line)}
+.btn.sm{padding:5px 11px;min-height:32px;font-size:13px}
+.btn[disabled]{opacity:.45;cursor:not-allowed}
+.chip{display:inline-flex;align-items:center;gap:6px;border:1px solid var(--line);border-radius:99px;padding:2px 10px;font-size:12.5px;background:var(--surface);color:var(--ink-2)}
+.chip.ok{border-color:transparent;background:var(--ok-soft);color:var(--ok)}
+.chip.ng{border-color:transparent;background:var(--ng-soft);color:var(--ng)}
+.chip.warn{border-color:transparent;background:var(--warn-soft);color:var(--warn)}
+.chip.drop{border-color:transparent;background:var(--drop-soft);color:var(--drop)}
+.toggle{display:inline-flex;align-items:center;gap:7px;border:1px dashed var(--ink-3);border-radius:99px;padding:5px 12px;font-size:13px;background:none;color:var(--ink-2)}
+.toggle[aria-pressed="true"]{border-style:solid;border-color:var(--warn);background:var(--warn-soft);color:var(--warn);font-weight:700}
+
+/* ---------- mark-sheet bubble ---------- */
+.bub{flex:none;display:inline-grid;place-items:center;width:30px;height:30px;border-radius:50%;border:1.5px solid var(--drop);color:var(--drop);font-family:var(--f-mono);font-size:13px;font-weight:500;background:var(--surface);transition:background .12s,color .12s}
+.bub.sm{width:22px;height:22px;font-size:11px;border-width:1.25px}
+.bub.on{background:var(--graphite);border-color:var(--graphite);color:var(--on-graphite)}
+.bub.ok{background:var(--ok);border-color:var(--ok);color:#fff}
+.bub.ng{background:var(--ng);border-color:var(--ng);color:#fff}
+.bub.ring{box-shadow:0 0 0 3px var(--ok-soft);border-color:var(--ok);color:var(--ok)}
+
+/* ---------- hero ---------- */
+.hero{display:grid;grid-template-columns:auto 1fr;gap:14px 28px;align-items:end}
+.hero .rl{grid-column:1/-1;max-width:640px}
+.count{font-family:var(--f-mono);font-weight:500;font-size:64px;line-height:.9;letter-spacing:-.03em}
+.count small{font-size:18px;letter-spacing:0;margin-left:4px;color:var(--ink-2)}
+.ruler{width:100%;height:auto;display:block;overflow:visible}
+.ruler text{font-family:var(--f-mono);font-size:10.5px;fill:var(--ink-3)}
+.ruler .t-mark{font-size:11.5px;fill:var(--ink)}
+.split{display:flex;gap:18px;flex-wrap:wrap;font-size:13px;color:var(--ink-2)}
+.split b{font-family:var(--f-mono);color:var(--ink);font-weight:500}
+@media (max-width:560px){.hero{grid-template-columns:1fr}.count{font-size:52px}}
+
+/* ---------- plan rows ---------- */
+.plan{display:flex;flex-direction:column}
+.prow{display:grid;grid-template-columns:30px 1fr auto;gap:12px;align-items:center;padding:11px 0;border-top:1px dashed var(--rule)}
+.prow:first-child{border-top:0}
+.prow .t{font-weight:700;font-size:14.5px}
+.prow .d{font-size:12.5px;color:var(--ink-2);line-height:1.5}
+.meter{height:8px;background:var(--sunk);border-radius:99px;overflow:hidden}
+.meter i{display:block;height:100%;background:var(--ink);border-radius:99px}
+
+/* ---------- player ---------- */
+.pbar{display:flex;align-items:center;gap:12px;flex-wrap:wrap;margin-bottom:14px}
+.pbar .pl{font-family:var(--f-mono);font-size:12.5px;letter-spacing:.06em;color:var(--drop);border:1px solid var(--rule);border-radius:6px;padding:2px 8px}
+.pbar .pc{font-family:var(--f-mono);font-size:13px;color:var(--ink-2)}
+.pbar .sp{margin-left:auto}
+.prog{height:3px;background:var(--sunk);border-radius:2px;margin-bottom:18px;overflow:hidden}
+.prog i{display:block;height:100%;background:var(--drop)}
+.clock{font-family:var(--f-mono);font-size:13px;color:var(--ink-2)}
+.clock.over{color:var(--warn)}
+.stem{padding:4px 0 14px}
+.choices{display:flex;flex-direction:column;gap:6px}
+.choice{display:flex;align-items:flex-start;gap:12px;width:100%;text-align:left;background:none;border:1px solid transparent;border-radius:8px;padding:8px 10px}
+.choice:hover{background:var(--sunk)}
+.choice .ct{padding-top:2px}
+.choice.picked{background:var(--sunk);border-color:var(--line)}
+.choice[disabled]{cursor:default}
+.choice[disabled]:hover{background:none}
+.choice.picked[disabled]{background:var(--sunk)}
+.qblock{padding:14px 0;border-top:1px dashed var(--rule)}
+.qblock:first-child{border-top:0;padding-top:0}
+.qhead{display:flex;gap:10px;align-items:baseline;margin-bottom:8px}
+.qhead .n{font-family:var(--f-mono);font-size:12.5px;color:var(--drop)}
+.qhead .qt{font-family:var(--f-en);font-size:16.5px;line-height:1.55}
+.actions{display:flex;gap:10px;flex-wrap:wrap;align-items:center;margin-top:16px}
+.two{display:grid;grid-template-columns:minmax(0,1.1fr) minmax(0,1fr);gap:22px;align-items:start}
+.two .doccol{position:sticky;top:calc(env(safe-area-inset-top,0px) + 70px);max-height:calc(100vh - 100px);overflow:auto}
+@media (max-width:760px){.two{grid-template-columns:1fr}.two .doccol{position:static;max-height:none}}
+.doc{background:var(--surface);border:1px solid var(--line);border-radius:8px;padding:14px 16px;margin-bottom:12px}
+.doc .dl{font-family:var(--f-mono);font-size:11px;letter-spacing:.08em;text-transform:uppercase;color:var(--ink-3);margin-bottom:6px}
+.doc .dt{font-family:var(--f-en);font-size:16px;line-height:1.7;white-space:pre-wrap;overflow-wrap:anywhere}
+.doc mark{background:var(--hl);color:inherit;border-radius:2px;padding:0 1px}
+.blank{font-family:var(--f-mono);font-size:13px;color:var(--drop);white-space:nowrap}
+.blank b{font-weight:600}
+
+/* ---------- feedback ---------- */
+.fb{margin-top:14px;border-radius:10px;padding:14px 16px;background:var(--sunk)}
+.fb .v{font-weight:700;display:flex;align-items:center;gap:8px;flex-wrap:wrap}
+.fb .v.ok{color:var(--ok)} .fb .v.ng{color:var(--ng)}
+.fb .ex{margin-top:8px;font-size:14.5px}
+.fb .ja{margin-top:8px;font-size:13.5px;color:var(--ink-2)}
+.vocab{display:flex;flex-wrap:wrap;gap:6px;margin-top:10px}
+.vocab span{font-size:12.5px;background:var(--surface);border:1px solid var(--line);border-radius:6px;padding:1px 8px}
+.vocab span b{font-family:var(--f-en);font-weight:600;font-size:13.5px;margin-right:6px}
+.tutor{margin-top:12px;border-top:1px dashed var(--rule);padding-top:12px}
+.tutor textarea{width:100%;min-height:64px;border:1px solid var(--line);border-radius:8px;padding:8px 10px;background:var(--surface);resize:vertical}
+.msg{white-space:pre-wrap;font-size:14px;margin-top:10px;padding:10px 12px;border-radius:8px;background:var(--surface);border:1px solid var(--line)}
+.msg.me{background:none;border-style:dashed;color:var(--ink-2)}
+
+/* ---------- listening ---------- */
+.player{display:flex;align-items:center;gap:12px;flex-wrap:wrap;padding:12px 14px;border:1px solid var(--line);border-radius:10px;background:var(--surface);margin-bottom:16px}
+.play{width:46px;height:46px;border-radius:50%;border:0;background:var(--drop);color:#fff;display:grid;place-items:center;flex:none}
+.play svg{width:18px;height:18px;fill:currentColor}
+.speed{display:flex;gap:4px}
+.speed button{border:1px solid var(--line);background:none;border-radius:6px;padding:2px 8px;font-family:var(--f-mono);font-size:12px;color:var(--ink-2)}
+.speed button[aria-pressed="true"]{background:var(--ink);color:var(--paper);border-color:var(--ink)}
+.script{display:flex;flex-direction:column;gap:6px;margin-top:10px}
+.sline{display:grid;grid-template-columns:34px 1fr auto;gap:8px;align-items:start}
+.sline .who{font-family:var(--f-mono);font-size:12px;color:var(--drop);padding-top:3px}
+.sline .en{font-size:16px}
+.sline button{border:0;background:none;color:var(--ink-3);padding:2px 6px;border-radius:6px}
+.sline button:hover{color:var(--ink);background:var(--sunk)}
+.sline.now .en{background:var(--hl);border-radius:3px}
+
+/* ---------- stats ---------- */
+.kpis{display:grid;grid-template-columns:repeat(auto-fit,minmax(140px,1fr));gap:12px}
+.kpi .k{font-size:12.5px;color:var(--ink-2)}
+.kpi .n{font-family:var(--f-mono);font-size:26px;font-weight:500;line-height:1.2}
+.kpi .n small{font-size:13px;color:var(--ink-2);margin-left:3px}
+.bars{display:flex;flex-direction:column;gap:12px}
+.bar-row{display:grid;grid-template-columns:120px 1fr 64px;gap:12px;align-items:center;font-size:13.5px}
+.bar-track{position:relative;height:14px;background:var(--sunk);border-radius:3px}
+.bar-fill{position:absolute;left:0;top:0;bottom:0;background:var(--ink);border-radius:0 4px 4px 0}
+.bar-tick{position:absolute;top:-4px;bottom:-4px;width:2px;background:var(--drop)}
+.bar-tick.t7{background:var(--ink-3)}
+.bar-val{font-family:var(--f-mono);text-align:right;font-size:13px}
+@media (max-width:520px){.bar-row{grid-template-columns:92px 1fr 52px}}
+.tagtable{width:100%;border-collapse:collapse;font-size:13.5px}
+.tagtable th{font-weight:400;color:var(--ink-3);text-align:left;font-size:12px;padding:6px 8px;border-bottom:1px solid var(--line)}
+.tagtable td{padding:8px;border-bottom:1px dashed var(--rule);vertical-align:middle}
+.tagtable td.num{font-family:var(--f-mono);text-align:right;white-space:nowrap}
+.tscroll{overflow-x:auto}
+.chart{width:100%;height:auto;display:block}
+.chart text{font-family:var(--f-mono);font-size:10.5px;fill:var(--ink-3)}
+.legend-note{font-size:12px;color:var(--ink-3);margin-top:6px}
+
+/* ---------- misc ---------- */
+.empty{padding:26px;text-align:center;color:var(--ink-2);border:1px dashed var(--line);border-radius:10px}
+.spin{display:inline-block;width:14px;height:14px;border:2px solid var(--line);border-top-color:var(--drop);border-radius:50%;animation:sp 0.9s linear infinite;vertical-align:-2px}
+@keyframes sp{to{transform:rotate(360deg)}}
+.gen{display:flex;flex-direction:column;align-items:center;gap:12px;padding:40px 12px;text-align:center}
+.toast{position:fixed;left:50%;bottom:calc(env(safe-area-inset-bottom,0px) + 18px);transform:translateX(-50%);background:var(--ink);color:var(--paper);padding:9px 16px;border-radius:8px;font-size:13.5px;z-index:50;max-width:calc(100vw - 32px)}
+.note{font-size:13px;color:var(--ink-2);line-height:1.65}
+.field{display:flex;flex-direction:column;gap:6px}
+.field label{font-size:13px;color:var(--ink-2)}
+.field select,.field input{border:1px solid var(--line);border-radius:8px;padding:7px 10px;background:var(--surface);min-height:38px}
+.kbd{font-family:var(--f-mono);font-size:11px;border:1px solid var(--line);border-bottom-width:2px;border-radius:4px;padding:0 5px;color:var(--ink-3)}
+.coach{border-left:3px solid var(--drop);padding:4px 0 4px 14px;white-space:pre-wrap;font-size:14px}
+@media (prefers-reduced-motion:reduce){*{transition:none!important;animation:none!important}}
+</style>
+</head>
+<body>
+<header class="top">
+  <div class="top-in">
+    <div class="brand"><b>TOEIC 800 Drill</b><span class="dd" id="dday">D-</span></div>
+    <nav class="tabs" id="tabs" aria-label="メイン">
+      <button data-view="home">今日</button>
+      <button data-view="practice">練習</button>
+      <button data-view="review">復習</button>
+      <button data-view="stats">分析</button>
+      <button data-view="settings">設定</button>
+    </nav>
+  </div>
+</header>
+<div class="banner" id="banner" hidden><p id="bannerText"></p></div>
+<main id="view"><div class="empty"><span class="spin"></span> 読み込み中…</div></main>
+<div class="toast" id="toast" hidden></div>
+
+<script src="bank.js"></script>
+<script src="bank2.js"></script>
+<script src="core.js"></script>
+<script src="ui.js"></script>
+<script src="player.js"></script>
+<script>
+/* Starter bank — Part 5. Original questions. Explanations never cite choices by letter,
+   so choice order can be shuffled safely at load. */
+window.STARTER = window.STARTER || {};
+STARTER.s5 = { part: 5, units: [
+{q:"The marketing team conducted a ------- analysis of customer feedback before launching the campaign.",choices:["thoroughly","thorough","thoroughness","more thoroughly"],answer:1,tag:"pos",
+ ex:"冠詞 a と名詞 analysis の間は、名詞を修飾する形容詞の位置です。thorough（徹底的な）が正解。副詞 thoroughly は名詞を修飾できず、名詞 thoroughness では a ------- analysis の形になりません。",
+ ja:"マーケティングチームは、キャンペーン開始前に顧客の声を徹底的に分析した。",vocab:[["conduct","〜を実施する"],["customer feedback","顧客の意見"]]},
+{q:"Ms. Tanaka responded ------- to the client's request, which impressed her supervisor.",choices:["prompt","promptness","promptly","prompted"],answer:2,tag:"pos",
+ ex:"自動詞 responded の後ろで動詞を修飾するのは副詞。promptly（迅速に）が正解。prompt は形容詞・動詞、promptness は名詞です。",
+ ja:"タナカさんは顧客の依頼に迅速に対応し、上司を感心させた。",vocab:[["supervisor","上司"]]},
+{q:"By the time the new manager arrives next week, the renovation of the lobby ------- .",choices:["will complete","has completed","was completing","will have been completed"],answer:3,tag:"verb",
+ ex:"By the time ＋現在形（arrives）で「未来のある時点までに」→ 未来完了。さらに主語 the renovation は「完了される」側なので受動態の will have been completed。",
+ ja:"来週新しいマネージャーが着任するまでに、ロビーの改装は完了しているだろう。",vocab:[["renovation","改装"]]},
+{q:"All employees ------- to submit their expense reports by the fifth of each month.",choices:["are required","require","requiring","have required"],answer:0,tag:"verb",
+ ex:"require 人 to do（人に〜を求める）の受動態 be required to do。主語 employees は「求められる」側です。require や have required では目的語がなく to submit とつながりません。",
+ ja:"全従業員は毎月5日までに経費報告書を提出しなければならない。",vocab:[["expense report","経費報告書"]]},
+{q:"The list of approved vendors ------- updated every quarter by the purchasing department.",choices:["are","were","is","being"],answer:2,tag:"verb",
+ ex:"主語は list（単数）。of approved vendors は修飾語なので、直前の vendors につられて are にしないこと。every quarter は習慣を表すので現在形 is。",
+ ja:"承認済み業者のリストは購買部によって四半期ごとに更新される。",vocab:[["vendor","販売業者"],["purchasing department","購買部"]]},
+{q:"Participants must bring ------- own laptops to the training session.",choices:["they","their","them","theirs"],answer:1,tag:"pron",
+ ex:"own は所有格と組み合わせて「自分自身の」を表します（their own laptops）。空所の後ろに名詞句が続くので所有格 their。",
+ ja:"参加者は研修に各自のノートパソコンを持参しなければならない。",vocab:[]},
+{q:"The director thanked the volunteers and told ------- that the event had raised over $10,000.",choices:["they","their","theirs","them"],answer:3,tag:"pron",
+ ex:"told の目的語の位置なので目的格 them。tell 人 that ...（人に〜と伝える）の形です。",
+ ja:"ディレクターはボランティアに感謝し、イベントで1万ドル以上が集まったと伝えた。",vocab:[["raise","（資金を）集める"]]},
+{q:"------- the heavy rain, the outdoor concert was held as scheduled.",choices:["Although","Because","Despite","However"],answer:2,tag:"prepconj",
+ ex:"空所の後ろは名詞句 the heavy rain だけで、主語＋動詞がありません → 前置詞が必要。Despite（〜にもかかわらず）が正解。Although・Because は接続詞、However は副詞です。",
+ ja:"大雨にもかかわらず、野外コンサートは予定どおり開催された。",vocab:[["as scheduled","予定どおり"]]},
+{q:"Please keep your receipt ------- you need to return or exchange the item.",choices:["in case","in case of","so that","unless"],answer:0,tag:"prepconj",
+ ex:"後ろは you need ...（主語＋動詞）なので接続詞。「返品・交換が必要になる場合に備えて」の in case が正解。in case of の後ろは名詞。unless（〜でない限り）と so that（〜するために）は意味が合いません。",
+ ja:"返品や交換が必要になった場合に備えて、レシートは保管しておいてください。",vocab:[]},
+{q:"The shipment was delayed ------- a shortage of drivers at the distribution center.",choices:["because","since","due to","as though"],answer:2,tag:"prepconj",
+ ex:"後ろは名詞句 a shortage of drivers なので前置詞（句）。due to（〜が原因で）が正解。because は接続詞（because of なら可）。since は前置詞だと「〜以来」の意味になります。",
+ ja:"配送センターの運転手不足のため、出荷が遅れた。",vocab:[["shortage","不足"],["distribution center","配送センター"]]},
+{q:"Online orders placed ------- 3 P.M. will be shipped the same day.",choices:["until","before","while","by the time"],answer:1,tag:"prepconj",
+ ex:"「午後3時より前に出された注文」なので before。until は「〜までずっと」の継続を表し、1回きりの行為 place とは合いません。while と by the time は接続詞で、後ろに主語＋動詞が必要です。",
+ ja:"午後3時より前に受けたオンライン注文は当日発送される。",vocab:[["place an order","注文する"]]},
+{q:"Anyone ------- wishes to attend the workshop should register by Friday.",choices:["whom","who","which","whose"],answer:1,tag:"rel",
+ ex:"先行詞 Anyone は人。空所の後ろは主語が欠けた wishes ... なので主格の関係代名詞 who。whom は目的格、which は物、whose は直後に名詞が必要です。",
+ ja:"ワークショップへの参加を希望する人は金曜日までに登録してください。",vocab:[]},
+{q:"The conference room, ------- was renovated last spring, can now hold up to 80 people.",choices:["that","what","which","where"],answer:2,tag:"rel",
+ ex:"カンマのある非制限用法では that は使えません。後ろは主語が欠けた was renovated なので主格の which。where は後ろに完全な文が必要で、what は先行詞を含むため不可。",
+ ja:"その会議室は昨春に改装され、現在は最大80人を収容できる。",vocab:[["up to","最大〜まで"]]},
+{q:"This is the factory ------- our new line of kitchen appliances is manufactured.",choices:["which","what","whose","where"],answer:3,tag:"rel",
+ ex:"空所の後ろ our new line ... is manufactured は主語も動詞もそろった完全な文。場所の先行詞 factory と完全な文をつなぐのは関係副詞 where（= in which）。",
+ ja:"ここが当社の新しいキッチン家電シリーズを製造している工場です。",vocab:[["appliance","家電製品"]]},
+{q:"This year's sales figures are ------- than those of the previous year.",choices:["higher","high","highest","highly"],answer:0,tag:"comp",
+ ex:"than があるので比較級 higher。those は sales figures の繰り返しを避ける代名詞です。",
+ ja:"今年の売上高は前年を上回っている。",vocab:[["sales figures","売上高"]]},
+{q:"Of all the applicants, Mr. Novak has the ------- experience in international logistics.",choices:["much","more","many","most"],answer:3,tag:"comp",
+ ex:"Of all the applicants（全応募者の中で）と the があるので最上級 the most。experience（経験）は不可算名詞なので many は不可。",
+ ja:"全応募者の中で、ノバク氏が国際物流の経験を最も豊富に持っている。",vocab:[["applicant","応募者"],["logistics","物流"]]},
+{q:"The company is considering ------- a second office in Singapore.",choices:["open","to open","opened","opening"],answer:3,tag:"nonfinite",
+ ex:"consider は動名詞を目的語にとる動詞（consider doing）で、to 不定詞はとれません。同じ仲間に avoid, postpone, suggest, finish など。",
+ ja:"その会社はシンガポールに2つ目のオフィスを開設することを検討している。",vocab:[]},
+{q:"Customers ------- in joining the loyalty program can sign up at any register.",choices:["interest","interested","interesting","interests"],answer:1,tag:"nonfinite",
+ ex:"Customers を後ろから修飾する分詞。be interested in（〜に興味がある）の関係なので過去分詞 interested。interesting は「（物事が）興味深い」です。",
+ ja:"ポイントプログラムへの加入をご希望のお客様は、どのレジでも登録できます。",vocab:[["loyalty program","顧客向けポイント制度"],["register","レジ"]]},
+{q:"The report ------- by the finance team will be presented at Monday's meeting.",choices:["prepare","to prepare","prepared","preparing"],answer:2,tag:"nonfinite",
+ ex:"文の動詞は will be presented。空所は The report を修飾する分詞で、報告書は「作成される」側（by the finance team）なので過去分詞 prepared。",
+ ja:"財務チームが作成した報告書は月曜日の会議で発表される。",vocab:[]},
+{q:"The hotel offers a free shuttle service to guests who ------- a room for three nights or more.",choices:["remain","reserve","observe","deserve"],answer:1,tag:"vocab",
+ ex:"目的語 a room と自然につながるのは reserve（予約する）。remain は自動詞、observe（観察する・順守する）と deserve（〜に値する）は意味が合いません。",
+ ja:"そのホテルは3泊以上予約した宿泊客に無料の送迎サービスを提供している。",vocab:[["shuttle service","送迎サービス"]]},
+{q:"Due to ------- demand, the museum has extended the exhibition until the end of June.",choices:["crowded","wealthy","popular","frequent"],answer:2,tag:"vocab",
+ ex:"popular demand で「多くの人の要望」という定番のコロケーション。due to popular demand（ご好評につき）はお知らせで頻出です。",
+ ja:"ご好評につき、美術館は展示を6月末まで延長した。",vocab:[["extend","延長する"]]},
+{q:"Please ------- the attached document carefully before signing the contract.",choices:["reply","respond","review","remark"],answer:2,tag:"vocab",
+ ex:"目的語 the attached document を直接とって意味が通るのは review（確認する・見直す）。reply と respond は自動詞で to が必要。remark は「述べる」。",
+ ja:"契約書に署名する前に、添付書類をよくご確認ください。",vocab:[["attached","添付の"]]},
+{q:"The new printer is ------- with most operating systems, including older versions.",choices:["comparable","compatible","considerable","complimentary"],answer:1,tag:"vocab",
+ ex:"be compatible with（〜と互換性がある）。comparable（匹敵する）はプリンターとOSの関係には不自然。considerable は「かなりの」、complimentary は「無料の・称賛の」。",
+ ja:"新しいプリンターは旧バージョンを含むほとんどのOSに対応している。",vocab:[["compatible","互換性のある"]]},
+{q:"Mr. Sato was ------- to the position of regional director after ten years with the firm.",choices:["proceeded","promoted","provided","produced"],answer:1,tag:"vocab",
+ ex:"be promoted to（〜に昇進する）。proceed は自動詞なので受動態にならず、provided・produced は意味が合いません。",
+ ja:"サトウ氏は勤続10年を経て地域統括部長に昇進した。",vocab:[["firm","会社"]]},
+{q:"The CEO's speech was ------- received by the audience, who applauded for several minutes.",choices:["closely","nearly","shortly","warmly"],answer:3,tag:"vocab",
+ ex:"be warmly received（温かく受け入れられる）。後半の「数分間拍手した」が手がかり。shortly（まもなく）、nearly（ほぼ）、closely（綿密に）は合いません。",
+ ja:"CEOのスピーチは聴衆に温かく迎えられ、拍手が数分間続いた。",vocab:[["applaud","拍手する"]]},
+{q:"Employees are ------- to use public transportation to reduce the company's carbon footprint.",choices:["encouraged","suggested","insisted","demanded"],answer:0,tag:"vocab",
+ ex:"encourage 人 to do（人に〜するよう勧める）の受動態。suggest・insist・demand は「人 to do」の形をとらず、that 節などを使います。",
+ ja:"会社の二酸化炭素排出量を減らすため、従業員は公共交通機関の利用を推奨されている。",vocab:[["carbon footprint","二酸化炭素排出量"]]},
+{q:"The first shipment arrived on time; -------, the second one was delayed by three days.",choices:["although","however","despite","because"],answer:1,tag:"prepconj",
+ ex:"セミコロンの後で2つの文を「しかし」と意味的につなぐ接続副詞 however（後ろにカンマ）。although・because は接続詞、despite は前置詞でこの位置には入りません。",
+ ja:"最初の出荷は時間どおりに届いたが、2回目は3日遅れた。",vocab:[]},
+{q:"Ms. Kim ------- at Brightline Consulting since she graduated from university.",choices:["works","has worked","is working","will work"],answer:1,tag:"verb",
+ ex:"since（〜以来）は現在完了と組み合わせるのが基本。大学卒業から今まで継続しているので has worked。",
+ ja:"キムさんは大学卒業以来ずっとブライトライン・コンサルティングで働いている。",vocab:[]},
+{q:"The ------- of the new warehouse is expected to create over 200 jobs.",choices:["construct","constructive","constructively","construction"],answer:3,tag:"pos",
+ ex:"冠詞 The と前置詞 of にはさまれた位置は名詞。construction（建設）が正解。",
+ ja:"新しい倉庫の建設により、200人以上の雇用が生まれる見込みだ。",vocab:[["warehouse","倉庫"]]},
+{q:"Registration for the seminar is free, but space is -------.",choices:["limit","limited","limitation","limiting"],answer:1,tag:"pos",
+ ex:"be 動詞の後ろで主語 space の状態を表す形容詞（過去分詞）limited（限られた）。space is limited は「定員に限りあり」の定番表現です。",
+ ja:"セミナーへの登録は無料ですが、定員に限りがあります。",vocab:[["registration","登録"]]},
+{q:"The manager requested that every team member ------- the safety training by Friday.",choices:["completes","completed","complete","completing"],answer:2,tag:"verb",
+ ex:"request / require / suggest / insist の後の that 節では、動詞は主語に関係なく原形（仮定法現在）。every team member でも completes にはなりません。800点レベルで狙われる形です。",
+ ja:"マネージャーは、チーム全員が金曜日までに安全研修を修了するよう求めた。",vocab:[]},
+{q:"------- you have any questions about your order, please contact our customer service team.",choices:["Unless","Whether","Should","Would"],answer:2,tag:"prepconj",
+ ex:"If you should have any questions の If を省略した倒置。文頭の Should ＋主語＋原形 で「万一〜なら」。Unless（〜でない限り）では意味が逆になり、Whether は or not が必要で意味も合いません。",
+ ja:"ご注文についてご質問がありましたら、カスタマーサービスまでご連絡ください。",vocab:[]},
+{q:"Tickets for the gala dinner are ------- through the event's official Web site only.",choices:["available","capable","reliable","eligible"],answer:0,tag:"vocab",
+ ex:"be available through（〜で入手できる）。capable は of を伴って「能力がある」、eligible は「資格がある」、reliable は「信頼できる」で、チケットの入手方法の文脈に合いません。",
+ ja:"祝賀ディナーのチケットはイベント公式サイトでのみ購入できる。",vocab:[["gala","祝賀会"]]},
+{q:"Sales of the new smartphone have increased ------- since the price was reduced.",choices:["significant","significance","significantly","signify"],answer:2,tag:"pos",
+ ex:"自動詞 have increased の後ろで動詞を修飾するのは副詞 significantly（大幅に）。increase significantly は頻出の組み合わせです。",
+ ja:"値下げ以降、新型スマートフォンの売上は大幅に伸びた。",vocab:[]},
+{q:"We are pleased ------- that our store will be open on Sundays starting next month.",choices:["announce","announcing","to announce","announced"],answer:2,tag:"nonfinite",
+ ex:"be pleased to do（喜んで〜する）。お知らせ文の書き出しの定番 We are pleased to announce that ... です。",
+ ja:"来月から日曜日も営業することをお知らせいたします。",vocab:[]},
+{q:"The new model is twice as ------- as the previous one, yet it costs about the same.",choices:["efficient","more efficient","efficiently","most efficient"],answer:0,tag:"comp",
+ ex:"as ... as の間には原級が入ります。be 動詞 is の補語なので形容詞 efficient。twice as 原級 as で「2倍〜」。",
+ ja:"新モデルは旧モデルの2倍の効率だが、価格はほぼ同じだ。",vocab:[["yet","しかし"]]},
+{q:"Ms. Ortiz, ------- team won the innovation award, will give a short speech at the ceremony.",choices:["who","whom","whose","which"],answer:2,tag:"rel",
+ ex:"空所の直後に名詞 team があり「オルティスさんのチーム」という所有の関係なので whose。who・whom・which の後ろに「名詞＋動詞」の完全な文は続きません。",
+ ja:"チームがイノベーション賞を受賞したオルティスさんは、式典で短いスピーチをする。",vocab:[["ceremony","式典"]]},
+{q:"The two companies agreed to share ------- research data to speed up development.",choices:["its","them","theirs","their"],answer:3,tag:"pron",
+ ex:"後ろに名詞 research data があるので所有格。受けるのは The two companies（複数）なので their。its は単数を受けます。",
+ ja:"両社は開発を加速させるため、研究データを共有することで合意した。",vocab:[]},
+{q:"The keynote speech ------- by Dr. Chen, a leading expert in renewable energy.",choices:["delivers","will be delivered","will deliver","is delivering"],answer:1,tag:"verb",
+ ex:"主語 The keynote speech は「行われる」側で、後ろに by Dr. Chen があるので受動態 will be delivered。deliver a speech で「講演をする」。",
+ ja:"基調講演は再生可能エネルギーの第一人者であるチェン博士が行う。",vocab:[["keynote speech","基調講演"],["renewable energy","再生可能エネルギー"]]},
+{q:"The warranty ------- repairs for up to two years from the date of purchase.",choices:["consists","contains","covers","involves"],answer:2,tag:"vocab",
+ ex:"warranty covers repairs（保証が修理を対象にする）。consist は of が必要な自動詞。contains（含有する）や involves（伴う）は保証の範囲を表すには不自然です。",
+ ja:"保証は購入日から最長2年間の修理を対象とする。",vocab:[["warranty","保証"]]}
+]};
+
+</script>
+<script>
+/* Starter bank — Part 6, 7 (Reading) and Part 2, 3, 4 (Listening). Original material. */
+window.STARTER = window.STARTER || {};
+
+STARTER.s6 = { part: 6, units: [
+{title:"E-mail",
+ text:"To: All Staff\nFrom: Karen Mills, Facilities Manager\nSubject: Office move\n\nDear Colleagues,\n\nAs many of you know, our team will be moving to the fourth floor. The move will take place this Saturday so that normal operations are not [[1]].\n\nBefore you leave on Friday, please pack the contents of your desk into the boxes [[2]] by the facilities team. Label each box clearly with your name and new desk number. [[3]]\n\nComputers and phones will be disconnected and reinstalled by our IT staff. [[4]], you do not need to pack any electronic equipment yourself.\n\nThank you for your cooperation.\n\nKaren Mills",
+ ja:"全社員各位　チームは4階へ移転します。通常業務が中断されないよう、移転は今週土曜日に行います。金曜日の退社前に、施設チームが用意した箱に机の中身を詰め、各箱に氏名と新しい座席番号を明記してください。（新しい座席は木曜日にメールでお知らせします。）パソコンと電話はIT担当が取り外し・再設置するので、電子機器をご自身で梱包する必要はありません。",
+ qs:[
+ {choices:["interrupt","interrupting","interrupted","interruption"],answer:2,tag:"p6-grammar",
+  ex:"are not の後ろで、主語 normal operations は「中断される」側なので受動態の過去分詞 interrupted。週末に引っ越すのは業務を止めないため、という文脈です。"},
+ {choices:["provide","provided","providing","provision"],answer:1,tag:"p6-grammar",
+  ex:"the boxes を後ろから修飾する分詞。箱は施設チームによって「用意される」側（by the facilities team）なので過去分詞 provided。"},
+ {choices:["New desk assignments will be sent to you by e-mail on Thursday.","The fourth floor was renovated three years ago.","Please remember to submit your timesheet on time.","We are pleased to welcome our new sales director."],answer:0,tag:"p6-insert",
+  ex:"直前で「新しい座席番号を箱に書く」よう指示しているので、その番号をいつどう知らされるかを補う文が自然につながります。他の選択肢は引っ越し準備の流れと無関係です。"},
+ {choices:["Therefore","However","Otherwise","Instead"],answer:0,tag:"p6-conn",
+  ex:"前文「IT担当が機器を外して再設置する」→「だから自分で梱包しなくてよい」という因果関係なので Therefore。However（しかし）、Otherwise（さもなければ）、Instead（代わりに）は意味が合いません。"}
+ ]},
+{title:"Notice",
+ text:"Greenfield Public Library is pleased to announce the launch of its new mobile app. With the app, members can search the catalog, reserve books, and [[1]] the due dates of borrowed items from their phones.\n\nThe app is free and [[2]] for both Android and iOS devices. To start using it, simply download it and sign in with your library card number. [[3]]\n\nWe would also like to hear from you. After using the app for a few weeks, please [[4]] a short online survey to let us know what you think.",
+ ja:"グリーンフィールド公立図書館は新しいモバイルアプリの提供開始をお知らせします。アプリでは蔵書検索、本の予約、貸出中の資料の返却期限の延長がスマートフォンからできます。アプリは無料で、Android と iOS の両方で利用できます。ダウンロードして図書館カード番号でサインインするだけです。（カードをお持ちでない方は受付で申し込めます。）数週間使ったら、短いオンラインアンケートにご記入ください。",
+ qs:[
+ {choices:["extend","extends","extending","extension"],answer:0,tag:"p6-grammar",
+  ex:"can search ..., reserve ..., and ------- と、can の後ろに原形動詞が3つ並ぶ並列構造。原形 extend が正解です。"},
+ {choices:["available","capable","responsible","considerable"],answer:0,tag:"p6-vocab",
+  ex:"be available for（〜で利用できる）。アプリが Android と iOS で使えるという文脈。capable は「能力がある」、responsible は「責任がある」、considerable は「かなりの」。"},
+ {choices:["If you do not have a card, you can apply for one at the front desk.","The library was founded in 1952 by a local businessman.","Overdue fines have increased by ten percent this year.","The survey results will be published in the local newspaper."],answer:0,tag:"p6-insert",
+  ex:"直前の「図書館カード番号でサインインする」を受けて、カードがない人への案内を加える文が自然。one は a card を指します。アンケートは次の段落で初めて出てくるので、その結果の話はここでは唐突です。"},
+ {choices:["complete","completes","completed","to complete"],answer:0,tag:"p6-grammar",
+  ex:"please の後ろは動詞の原形（命令文）。please complete a survey で「アンケートにご記入ください」。"}
+ ]}
+]};
+
+STARTER.s7 = { part: 7, units: [
+{docs:[{label:"E-mail",text:"From: Daniel Reyes\nTo: Priya Natarajan\nDate: October 2\nSubject: Order #4471\n\nDear Ms. Natarajan,\n\nThank you for sending the proofs for our new product catalog so quickly. Overall, the design looks excellent. However, I noticed that the prices on pages 12 and 13 are from last year's catalog. I have attached a spreadsheet with the updated prices.\n\nAlso, we would like to increase the number of printed copies from 2,000 to 2,500, since we will be distributing the catalog at the Northwest Food Expo in November. Could you let me know whether this change will affect the delivery date? We need to receive the catalogs no later than October 25.\n\nBest regards,\nDaniel Reyes\nMarketing Manager, Harborline Foods"}],
+ qs:[
+ {q:"Why did Mr. Reyes write the e-mail?",choices:["To request changes to an order","To complain about a late delivery","To ask for a price estimate","To register for a trade show"],answer:0,tag:"p7-purpose",
+  ev:"we would like to increase the number of printed copies from 2,000 to 2,500",
+  ex:"価格の誤りの修正（第2段落）と部数の増加（第3段落）を依頼しているので「注文内容の変更を依頼するため」。複数の用件をひとまとめに言い換えた選択肢を選ぶのがコツです。"},
+ {q:"What did Mr. Reyes send with the e-mail?",choices:["A revised design","A list of current prices","A signed contract","A map of the expo"],answer:1,tag:"p7-detail",
+  ev:"I have attached a spreadsheet with the updated prices.",
+  ex:"I have attached a spreadsheet with the updated prices. が根拠。spreadsheet with the updated prices を A list of current prices と言い換えています。"},
+ {q:"What is suggested about the Northwest Food Expo?",choices:["It will take place after October 25.","It is organized by Harborline Foods.","It requires exactly 2,000 catalogs.","It will be held at a printing company."],answer:0,tag:"p7-infer",
+  ev:"at the Northwest Food Expo in November",
+  ex:"カタログは10月25日までに必要で、展示会は11月開催。よって展示会は10月25日より後だと推測できます。"}
+ ]},
+{docs:[{label:"Text message chain",text:"Alicia Gomez [9:12 A.M.]\nHi Tom, are you already at the Westbrook office?\n\nTom Becker [9:14 A.M.]\nJust arrived. The client meeting starts at ten, right?\n\nAlicia Gomez [9:15 A.M.]\nIt's been moved to 10:30. Their manager is stuck in traffic.\n\nTom Becker [9:16 A.M.]\nThat works for me. I left the sample kits in the car, though.\n\nAlicia Gomez [9:17 A.M.]\nNo rush, then.\n\nTom Becker [9:18 A.M.]\nGreat. I'll set up the projector first."}],
+ qs:[
+ {q:"Why did Ms. Gomez contact Mr. Becker?",choices:["To inform him of a schedule change","To ask him to pick up a client","To request additional sample kits","To cancel a meeting"],answer:0,tag:"p7-purpose",
+  ev:"It's been moved to 10:30.",
+  ex:"会議が10時30分に変更になったことを伝えています。be moved to 〜 は「〜に変更される」。キャンセルではない点に注意。"},
+ {q:"At 9:17 A.M., what does Ms. Gomez most likely mean when she writes, \"No rush, then\"?",choices:["Mr. Becker has enough time to get the sample kits.","The client meeting has been canceled.","She will arrive at the office late.","The projector does not need to be set up."],answer:0,tag:"p7-intent",
+  ev:"I left the sample kits in the car, though.",
+  ex:"直前に Becker さんが「サンプルキットを車に置いてきた」と言い、会議は30分遅れになった → 「急がなくていい（取りに行く時間は十分ある）」。意図問題は直前の発言とのつながりで判断します。"}
+ ]},
+{docs:[{label:"Notice",text:"Notice to Residents of Maple Court Apartments\n\nBeginning Monday, June 3, the main parking lot will be closed for repaving. The work is expected to last approximately two weeks, weather permitting.\n\nDuring this period, residents may park in the east lot or on Birch Street. Please note that overnight parking on Birch Street is not permitted on Tuesdays because of street cleaning.\n\nResidents who need assistance carrying groceries or other heavy items from the east lot may contact the management office at 555-0142. Staff will be available to help between 8 A.M. and 6 P.M. on weekdays.\n\nWe apologize for the inconvenience and appreciate your patience.\n\nMaple Court Management"}],
+ qs:[
+ {q:"What is the purpose of the notice?",choices:["To announce a temporary closure","To introduce a new management company","To advertise available apartments","To explain new parking fees"],answer:0,tag:"p7-purpose",
+  ev:"the main parking lot will be closed for repaving",
+  ex:"メイン駐車場が舗装工事で約2週間閉鎖される＝一時的な閉鎖の告知です。"},
+ {q:"What is NOT mentioned as an option for residents?",choices:["Parking in the east lot","Parking on Birch Street","Getting help carrying items","Taking a shuttle bus"],answer:3,tag:"p7-not",
+  ev:"residents may park in the east lot or on Birch Street",
+  ex:"東側駐車場、バーチ通りへの駐車、荷物運びの手伝いは本文にあります。シャトルバスは書かれていません。NOT問題は選択肢を1つずつ本文と照合します。"},
+ {q:"The word \"last\" in paragraph 1, line 2, is closest in meaning to",choices:["continue","be final","be the latest","remain behind"],answer:0,tag:"p7-vocab",
+  ev:"The work is expected to last approximately two weeks",
+  ex:"last approximately two weeks は「約2週間続く」。動詞の last = continue。形容詞の「最後の」と混同しないこと。"}
+ ]},
+{docs:[
+ {label:"Advertisement",text:"Brightway Language Center\nAutumn Business English Courses\n\nPresentation Skills — Tuesdays, 7:00–8:30 P.M. (8 weeks) — $320\nBusiness Writing — Thursdays, 7:00–8:30 P.M. (8 weeks) — $300\nNegotiation Workshop — Saturdays, 10:00 A.M.–12:30 P.M. (4 weeks) — $280\nConversation Club — Fridays, 6:30–7:30 P.M. (10 weeks) — $150\n\nRegister by September 20 to receive a 10% early-registration discount. All courses begin the week of October 7. Group discounts are available for companies enrolling five or more employees."},
+ {label:"E-mail",text:"To: Brightway Language Center\nFrom: Kenji Mori\nDate: September 24\nSubject: Course inquiry\n\nHello,\n\nI am interested in improving my ability to write clear reports and e-mails for my job. Unfortunately, I have a team meeting every Thursday evening, so I cannot attend on that day. Is there another way to take the course, such as online sessions or recorded lessons?\n\nI would also like to know whether I can still receive the early-registration discount.\n\nThank you,\nKenji Mori"}],
+ qs:[
+ {q:"Which course is Mr. Mori most interested in?",choices:["Presentation Skills","Business Writing","Negotiation Workshop","Conversation Club"],answer:1,tag:"p7-multi",
+  ev:"write clear reports and e-mails",
+  ex:"メールの「報告書やメールを書く力を伸ばしたい」と広告の Business Writing（木曜）が対応し、「木曜は出られない」という悩みとも一致します。2つの文書を照合する典型問題です。"},
+ {q:"What is indicated about the Negotiation Workshop?",choices:["It is held on weekends.","It costs less than the Conversation Club.","It lasts eight weeks.","It starts in September."],answer:0,tag:"p7-detail",
+  ev:"Negotiation Workshop — Saturdays",
+  ex:"Saturdays（土曜）開催なので週末。料金は$280で Conversation Club（$150）より高く、期間は4週間、開始は10月7日の週です。"},
+ {q:"What will Mr. Mori most likely learn about the early-registration discount?",choices:["The deadline has already passed.","It applies only to group enrollments.","It is available for online courses only.","It has been increased to 20 percent."],answer:0,tag:"p7-multi",
+  ev:"Register by September 20",
+  ex:"割引の締切は9月20日（広告）、メールの日付は9月24日 → すでに締切を過ぎています。日付の照合は複数文書問題の定番です。"},
+ {q:"What problem does Mr. Mori mention?",choices:["He is unavailable when a course is held.","He cannot afford the course fee.","He missed the first class.","His company does not offer group discounts."],answer:0,tag:"p7-detail",
+  ev:"I have a team meeting every Thursday evening",
+  ex:"木曜の夜は会議があり出席できない＝講座の開講時間に都合がつかない、ということです。"}
+ ]}
+]};
+
+STARTER.s2 = { part: 2, units: [
+{spk:"W",text:"Where should I put these boxes?",choices:["In the storage room, please.","Yes, they're quite heavy.","About twenty minutes."],answer:0,tag:"p2-wh",
+ ex:"Where（場所）への答えとして In the storage room が適切。WH疑問文に Yes で答える応答は原則として誤りです。",ja:"この箱はどこに置けばいいですか。— 倉庫にお願いします。"},
+{spk:"M",text:"When is the quarterly report due?",choices:["Yes, it's on your desk.","By the end of next week.","The report was very long."],answer:1,tag:"p2-wh",
+ ex:"When（いつ）→ 期限を答える By the end of next week。質問と同じ単語 report を含む選択肢はひっかけの典型です。",ja:"四半期報告書の締め切りはいつですか。— 来週末までです。"},
+{spk:"W",text:"Who's leading the training session tomorrow?",choices:["At nine o'clock.","The training room is upstairs.","Someone from human resources."],answer:2,tag:"p2-wh",
+ ex:"Who（誰）→ 人を答える。Someone from human resources（人事部の誰か）。時刻や場所の応答は別の疑問詞への答えです。",ja:"明日の研修は誰が担当しますか。— 人事部の人です。"},
+{spk:"M",text:"Why was the flight delayed?",choices:["Because of the snowstorm.","To Chicago, I think.","It was a long flight."],answer:0,tag:"p2-wh",
+ ex:"Why（理由）→ Because of ...。flight を繰り返す選択肢はひっかけです。",ja:"なぜ便が遅れたのですか。— 吹雪のためです。"},
+{spk:"W",text:"How often do you check your e-mail?",choices:["Yes, I sent it yesterday.","Several times a day.","At the post office."],answer:1,tag:"p2-wh",
+ ex:"How often（頻度）→ Several times a day。e-mail から連想させる sent や post office はひっかけです。",ja:"メールはどのくらいの頻度で確認しますか。— 1日に何回かです。"},
+{spk:"M",text:"Did you finish the budget proposal?",choices:["It was quite expensive.","I'm still working on it.","Yes, a financial advisor."],answer:1,tag:"p2-yesno",
+ ex:"「終わった？」に「まだ取り組んでいる」＝ No を遠回しに伝える応答。budget から連想する expensive や financial はひっかけです。",ja:"予算案は終わりましたか。— まだ取り組んでいるところです。"},
+{spk:"W",text:"Isn't the store open on Sundays?",choices:["I bought a new coat there.","Yes, it's closed.","Only in December."],answer:2,tag:"p2-yesno",
+ ex:"否定疑問文でも答え方は普通の疑問文と同じ。「12月だけ（開いている）」が自然です。Yes と言いながら closed は矛盾しています。",ja:"その店は日曜日は開いていないのですか。— 12月だけ開いています。"},
+{spk:"M",text:"Would you like me to print the agenda for you?",choices:["Thanks, that would be helpful.","The printer on the second floor.","I liked it very much."],answer:0,tag:"p2-suggest",
+ ex:"Would you like me to ...?（〜しましょうか）という申し出。お礼を言って受け入れる応答が正解です。",ja:"議題を印刷しましょうか。— ありがとう、助かります。"},
+{spk:"W",text:"Why don't we take a short break?",choices:["Because it was broken.","No, I didn't take it.","Good idea — I need some coffee."],answer:2,tag:"p2-suggest",
+ ex:"Why don't we ...? は理由ではなく「〜しませんか」という提案。Because で答えるのはひっかけ（break と broken の音のひっかけも）。",ja:"少し休憩しませんか。— いいですね、コーヒーが飲みたいです。"},
+{spk:"M",text:"Should we hire more staff or pay overtime?",choices:["Yes, we should.","Overtime would be cheaper.","She was hired last month."],answer:1,tag:"p2-choice",
+ ex:"A or B の選択疑問文には Yes/No で答えられません。どちらかを選ぶ（または第3の案を出す）応答が正解です。",ja:"スタッフを増やしますか、それとも残業代を払いますか。— 残業のほうが安く済みます。"},
+{spk:"W",text:"The printer is out of paper again.",choices:["There's more in the supply closet.","A newspaper article.","Yes, print it twice."],answer:0,tag:"p2-indirect",
+ ex:"平叙文（状況の報告）への応答。「備品庫にまだある」と解決策を示すのが自然。paper と newspaper の音のひっかけに注意。",ja:"プリンターがまた紙切れです。— 備品庫にまだありますよ。"},
+{spk:"M",text:"Have you met the new marketing director?",choices:["At the market downtown.","Yes, the meeting went well.","I'm having lunch with her today."],answer:2,tag:"p2-indirect",
+ ex:"「会いましたか」に「今日ランチをする（これから会う）」と間接的に答えるパターン。met と meeting、marketing と market の音のひっかけに注意。",ja:"新しいマーケティング部長にはもう会いましたか。— 今日ランチをご一緒します。"},
+{spk:"W",text:"Can you help me move this table?",choices:["Sure, where does it go?","A table for four, please.","We moved here last year."],answer:0,tag:"p2-suggest",
+ ex:"依頼に Sure と応じ、置き場所を尋ね返す応答。move や table を繰り返す選択肢はひっかけです。",ja:"このテーブルを動かすのを手伝ってもらえますか。— いいですよ、どこに置きますか。"},
+{spk:"M",text:"Which hotel did you book for the conference?",choices:["I read that book already.","The one next to the convention center.","For three nights."],answer:1,tag:"p2-wh",
+ ex:"Which hotel（どのホテル）→ The one（= the hotel）next to ...。book（予約する／本）の多義語のひっかけに注意。",ja:"会議のためにどのホテルを予約しましたか。— コンベンションセンターの隣です。"},
+{spk:"W",text:"Who approved this purchase order?",choices:["Office supplies, mostly.","Yes, it was approved.","I'll have to check the records."],answer:2,tag:"p2-indirect",
+ ex:"「記録を確認しないとわからない」は定番の間接応答。「わからない・確認する」系は正解になりやすいパターンです。",ja:"この発注書は誰が承認しましたか。— 記録を確認してみないとわかりません。"}
+]};
+
+STARTER.s3 = { part: 3, units: [
+{lines:[["W","Hi, Marco. I'm placing our monthly order for office supplies. Do you need anything for your team?"],["M","Actually, yes. We're almost out of printer ink, and a few people have asked for new notebooks."],["W","OK. The supplier is offering a discount on ink this month if we order ten cartridges or more."],["M","That's great. Let's order twelve, then. We go through a lot of ink when we prepare reports for clients."],["W","Sounds good. I'll send you the order summary this afternoon so you can check it before I submit it."]],
+ ja:"女性：マルコ、毎月の事務用品を発注するところです。チームで何か必要ですか。／男性：ええ、プリンターのインクがほぼ切れていて、新しいノートがほしいという人も数人います。／女性：今月は10本以上注文するとインクが割引になるそうです。／男性：いいですね、では12本にしましょう。顧客向けの報告書を作るとインクをたくさん使うので。／女性：了解です。提出前に確認できるよう、今日の午後に注文内容を送りますね。",
+ qs:[
+ {q:"What are the speakers mainly discussing?",choices:["An order for supplies","A report for a client","A broken printer","A team meeting"],answer:0,tag:"p3-gist",ex:"冒頭の I'm placing our monthly order for office supplies で話題が決まります。概要問題は最初の1〜2文が勝負です。"},
+ {q:"What does the woman say about the ink?",choices:["It is discounted for large orders.","It is out of stock.","It is delivered every week.","It is more expensive than before."],answer:0,tag:"p3-detail",ex:"a discount on ink this month if we order ten cartridges or more → 「大量注文で割引」。if 以下の条件の言い換えを聞き取ります。"},
+ {q:"What will the woman do this afternoon?",choices:["Send a summary to the man","Visit a supplier","Prepare a report","Order notebooks online"],answer:0,tag:"p3-next",ex:"最後の I'll send you the order summary this afternoon が根拠。「次の行動」は最後の発言にヒントがあることが多いです。"}
+ ]},
+{lines:[["M","Hello, I'm calling from Lindell Architects. We'd like to order lunch for a client meeting next Wednesday."],["W","Certainly. How many people will you need food for?"],["M","About fifteen. And one of our guests doesn't eat meat, so we'll need a vegetarian option."],["W","No problem. Our vegetable pasta is very popular. Would you like us to deliver, or will you pick up the order?"],["M","Delivery, please. Our office is on the ninth floor of the Hartley Building."],["W","Great. I'll e-mail you a menu with prices so you can make your final selections."]],
+ ja:"男性：リンデル建築事務所です。来週水曜の顧客との会議用に昼食を注文したいのですが。／女性：かしこまりました。何名分でしょうか。／男性：15人ほどです。ゲストの1人が肉を食べないので、ベジタリアン向けの料理が必要です。／女性：大丈夫です。野菜のパスタが人気です。配達とお受け取り、どちらにしますか。／男性：配達でお願いします。ハートリービルの9階です。／女性：では、最終的に選んでいただけるよう、価格入りのメニューをメールでお送りします。",
+ qs:[
+ {q:"Why is the man calling?",choices:["To place a catering order","To reserve a table","To complain about a delivery","To invite a client to lunch"],answer:0,tag:"p3-gist",ex:"We'd like to order lunch for a client meeting → 会議用の食事の注文（catering order）。"},
+ {q:"What does the man say about one of the guests?",choices:["The guest does not eat meat.","The guest will arrive late.","The guest works in the Hartley Building.","The guest recommended the restaurant."],answer:0,tag:"p3-detail",ex:"one of our guests doesn't eat meat がそのまま根拠です。"},
+ {q:"What will the woman send the man?",choices:["A menu","A receipt","A map","A contract"],answer:0,tag:"p3-next",ex:"I'll e-mail you a menu with prices が根拠。"}
+ ]},
+{lines:[["W","Kevin, the projector in Conference Room B isn't working again. I have a presentation there at two."],["M","Hmm, the technician isn't coming until tomorrow morning."],["W","Oh no. I really need to show my slides to the sales team."],["M","Room D has a large screen, and I think it's free this afternoon."],["W","That's perfect. I'll book it now and let everyone know about the change."]],
+ ja:"女性：ケビン、B会議室のプロジェクターがまた動かないの。2時からそこでプレゼンがあるのに。／男性：うーん、技術者は明日の朝まで来ないよ。／女性：困ったわ。営業チームにどうしてもスライドを見せたいの。／男性：D会議室には大きなスクリーンがあって、今日の午後は空いていると思うよ。／女性：それは完璧ね。今すぐ予約して、みんなに変更を知らせるわ。",
+ qs:[
+ {q:"What problem does the woman mention?",choices:["A projector is not working.","A presentation was canceled.","Her laptop is broken.","A room is too small."],answer:0,tag:"p3-detail",ex:"冒頭の the projector ... isn't working again が根拠です。"},
+ {q:"Why does the man say, \"the technician isn't coming until tomorrow morning\"?",choices:["To indicate that the equipment will not be fixed in time","To explain why he is late","To recommend a different technician","To ask the woman to wait until tomorrow"],answer:0,tag:"p3-intent",ex:"プレゼンは今日の2時なのに技術者は明日朝まで来ない → 「修理は間に合わない」ことを示しています。この後、男性は別の部屋を提案しており、待つよう頼んではいません。"},
+ {q:"What will the woman most likely do next?",choices:["Reserve a different room","Call the technician","Cancel her presentation","Print her slides"],answer:0,tag:"p3-next",ex:"I'll book it now（D会議室を予約する）→ Reserve a different room。book = reserve の言い換えです。"}
+ ]}
+]};
+
+STARTER.s4 = { part: 4, units: [
+{kind:"Announcement",lines:[["M","Attention, shoppers. Thank you for visiting Pinecrest Home Center. This weekend only, all outdoor furniture is thirty percent off."],["M","You'll find our full selection of tables, chairs, and umbrellas in the garden section at the back of the store."],["M","And if you spend more than two hundred dollars, we'll deliver your purchase for free anywhere in the city."],["M","Please note that the store will close early today, at six P.M., for inventory. Thank you for shopping with us."]],
+ ja:"ご来店の皆さまにお知らせします。パインクレスト・ホームセンターへようこそ。今週末限定で、屋外用家具がすべて30%引きです。テーブル、椅子、パラソルは店の奥のガーデンコーナーにございます。200ドルを超えるお買い上げで、市内どこでも無料で配達いたします。なお、本日は棚卸しのため午後6時に閉店いたします。",
+ qs:[
+ {q:"Where is the announcement being made?",choices:["At a home improvement store","At a furniture factory","At a public park","At a delivery company"],answer:0,tag:"p4-gist",ex:"Attention, shoppers と Pinecrest Home Center から店内放送だとわかります。Home Center を home improvement store と言い換えています。"},
+ {q:"What is offered to customers who spend more than $200?",choices:["Free delivery","An extra discount","A free umbrella","A membership card"],answer:0,tag:"p4-detail",ex:"we'll deliver your purchase for free が根拠。"},
+ {q:"Why will the store close early today?",choices:["To count its stock","For a national holiday","Because of bad weather","To prepare for a sale"],answer:0,tag:"p4-detail",ex:"for inventory（棚卸しのため）を To count its stock と言い換えています。言い換えの聞き取りが Part 4 の核心です。"}
+ ]},
+{kind:"Telephone message",lines:[["W","Hi, this is Rachel Kim from Summit Dental Clinic, calling for Mr. Alvarez."],["W","I'm calling to remind you about your appointment on Thursday at eleven A.M."],["W","Unfortunately, Dr. Patel will be attending a conference that day, so your checkup will be with Dr. Wong instead."],["W","If you'd prefer to see Dr. Patel, we have openings next Monday afternoon. Please call us back at 555-0187 to let us know which you'd prefer. Thank you."]],
+ ja:"サミット歯科のレイチェル・キムです。アルバレス様宛てのお電話です。木曜日午前11時のご予約の確認でご連絡しました。あいにくパテル医師はその日学会に出席するため、検診はウォン医師が担当します。パテル医師をご希望の場合は、来週月曜の午後に空きがあります。どちらがよいか、555-0187 までお電話ください。",
+ qs:[
+ {q:"What is the purpose of the call?",choices:["To discuss an appointment","To request a payment","To advertise a new service","To report test results"],answer:0,tag:"p4-gist",ex:"I'm calling to remind you about your appointment → 予約についての連絡。電話メッセージでは I'm calling to/about ... の直後が目的です。"},
+ {q:"Why is Dr. Patel unavailable on Thursday?",choices:["Dr. Patel will be attending a conference.","Dr. Patel will be on vacation.","Dr. Patel is ill.","Dr. Patel has moved to another clinic."],answer:0,tag:"p4-detail",ex:"Dr. Patel will be attending a conference that day がそのまま根拠です。"},
+ {q:"What is the listener asked to do?",choices:["Return the call","Arrive early","Bring a document","Visit a Web site"],answer:0,tag:"p4-next",ex:"Please call us back → Return the call（折り返し電話する）。依頼内容は Please ... の後に来ます。"}
+ ]}
+]};
+
+</script>
+<script>
+/* core.js — config, storage, learning model (stats + spaced review), speech, AI generation */
+(function () {
+'use strict';
+const App = window.App = { S: {} };
+const S = App.S;
+
+/* ---------- utils ---------- */
+const esc = s => String(s == null ? '' : s).replace(/[&<>"']/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c]));
+const pad = n => String(n).padStart(2, '0');
+const ymd = d => d.getFullYear() + '-' + pad(d.getMonth() + 1) + '-' + pad(d.getDate());
+const today = () => ymd(new Date());
+const addDays = (s, n) => { const [y, m, d] = s.split('-').map(Number); return ymd(new Date(y, m - 1, d + n)); };
+const diffDays = (a, b) => { const [y1, m1, d1] = a.split('-').map(Number), [y2, m2, d2] = b.split('-').map(Number); return Math.round((Date.UTC(y2, m2 - 1, d2) - Date.UTC(y1, m1 - 1, d1)) / 86400000); };
+const clone = o => JSON.parse(JSON.stringify(o));
+const sleep = ms => new Promise(r => setTimeout(r, ms));
+const uid = () => Date.now().toString(36) + Math.random().toString(36).slice(2, 6);
+const str = v => (typeof v === 'string' ? v : v == null ? '' : String(v)).trim();
+function hash(s) { let h = 2166136261; for (let i = 0; i < s.length; i++) { h ^= s.charCodeAt(i); h = Math.imul(h, 16777619); } return h >>> 0; }
+function rng(seed) { let s = (seed >>> 0) || 1; return () => { s ^= s << 13; s >>>= 0; s ^= s >>> 17; s ^= s << 5; s >>>= 0; return s / 4294967296; }; }
+function shuffleQ(q, seed) {
+  const r = rng(seed), idx = q.choices.map((_, i) => i);
+  for (let i = idx.length - 1; i > 0; i--) { const j = Math.floor(r() * (i + 1)); const t = idx[i]; idx[i] = idx[j]; idx[j] = t; }
+  q.choices = idx.map(i => q.choices[i]); q.answer = idx.indexOf(q.answer);
+}
+Object.assign(App, { esc, today, addDays, diffDays, clone, sleep, uid, hash });
+
+/* ---------- events ---------- */
+const handlers = {};
+App.on = (ev, fn) => { (handlers[ev] = handlers[ev] || []).push(fn); };
+App.emit = (ev, data) => { (handlers[ev] || []).forEach(fn => { try { fn(data); } catch (e) { console.error(e); } }); };
+
+/* ---------- config ---------- */
+App.EXAM = '2026-12-19';
+App.BASE = { L: 350, R: 295, total: 645, when: '2025年11月' };
+App.GOAL = { min: { L: 375, R: 325, total: 700 }, target: { L: 420, R: 380, total: 800 } };
+App.PART = {
+  2: { sec: 'L', name: '応答問題', pace: null, nc: 3, set: false },
+  3: { sec: 'L', name: '会話問題', pace: null, nc: 4, set: true },
+  4: { sec: 'L', name: '説明文問題', pace: null, nc: 4, set: true },
+  5: { sec: 'R', name: '短文穴埋め', pace: 20, nc: 4, set: false },
+  6: { sec: 'R', name: '長文穴埋め', pace: 30, nc: 4, set: true },
+  7: { sec: 'R', name: '読解', pace: 60, nc: 4, set: true }
+};
+/* Rough accuracy lines per section (practice-accuracy guide, not an official conversion). */
+App.LINES = { L: { 700: 0.76, 800: 0.85 }, R: { 700: 0.67, 800: 0.77 } };
+App.TAGS = {
+  pos: { p: 5, ja: '品詞' }, verb: { p: 5, ja: '動詞の形（時制・態・一致）' }, pron: { p: 5, ja: '代名詞' },
+  prepconj: { p: 5, ja: '前置詞・接続詞' }, rel: { p: 5, ja: '関係詞' }, comp: { p: 5, ja: '比較' },
+  nonfinite: { p: 5, ja: '不定詞・動名詞・分詞' }, vocab: { p: 5, ja: '語彙・コロケーション' },
+  'p6-grammar': { p: 6, ja: '文脈の文法' }, 'p6-vocab': { p: 6, ja: '文脈の語彙' }, 'p6-conn': { p: 6, ja: 'つなぎ言葉' }, 'p6-insert': { p: 6, ja: '文挿入' },
+  'p7-purpose': { p: 7, ja: '目的・主旨' }, 'p7-detail': { p: 7, ja: '詳細' }, 'p7-infer': { p: 7, ja: '推測' }, 'p7-not': { p: 7, ja: 'NOT問題' },
+  'p7-vocab': { p: 7, ja: '同義語' }, 'p7-intent': { p: 7, ja: '意図問題' }, 'p7-multi': { p: 7, ja: '複数文書' }, 'p7-insert': { p: 7, ja: '文挿入' },
+  'p2-wh': { p: 2, ja: 'WH疑問文' }, 'p2-yesno': { p: 2, ja: 'Yes/No・否定疑問' }, 'p2-choice': { p: 2, ja: '選択疑問文' },
+  'p2-suggest': { p: 2, ja: '依頼・提案・申し出' }, 'p2-indirect': { p: 2, ja: '平叙文・間接応答' },
+  'p3-gist': { p: 3, ja: '概要' }, 'p3-detail': { p: 3, ja: '詳細' }, 'p3-next': { p: 3, ja: '次の行動' }, 'p3-intent': { p: 3, ja: '意図問題' },
+  'p4-gist': { p: 4, ja: '概要' }, 'p4-detail': { p: 4, ja: '詳細' }, 'p4-next': { p: 4, ja: '次の行動・依頼' }, 'p4-intent': { p: 4, ja: '意図問題' }
+};
+App.tagName = t => (App.TAGS[t] ? 'P' + App.TAGS[t].p + ' ' + App.TAGS[t].ja : t);
+const DEFAULT_PROFILE = { weekdayApp: 30, weekendApp: 60, vocabMin: 30, rate: 1, voiceMode: 'mix', voiceM: '', voiceW: '', genTier: 'default' };
+const PARTS = [2, 3, 4, 5, 6, 7];
+
+/* ---------- starter bank (choice order shuffled deterministically) ---------- */
+const BATCHES = new Map();
+Object.keys(window.STARTER || {}).forEach(id => {
+  const b = clone(window.STARTER[id]); b.id = id; b.src = 'starter';
+  b.units.forEach((u, ui) => {
+    if (App.PART[b.part].set) u.qs.forEach((q, qi) => shuffleQ(q, hash(id + ':' + ui + ':' + qi)));
+    else shuffleQ(u, hash(id + ':' + ui + ':0'));
+  });
+  BATCHES.set(id, b);
+});
+
+/* ---------- storage: artifact db when available, else this browser only ---------- */
+function cmp(a, op, b) {
+  switch (op) { case '==': return a === b; case '!=': return a !== b; case '<': return a < b; case '<=': return a <= b; case '>': return a > b; case '>=': return a >= b; default: return false; }
+}
+const Store = App.Store = {
+  db: null, mode: 'local', mem: new Map(), pending: new Map(), failed: false,
+  async init() {
+    let db = null;
+    try { db = window.claude && typeof window.claude.use === 'function' ? await window.claude.use('db') : null; } catch (e) { db = null; }
+    if (db) { this.db = db; this.mode = 'db'; }
+  },
+  key: p => 'toeic800:' + p,
+  async get(path) {
+    if (this.db) {
+      try { const s = await this.db.doc(path).get(); return s.exists ? clone(s.data()) : null; }
+      catch (e) { this.fail(e); return null; }
+    }
+    if (this.mem.has(path)) return clone(this.mem.get(path));
+    try { const v = localStorage.getItem(this.key(path)); if (v) { const o = JSON.parse(v); this.mem.set(path, o); return clone(o); } } catch (e) { /* storage blocked */ }
+    return null;
+  },
+  async query(coll, opt) {
+    opt = opt || {};
+    if (this.db) {
+      try {
+        let q = this.db.collection(coll);
+        (opt.where || []).forEach(w => { q = q.where(w[0], w[1], w[2]); });
+        if (opt.orderBy) q = q.orderBy(opt.orderBy, opt.dir || 'asc');
+        if (opt.limit) q = q.limit(opt.limit);
+        const snap = await q.get();
+        return snap.docs.map(d => Object.assign(clone(d.data()), { _id: d.id }));
+      } catch (e) { this.fail(e); return []; }
+    }
+    const keys = new Set(this.mem.keys()), prefix = coll + '/';
+    try { for (let i = 0; i < localStorage.length; i++) { const k = localStorage.key(i); if (k && k.indexOf('toeic800:') === 0) keys.add(k.slice(9)); } } catch (e) { /* ignore */ }
+    const out = [];
+    for (const k of keys) {
+      if (k.indexOf(prefix) !== 0 || k.slice(prefix.length).indexOf('/') >= 0) continue;
+      const o = await this.get(k); if (!o) continue;
+      if ((opt.where || []).every(w => cmp(o[w[0]], w[1], w[2]))) out.push(Object.assign(o, { _id: k.slice(prefix.length) }));
+    }
+    if (opt.orderBy) { const f = opt.orderBy, s = opt.dir === 'desc' ? -1 : 1; out.sort((a, b) => (a[f] > b[f] ? 1 : a[f] < b[f] ? -1 : 0) * s); }
+    return opt.limit ? out.slice(0, opt.limit) : out;
+  },
+  save(path, data) {
+    let p = this.pending.get(path);
+    if (!p) { p = { data: null, running: false }; this.pending.set(path, p); }
+    const d = clone(data); delete d._id; p.data = d;
+    if (!p.running) this.flush(path, p);
+  },
+  async flush(path, p) {
+    p.running = true;
+    while (p.data) {
+      const d = p.data; p.data = null;
+      if (this.db) {
+        try { await this.db.doc(path).set(d); }
+        catch (e) {
+          if (e && e.code === 'unavailable') { await sleep(400 + Math.random() * 800); try { await this.db.doc(path).set(d); } catch (e2) { this.fail(e2); } }
+          else this.fail(e);
+        }
+      } else {
+        this.mem.set(path, d);
+        try { localStorage.setItem(this.key(path), JSON.stringify(d)); } catch (e) { /* storage blocked */ }
+      }
+    }
+    p.running = false;
+  },
+  fail(e) {
+    console.warn('store', e);
+    if (this.failed) return;
+    this.failed = true;
+    const code = e && e.code;
+    const msg = code === 'quota_exceeded' ? '保存容量の上限に達しました。古い問題を整理する必要があります（Claude に相談してください）。'
+      : code === 'invalid_argument' ? 'このアカウントではデータを保存できません（閲覧のみ）。記録は保存されません。'
+      : code === 'revoked' ? 'データへのアクセスが無効になりました。ページを開き直してください。'
+      : '記録の保存に失敗しました。通信状態を確認してページを開き直してください。';
+    App.emit('banner', msg);
+  }
+};
+
+/* ---------- state ---------- */
+S.profile = Object.assign({}, DEFAULT_PROFILE);
+S.stats = { tags: {}, parts: {} };
+S.progress = {}; PARTS.forEach(p => { S.progress[p] = {}; });
+S.pools = new Map();
+S.days = [];
+S.reviews = [];
+S.coach = null;
+const newDay = t => ({ date: t, n: 0, c: 0, sec: 0, study: 0, vocab: false, parts: {}, done: {} });
+
+App.load = async function () {
+  await Store.init();
+  const t = today();
+  const got = await Promise.all([Store.get('meta/profile'), Store.get('meta/stats'), Store.get('meta/coach')].concat(PARTS.map(p => Store.get('progress/p' + p))));
+  S.profile = Object.assign({}, DEFAULT_PROFILE, got[0] || {});
+  S.stats = got[1] || { tags: {}, parts: {} };
+  S.stats.tags = S.stats.tags || {}; S.stats.parts = S.stats.parts || {};
+  S.coach = got[2];
+  PARTS.forEach((p, i) => { S.progress[p] = (got[3 + i] && got[3 + i].k) || {}; });
+  const more = await Promise.all([
+    Store.query('days', { orderBy: 'date', dir: 'desc', limit: 90 }),
+    Store.query('pool', { where: [['open', '==', true]], limit: 400 }),
+    Store.query('review', { where: [['due', '<=', addDays(t, 14)]], orderBy: 'due', limit: 800 })
+  ]);
+  S.days = more[0];
+  S.day = S.days.find(d => d.date === t);
+  if (!S.day) { S.day = newDay(t); S.days.unshift(S.day); }
+  S.day.done = S.day.done || {}; S.day.parts = S.day.parts || {}; S.day.study = S.day.study || 0;
+  more[1].forEach(b => { b.id = b._id; S.pools.set(b._id, b); });
+  S.reviews = more[2].filter(r => !r.done);
+};
+function rollDay() {
+  const t = today();
+  if (S.day.date !== t) { S.day = newDay(t); S.days.unshift(S.day); }
+  return t;
+}
+App.saveDay = () => { rollDay(); Store.save('days/' + S.day.date, S.day); };
+App.saveProfile = () => Store.save('meta/profile', S.profile);
+
+/* ---------- content access ---------- */
+App.batch = id => BATCHES.get(id) || S.pools.get(id) || null;
+App.fetchBatch = async id => {
+  let b = App.batch(id); if (b) return b;
+  b = await Store.get('pool/' + id);
+  if (b) { b.id = id; S.pools.set(id, b); }
+  return b;
+};
+App.keyOf = (b, u, q) => b + ':' + u + ':' + (q || 0);
+App.parseKey = k => { const a = k.split(':'); return { b: a[0], u: +a[1], q: +a[2] }; };
+App.seen = (part, b, u) => Object.prototype.hasOwnProperty.call(S.progress[part], App.keyOf(b, u, 0));
+App.unseen = (part, exclude) => {
+  const out = [], ex = exclude || new Set();
+  const list = [...BATCHES.values()].filter(b => b.part === part)
+    .concat([...S.pools.values()].filter(b => b.part === part).sort((a, b) => (a.createdAt > b.createdAt ? 1 : -1)));
+  list.forEach(b => b.units.forEach((u, ui) => { const k = App.keyOf(b.id, ui, 0); if (!App.seen(part, b.id, ui) && !ex.has(k)) out.push({ b: b.id, u: ui }); }));
+  return out;
+};
+App.stock = part => App.unseen(part).length;
+
+/* ---------- learning model ---------- */
+const INTERVALS = [1, 3, 7, 14, 30];
+App.dueToday = () => { const t = today(); return S.reviews.filter(r => !r.done && r.due <= t).sort((a, b) => (a.due > b.due ? 1 : a.due < b.due ? -1 : 0)); };
+App.record = function (r) {
+  // r: {part, key, tag, ok, guess, sec, mode}
+  rollDay();
+  const credit = r.ok ? (r.guess ? 0.5 : 1) : 0;
+  const bump = (o, k) => {
+    const v = o[k] || (o[k] = { n: 0, c: 0, s: 0, ema: null });
+    v.n++; v.c += r.ok ? 1 : 0; v.s = Math.round((v.s + r.sec) * 10) / 10;
+    v.ema = Math.round(((v.ema == null ? 0.6 : v.ema) * 0.8 + credit * 0.2) * 1000) / 1000;
+  };
+  bump(S.stats.tags, r.tag); bump(S.stats.parts, String(r.part));
+  S.stats.updated = new Date().toISOString();
+  S.day.n++; S.day.c += r.ok ? 1 : 0; S.day.sec = Math.round(S.day.sec + r.sec);
+  const dp = S.day.parts[r.part] || (S.day.parts[r.part] = { n: 0, c: 0 }); dp.n++; dp.c += r.ok ? 1 : 0;
+  Store.save('meta/stats', S.stats);
+  App.saveDay();
+  if (r.mode === 'review') { reviewResult(r.key, r.ok, r.guess); return; }
+  S.progress[r.part][r.key] = r.ok ? (r.guess ? 2 : 1) : 0;
+  Store.save('progress/p' + r.part, { k: S.progress[r.part] });
+  if (!r.ok || r.guess) addReview(r);
+  const k = App.parseKey(r.key), b = S.pools.get(k.b);
+  if (b && b.open && b.units.every((u, ui) => App.seen(r.part, b.id, ui))) { b.open = false; Store.save('pool/' + b.id, b); }
+};
+function addReview(r) {
+  const t = today();
+  let c = S.reviews.find(x => x.key === r.key);
+  if (c) { c.box = 0; c.lapses = (c.lapses || 0) + 1; }
+  else { c = { key: r.key, part: r.part, tag: r.tag, box: 0, lapses: 0, added: t }; S.reviews.push(c); }
+  c.due = addDays(t, 1); c.last = t; c.guess = !!(r.ok && r.guess);
+  Store.save('review/' + r.key, c);
+}
+function reviewResult(key, ok, guess) {
+  const t = today(), c = S.reviews.find(x => x.key === key);
+  if (!c) return;
+  if (ok && !guess) {
+    c.box = (c.box || 0) + 1;
+    if (c.box >= INTERVALS.length) { c.done = true; c.due = '9999-12-31'; }
+    else c.due = addDays(t, INTERVALS[c.box]);
+  } else if (ok) { c.due = addDays(t, 1); }
+  else { c.box = 0; c.lapses = (c.lapses || 0) + 1; c.due = addDays(t, 1); }
+  c.last = t;
+  Store.save('review/' + key, c);
+  if (c.done) S.reviews = S.reviews.filter(x => x !== c);
+}
+App.addStudy = sec => { rollDay(); S.day.study = Math.round((S.day.study || 0) + Math.min(sec, 600)); App.saveDay(); };
+App.minutesToday = () => Math.round((S.day.study || 0) / 60) + (S.day.vocab ? S.profile.vocabMin : 0);
+App.isWeekend = () => { const d = new Date().getDay(); return d === 0 || d === 6; };
+App.targetToday = () => App.isWeekend() ? S.profile.weekendApp : S.profile.weekdayApp + S.profile.vocabMin;
+App.streak = () => {
+  const active = new Set(S.days.filter(d => d.n > 0 || d.vocab).map(d => d.date));
+  let t = today(), n = 0;
+  if (!active.has(t)) t = addDays(t, -1);
+  while (active.has(t)) { n++; t = addDays(t, -1); }
+  return n;
+};
+App.weakTags = (part, n) => {
+  const rows = Object.entries(S.stats.tags).filter(([t, v]) => App.TAGS[t] && (!part || App.TAGS[t].p === part) && v.n >= 3);
+  rows.sort((a, b) => a[1].ema - b[1].ema);
+  return rows.slice(0, n || 3).map(r => r[0]);
+};
+App.focusTags = part => {
+  const coach = (S.coach && Array.isArray(S.coach.focus) ? S.coach.focus : []).filter(t => App.TAGS[t] && App.TAGS[t].p === part);
+  return [...new Set(coach.concat(App.weakTags(part, 3)))].slice(0, 4);
+};
+
+/* ---------- pools (AI-generated batches) ---------- */
+App.addPool = (part, units, focus) => {
+  const id = 'g' + uid();
+  units.forEach((u, ui) => {
+    if (App.PART[part].set) u.qs.forEach((q, qi) => shuffleQ(q, hash(id + ':' + ui + ':' + qi)));
+    else shuffleQ(u, hash(id + ':' + ui + ':0'));
+  });
+  const b = { id, part, units, createdAt: new Date().toISOString(), open: true, src: 'ai', focus: focus || [] };
+  S.pools.set(id, b);
+  Store.save('pool/' + id, b);
+  return b;
+};
+
+/* ---------- speech (browser voices) ---------- */
+const FEMALE = /(female|woman|zira|aria|jenny|michelle|hazel|susan|libby|sonia|maisie|natasha|clara|emma|ava\b|samantha|karen|moira|tessa|fiona|victoria|serena|allison|joanna|salli|kimberly|ivy|kendra|nicole|olivia|amber|ashley|cora|elizabeth|jane|nancy|sara|linda|catherine|heather|annette|freya|elsie|abbi|bella|hollie|mia\b|leah|molly|google us english|google uk english female)/i;
+const MALE = /(\bmale|\bman\b|david|mark|guy|ryan|george|william|christopher|eric|roger|steffan|thomas|daniel|alex\b|fred|oliver|arthur|brandon|davis|jacob|jason|tony|andrew|brian|liam|james|richard|sean|connor|duncan|elliot|ethan|harry|lewis|matthew|google uk english male)/i;
+const quality = v => (/natural|neural|online/i.test(v.name) ? 3 : /google/i.test(v.name) ? 2 : 1);
+const TTS = App.TTS = {
+  ok: typeof window.speechSynthesis !== 'undefined' && typeof window.SpeechSynthesisUtterance !== 'undefined',
+  voices: [], female: [], male: [], token: 0, _u: null,
+  init() {
+    if (!this.ok) return;
+    const load = () => {
+      let all = [];
+      try { all = speechSynthesis.getVoices() || []; } catch (e) { all = []; }
+      this.voices = all.filter(v => /^en([-_]|$)/i.test(v.lang));
+      this.female = this.voices.filter(v => FEMALE.test(v.name)).sort((a, b) => quality(b) - quality(a));
+      this.male = this.voices.filter(v => !FEMALE.test(v.name) && MALE.test(v.name)).sort((a, b) => quality(b) - quality(a));
+      App.emit('voices');
+    };
+    load();
+    try { speechSynthesis.addEventListener('voiceschanged', load); } catch (e) { speechSynthesis.onvoiceschanged = load; }
+  },
+  byName(n) { return this.voices.find(v => v.name === n) || null; },
+  pick(gender, seed) {
+    const list = gender === 'M' ? this.male : this.female;
+    if (S.profile.voiceMode === 'fixed') { const v = this.byName(gender === 'M' ? S.profile.voiceM : S.profile.voiceW); if (v) return { voice: v, pitch: 1 }; }
+    if (list.length) {
+      const top = list.filter(v => quality(v) === quality(list[0]));
+      return { voice: top[seed % top.length], pitch: 1 };
+    }
+    const any = this.voices[0] || null;
+    return { voice: any, pitch: gender === 'M' ? 0.8 : 1.2 };
+  },
+  cast(seedStr) {
+    const s = hash(seedStr || 'x');
+    const m = this.pick('M', s), w = this.pick('W', s >>> 3);
+    const m2 = this.pick('M', (s >>> 5) + 1), w2 = this.pick('W', (s >>> 7) + 1);
+    if (m2.voice === m.voice) m2.pitch = 0.9;
+    if (w2.voice === w.voice) w2.pitch = 1.12;
+    return { M: m, W: w, M2: m2, W2: w2 };
+  },
+  stop() { this.token++; try { if (this.ok) speechSynthesis.cancel(); } catch (e) { /* ignore */ } },
+  say(text, v, rate, token) {
+    return new Promise(res => {
+      if (!this.ok || token !== this.token) return res(false);
+      const u = new SpeechSynthesisUtterance(text);
+      u.lang = v && v.voice ? v.voice.lang : 'en-US';
+      if (v && v.voice) u.voice = v.voice;
+      u.pitch = (v && v.pitch) || 1; u.rate = rate || 1;
+      let fin = false, guard = null;
+      const done = ok => { if (!fin) { fin = true; clearTimeout(guard); res(ok); } };
+      u.onend = () => done(true); u.onerror = () => done(false);
+      guard = setTimeout(() => done(true), 5000 + text.length * 140 / (rate || 1));
+      this._u = u;
+      try { speechSynthesis.speak(u); } catch (e) { done(false); }
+    });
+  },
+  /* items: [{text, v, gap}] ; resolves true when finished, false when stopped */
+  async play(items, opt) {
+    opt = opt || {};
+    this.stop(); const token = ++this.token;
+    await sleep(80);
+    for (let i = 0; i < items.length; i++) {
+      if (token !== this.token) return false;
+      if (opt.onLine) opt.onLine(i);
+      await this.say(items[i].text, items[i].v, opt.rate || S.profile.rate || 1, token);
+      if (token !== this.token) return false;
+      await sleep(items[i].gap != null ? items[i].gap : 450);
+    }
+    if (opt.onLine) opt.onLine(-1);
+    return true;
+  }
+};
+
+/* ---------- AI (Claude via the page's sample capability) ---------- */
+const COMMON = [
+  'You write ORIGINAL practice material for the TOEIC Listening & Reading test.',
+  'Learner: Japanese adult. Last score 645 (Listening 350, Reading 295). Goal: 800 on the December test.',
+  'Difficulty mix: about 30% standard (600-700 level), 50% moderately hard (730-800 level), 20% hard (850+ level).',
+  'Contexts: realistic workplace and daily-life situations (offices, hiring, retail, travel, restaurants, manufacturing, finance, real estate, events, customer service). Invent every company, product and person name; never use real companies or famous people.',
+  'Quality rules:',
+  '- Every question has exactly ONE correct answer; every wrong choice is wrong for a reason a teacher can state clearly.',
+  '- Natural, correct English in the style of the official test.',
+  '- Explanations are in Japanese (です・ます調), concise, and refer to choices by quoting their English words, NEVER by letter (A/B/C/D), because the choices will be shuffled.',
+  'Before answering, silently check every item. Reply with only the JSON described below.'
+].join('\n');
+const tagList = part => Object.keys(App.TAGS).filter(t => App.TAGS[t].p === part).map(t => t + '=' + App.TAGS[t].ja).join(', ');
+function focusLine(part, focus) {
+  if (!focus || !focus.length) return 'Spread the items across the tag types.';
+  return 'The learner is weak at: ' + focus.map(t => t + ' (' + App.TAGS[t].ja + ')').join(', ') + '. Put about 60% of the items into these tags and spread the rest.';
+}
+function avoidList(part) {
+  const qs = [];
+  [...BATCHES.values(), ...S.pools.values()].filter(b => b.part === part).forEach(b => b.units.forEach(u => {
+    if (part === 5) qs.push(u.q); else if (part === 2) qs.push(u.text);
+    else if (part === 7 && u.docs) qs.push(u.docs[0].text.slice(0, 70)); else if (u.title || u.text) qs.push(String(u.text || '').slice(0, 70)); else if (u.lines) qs.push(String(u.lines[0][1]).slice(0, 70));
+  }));
+  return qs.slice(-30).map(s => '- ' + String(s).slice(0, 90)).join('\n');
+}
+function buildPrompt(part, n, focus, like) {
+  const L = [COMMON, ''];
+  const likeLine = like ? 'Make the new material test the SAME point as this item the learner missed (different sentence/situation, same grammar or skill):\n' + JSON.stringify(like).slice(0, 2500) : '';
+  if (part === 5) {
+    L.push('TASK: Part 5 (Incomplete Sentences). Write ' + n + ' items. Each item is one sentence of 12-28 words with exactly one blank written as "-------" (7 hyphens) and 4 choices.');
+    L.push('Tags (exactly one per item): ' + tagList(5) + '. For pos items use four forms of one word family.');
+    L.push(focusLine(5, focus)); if (likeLine) L.push(likeLine);
+    L.push('Do not reuse these sentences:\n' + avoidList(5));
+    L.push('JSON: {"items":[{"q":"sentence with -------","choices":["","","",""],"answer":0,"tag":"pos","ex":"日本語の解説（2〜3文：正解の手がかり、紛らわしい誤答が誤りである理由）","ja":"完成文の自然な和訳","vocab":[["word or phrase","日本語の意味"]]}]}');
+  } else if (part === 6) {
+    L.push('TASK: Part 6 (Text Completion). Write ONE text (e-mail, letter, notice, memo, article or advertisement) of 110-170 words with exactly 4 blanks written [[1]] [[2]] [[3]] [[4]] in order.');
+    L.push('Exactly one blank is a sentence-insertion blank (its 4 choices are full sentences; only one fits the context). The other three test grammar, vocabulary or connecting words and must need the surrounding context to answer.');
+    L.push('Tags: ' + tagList(6) + '. ' + focusLine(6, focus)); if (likeLine) L.push(likeLine);
+    L.push('E-mails and memos start with header lines (To:/From:/Subject:). Use \\n between lines and \\n\\n between paragraphs.');
+    L.push('Avoid these openings:\n' + avoidList(6));
+    L.push('JSON: {"title":"E-mail","text":"...","ja":"空所を正解で埋めた本文全体の自然な和訳","questions":[{"choices":["","","",""],"answer":0,"tag":"p6-grammar","ex":"日本語の解説"}]}');
+  } else if (part === 7) {
+    const dbl = Math.random() < 0.35 && !like;
+    L.push('TASK: Part 7 (Reading Comprehension). Write ONE set: ' + (dbl
+      ? 'a DOUBLE passage — two related documents (e.g., advertisement + e-mail, schedule + e-mail, article + letter), 300-400 words in total, with 5 questions; at least two questions must need information from BOTH documents (tag p7-multi).'
+      : 'a SINGLE passage — one of: e-mail, notice, article, advertisement, memo, web page, form, or text-message chain — 150-260 words, with 3-4 questions.'));
+    L.push('Question tags: ' + tagList(7) + '. Use p7-intent only for text-message chains (quote a message exactly: \'At 10:05 A.M., what does X most likely mean when she writes, "..."?\'). For p7-insert, mark positions [1] [2] [3] [4] in the text and ask: \'In which of the positions marked [1], [2], [3], and [4] does the following sentence best belong? "..."\' with choices "[1]","[2]","[3]","[4]".');
+    L.push(focusLine(7, focus)); if (likeLine) L.push(likeLine);
+    L.push('Wrong choices should be tempting: reuse words from the text in a wrong way, or state things the text does not say. Correct choices should paraphrase the text.');
+    L.push('"evidence": an EXACT substring (5-20 words) copied from the documents that proves the answer.');
+    L.push('Text-message chains: each message as "Name [time]\\nmessage", messages separated by \\n\\n. Use \\n\\n between paragraphs in other documents.');
+    L.push('Avoid these topics:\n' + avoidList(7));
+    L.push('JSON: {"docs":[{"label":"E-mail","text":"..."}],"questions":[{"q":"question","choices":["","","",""],"answer":0,"tag":"p7-detail","evidence":"exact quote","ex":"日本語の解説"}]}');
+  } else if (part === 2) {
+    L.push('TASK: Part 2 (Question-Response). Write ' + n + ' items. Each: a spoken question or statement (5-14 words) and 3 spoken responses; exactly one is the most natural reply.');
+    L.push('Tags: ' + tagList(2) + '. ' + focusLine(2, focus) + ' At least 30% of correct replies should be indirect (e.g., "I\'ll have to check.", "Didn\'t you get the e-mail?").'); if (likeLine) L.push(likeLine);
+    L.push('Wrong replies use typical traps: repeated or similar-sounding words, Yes/No to a WH question, answering a different question word.');
+    L.push('Avoid these:\n' + avoidList(2));
+    L.push('JSON: {"items":[{"speaker":"W","text":"question or statement","choices":["","",""],"answer":0,"tag":"p2-wh","ex":"日本語の解説","ja":"問いかけと正解応答の和訳（例：〜ですか。— 〜です。）"}]}');
+  } else if (part === 3) {
+    L.push('TASK: Part 3 (Conversations). Write ' + n + ' conversation(s). Each has 4-8 turns (90-150 words) between a man "M" and a woman "W" (occasionally a third speaker "M2" or "W2"), followed by 3 questions with 4 choices each, in the order the information is heard.');
+    L.push('Usual pattern: one gist question, one detail question, one about a next action or request. Sometimes use an intent question quoting a line exactly: \'Why does the man say, "..."?\'. Tags: ' + tagList(3) + '. ' + focusLine(3, focus)); if (likeLine) L.push(likeLine);
+    L.push('Correct choices PARAPHRASE the conversation instead of repeating its words.');
+    L.push('JSON: {"sets":[{"lines":[{"speaker":"W","text":"..."}],"ja":"会話全体の和訳（男性：／女性：で話者を示す）","questions":[{"q":"...","choices":["","","",""],"answer":0,"tag":"p3-gist","ex":"日本語の解説"}]}]}');
+  } else if (part === 4) {
+    L.push('TASK: Part 4 (Talks). Write ' + n + ' talk(s) by ONE speaker (announcement, telephone message, broadcast, tour, meeting excerpt, advertisement, speech), 100-150 words split into 3-6 lines, each followed by 3 questions with 4 choices.');
+    L.push('Tags: ' + tagList(4) + '. ' + focusLine(4, focus) + ' Correct choices PARAPHRASE the talk.'); if (likeLine) L.push(likeLine);
+    L.push('JSON: {"sets":[{"kind":"Telephone message","speaker":"W","lines":["...","..."],"ja":"和訳","questions":[{"q":"...","choices":["","","",""],"answer":0,"tag":"p4-gist","ex":"日本語の解説"}]}]}');
+  }
+  return L.join('\n');
+}
+const tagFor = (part, t, fallback) => (App.TAGS[t] && App.TAGS[t].p === part ? t : fallback);
+const normVocab = v => (Array.isArray(v) ? v.map(x => (Array.isArray(x) ? [str(x[0]), str(x[1])] : x && typeof x === 'object' ? [str(x.w || x.word), str(x.m || x.meaning)] : null)).filter(x => x && x[0]).slice(0, 4) : []);
+function normQ(q, part, nc, fallbackTag) {
+  if (!q || !Array.isArray(q.choices) || q.choices.length !== nc) return null;
+  const a = Number(q.answer); if (!(a >= 0 && a < nc) || Math.floor(a) !== a) return null;
+  return { q: str(q.q || q.question), choices: q.choices.map(str), answer: a, tag: tagFor(part, q.tag, fallbackTag), ex: str(q.ex || q.explanation), ev: str(q.evidence || q.ev) };
+}
+function normalize(part, data) {
+  const out = [];
+  if (!data || typeof data !== 'object') return out;
+  if (part === 5) {
+    (data.items || []).forEach(it => {
+      const q = normQ(it, 5, 4, 'vocab'); if (!q) return;
+      q.q = q.q.replace(/_{3,}|-{3,}/g, '-------'); if (q.q.indexOf('-------') < 0) return;
+      delete q.ev; q.ja = str(it.ja || it.translation); q.vocab = normVocab(it.vocab); out.push(q);
+    });
+  } else if (part === 2) {
+    (data.items || []).forEach(it => {
+      const q = normQ(it, 2, 3, 'p2-wh'); if (!q || !str(it.text)) return;
+      out.push({ spk: it.speaker === 'M' ? 'M' : 'W', text: str(it.text), choices: q.choices, answer: q.answer, tag: q.tag, ex: q.ex, ja: str(it.ja) });
+    });
+  } else if (part === 6) {
+    const text = str(data.text), qs = (data.questions || []).map(q => normQ(q, 6, 4, 'p6-grammar'));
+    if ([1, 2, 3, 4].every(i => text.indexOf('[[' + i + ']]') >= 0) && qs.length === 4 && qs.every(Boolean)) {
+      qs.forEach(q => { delete q.q; delete q.ev; });
+      out.push({ title: str(data.title) || 'Text', text, ja: str(data.ja), qs });
+    }
+  } else if (part === 7) {
+    const docs = (data.docs || []).map(d => ({ label: str(d && d.label) || 'Document', text: str(d && d.text) })).filter(d => d.text);
+    const qs = (data.questions || []).map(q => normQ(q, 7, 4, 'p7-detail')).filter(q => q && q.q);
+    if (docs.length && qs.length >= 2) out.push({ docs, qs: qs.slice(0, 5) });
+  } else if (part === 3 || part === 4) {
+    (data.sets || []).forEach(s => {
+      let lines = [];
+      if (part === 3) lines = (s.lines || []).map((l, i) => [['M', 'W', 'M2', 'W2'].indexOf(l && l.speaker) >= 0 ? l.speaker : (i % 2 ? 'M' : 'W'), str(l && l.text)]);
+      else { const sp = s.speaker === 'M' ? 'M' : 'W'; lines = (s.lines || []).map(l => [sp, str(typeof l === 'string' ? l : l && l.text)]); }
+      lines = lines.filter(l => l[1]);
+      const qs = (s.questions || []).map(q => normQ(q, part, 4, 'p' + part + '-detail')).filter(q => q && q.q);
+      if (lines.length >= 2 && qs.length >= 2) { qs.forEach(q => delete q.ev); const u = { lines, ja: str(s.ja), qs: qs.slice(0, 3) }; if (part === 4) u.kind = str(s.kind) || 'Talk'; out.push(u); }
+    });
+  }
+  return out;
+}
+const AI = App.AI = {
+  sample: null, ready: false, off: false,
+  async init() {
+    try { this.sample = window.claude && typeof window.claude.use === 'function' ? await window.claude.use('sample') : null; } catch (e) { this.sample = null; }
+    this.ready = true; App.emit('ai');
+  },
+  get on() { return !!this.sample && !this.off; },
+  message(e) {
+    const c = e && e.code;
+    if (c === 'cancelled') return '';
+    if (['not_granted', 'sampling_disabled', 'not_declared', 'capability_disabled', 'capability_removed'].indexOf(c) >= 0) {
+      this.off = true; App.emit('ai');
+      return 'この表示では AI 機能を使えません（許可されていないか、利用できない環境です）。';
+    }
+    if (c === 'rate_limited') return 'AI の利用が混み合っているか、利用上限に達しました。少し時間をおいて試してください。';
+    if (c === 'session_expired') return 'claude.ai に再ログインしてから試してください。';
+    if (c === 'invalid_json' || c === 'empty_completion') return 'AI の出力をうまく読み取れませんでした。もう一度試してください。';
+    if (c === 'refused') return 'AI がこの依頼に応答しませんでした。条件を変えて試してください。';
+    if (c === 'prompt_too_large') return '送る内容が長すぎました。';
+    return '通信が途切れて AI の応答を受け取れませんでした。もう一度試してください。';
+  },
+  /* generate units for a part; returns normalized units */
+  async gen(part, opt) {
+    opt = opt || {};
+    if (!this.on) throw { code: 'not_granted' };
+    const n = opt.count || (part === 5 ? 10 : part === 2 ? 8 : 1);
+    const focus = opt.focus || App.focusTags(part);
+    const prompt = buildPrompt(part, n, focus, opt.like || null);
+    const data = await this.sample.json(prompt, {
+      modelTier: S.profile.genTier === 'complex' ? 'complex' : 'default',
+      cache: false, signal: opt.signal,
+      onText: opt.onProgress ? ({ text }) => opt.onProgress(text) : undefined
+    });
+    const units = normalize(part, data);
+    if (!units.length) throw { code: 'invalid_json' };
+    return App.addPool(part, units, focus);
+  },
+  async ask(input, opt) {
+    opt = opt || {};
+    if (!this.on) throw { code: 'not_granted' };
+    const r = await this.sample(input, { cache: opt.cache === undefined ? false : opt.cache, signal: opt.signal, onText: opt.onText, modelTier: opt.tier || 'default' });
+    return r.text;
+  }
+};
+
+/* pending generation jobs so a session can wait on them */
+const jobs = new Map();
+App.ensure = (part, need) => {
+  if (App.stock(part) >= need || !AI.on) return jobs.get(part) || null;
+  if (jobs.has(part)) return jobs.get(part);
+  const job = { part, progress: '', done: false, error: null, listeners: new Set() };
+  job.promise = AI.gen(part, { onProgress: text => { job.progress = text; job.listeners.forEach(fn => fn(job)); } })
+    .then(b => { job.done = true; return b; })
+    .catch(e => { job.done = true; job.error = e; return null; })
+    .finally(() => { jobs.delete(part); job.listeners.forEach(fn => fn(job)); App.emit('stock', part); });
+  jobs.set(part, job);
+  return job;
+};
+App.job = part => jobs.get(part) || null;
+App.progressCount = text => (String(text || '').match(/"answer"\s*:/g) || []).length;
+})();
+
+</script>
+<script>
+/* ui.js — shell, home, practice menu, review, stats, settings */
+(function () {
+'use strict';
+const App = window.App, S = App.S, esc = App.esc;
+const $ = (s, r) => (r || document).querySelector(s);
+const view = () => $('#view');
+const pct = x => Math.round(x * 100) + '%';
+
+/* ---------- shell ---------- */
+let toastTimer = null;
+App.toast = msg => { const t = $('#toast'); t.textContent = msg; t.hidden = false; clearTimeout(toastTimer); toastTimer = setTimeout(() => { t.hidden = true; }, 2600); };
+App.on('banner', msg => { $('#bannerText').textContent = msg; $('#banner').hidden = false; });
+App.current = 'home';
+App.go = name => {
+  if (App.leavePlayer) App.leavePlayer();
+  App.TTS.stop();
+  App.current = name;
+  document.querySelectorAll('#tabs button').forEach(b => { if (b.dataset.view === name) b.setAttribute('aria-current', 'page'); else b.removeAttribute('aria-current'); });
+  const fn = VIEWS[name] || VIEWS.home;
+  fn();
+  window.scrollTo(0, 0);
+};
+const refresh = () => { if (App.loaded && VIEWS[App.current] && App.current !== 'player') VIEWS[App.current](); };
+App.on('ai', refresh); App.on('stock', refresh);
+function setDday() {
+  const n = App.diffDays(App.today(), App.EXAM);
+  $('#dday').textContent = n > 0 ? 'D-' + n : n === 0 ? '本番当日' : '試験終了';
+}
+
+/* ---------- score ruler (10–990) ---------- */
+function ruler() {
+  const W = 420, AX = 38, x = s => 10 + (s - 10) / 980 * (W - 20);
+  const minor = []; for (let s = 100; s < 990; s += 100) minor.push(`<line x1="${x(s)}" x2="${x(s)}" y1="${AX - (s % 500 ? 4 : 7)}" y2="${AX}" stroke="var(--rule)" stroke-width="1.25"/>`);
+  const dot = (s, col) => `<line x1="${x(s)}" x2="${x(s)}" y1="${AX - 12}" y2="${AX + 12}" stroke="${col}" stroke-width="2"/><circle cx="${x(s)}" cy="${AX}" r="4.5" fill="${col}"/>`;
+  return `<svg class="ruler" viewBox="0 0 ${W} 66" role="img" aria-label="990点満点の目盛り：前回645、最低ライン700、目標800">
+    <line x1="10" x2="${W - 10}" y1="${AX}" y2="${AX}" stroke="var(--rule)" stroke-width="1.5"/>
+    <rect x="${x(645)}" y="${AX - 3}" width="${x(800) - x(645)}" height="6" rx="3" fill="var(--drop-soft)"/>
+    ${minor.join('')}
+    ${dot(645, 'var(--ink-3)')}${dot(700, 'var(--ink)')}${dot(800, 'var(--drop)')}
+    <text class="t-mark" x="${x(700) - 6}" y="${AX - 16}" text-anchor="end">最低 700</text>
+    <text class="t-mark" x="${x(800) + 6}" y="${AX - 16}" text-anchor="start" style="fill:var(--drop)">目標 800</text>
+    <text class="t-mark" x="${x(645) - 6}" y="${AX + 24}" text-anchor="end" style="fill:var(--ink-2)">前回 645</text>
+    <text x="10" y="${AX + 24}">10</text><text x="${W - 10}" y="${AX + 24}" text-anchor="end">990</text>
+  </svg>`;
+}
+
+/* ---------- plan ---------- */
+App.plan = () => {
+  const t = App.today(), weekend = App.isWeekend(), dueN = App.dueToday().length, d = App.diffDays('2026-01-01', t);
+  const B = [];
+  B.push({ id: 'review', kind: 'review', n: Math.min(dueN, weekend ? 30 : 15), title: '復習', detail: dueN ? `期限が来た ${dueN} 問（間違えた・迷った問題）` : '今日の復習はありません', min: Math.max(1, Math.ceil(Math.min(dueN, weekend ? 30 : 15) * 0.6)) });
+  if (weekend) {
+    B.push({ id: 'p5', part: 5, n: 20, title: 'Part 5　短文穴埋め', detail: '20問・1問20秒以内が目標', min: 12 });
+    B.push({ id: 'p6', part: 6, n: 1, title: 'Part 6　長文穴埋め', detail: '1セット（4問）', min: 4 });
+    B.push({ id: 'p7', part: 7, n: 2, title: 'Part 7　読解', detail: '2セット', min: 14 });
+    B.push({ id: 'p2', part: 2, n: 8, title: 'Part 2　応答問題', detail: '8問', min: 5 });
+    B.push({ id: 'p3', part: 3, n: 2, title: 'Part 3　会話問題', detail: '2会話（6問）', min: 7 });
+    B.push({ id: 'p4', part: 4, n: 1, title: 'Part 4　説明文問題', detail: '1トーク（3問）', min: 4 });
+  } else {
+    B.push({ id: 'p5', part: 5, n: 10, title: 'Part 5　短文穴埋め', detail: '10問・1問20秒以内が目標', min: 7 });
+    B.push({ id: 'p7', part: 7, n: 1, title: 'Part 7　読解', detail: '1セット', min: 8 });
+    if (d % 2 === 0) {
+      B.push({ id: 'p6', part: 6, n: 1, title: 'Part 6　長文穴埋め', detail: '1セット（4問）', min: 4 });
+      B.push({ id: 'p2', part: 2, n: 5, title: 'Part 2　応答問題', detail: '5問', min: 4 });
+    } else if (d % 4 === 1) {
+      B.push({ id: 'p3', part: 3, n: 2, title: 'Part 3　会話問題', detail: '2会話（6問）', min: 8 });
+    } else {
+      B.push({ id: 'p4', part: 4, n: 2, title: 'Part 4　説明文問題', detail: '2トーク（6問）', min: 8 });
+    }
+  }
+  if (!weekend || S.profile.vocabMin) B.push({ id: 'vocab', kind: 'vocab', title: '単語（金のフレーズ）', detail: `本で ${S.profile.vocabMin} 分`, min: S.profile.vocabMin });
+  return B;
+};
+const blockDone = b => (b.kind === 'vocab' ? !!S.day.vocab : b.kind === 'review' ? (App.dueToday().length === 0 && !!S.day.done.review) || !!S.day.done.review : !!S.day.done[b.id]);
+App.startPlan = only => {
+  const blocks = App.plan().filter(b => b.kind !== 'vocab' && (!only || b.id === only) && !(b.kind === 'review' && !b.n));
+  if (!blocks.length) { App.toast('今日のメニューは完了しています'); return; }
+  App.startSession({ title: only ? blocks[0].title : '今日のセット', blocks });
+};
+
+/* ---------- views ---------- */
+const VIEWS = App.VIEWS = {};
+VIEWS.home = () => {
+  setDday();
+  const days = App.diffDays(App.today(), App.EXAM), plan = App.plan();
+  const mins = App.minutesToday(), target = App.targetToday();
+  const acc = S.day.n ? S.day.c / S.day.n : null;
+  const coach = S.coach && S.coach.text ? S.coach : null;
+  const weak = App.weakTags(null, 3);
+  const aiNote = !App.AI.ready ? '' : App.AI.on ? '' : '<p class="note">※ オフライン版では AI 問題生成が使えないため、収録済みの問題で練習します（新しい問題の作成はオンライン版で）。</p>';
+  view().innerHTML = `
+  <div class="stack">
+    <section class="hero" aria-label="本番までのカウントダウン">
+      <div>
+        <div class="label">本番 12月19日（土）まで</div>
+        <div class="count">${Math.max(0, days)}<small>日</small></div>
+      </div>
+      <div class="split"><span>Listening <b>${App.BASE.L}</b> → <b>${App.GOAL.target.L}</b></span><span>Reading <b>${App.BASE.R}</b> → <b>${App.GOAL.target.R}</b></span><span class="faint">800点を取るための配分の目安</span></div>
+      <div class="rl">${ruler()}</div>
+    </section>
+
+    <section class="card" aria-labelledby="h-today">
+      <div class="sec-h"><h2 id="h-today">今日のメニュー</h2><span class="mono muted">${App.isWeekend() ? '休日' : '平日'}・約 ${plan.reduce((a, b) => a + (b.kind === 'review' && !b.n ? 0 : b.min), 0)} 分</span></div>
+      <div class="plan">
+        ${plan.map(b => {
+          const done = blockDone(b), empty = b.kind === 'review' && !b.n;
+          const btn = b.kind === 'vocab'
+            ? `<button class="btn sm" data-vocab aria-pressed="${!!S.day.vocab}">${S.day.vocab ? '取り消す' : 'やった'}</button>`
+            : empty ? '' : `<button class="btn sm ${done ? 'ghost' : ''}" data-block="${b.id}">${done ? 'もう一度' : '始める'}</button>`;
+          return `<div class="prow"><span class="bub sm ${done || empty ? 'on' : ''}" aria-hidden="true"></span>
+            <div><div class="t">${esc(b.title)}</div><div class="d">${esc(b.detail)}${empty ? '' : `・約${b.min}分`}</div></div>${btn}</div>`;
+        }).join('')}
+      </div>
+      <div class="actions"><button class="btn primary" id="startAll">今日のセットを始める</button><span class="note">復習 → Part 5 → 長文 → リスニングの順に進みます</span></div>
+      ${aiNote}
+    </section>
+
+    <div class="grid2">
+      <section class="card" aria-labelledby="h-prog">
+        <div class="sec-h"><h2 id="h-prog">今日の学習</h2><span class="chip">${App.streak()}日連続</span></div>
+        <div class="row" style="justify-content:space-between"><span class="mono" style="font-size:22px">${mins}<small class="muted" style="font-size:13px"> / ${target} 分</small></span><span class="muted" style="font-size:13px">${S.day.n} 問解答${acc == null ? '' : '・正答率 ' + pct(acc)}</span></div>
+        <div class="meter" style="margin-top:8px"><i style="width:${Math.min(100, Math.round(mins / Math.max(1, target) * 100))}%"></i></div>
+        <p class="note" style="margin-top:8px">アプリ内の学習時間と、単語の「やった」を合計しています。</p>
+      </section>
+      <section class="card" aria-labelledby="h-weak">
+        <div class="sec-h"><h2 id="h-weak">いまの弱点</h2><button class="btn sm ghost" data-go="stats">分析へ</button></div>
+        ${weak.length ? `<div class="row">${weak.map(t => `<span class="chip ng">${esc(App.tagName(t))} ${pct(S.stats.tags[t].ema)}</span>`).join('')}</div>
+          <p class="note" style="margin-top:8px">AI が作る問題は、ここに出ている分野を多めに出題します。</p>`
+          : '<p class="note">各分野を3問以上解くと、正答率の低い分野がここに出ます。AI はその分野を重点的に出題します。</p>'}
+      </section>
+    </div>
+
+    ${coach ? `<section class="card" aria-labelledby="h-coach"><div class="sec-h"><h2 id="h-coach">コーチからのメモ</h2><span class="mono faint">${esc(String(coach.updated || '').slice(0, 10))}</span></div><div class="coach">${esc(coach.text)}</div></section>` : ''}
+  </div>`;
+  $('#startAll').onclick = () => App.startPlan();
+  view().querySelectorAll('[data-block]').forEach(b => { b.onclick = () => App.startPlan(b.dataset.block); });
+  const v = view().querySelector('[data-vocab]');
+  if (v) v.onclick = () => { S.day.vocab = !S.day.vocab; App.saveDay(); VIEWS.home(); App.toast(S.day.vocab ? '単語の学習を記録しました' : '記録を取り消しました'); };
+  view().querySelectorAll('[data-go]').forEach(b => { b.onclick = () => App.go(b.dataset.go); });
+};
+
+VIEWS.practice = () => {
+  setDday();
+  const card = p => {
+    const P = App.PART[p], st = S.stats.parts[p], stock = App.stock(p), job = App.job(p);
+    const sizes = p === 5 ? [10, 20] : p === 2 ? [5, 10] : [1, 2];
+    const unit = P.set ? 'セット' : '問';
+    return `<div class="card">
+      <div class="sec-h"><h2>Part ${p}　${P.name}</h2><span class="mono faint">${P.sec === 'L' ? 'Listening' : 'Reading'}</span></div>
+      <p class="note">未出題の在庫 <b class="mono">${stock}</b> ${unit}${st ? `・正答率 <b class="mono">${pct(st.c / st.n)}</b>（${st.n}問）` : ''}</p>
+      <div class="actions">${sizes.map(n => `<button class="btn sm" data-part="${p}" data-n="${n}">${n}${unit}</button>`).join('')}
+      ${App.AI.on ? (job ? '<span class="note"><span class="spin"></span> AI が作成中…</span>' : `<button class="btn sm ghost" data-gen="${p}">AI で追加作成</button>`) : ''}</div>
+    </div>`;
+  };
+  const weak = App.weakTags(null, 6);
+  view().innerHTML = `<div class="stack">
+    <div><h1 style="font-size:20px">パート別の練習</h1><p class="note">オフライン版は収録済みの問題で練習します。新しい問題の作成はオンライン版（claude.ai）で使えます。</p></div>
+    <div class="label">Reading</div><div class="grid3">${[5, 6, 7].map(card).join('')}</div>
+    <div class="label">Listening</div><div class="grid3">${[2, 3, 4].map(card).join('')}</div>
+    ${App.AI.on && weak.length ? `<section class="card"><div class="sec-h"><h2>弱点だけを特訓</h2></div><p class="note">選んだ分野だけで AI が新しい問題を作ります。</p>
+      <div class="actions">${weak.map(t => `<button class="btn sm" data-focus="${esc(t)}">${esc(App.tagName(t))}</button>`).join('')}</div></section>` : ''}
+    ${!App.TTS.ok ? '<p class="banner-inline note">このブラウザは音声の読み上げに対応していないため、リスニングは使えません。</p>' : ''}
+  </div>`;
+  view().querySelectorAll('[data-part]').forEach(b => { b.onclick = () => { const p = +b.dataset.part, n = +b.dataset.n; App.startSession({ title: 'Part ' + p + ' 練習', blocks: [{ id: 'p' + p, part: p, n, title: 'Part ' + p }] }); }; });
+  view().querySelectorAll('[data-gen]').forEach(b => { b.onclick = () => { const p = +b.dataset.gen; const j = App.ensure(p, Infinity); if (j) App.toast('Part ' + p + ' の問題を作成しています'); VIEWS.practice(); }; });
+  view().querySelectorAll('[data-focus]').forEach(b => { b.onclick = () => { const t = b.dataset.focus, p = App.TAGS[t].p; App.startSession({ title: App.tagName(t) + ' 特訓', blocks: [{ id: 'f-' + t, part: p, n: p === 5 ? 8 : p === 2 ? 6 : 1, focus: [t], fresh: true, title: App.tagName(t) }] }); }; });
+};
+
+VIEWS.review = () => {
+  setDday();
+  const due = App.dueToday(), t = App.today();
+  const next = []; for (let i = 1; i <= 7; i++) { const d = App.addDays(t, i); next.push({ d, n: S.reviews.filter(r => r.due === d).length }); }
+  const max = Math.max(1, ...next.map(x => x.n));
+  const byPart = {}; due.forEach(r => { byPart[r.part] = (byPart[r.part] || 0) + 1; });
+  view().innerHTML = `<div class="stack">
+    <section class="card">
+      <div class="sec-h"><h2>今日の復習</h2><span class="mono">${due.length} 問</span></div>
+      <p class="note">間違えた問題と「迷った」問題は、翌日 → 3日後 → 1週間後 → 2週間後 → 1か月後と間隔を空けて再出題されます。1か月後にも迷わず正解できたら卒業です。</p>
+      ${due.length ? `<div class="row" style="margin-top:10px">${Object.keys(byPart).map(p => `<span class="chip">Part ${p}：${byPart[p]}</span>`).join('')}</div>
+        <div class="actions"><button class="btn primary" id="revStart">復習を始める</button></div>` : '<div class="empty" style="margin-top:12px">今日の復習はありません。</div>'}
+    </section>
+    <section class="card">
+      <div class="sec-h"><h2>今後7日間の復習予定</h2></div>
+      <svg class="chart" viewBox="0 0 560 150" role="img" aria-label="今後7日間の復習予定の問題数">
+        ${next.map((x, i) => { const h = Math.round(x.n / max * 90), X = 20 + i * 76; return `<g><title>${x.d}：${x.n}問</title><rect x="${X}" y="${110 - h}" width="44" height="${Math.max(h, 0)}" rx="4" fill="var(--ink)"/><text x="${X + 22}" y="${104 - h}" text-anchor="middle" style="fill:var(--ink)">${x.n || ''}</text><text x="${X + 22}" y="130" text-anchor="middle">${x.d.slice(5).replace('-', '/')}</text></g>`; }).join('')}
+        <line x1="10" x2="550" y1="110.5" y2="110.5" stroke="var(--line)"/>
+      </svg>
+    </section>
+  </div>`;
+  const b = $('#revStart'); if (b) b.onclick = () => App.startSession({ title: '復習', blocks: [{ id: 'review', kind: 'review', n: due.length, title: '復習' }] });
+};
+
+VIEWS.stats = () => {
+  setDday();
+  const P = S.stats.parts, sec = s => [2, 3, 4, 5, 6, 7].filter(p => App.PART[p].sec === s).reduce((a, p) => { const v = P[p]; if (v) { a.n += v.n; a.c += v.c; } return a; }, { n: 0, c: 0 });
+  const L = sec('L'), R = sec('R'), all = { n: L.n + R.n, c: L.c + R.c };
+  const bar = (label, n, c, line) => {
+    const v = n ? c / n : 0;
+    return `<div class="bar-row"><span>${label}</span><div class="bar-track" title="${n ? pct(v) + '（' + c + '/' + n + '）' : 'まだ解答なし'}">
+      <span class="bar-fill" style="width:${n ? Math.max(2, v * 100) : 0}%"></span>
+      ${line ? `<span class="bar-tick t7" style="left:${line[700] * 100}%" title="700点の目安 ${pct(line[700])}"></span><span class="bar-tick" style="left:${line[800] * 100}%" title="800点の目安 ${pct(line[800])}"></span>` : ''}
+    </div><span class="bar-val">${n ? pct(v) : '—'}</span></div>`;
+  };
+  const tags = Object.entries(S.stats.tags).filter(([t]) => App.TAGS[t]).sort((a, b) => a[1].ema - b[1].ema);
+  // last 14 days minutes
+  const t = App.today(), days = []; for (let i = 13; i >= 0; i--) { const d = App.addDays(t, -i); const r = S.days.find(x => x.date === d); days.push({ d, m: r ? Math.round((r.study || 0) / 60) + (r.vocab ? S.profile.vocabMin : 0) : 0 }); }
+  const tgt = Math.max(S.profile.weekdayApp + S.profile.vocabMin, S.profile.weekendApp), maxM = Math.max(tgt, ...days.map(x => x.m)) * 1.1;
+  const cy = m => 120 - m / maxM * 100;
+  view().innerHTML = `<div class="stack">
+    <div class="kpis">
+      <div class="card kpi"><div class="k">累計解答数</div><div class="n">${all.n}<small>問</small></div></div>
+      <div class="card kpi"><div class="k">全体の正答率</div><div class="n">${all.n ? pct(all.c / all.n) : '—'}</div></div>
+      <div class="card kpi"><div class="k">連続学習</div><div class="n">${App.streak()}<small>日</small></div></div>
+      <div class="card kpi"><div class="k">復習待ち</div><div class="n">${S.reviews.length}<small>問</small></div></div>
+    </div>
+    <section class="card">
+      <div class="sec-h"><h2>パート別の正答率</h2></div>
+      <div class="bars">
+        ${bar('Listening 計', L.n, L.c, App.LINES.L)}
+        ${[2, 3, 4].map(p => bar('Part ' + p, P[p] ? P[p].n : 0, P[p] ? P[p].c : 0, null)).join('')}
+        <hr class="rule">
+        ${bar('Reading 計', R.n, R.c, App.LINES.R)}
+        ${[5, 6, 7].map(p => bar('Part ' + p, P[p] ? P[p].n : 0, P[p] ? P[p].c : 0, null)).join('')}
+      </div>
+      <p class="legend-note">縦線：灰＝700点、ピンク＝800点に相当する正答率の目安（公式の換算ではありません）。Part 5 の平均解答時間：${P[5] && P[5].n ? '<b class="mono">' + Math.round(P[5].s / P[5].n) + '秒</b>（目標20秒）' : '—'}</p>
+    </section>
+    <section class="card">
+      <div class="sec-h"><h2>分野別（弱い順）</h2><span class="note">直近を重視した正答率</span></div>
+      ${tags.length ? `<div class="tscroll"><table class="tagtable"><thead><tr><th>分野</th><th style="text-align:right">直近</th><th style="text-align:right">累計</th><th style="text-align:right">平均時間</th></tr></thead><tbody>
+        ${tags.map(([k, v]) => `<tr><td>${esc(App.tagName(k))}</td><td class="num"><span class="chip ${v.ema < 0.6 ? 'ng' : v.ema < 0.8 ? 'warn' : 'ok'}">${pct(v.ema)}</span></td><td class="num">${v.c}/${v.n}</td><td class="num">${Math.round(v.s / v.n)}秒</td></tr>`).join('')}
+      </tbody></table></div>` : '<div class="empty">まだ解答がありません。</div>'}
+    </section>
+    <section class="card">
+      <div class="sec-h"><h2>直近14日の学習時間</h2><span class="note">点線＝1日の目標</span></div>
+      <svg class="chart" viewBox="0 0 560 150" role="img" aria-label="直近14日の学習時間（分）">
+        <line x1="30" x2="552" y1="${cy(tgt)}" y2="${cy(tgt)}" stroke="var(--drop)" stroke-dasharray="4 4"/>
+        <text x="26" y="${cy(tgt) + 4}" text-anchor="end">${tgt}</text>
+        ${days.map((x, i) => { const X = 36 + i * 37, h = 120 - cy(x.m); return `<g><title>${x.d}：${x.m}分</title><rect x="${X}" y="${cy(x.m)}" width="26" height="${Math.max(0, h)}" rx="3" fill="var(--ink)"/>${i % 2 === 1 || i === 13 ? `<text x="${X + 13}" y="138" text-anchor="middle">${x.d.slice(5).replace('-', '/')}</text>` : ''}</g>`; }).join('')}
+        <line x1="30" x2="552" y1="120.5" y2="120.5" stroke="var(--line)"/>
+      </svg>
+    </section>
+  </div>`;
+};
+
+VIEWS.settings = () => {
+  setDday();
+  const pr = S.profile, T = App.TTS;
+  const opts = (list, sel) => '<option value="">自動</option>' + list.map(v => `<option value="${esc(v.name)}" ${v.name === sel ? 'selected' : ''}>${esc(v.name)}（${esc(v.lang)}）</option>`).join('');
+  const store = App.Store.mode === 'db' ? 'この学習ページに保存（どの端末から開いても同じ記録）' : 'この端末に保存（キットのホームからバックアップできます）';
+  view().innerHTML = `<div class="stack">
+    <section class="card"><div class="sec-h"><h2>リスニングの音声</h2></div>
+      ${!T.ok ? '<p class="note">このブラウザは読み上げに対応していません。</p>' : `
+      <p class="note">英語の音声 ${T.voices.length} 種類（男性 ${T.male.length}・女性 ${T.female.length}）。Microsoft Edge で開くと自然な「Natural」音声が多く使えて聞き取り練習に最適です。</p>
+      <div class="grid2" style="margin-top:12px">
+        <div class="field"><label for="vm">男性の声</label><select id="vm">${opts(T.male.length ? T.male : T.voices, pr.voiceM)}</select></div>
+        <div class="field"><label for="vw">女性の声</label><select id="vw">${opts(T.female.length ? T.female : T.voices, pr.voiceW)}</select></div>
+      </div>
+      <div class="actions"><button class="btn sm" id="vtest">試しに聞く</button><span class="note">「自動」は米・英・豪などの声を問題ごとに切り替えます。</span></div>`}
+    </section>
+    <section class="card"><div class="sec-h"><h2>1日の目標</h2></div>
+      <div class="grid3">
+        <div class="field"><label for="g1">平日のアプリ学習（分）</label><input id="g1" type="number" min="5" max="180" step="5" value="${pr.weekdayApp}"></div>
+        <div class="field"><label for="g2">休日のアプリ学習（分）</label><input id="g2" type="number" min="5" max="240" step="5" value="${pr.weekendApp}"></div>
+        <div class="field"><label for="g3">単語（金のフレーズ）（分）</label><input id="g3" type="number" min="0" max="120" step="5" value="${pr.vocabMin}"></div>
+      </div>
+    </section>
+    <section class="card"><div class="sec-h"><h2>AI の問題作成</h2></div>
+      <div class="field" style="max-width:360px"><label for="tier">品質</label><select id="tier"><option value="default" ${pr.genTier !== 'complex' ? 'selected' : ''}>標準（速い）</option><option value="complex" ${pr.genTier === 'complex' ? 'selected' : ''}>高品質（1〜2分かかる）</option></select></div>
+      <p class="note" style="margin-top:8px">${App.AI.on ? '問題の作成と「質問する」は、あなたの Claude の利用枠を使います。初回は許可の確認が出ます。' : 'AI 機能はオンライン版（claude.ai）で使えます。'}</p>
+    </section>
+    <section class="card"><div class="sec-h"><h2>データ</h2></div>
+      <p class="note">保存先：${store}</p>
+      <p class="note" style="margin-top:6px">オフライン版の記録はこの端末だけに保存されます。キットのホームからバックアップを書き出せます。</p>
+    </section>
+  </div>`;
+  const saveNum = (id, key, min) => { const el = $('#' + id); el.onchange = () => { const v = Math.max(min, Math.round(+el.value || 0)); S.profile[key] = v; App.saveProfile(); App.toast('保存しました'); }; };
+  saveNum('g1', 'weekdayApp', 5); saveNum('g2', 'weekendApp', 5); saveNum('g3', 'vocabMin', 0);
+  $('#tier').onchange = e => { S.profile.genTier = e.target.value; App.saveProfile(); App.toast('保存しました'); };
+  if (T.ok) {
+    const upd = () => { S.profile.voiceM = $('#vm').value; S.profile.voiceW = $('#vw').value; S.profile.voiceMode = (S.profile.voiceM || S.profile.voiceW) ? 'fixed' : 'mix'; App.saveProfile(); App.toast('保存しました'); };
+    $('#vm').onchange = upd; $('#vw').onchange = upd;
+    $('#vtest').onclick = () => { const c = T.cast('test' + Date.now()); T.play([{ text: 'Where should I put these boxes?', v: c.W }, { text: 'In the storage room, please.', v: c.M }]); };
+  }
+};
+
+/* ---------- boot ---------- */
+document.getElementById('tabs').addEventListener('click', e => { const b = e.target.closest('button[data-view]'); if (b) App.go(b.dataset.view); });
+App.on('voices', () => { if (App.current === 'settings') VIEWS.settings(); });
+async function boot() {
+  App.TTS.init();
+  App.AI.init();
+  await App.load();
+  App.loaded = true;
+  const h = (location.hash || '').slice(1);
+  App.go(VIEWS[h] ? h : 'home');
+}
+// player.js loads after this file; boot once every script has run
+if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', boot);
+else setTimeout(boot, 0);
+})();
+
+</script>
+<script>
+/* player.js — study session engine and question screens */
+(function () {
+'use strict';
+const App = window.App, S = App.S, esc = App.esc;
+const $ = (s, r) => (r || document).querySelector(s);
+const LET = ['A', 'B', 'C', 'D'];
+const PLAY = '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7 4.5v15l13-7.5z"/></svg>';
+const STOP = '<svg viewBox="0 0 24 24" aria-hidden="true"><rect x="6" y="6" width="12" height="12" rx="1.5"/></svg>';
+const pct = x => Math.round(x * 100) + '%';
+const fmtT = s => { s = Math.max(0, Math.round(s)); return Math.floor(s / 60) + ':' + String(s % 60).padStart(2, '0'); };
+const stage = () => $('#view');
+let sess = null, cur = null;
+
+/* ---------- session ---------- */
+function focusJob(part, n, focus) {
+  const job = { done: false, error: null, progress: '', listeners: new Set(), batch: null };
+  App.AI.gen(part, { count: n, focus, onProgress: t => { job.progress = t; job.listeners.forEach(f => f(job)); } })
+    .then(b => { job.batch = b; }).catch(e => { job.error = e; })
+    .finally(() => { job.done = true; job.listeners.forEach(f => f(job)); App.emit('stock', part); });
+  return job;
+}
+App.startSession = function (opt) {
+  App.TTS.stop();
+  App.leavePlayer();
+  sess = { title: opt.title, queue: [], i: 0, results: [], started: Date.now(), used: new Set(), busy: false };
+  opt.blocks.forEach(b => {
+    if (b.kind === 'review') {
+      App.dueToday().slice(0, b.n || 15).forEach(r => sess.queue.push({ type: 'review', block: b.id, key: r.key, part: r.part }));
+    } else if (b.part) {
+      const step = { type: 'fill', block: b.id, part: b.part, n: b.n, fresh: !!b.fresh, focus: b.focus || null };
+      if (step.fresh) step.job = focusJob(b.part, b.n, b.focus);
+      else App.ensure(b.part, b.n * 2);
+      sess.queue.push(step);
+    }
+  });
+  App.current = 'player';
+  document.querySelectorAll('#tabs button').forEach(x => x.removeAttribute('aria-current'));
+  window.scrollTo(0, 0);
+  advance(0);
+};
+App.leavePlayer = () => {
+  if (cur) closeUnit(true);
+  sess = null; cur = null;
+};
+const unitStep = (step, p) => ({ type: 'new', block: step.block, part: step.part, b: p.b, u: p.u });
+async function expandFill(step) {
+  const my = sess;
+  let picks = [];
+  if (step.fresh) {
+    if (!step.job.done && !(await waitJob(step.job, step))) return [];
+    if (step.job.batch) picks = step.job.batch.units.map((u, ui) => ({ b: step.job.batch.id, u: ui }));
+    else if (step.job.error) App.toast(App.AI.message(step.job.error) || '問題を作成できませんでした');
+  } else {
+    picks = App.unseen(step.part, my.used).slice(0, step.n);
+    if (!picks.length) {
+      const job = App.job(step.part) || App.ensure(step.part, Infinity);
+      if (!job) { App.toast('Part ' + step.part + ' の未出題の問題がありません'); return []; }
+      if (!(await waitJob(job, step))) return [];
+      if (job.error) { const m = App.AI.message(job.error); if (m) App.toast(m); }
+      picks = App.unseen(step.part, my.used).slice(0, step.n);
+    } else if (picks.length < step.n && App.AI.on) {
+      App.ensure(step.part, Infinity);
+      picks.forEach(p => my.used.add(App.keyOf(p.b, p.u, 0)));
+      return picks.map(p => unitStep(step, p)).concat([{ type: 'fill', block: step.block, part: step.part, n: step.n - picks.length }]);
+    }
+  }
+  picks.forEach(p => my.used.add(App.keyOf(p.b, p.u, 0)));
+  return picks.map(p => unitStep(step, p));
+}
+function waitJob(job, step) {
+  return new Promise(resolve => {
+    const P = App.PART[step.part];
+    stage().innerHTML = header(step) + `<div class="gen"><span class="spin" style="width:26px;height:26px;border-width:3px"></span>
+      <h2 style="font-size:17px">Claude が Part ${step.part} の問題を作っています</h2>
+      <p class="note mono" id="genInfo">問題を考えています…（20〜60秒）</p>
+      <p class="note">${step.focus ? '選んだ分野に絞って' : 'いまの弱点を多めに入れて'}作成します。初回は AI 利用の許可を求められます。</p>
+      <div class="actions"><button class="btn sm ghost" id="skipGen">待たずに次へ進む</button></div></div>`;
+    bindHeader();
+    let settled = false;
+    const finish = v => { if (settled) return; settled = true; job.listeners.delete(fn); resolve(v); };
+    const fn = () => {
+      const n = App.progressCount(job.progress), el = $('#genInfo');
+      if (el && n) el.textContent = P.set ? '設問 ' + n + ' 問目まで作成しました…' : n + ' 問目まで作成しました…';
+      if (job.done) finish(true);
+    };
+    job.listeners.add(fn);
+    $('#skipGen').onclick = () => finish(false);
+    if (job.done) finish(true);
+  });
+}
+async function advance(delta) {
+  const my = sess;
+  if (!my || my.busy) return;
+  my.busy = true;
+  try {
+    if (cur) closeUnit(false);
+    my.i += delta;
+    for (;;) {
+      if (sess !== my) return;
+      if (my.i >= my.queue.length) { summary(); return; }
+      const step = my.queue[my.i];
+      if (step.type === 'fill') { const steps = await expandFill(step); if (sess !== my) return; my.queue.splice(my.i, 1, ...steps); continue; }
+      if (await show(step)) return;
+      my.queue.splice(my.i, 1);
+    }
+  } finally { my.busy = false; }
+}
+function closeUnit(leaving) {
+  const c = cur; if (!c) return;
+  clearInterval(c.timer); clearInterval(c.pre);
+  App.TTS.stop();
+  App.addStudy((Date.now() - c.t0) / 1000);
+  const st = c.step;
+  if (!leaving && sess && st.answered && st.block !== 'extra') {
+    const nx = sess.queue[sess.i + 1];
+    if (!nx || nx.block !== st.block) { S.day.done[st.block] = true; App.saveDay(); }
+  }
+  cur = null;
+}
+async function show(step) {
+  let batch, u;
+  if (step.type === 'review') {
+    const k = App.parseKey(step.key);
+    batch = await App.fetchBatch(k.b);
+    if (!batch || !batch.units[k.u]) return false;
+    u = k.u;
+    cur = mkCur(step, batch, u, App.PART[batch.part].set ? [k.q] : [0]);
+    if (App.PART[batch.part].set && !batch.units[u].qs[k.q]) { cur = null; return false; }
+  } else {
+    batch = App.batch(step.b);
+    if (!batch || !batch.units[step.u]) return false;
+    u = step.u;
+    cur = mkCur(step, batch, u, App.PART[batch.part].set ? batch.units[u].qs.map((_, i) => i) : [0]);
+  }
+  render();
+  window.scrollTo(0, 0);
+  return true;
+}
+const mkCur = (step, batch, u, qIdx) => ({ step, batch, part: batch.part, uIdx: u, unit: batch.units[u], qIdx, sel: {}, guess: {}, graded: false, t0: Date.now(), timer: null, pre: null, tutor: {}, review: step.type === 'review', playing: false });
+const qOf = qi => (App.PART[cur.part].set ? cur.unit.qs[qi] : cur.unit);
+
+/* ---------- rendering ---------- */
+function header(step) {
+  const total = sess.queue.length, more = sess.queue.slice(sess.i + 1).some(s => s.type === 'fill');
+  return `<div class="pbar"><span class="pl">PART ${step.part}</span><span class="pc">${Math.min(sess.i + 1, total)} / ${total}${more ? '+' : ''}</span>${step.type === 'review' ? '<span class="chip drop">復習</span>' : ''}<span class="clock" id="clock"></span><button class="btn sm ghost sp" id="quit">終了</button></div>
+  <div class="prog"><i style="width:${total ? Math.round(sess.i / total * 100) : 0}%"></i></div>`;
+}
+function bindHeader() { const q = $('#quit'); if (q) q.onclick = summary; }
+function render() {
+  const c = cur, P = c.part;
+  const body = P === 5 ? r5() : P === 2 ? r2() : P === 6 ? r6() : P === 7 ? r7() : r34();
+  stage().innerHTML = header(c.step) + body;
+  bindHeader(); bindAll();
+  if (!c.graded) { startClock(); if (App.PART[P].sec === 'L') autoPlay(); }
+}
+const blankify = (s, fill) => esc(s).replace(/-------/g, fill ? `<span class="blank" style="color:var(--ok)">${esc(fill)}</span>` : '<span class="blank">-------</span>');
+function choiceList(qi, q, showText) {
+  const c = cur, sel = c.sel[qi], row = !showText;
+  return `<div class="choices" role="radiogroup" ${row ? 'style="flex-direction:row;gap:14px"' : ''}>${q.choices.map((t, ci) => {
+    let cls = 'bub';
+    if (c.graded) { if (ci === q.answer) cls += ' ok'; else if (ci === sel) cls += ' ng'; } else if (ci === sel) cls += ' on';
+    return `<button class="choice ${ci === sel ? 'picked' : ''}" ${row ? 'style="width:auto"' : ''} data-q="${qi}" data-c="${ci}" role="radio" aria-checked="${ci === sel}" aria-label="${LET[ci]}${showText ? ' ' + esc(t) : ''}" ${c.graded ? 'disabled' : ''}><span class="${cls}">${LET[ci]}</span>${showText ? `<span class="ct en">${esc(t)}</span>` : ''}</button>`;
+  }).join('')}</div>`;
+}
+function answerBar(single) {
+  const s = single != null;
+  return `<div class="actions">${s ? `<button class="toggle" data-g="${single}" aria-pressed="${!!cur.guess[single]}">迷った</button>` : ''}<button class="btn primary" id="submit" disabled>${s ? '解答する' : '採点する'}</button>
+  <span class="note">${s ? '<span class="kbd">A</span>–<span class="kbd">' + LET[App.PART[cur.part].nc - 1] + '</span> で選択　<span class="kbd">Enter</span> で解答　<span class="kbd">G</span> で迷った' : 'すべてマークすると採点できます。自信のない設問は「迷った」を押してください。'}</span></div>`;
+}
+function nextBar() {
+  const last = sess.i >= sess.queue.length - 1;
+  return `<div class="actions"><button class="btn primary" id="next">${last ? '結果を見る' : '次へ'}</button><span class="note"><span class="kbd">Enter</span> で次へ</span></div>`;
+}
+function statusChip(qi, ok) {
+  const g = !!cur.guess[qi];
+  if (cur.review) {
+    const card = S.reviews.find(r => r.key === cur.step.key);
+    if (!card) return '<span class="chip ok">卒業</span>';
+    return `<span class="chip">次の復習 ${card.due.slice(5).replace('-', '/')}</span>`;
+  }
+  return !ok ? '<span class="chip ng">明日の復習に追加</span>' : g ? '<span class="chip warn">迷った → 復習に追加</span>' : '';
+}
+function feedback(qi, q, extra) {
+  const c = cur, sel = c.sel[qi], ok = sel === q.answer, pace = App.PART[c.part].pace;
+  const time = c.part === 5 ? `<span class="chip ${c.answerSec > pace * 1.5 ? 'warn' : ''}">${Math.round(c.answerSec)}秒${c.answerSec > pace ? '（目標' + pace + '秒）' : ''}</span>` : '';
+  let h = `<div class="fb"><div class="v ${ok ? 'ok' : 'ng'}">${ok ? '✓ 正解' : '✕ 不正解'}<span class="muted" style="font-weight:400">正解 (${LET[q.answer]}) <span class="en" style="font-size:15px">${esc(q.choices[q.answer])}</span></span>${statusChip(qi, ok)}${time}</div>`;
+  if (q.ex) h += `<div class="ex">${esc(q.ex)}</div>`;
+  if (extra && extra.ja) h += `<div class="ja">訳：${esc(extra.ja)}</div>`;
+  if (extra && extra.vocab && extra.vocab.length) h += `<div class="vocab">${extra.vocab.map(v => `<span><b>${esc(v[0])}</b>${esc(v[1])}</span>`).join('')}</div>`;
+  if (App.AI.on) h += `<div class="actions" style="margin-top:10px"><button class="btn sm" data-ask="${qi}">Claude に質問する</button>${!ok || c.guess[qi] ? `<button class="btn sm ghost" data-sim="${qi}">似た問題を作る</button>` : ''}</div><div class="tutor" id="tutor${qi}" hidden></div>`;
+  return h + '</div>';
+}
+function qBlock(qi, label, text) {
+  const c = cur, q = qOf(qi), multi = c.qIdx.length > 1;
+  return `<div class="qblock"><div class="qhead"><span class="n">${esc(label)}</span>${text ? `<span class="qt">${esc(text)}</span>` : ''}</div>${choiceList(qi, q, true)}
+    ${!c.graded && multi ? `<div class="actions" style="margin-top:6px"><button class="toggle" data-g="${qi}" aria-pressed="${!!c.guess[qi]}">迷った</button></div>` : ''}${c.graded ? feedback(qi, q, null) : ''}</div>`;
+}
+const singleOf = () => (cur.qIdx.length === 1 ? cur.qIdx[0] : null);
+
+function r5() {
+  const c = cur, q = c.unit;
+  return `<div class="stem en">${blankify(q.q, c.graded ? q.choices[q.answer] : null)}</div>${choiceList(0, q, true)}${c.graded ? feedback(0, q, { ja: q.ja, vocab: q.vocab }) + nextBar() : answerBar(0)}`;
+}
+function r2() {
+  const c = cur, u = c.unit;
+  let h = playerBar();
+  if (!c.graded) return h + `<p class="note" style="margin-bottom:8px">Mark your answer on your answer sheet.　問いかけへの最も適切な応答を選んでください。</p>${choiceList(0, u, false)}${answerBar(0)}`;
+  h += `<div class="script" style="margin-bottom:10px"><div class="sline" data-idx="0"><span class="who">${esc(u.spk)}</span><span class="en">${esc(u.text)}</span><button data-line="0" aria-label="この文を再生">▶</button></div></div>`;
+  return h + choiceList(0, u, true) + feedback(0, u, { ja: u.ja }) + shadowBar() + nextBar();
+}
+function r34() {
+  const c = cur, u = c.unit;
+  let h = playerBar();
+  if (c.part === 4 && u.kind) h += `<div class="label" style="margin-bottom:6px">${esc(u.kind)}</div>`;
+  h += c.qIdx.map(qi => qBlock(qi, 'Q' + (qi + 1), u.qs[qi].q)).join('');
+  if (!c.graded) return h + answerBar(singleOf());
+  h += `<section class="card" style="margin-top:16px"><div class="sec-h"><h2>スクリプト</h2></div><div class="script">${u.lines.map((l, i) => `<div class="sline" data-idx="${i}"><span class="who">${esc(l[0])}</span><span class="en">${esc(l[1])}</span><button data-line="${i}" aria-label="この文を再生">▶</button></div>`).join('')}</div>
+    ${u.ja ? `<details style="margin-top:10px"><summary class="note">和訳を表示</summary><p class="note" style="margin-top:6px">${esc(u.ja)}</p></details>` : ''}${shadowBar()}</section>`;
+  return h + nextBar();
+}
+function r6() {
+  const c = cur, u = c.unit;
+  const text = esc(u.text).replace(/\[\[(\d)\]\]/g, (m, d) => {
+    const qi = +d - 1, q = u.qs[qi];
+    if (!q) return m;
+    const active = c.qIdx.indexOf(qi) >= 0;
+    if (c.graded || !active) return `<span class="blank" style="color:${active ? 'var(--ok)' : 'var(--ink-2)'}">(${d}) ${esc(q.choices[q.answer])}</span>`;
+    return `<span class="blank">(<b>${d}</b>) -------</span>`;
+  });
+  const doc = `<div class="doc"><div class="dl">${esc(u.title || 'Text')}</div><div class="dt">${text}</div></div>${c.graded && u.ja ? `<details class="doc"><summary class="note">全文の和訳</summary><p class="note" style="margin-top:6px">${esc(u.ja)}</p></details>` : ''}`;
+  const qs = c.qIdx.map(qi => qBlock(qi, '(' + (qi + 1) + ')', u.qs[qi].choices[0].split(' ').length > 4 ? '空所に入る最も適切な文' : '')).join('');
+  return `<div class="two"><div class="doccol">${doc}</div><div>${qs}${c.graded ? nextBar() : answerBar(singleOf())}</div></div>`;
+}
+function hl(text, marks) {
+  const ranges = [];
+  marks.forEach(m => {
+    if (!m) return;
+    let i = text.indexOf(m);
+    if (i < 0) i = text.toLowerCase().indexOf(m.toLowerCase());
+    if (i >= 0) ranges.push([i, i + m.length]);
+  });
+  ranges.sort((a, b) => a[0] - b[0]);
+  let out = '', pos = 0;
+  ranges.forEach(r => { const s = Math.max(r[0], pos); if (r[1] <= s) return; out += esc(text.slice(pos, s)) + '<mark>' + esc(text.slice(s, r[1])) + '</mark>'; pos = r[1]; });
+  return out + esc(text.slice(pos));
+}
+function r7() {
+  const c = cur, u = c.unit, marks = c.graded ? c.qIdx.map(qi => u.qs[qi].ev).filter(Boolean) : [];
+  const docs = u.docs.map(d => `<div class="doc"><div class="dl">${esc(d.label)}</div><div class="dt">${hl(d.text, marks)}</div></div>`).join('');
+  const extra = c.graded ? `${marks.length ? '<p class="note" style="margin-bottom:8px">黄色の部分が正解の根拠です。</p>' : ''}${App.AI.on ? '<button class="btn sm ghost" id="trans">Claude に全文訳を頼む</button><div id="transOut"></div>' : ''}` : '';
+  const qs = c.qIdx.map(qi => qBlock(qi, 'Q' + (qi + 1), u.qs[qi].q)).join('');
+  return `<div class="two"><div class="doccol">${docs}${extra}</div><div>${qs}${c.graded ? nextBar() : answerBar(singleOf())}</div></div>`;
+}
+
+/* ---------- interaction ---------- */
+function bindAll() {
+  const st = stage();
+  st.querySelectorAll('.choice').forEach(b => { b.onclick = () => pick(+b.dataset.q, +b.dataset.c); });
+  st.querySelectorAll('[data-g]').forEach(b => { b.onclick = () => { const qi = +b.dataset.g; cur.guess[qi] = !cur.guess[qi]; b.setAttribute('aria-pressed', String(!!cur.guess[qi])); }; });
+  const sub = $('#submit'); if (sub) { sub.onclick = grade; updateSubmit(); }
+  const nx = $('#next'); if (nx) nx.onclick = () => advance(1);
+  const pl = $('#play'); if (pl) pl.onclick = togglePlay;
+  st.querySelectorAll('[data-rate]').forEach(b => { b.onclick = () => { S.profile.rate = +b.dataset.rate; App.saveProfile(); st.querySelectorAll('[data-rate]').forEach(x => x.setAttribute('aria-pressed', String(+x.dataset.rate === S.profile.rate))); }; });
+  st.querySelectorAll('[data-line]').forEach(b => { b.onclick = () => playLine(+b.dataset.line); });
+  const rp = $('#replay'); if (rp) rp.onclick = () => playAll();
+  const sh = $('#shadow'); if (sh) sh.onclick = shadow;
+  st.querySelectorAll('[data-ask]').forEach(b => { b.onclick = () => openTutor(+b.dataset.ask); });
+  st.querySelectorAll('[data-sim]').forEach(b => { b.onclick = () => makeSimilar(+b.dataset.sim, b); });
+  const tr = $('#trans'); if (tr) tr.onclick = () => translate(tr);
+}
+function pick(qi, ci) {
+  if (!cur || cur.graded || ci >= App.PART[cur.part].nc) return;
+  cur.sel[qi] = ci;
+  stage().querySelectorAll('.choice[data-q="' + qi + '"]').forEach(b => {
+    const on = +b.dataset.c === ci;
+    b.classList.toggle('picked', on); b.setAttribute('aria-checked', String(on));
+    b.querySelector('.bub').classList.toggle('on', on);
+  });
+  updateSubmit();
+}
+function updateSubmit() { const b = $('#submit'); if (b && cur) b.disabled = cur.qIdx.some(qi => cur.sel[qi] == null); }
+function startClock() {
+  const el = $('#clock'); if (!el) return;
+  const pace = App.PART[cur.part].pace, target = pace ? pace * cur.qIdx.length : null, me = cur;
+  const tick = () => { const s = (Date.now() - me.t0) / 1000; el.textContent = fmtT(s) + (target ? ' / ' + fmtT(target) : ''); el.classList.toggle('over', !!target && s > target); };
+  tick(); me.timer = setInterval(tick, 500);
+}
+function grade() {
+  const c = cur;
+  if (!c || c.graded || c.qIdx.some(qi => c.sel[qi] == null)) return;
+  clearInterval(c.timer); clearInterval(c.pre);
+  App.TTS.stop(); c.playing = false;
+  c.graded = true;
+  c.answerSec = Math.min(180, (Date.now() - c.t0) / 1000 / c.qIdx.length);
+  c.qIdx.forEach(qi => {
+    const q = qOf(qi), ok = c.sel[qi] === q.answer, guess = !!c.guess[qi];
+    const key = c.review ? c.step.key : App.keyOf(c.batch.id, c.uIdx, qi);
+    const sec = Math.round(c.answerSec * 10) / 10;
+    App.record({ part: c.part, key, tag: q.tag, ok, guess, sec, mode: c.review ? 'review' : 'new' });
+    sess.results.push({ part: c.part, tag: q.tag, ok, guess, sec, review: c.review });
+  });
+  c.step.answered = true;
+  const y = window.scrollY;
+  render();
+  window.scrollTo(0, y);
+}
+
+/* ---------- audio ---------- */
+function playerBar() {
+  const r = S.profile.rate || 1;
+  return `<div class="player"><button class="play" id="play" aria-label="再生／停止">${PLAY}</button>
+    <div style="flex:1;min-width:150px"><div id="pstat" class="note">${App.TTS.ok ? 'まもなく再生します' : 'このブラウザは音声の読み上げに対応していません'}</div></div>
+    <div class="speed" role="group" aria-label="再生速度">${[0.8, 0.9, 1, 1.1, 1.2].map(s => `<button data-rate="${s}" aria-pressed="${s === r}">${s.toFixed(1)}×</button>`).join('')}</div></div>`;
+}
+function shadowBar() {
+  return `<div class="actions"><button class="btn sm" id="replay">通しで聞く</button><button class="btn sm" id="shadow">1文ずつリピート練習</button>
+    <span class="note">1文ごとに間が空くので、聞こえたとおりに声に出してみましょう（シャドーイング）。▶ で1文だけ再生できます。</span></div>`;
+}
+const setP = t => { const el = $('#pstat'); if (el) el.textContent = t; };
+const setPlayBtn = on => { const b = $('#play'); if (b) b.innerHTML = on ? STOP : PLAY; };
+function audioItems() {
+  const u = cur.unit, cast = App.TTS.cast(cur.batch.id + ':' + cur.uIdx);
+  if (cur.part === 2) {
+    const qv = cast[u.spk === 'M' ? 'M' : 'W'], rv = cast[u.spk === 'M' ? 'W' : 'M'];
+    return [{ text: u.text, v: qv, gap: 900 }].concat(u.choices.map((t, i) => ({ text: LET[i] + '. ' + t, v: rv, gap: 700 })));
+  }
+  return u.lines.map(l => ({ text: l[1], v: cast[l[0]] || cast.W, gap: cur.part === 4 ? 250 : 380 }));
+}
+function hlLine(i) { stage().querySelectorAll('.sline').forEach(el => el.classList.toggle('now', +el.dataset.idx === i)); }
+async function runAudio(items, label, idxMap) {
+  const me = cur;
+  if (!App.TTS.ok || !me) return;
+  clearInterval(me.pre);
+  me.playing = true; setPlayBtn(true);
+  const done = await App.TTS.play(items, { onLine: i => { if (cur !== me) return; if (i >= 0) setP(label + ' ' + (i + 1) + ' / ' + items.length); hlLine(i < 0 ? -1 : idxMap ? idxMap(i) : i); } });
+  if (cur !== me) return;
+  me.playing = false; setPlayBtn(false);
+  setP(!done ? '停止しました' : me.graded ? '再生が終わりました' : '解答してください（▶ でもう一度聞けます）');
+}
+const playAll = () => runAudio(audioItems(), '再生中…');
+function togglePlay() {
+  if (!cur) return;
+  if (cur.playing) { App.TTS.stop(); cur.playing = false; setPlayBtn(false); setP('停止しました'); }
+  else playAll();
+}
+function playLine(i) { const it = audioItems()[i]; if (it) runAudio([Object.assign({}, it, { gap: 0 })], '再生中…', () => i); }
+function shadow() {
+  const items = audioItems().map(it => Object.assign({}, it, { gap: Math.round(900 + it.text.split(/\s+/).length * 430 / (S.profile.rate || 1)) }));
+  runAudio(items, 'リピート練習', null);
+}
+function autoPlay() {
+  const me = cur;
+  if (!App.TTS.ok) return;
+  if (me.part === 2) { setTimeout(() => { if (cur === me && !me.playing && !me.graded) playAll(); }, 700); return; }
+  let left = me.review ? 3 : 8;
+  const msg = () => setP('設問を先読みしてください… ' + left + '秒後に再生（▶ ですぐ再生）');
+  msg();
+  me.pre = setInterval(() => {
+    if (cur !== me || me.playing || me.graded) { clearInterval(me.pre); return; }
+    left--;
+    if (left <= 0) { clearInterval(me.pre); playAll(); } else msg();
+  }, 1000);
+}
+
+/* ---------- Claude tutor, similar questions, translation ---------- */
+function tutorContext(qi) {
+  const c = cur, u = c.unit, q = qOf(qi), sel = c.sel[qi], ok = sel === q.answer;
+  let s = 'あなたは TOEIC L&R の指導経験が豊富な、日本人学習者向けの英語講師です。学習者（前回645点、本番で800点が目標）の質問に日本語で答えてください。結論を先に、300字程度まで。必要なら短い英語の例文を1〜2個添えてください。問題の正解は変えないでください。\n\n';
+  s += '[TOEIC Part ' + c.part + ']\n';
+  if (c.part === 5) s += '問題文: ' + u.q + '\n';
+  else if (c.part === 2) s += '問いかけ: ' + u.text + '\n';
+  else if (c.part === 6) s += '本文:\n' + u.text + '\n設問: 空所 [[' + (qi + 1) + ']]\n';
+  else if (c.part === 7) s += u.docs.map(d => '[' + d.label + ']\n' + d.text).join('\n\n') + '\n設問: ' + q.q + '\n';
+  else s += 'スクリプト:\n' + u.lines.map(l => l[0] + ': ' + l[1]).join('\n') + '\n設問: ' + q.q + '\n';
+  s += '選択肢:\n' + q.choices.map((t, i) => '(' + LET[i] + ') ' + t).join('\n') + '\n';
+  s += '正解: (' + LET[q.answer] + ') ' + q.choices[q.answer] + '\n学習者の解答: (' + LET[sel] + ') ' + q.choices[sel] + (ok ? '（正解）' : '（不正解）') + (c.guess[qi] ? '・迷いながら解答' : '') + '\n';
+  if (q.ex) s += '解説: ' + q.ex + '\n';
+  return s;
+}
+function openTutor(qi) {
+  const box = $('#tutor' + qi); if (!box) return;
+  box.hidden = !box.hidden;
+  if (box.hidden || box.dataset.init) return;
+  box.dataset.init = '1';
+  box.innerHTML = `<div class="row">${['なぜ他の選択肢はダメ？', 'この文法をもっと詳しく', '似た例文を3つ'].map(s => `<button class="chip" data-quick="${esc(s)}">${esc(s)}</button>`).join('')}</div>
+    <div class="msgs"></div>
+    <div class="field" style="margin-top:10px"><label for="tq${qi}">質問（日本語でOK）</label><textarea id="tq${qi}" placeholder="例：なぜ現在完了になるの？"></textarea></div>
+    <div class="actions"><button class="btn sm primary" data-send="1">送信</button></div>`;
+  box.querySelectorAll('[data-quick]').forEach(b => { b.onclick = () => sendTutor(qi, b.dataset.quick); });
+  box.querySelector('[data-send]').onclick = () => { const ta = $('#tq' + qi), v = ta.value.trim(); if (v) { ta.value = ''; sendTutor(qi, v); } };
+}
+async function sendTutor(qi, text) {
+  const me = cur, box = $('#tutor' + qi); if (!me || !box) return;
+  const list = box.querySelector('.msgs'), btn = box.querySelector('[data-send]');
+  if (btn.disabled) return;
+  const turns = me.tutor[qi] || (me.tutor[qi] = []);
+  turns.push({ role: 'user', content: turns.length ? text : tutorContext(qi) + '\n質問: ' + text });
+  const mine = document.createElement('div'); mine.className = 'msg me'; mine.textContent = text; list.appendChild(mine);
+  const out = document.createElement('div'); out.className = 'msg'; out.textContent = '考え中…'; list.appendChild(out);
+  btn.disabled = true;
+  try {
+    const input = turns.length > 7 ? [turns[0]].concat(turns.slice(-6)) : turns.slice();
+    const ans = await App.AI.ask(input, { onText: ({ text: t }) => { out.textContent = t; } });
+    turns.push({ role: 'assistant', content: ans }); out.textContent = ans;
+  } catch (e) {
+    turns.pop();
+    const m = App.AI.message(e);
+    out.textContent = (e && e.text ? e.text + '\n\n' : '') + (m || '中断しました');
+  } finally { btn.disabled = false; }
+}
+async function makeSimilar(qi, btn) {
+  const me = cur, q = qOf(qi), P = me.part, u = me.unit;
+  const like = P === 5 ? { q: u.q, correct: u.choices[u.answer], tag: u.tag } : P === 2 ? { text: u.text, correct: u.choices[u.answer], tag: u.tag } : { question: q.q || ('blank ' + (qi + 1)), correct: q.choices[q.answer], tag: q.tag };
+  btn.disabled = true; btn.innerHTML = '<span class="spin"></span> 作成中…';
+  try {
+    const batch = await App.AI.gen(P, { count: P === 5 || P === 2 ? 3 : 1, focus: [q.tag], like });
+    if (!sess) return;
+    const at = sess.queue.indexOf(me.step); if (at < 0) return;
+    const steps = batch.units.map((x, ui) => ({ type: 'new', block: 'extra', part: P, b: batch.id, u: ui }));
+    steps.forEach(s => sess.used.add(App.keyOf(s.b, s.u, 0)));
+    sess.queue.splice(at + 1, 0, ...steps);
+    btn.textContent = 'このあとに ' + steps.length + (App.PART[P].set ? 'セット' : '問') + ' 追加しました';
+    const nb = $('#next'); if (nb) nb.textContent = '次へ';
+  } catch (e) {
+    btn.disabled = false; btn.textContent = '似た問題を作る';
+    const m = App.AI.message(e); if (m) App.toast(m);
+  }
+}
+async function translate(btn) {
+  const me = cur, out = $('#transOut'); if (!me || !out) return;
+  btn.disabled = true;
+  const box = document.createElement('div'); box.className = 'msg'; box.textContent = '翻訳しています…'; out.innerHTML = ''; out.appendChild(box);
+  const src = me.unit.docs.map(d => '[' + d.label + ']\n' + d.text).join('\n\n');
+  try {
+    const t = await App.AI.ask('次の英文を、TOEIC学習者が英文と対照しやすい自然な日本語に全訳してください。見出しや段落の区切りは原文どおりに保ち、訳文だけを出力してください。\n\n' + src, { cache: { gcTime: 86400000 }, tier: 'quick', onText: ({ text }) => { box.textContent = text; } });
+    box.textContent = t;
+  } catch (e) { box.textContent = App.AI.message(e) || '中断しました'; btn.disabled = false; }
+}
+
+/* ---------- keyboard ---------- */
+document.addEventListener('keydown', e => {
+  if (App.current !== 'player' || !cur) return;
+  const tag = (e.target && e.target.tagName) || '';
+  if (tag === 'TEXTAREA' || tag === 'INPUT' || tag === 'SELECT' || e.ctrlKey || e.metaKey || e.altKey) return;
+  const k = e.key.toLowerCase();
+  if (tag === 'BUTTON' && (k === 'enter' || k === ' ')) return;
+  if (cur.graded) { if (k === 'enter' || k === 'n') { e.preventDefault(); advance(1); } return; }
+  if (k === 'enter') { const b = $('#submit'); if (b && !b.disabled) { e.preventDefault(); grade(); } return; }
+  if (k === ' ' && App.PART[cur.part].sec === 'L') { e.preventDefault(); togglePlay(); return; }
+  const single = singleOf(); if (single == null) return;
+  const map = { a: 0, b: 1, c: 2, d: 3, 1: 0, 2: 1, 3: 2, 4: 3 };
+  if (Object.prototype.hasOwnProperty.call(map, k)) { e.preventDefault(); pick(single, map[k]); }
+  else if (k === 'g') { const t = stage().querySelector('[data-g]'); if (t) t.click(); }
+});
+
+/* ---------- summary ---------- */
+function summary() {
+  const s = sess; if (!s) { App.go('home'); return; }
+  if (cur) closeUnit(false);
+  App.TTS.stop();
+  sess = null; cur = null;
+  App.current = 'summary';
+  const R = s.results, n = R.length, c = R.filter(r => r.ok).length;
+  const mins = Math.max(1, Math.round((Date.now() - s.started) / 60000));
+  const newRev = R.filter(r => !r.review && (!r.ok || r.guess)).length;
+  const byPart = {}; R.forEach(r => { const b = byPart[r.part] || (byPart[r.part] = { n: 0, c: 0, s: 0 }); b.n++; b.c += r.ok ? 1 : 0; b.s += r.sec; });
+  const miss = {}; R.filter(r => !r.ok || r.guess).forEach(r => { miss[r.tag] = (miss[r.tag] || 0) + 1; });
+  const missRows = Object.entries(miss).sort((a, b) => b[1] - a[1]);
+  stage().innerHTML = `<div class="stack">
+    <section class="card"><div class="label">${esc(s.title)}</div><h1 style="font-size:22px;margin-top:4px">おつかれさまでした</h1>
+      <div class="kpis" style="margin-top:14px">
+        <div class="kpi"><div class="k">解答</div><div class="n">${n}<small>問</small></div></div>
+        <div class="kpi"><div class="k">正答率</div><div class="n">${n ? pct(c / n) : '—'}</div></div>
+        <div class="kpi"><div class="k">かかった時間</div><div class="n">${mins}<small>分</small></div></div>
+        <div class="kpi"><div class="k">復習に追加</div><div class="n">${newRev}<small>問</small></div></div>
+      </div></section>
+    ${n ? `<section class="card"><div class="sec-h"><h2>パート別</h2></div><div class="bars">${Object.keys(byPart).sort().map(p => { const b = byPart[p]; return `<div class="bar-row"><span>Part ${p}</span><div class="bar-track"><span class="bar-fill" style="width:${Math.max(2, b.c / b.n * 100)}%"></span></div><span class="bar-val">${b.c}/${b.n}</span></div>`; }).join('')}</div>
+      ${byPart[5] ? `<p class="legend-note">Part 5 の平均解答時間 ${Math.round(byPart[5].s / byPart[5].n)}秒（本番の目安は20秒）</p>` : ''}</section>` : ''}
+    ${missRows.length ? `<section class="card"><div class="sec-h"><h2>間違えた・迷った分野</h2></div><div class="row">${missRows.map(([t, k]) => `<span class="chip ng">${esc(App.tagName(t))} ×${k}</span>`).join('')}</div><p class="note" style="margin-top:8px">これらは明日以降の復習に出ます。AI の新しい問題もこの分野が多めになります。</p></section>` : ''}
+    ${n && App.AI.on ? '<section class="card"><div class="sec-h"><h2>Claude からひとこと</h2></div><div id="advice" class="note">今回の結果をもとに、次にやることを短くアドバイスします。</div><div class="actions"><button class="btn sm" id="adv">アドバイスをもらう</button></div></section>' : ''}
+    <div class="actions"><button class="btn primary" id="home">ホームへ戻る</button></div>
+  </div>`;
+  window.scrollTo(0, 0);
+  $('#home').onclick = () => App.go('home');
+  const adv = $('#adv');
+  if (adv) adv.onclick = async () => {
+    adv.disabled = true;
+    const box = $('#advice'); box.textContent = '考え中…'; box.classList.remove('note'); box.style.whiteSpace = 'pre-wrap';
+    const weak = App.weakTags(null, 4).map(t => App.tagName(t) + ' ' + pct(S.stats.tags[t].ema)).join('、') || 'まだ不明';
+    const lines = Object.keys(byPart).map(p => `- Part ${p}: ${byPart[p].c}/${byPart[p].n} 正解、平均 ${Math.round(byPart[p].s / byPart[p].n)} 秒`).join('\n');
+    const prompt = `あなたはTOEIC学習コーチです。学習者は前回645点（L350/R295）、12月19日の本番で800点が目標で、本番まであと${App.diffDays(App.today(), App.EXAM)}日、平日は1日1時間（うち単語30分）学習しています。今回の練習結果を見て、日本語で短くフィードバックしてください。\n形式：「よかった点」1行、「課題」1〜2行、「次にやること」1行。全体で200字以内。専門用語には短い説明を添える。\n\n今回の結果：\n${lines}\n間違えた・迷った分野：${missRows.map(([t, k]) => App.tagName(t) + '×' + k).join('、') || 'なし'}\nこれまでの弱点（直近の正答率が低い順）：${weak}`;
+    try { box.textContent = await App.AI.ask(prompt, { onText: ({ text }) => { box.textContent = text; } }); }
+    catch (e) { box.textContent = App.AI.message(e) || '中断しました'; adv.disabled = false; }
+  };
+}
+})();
+
+</script>
+<script>
+/* pwa.js — offline kit glue shared by every page: service worker, link back to the kit home, persistent storage */
+(function () {
+  'use strict';
+  if ('serviceWorker' in navigator && location.protocol.indexOf('http') === 0) {
+    window.addEventListener('load', function () { navigator.serviceWorker.register('sw.js').catch(function () { /* offline cache is optional */ }); });
+  }
+  try {
+    if (navigator.storage && navigator.storage.persist) {
+      navigator.storage.persisted().then(function (p) { if (!p) return navigator.storage.persist(); }).catch(function () {});
+    }
+  } catch (e) { /* ignore */ }
+  function addHome() {
+    var top = document.querySelector('.top-in');
+    if (!top || document.querySelector('.kit-home')) return;
+    var a = document.createElement('a');
+    a.href = './';
+    a.className = 'kit-home';
+    a.textContent = '‹ Kit';
+    a.setAttribute('aria-label', 'TOEIC Study Kit のホームに戻る');
+    a.style.cssText = 'font:600 13px/1 system-ui,-apple-system,sans-serif;color:inherit;opacity:.7;text-decoration:none;padding:10px 6px 10px 0;white-space:nowrap';
+    top.insertBefore(a, top.firstChild);
+  }
+  if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', addHome); else addHome();
+})();
+
+</script>
+</body>
+</html>

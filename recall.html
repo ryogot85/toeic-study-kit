@@ -1,0 +1,2492 @@
+<!doctype html>
+<html lang="ja" data-build="20260925-094318">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="theme-color" content="#F3F5F2" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#0E1311" media="(prefers-color-scheme: dark)">
+<link rel="manifest" href="manifest.webmanifest">
+<link rel="icon" href="icons/icon-192.png">
+<link rel="apple-touch-icon" href="icons/apple-touch-icon.png">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-title" content="TOEIC Kit">
+<meta name="apple-mobile-web-app-status-bar-style" content="default">
+<style>:root{color-scheme:light;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}body{margin:0}img{max-width:100%}[hidden]{display:none!important}</style>
+<title>TOEIC Recall 1000</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,600&family=JetBrains+Mono:wght@400;500&family=Zen+Kaku+Gothic+New:wght@400;500;700&display=swap">
+<style>
+:root{
+  --bg:#F3F5F2; --surface:#FFFFFF; --sunk:#EAEEEA; --line:#DCE2DE;
+  --ink:#15201C; --ink-2:#55615C; --ink-3:#87918D;
+  --accent:#0C7A62; --accent-ink:#FFFFFF; --accent-soft:#DDF1EA;
+  --marker:#EEF06A;
+  --good:#1F8A5B; --good-soft:#DFF3E8; --bad:#C2413B; --bad-soft:#F8E2DF; --hard:#A86A12; --hard-soft:#F6EBD6;
+  --f-en:"Fraunces","Georgia","Times New Roman",serif;
+  --f-jp:"Zen Kaku Gothic New","Hiragino Sans","Yu Gothic UI","Meiryo",system-ui,sans-serif;
+  --f-mono:"JetBrains Mono","Consolas","Menlo",monospace;
+}
+@media (prefers-color-scheme: dark){
+  :root:not([data-theme="light"]){
+    color-scheme:dark;
+    --bg:#0E1311; --surface:#151C19; --sunk:#1B2420; --line:#2A3531;
+    --ink:#E5ECE8; --ink-2:#A2AEA9; --ink-3:#74807B;
+    --accent:#4CCAA8; --accent-ink:#06231B; --accent-soft:#16352C;
+    --marker:rgba(222,226,90,.32);
+    --good:#58C995; --good-soft:#153326; --bad:#F07A72; --bad-soft:#3A1C1A; --hard:#E0A64E; --hard-soft:#35280F;
+  }
+}
+:root[data-theme="dark"]{
+  color-scheme:dark;
+  --bg:#0E1311; --surface:#151C19; --sunk:#1B2420; --line:#2A3531;
+  --ink:#E5ECE8; --ink-2:#A2AEA9; --ink-3:#74807B;
+  --accent:#4CCAA8; --accent-ink:#06231B; --accent-soft:#16352C;
+  --marker:rgba(222,226,90,.32);
+  --good:#58C995; --good-soft:#153326; --bad:#F07A72; --bad-soft:#3A1C1A; --hard:#E0A64E; --hard-soft:#35280F;
+}
+*{box-sizing:border-box}
+body{background:var(--bg);color:var(--ink);font-family:var(--f-jp);font-size:15px;line-height:1.7;-webkit-font-smoothing:antialiased}
+button,input,select,textarea{font:inherit;color:inherit}
+button{cursor:pointer}
+:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
+h1,h2,h3{margin:0;line-height:1.35;text-wrap:balance}
+p{margin:0}
+.en{font-family:var(--f-en);font-optical-sizing:auto}
+.mono{font-family:var(--f-mono);font-variant-numeric:tabular-nums}
+.muted{color:var(--ink-2)} .faint{color:var(--ink-3)}
+.note{font-size:13px;color:var(--ink-2);line-height:1.65}
+.eyebrow{font-family:var(--f-mono);font-size:11.5px;letter-spacing:.08em;text-transform:uppercase;color:var(--accent)}
+.mk{background:linear-gradient(transparent 52%,var(--marker) 52%,var(--marker) 92%,transparent 92%);padding:0 2px;border-radius:2px}
+
+/* frame */
+.top{position:sticky;top:env(safe-area-inset-top,0px);z-index:20;background:var(--bg);border-bottom:1px solid var(--line)}
+.top-in{max-width:960px;margin:0 auto;padding-inline:16px;display:flex;align-items:center;gap:14px;min-height:54px;flex-wrap:wrap}
+.brand{display:flex;align-items:baseline;gap:10px;margin-right:auto}
+.brand b{font-family:var(--f-en);font-weight:600;font-size:18px;letter-spacing:-.01em}
+.brand span{font-family:var(--f-mono);font-size:12px;color:var(--ink-3)}
+.tabs{display:flex;gap:2px}
+.tabs button{background:none;border:0;padding:14px 10px 12px;color:var(--ink-2);border-bottom:2px solid transparent;font-size:14px}
+.tabs button[aria-current="page"]{color:var(--ink);border-bottom-color:var(--accent);font-weight:700}
+main{max-width:960px;margin:0 auto;padding-inline:16px;padding-block:22px 90px}
+.banner{max-width:960px;margin:10px auto 0;padding-inline:16px}
+.banner p{background:var(--hard-soft);border-radius:8px;padding:8px 12px;font-size:13px}
+.stack{display:flex;flex-direction:column;gap:18px}
+.row{display:flex;gap:10px;align-items:center;flex-wrap:wrap}
+.grid2{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:16px}
+.card{background:var(--surface);border:1px solid var(--line);border-radius:14px;padding:18px 20px}
+.sec-h{display:flex;align-items:baseline;justify-content:space-between;gap:12px;margin-bottom:12px}
+.sec-h h2{font-size:17px}
+
+/* buttons */
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;border-radius:10px;padding:9px 16px;border:1px solid var(--line);background:var(--surface);font-size:14px;min-height:42px;line-height:1.3}
+.btn:hover{border-color:var(--ink-3)}
+.btn.primary{background:var(--accent);border-color:var(--accent);color:var(--accent-ink);font-weight:700}
+.btn.primary:hover{filter:brightness(1.05)}
+.btn.ghost{background:none;border-color:transparent;color:var(--ink-2)}
+.btn.ghost:hover{border-color:var(--line);color:var(--ink)}
+.btn.sm{min-height:32px;padding:5px 11px;font-size:13px}
+.btn.big{min-height:52px;padding:12px 26px;font-size:16px}
+.btn[disabled]{opacity:.45;cursor:not-allowed}
+.chip{display:inline-flex;align-items:center;gap:6px;border:1px solid var(--line);border-radius:99px;padding:2px 10px;font-size:12.5px;background:var(--surface);color:var(--ink-2);white-space:nowrap}
+.chip.good{background:var(--good-soft);color:var(--good);border-color:transparent}
+.chip.bad{background:var(--bad-soft);color:var(--bad);border-color:transparent}
+.chip.hard{background:var(--hard-soft);color:var(--hard);border-color:transparent}
+.chip.acc{background:var(--accent-soft);color:var(--accent);border-color:transparent}
+button.chip{cursor:pointer}
+.spk{display:inline-grid;place-items:center;width:34px;height:34px;border-radius:50%;border:1px solid var(--line);background:var(--surface);color:var(--ink-2);flex:none}
+.spk:hover{color:var(--accent);border-color:var(--accent)}
+.spk svg{width:16px;height:16px;fill:currentColor}
+
+/* home hero */
+.hero{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.25fr);gap:20px 28px;align-items:center}
+@media (max-width:720px){.hero{grid-template-columns:1fr}}
+.big{font-family:var(--f-mono);font-weight:500;font-size:60px;line-height:1;letter-spacing:-.03em}
+.big small{font-size:18px;color:var(--ink-2);letter-spacing:0;margin-left:4px}
+.curve{width:100%;height:auto;display:block}
+.curve text{font-family:var(--f-mono);font-size:10.5px;fill:var(--ink-3)}
+.today{display:grid;grid-template-columns:auto 1fr auto;gap:18px;align-items:center}
+@media (max-width:600px){.today{grid-template-columns:auto 1fr}.today .go{grid-column:1/-1}}
+.ring{width:84px;height:84px}
+.ring text{font-family:var(--f-mono);font-size:15px;fill:var(--ink)}
+.kv{display:flex;gap:22px;flex-wrap:wrap}
+.kv div b{display:block;font-family:var(--f-mono);font-weight:500;font-size:22px}
+.kv div span{font-size:12.5px;color:var(--ink-2)}
+.lv{display:grid;grid-template-columns:130px 1fr 78px;gap:12px;align-items:center;font-size:13.5px;padding:6px 0}
+@media (max-width:520px){.lv{grid-template-columns:96px 1fr 64px}}
+.lvbar{position:relative;height:12px;background:var(--sunk);border-radius:6px;overflow:hidden}
+.lvbar i{position:absolute;left:0;top:0;bottom:0;background:var(--accent-soft);border-right:2px solid var(--surface)}
+.lvbar b{position:absolute;left:0;top:0;bottom:0;background:var(--accent)}
+.heat{display:grid;grid-auto-flow:column;grid-template-rows:repeat(7,12px);gap:3px;overflow-x:auto;padding-bottom:4px}
+.heat i{width:12px;height:12px;border-radius:3px;background:var(--sunk)}
+.heat i.l1{background:color-mix(in srgb,var(--accent) 30%,var(--sunk))}
+.heat i.l2{background:color-mix(in srgb,var(--accent) 55%,var(--sunk))}
+.heat i.l3{background:color-mix(in srgb,var(--accent) 80%,var(--sunk))}
+.heat i.l4{background:var(--accent)}
+.bars7{width:100%;height:auto;display:block}
+.bars7 text{font-family:var(--f-mono);font-size:10.5px;fill:var(--ink-3)}
+
+/* session */
+.sbar{display:flex;align-items:center;gap:12px;margin-bottom:10px}
+.sbar .prog{flex:1;height:6px;background:var(--sunk);border-radius:3px;overflow:hidden}
+.sbar .prog i{display:block;height:100%;background:var(--accent);transition:width .25s}
+.sbar .cnt{font-family:var(--f-mono);font-size:12.5px;color:var(--ink-2)}
+.qwrap{max-width:680px;margin:0 auto}
+.qcard{background:var(--surface);border:1px solid var(--line);border-radius:18px;padding:22px 22px 20px}
+.qlabel{display:flex;justify-content:space-between;align-items:center;gap:10px;margin-bottom:14px}
+.qlabel .fmt{font-size:12.5px;color:var(--accent);font-weight:700;letter-spacing:.04em}
+.word{font-family:var(--f-en);font-weight:600;font-size:44px;line-height:1.15;letter-spacing:-.015em;overflow-wrap:anywhere}
+.word.mid{font-size:32px}
+.jp-prompt{font-size:24px;font-weight:700;line-height:1.5}
+.phrase{font-family:var(--f-en);font-size:20px;line-height:1.55}
+.phrase-ja{font-size:14.5px;color:var(--ink-2)}
+.gap{display:inline-block;min-width:4.5em;border-bottom:2px solid var(--ink);margin:0 3px;text-align:center;color:var(--accent);font-weight:600}
+.opts{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:18px}
+@media (max-width:560px){.opts{grid-template-columns:1fr}}
+.opt{display:flex;align-items:center;gap:12px;text-align:left;border:1px solid var(--line);background:var(--surface);border-radius:12px;padding:12px 14px;min-height:56px;font-size:15.5px;transition:background .12s,border-color .12s}
+.opt:hover{border-color:var(--ink-3);background:var(--sunk)}
+.opt .k{flex:none;display:grid;place-items:center;width:24px;height:24px;border-radius:6px;background:var(--sunk);font-family:var(--f-mono);font-size:12px;color:var(--ink-2)}
+.opt .t.en{font-size:18px}
+.opt.good{border-color:var(--good);background:var(--good-soft)}
+.opt.good .k{background:var(--good);color:#fff}
+.opt.bad{border-color:var(--bad);background:var(--bad-soft)}
+.opt.bad .k{background:var(--bad);color:#fff}
+.opt.dim{opacity:.55}
+.opt[disabled]{cursor:default}
+.idk{margin-top:10px}
+.typer{display:flex;gap:10px;margin-top:18px}
+.typer input{flex:1;min-width:0;border:1px solid var(--line);border-radius:12px;padding:12px 14px;font-family:var(--f-en);font-size:20px;background:var(--surface)}
+.fb{margin-top:16px;border-top:1px dashed var(--line);padding-top:16px}
+.verdict{display:flex;align-items:center;gap:10px;flex-wrap:wrap;font-weight:700;margin-bottom:10px}
+.verdict.good{color:var(--good)} .verdict.bad{color:var(--bad)}
+.winfo{display:flex;flex-direction:column;gap:8px}
+.winfo .top-line{display:flex;align-items:baseline;gap:10px;flex-wrap:wrap}
+.winfo .w{font-family:var(--f-en);font-weight:600;font-size:26px}
+.winfo .ja{font-size:18px;font-weight:700}
+.winfo .rel{font-size:13px;color:var(--ink-2)}
+.grades{display:flex;gap:8px;flex-wrap:wrap;margin-top:14px;align-items:center}
+.grades .btn[aria-pressed="true"]{border-color:var(--accent);box-shadow:0 0 0 2px var(--accent-soft)}
+.timerline{height:3px;background:var(--sunk);border-radius:2px;margin-top:12px;overflow:hidden}
+.timerline i{display:block;height:100%;background:var(--accent);width:100%}
+.aibox{margin-top:12px;border-radius:12px;background:var(--sunk);padding:12px 14px;font-size:14px}
+.aibox dt{font-size:12px;color:var(--accent);font-weight:700;margin-top:6px}
+.aibox dt:first-child{margin-top:0}
+.aibox dd{margin:2px 0 0}
+.kbd{font-family:var(--f-mono);font-size:11px;border:1px solid var(--line);border-bottom-width:2px;border-radius:4px;padding:0 5px;color:var(--ink-3)}
+
+/* list */
+.tools{display:flex;gap:10px;flex-wrap:wrap;align-items:center}
+.tools input,.tools select{border:1px solid var(--line);border-radius:10px;padding:8px 12px;background:var(--surface);min-height:40px}
+.tools input{flex:1;min-width:180px}
+.wl{display:flex;flex-direction:column}
+.wr{display:grid;grid-template-columns:52px minmax(0,1fr) auto;gap:12px;align-items:center;padding:10px 4px;border-bottom:1px solid var(--line);background:none;border-left:0;border-right:0;border-top:0;text-align:left;width:100%}
+.wr:hover{background:var(--sunk)}
+.wr .no{font-family:var(--f-mono);font-size:12px;color:var(--ink-3)}
+.wr .ww{font-family:var(--f-en);font-weight:600;font-size:17px}
+.wr .wj{font-size:13px;color:var(--ink-2);overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.dot{display:inline-block;width:9px;height:9px;border-radius:50%;background:var(--line);margin-right:6px}
+.dot.new{background:var(--line)} .dot.lrn{background:var(--hard)} .dot.ok{background:var(--accent)} .dot.mst{background:var(--good)} .dot.lee{background:var(--bad)}
+
+/* modal */
+.scrim{position:fixed;inset:0;background:rgba(10,16,14,.45);z-index:40;display:flex;align-items:flex-end;justify-content:center;padding:16px}
+@media (min-width:700px){.scrim{align-items:center}}
+.sheet{background:var(--surface);border-radius:18px;max-width:640px;width:100%;max-height:calc(100vh - 32px);overflow:auto;padding:20px 22px;border:1px solid var(--line)}
+
+/* story */
+.story{font-family:var(--f-en);font-size:18px;line-height:1.8;white-space:pre-wrap}
+.story button.tw{font:inherit;border:0;padding:0 2px;border-radius:3px;cursor:pointer;color:inherit;background:linear-gradient(transparent 55%,var(--marker) 55%)}
+.pop{margin-top:10px;padding:10px 12px;border-radius:10px;background:var(--sunk);font-size:14px}
+
+.toast{position:fixed;left:50%;bottom:calc(env(safe-area-inset-bottom,0px) + 18px);transform:translateX(-50%);background:var(--ink);color:var(--bg);padding:9px 16px;border-radius:10px;font-size:13.5px;z-index:60;max-width:calc(100vw - 32px)}
+.spin{display:inline-block;width:14px;height:14px;border:2px solid var(--line);border-top-color:var(--accent);border-radius:50%;animation:sp .9s linear infinite;vertical-align:-2px}
+@keyframes sp{to{transform:rotate(360deg)}}
+.empty{padding:28px;text-align:center;color:var(--ink-2);border:1px dashed var(--line);border-radius:12px}
+.field{display:flex;flex-direction:column;gap:6px}
+.field label{font-size:13px;color:var(--ink-2)}
+.field select{border:1px solid var(--line);border-radius:10px;padding:8px 10px;background:var(--surface);min-height:40px}
+.switch{display:flex;align-items:center;justify-content:space-between;gap:12px;padding:10px 0;border-bottom:1px solid var(--line)}
+.switch:last-child{border-bottom:0}
+@media (prefers-reduced-motion:reduce){*{transition:none!important;animation:none!important}}
+</style>
+</head>
+<body>
+<header class="top">
+  <div class="top-in">
+    <div class="brand"><b>Recall 1000</b><span id="dday"></span></div>
+    <nav class="tabs" id="tabs" aria-label="メイン">
+      <button data-view="home">今日</button>
+      <button data-view="words">単語一覧</button>
+      <button data-view="read">ストーリー</button>
+      <button data-view="settings">設定</button>
+    </nav>
+  </div>
+</header>
+<div class="banner" id="banner" hidden><p id="bannerText"></p></div>
+<main id="view"><div class="empty"><span class="spin"></span> 読み込み中…</div></main>
+<div id="modal"></div>
+<div class="toast" id="toast" hidden></div>
+<script>
+(window.WORDS_SRC = window.WORDS_SRC || []).push(`
+#1
+@office
+submit|動|〜を提出する|[submit] a report by Friday|金曜日までに報告書を[提出する]|名 submission 提出
+deadline|名|締め切り|meet the [deadline]|[締め切り]に間に合わせる|
+colleague|名|同僚|ask a [colleague] for help|[同僚]に助けを求める|類 coworker
+supervisor|名|上司、監督者|report to a [supervisor]|[上司]に報告する|動 supervise 監督する
+department|名|部、部門|the accounting [department]|経理[部]|
+assign|動|〜を割り当てる|[assign] a task to a new employee|新入社員に仕事を[割り当てる]|名 assignment 割り当て、任務
+available|形|手が空いている；入手できる|be [available] for a meeting|会議に[出られる]|名 availability 空き状況
+document|名|書類、文書|sign a [document]|[書類]に署名する|名 documentation 証拠書類
+confirm|動|〜を確認する|[confirm] a reservation|予約を[確認する]|名 confirmation 確認
+remind|動|〜に思い出させる|[remind] staff of the meeting|スタッフに会議を[念押しする]|名 reminder 通知、催促状
+inform|動|〜に知らせる|[inform] customers of a change|顧客に変更を[知らせる]|形 informative 有益な
+extension|名|内線；延長|call [extension] 205|[内線]205番に電話する|動 extend 延長する
+agenda|名|議題（の一覧）|the first item on the [agenda]|[議題]の最初の項目|
+handout|名|配布資料|distribute [handouts] at the seminar|セミナーで[配布資料]を配る|
+supplies|名|備品、用品|order office [supplies]|事務[用品]を注文する|動 supply 供給する
+update|動|〜を更新する；最新情報を伝える|[update] the customer list|顧客リストを[更新する]|名 update 最新情報
+responsible|形|責任がある、担当の|be [responsible] for training|研修を[担当している]|名 responsibility 責任
+task|名|仕事、作業|complete a [task] on time|期限内に[作業]を終える|
+request|名|依頼、要望|respond to a [request]|[依頼]に応じる|動 request 〜を依頼する
+approve|動|〜を承認する|[approve] a budget|予算を[承認する]|名 approval 承認
+complete|動|〜を完了する；〜に記入する|[complete] a form|用紙に[記入する]|副 completely 完全に
+announce|動|〜を発表する|[announce] a new policy|新しい方針を[発表する]|名 announcement 発表、お知らせ
+notice|名|お知らせ、掲示；通知|post a [notice] on the board|掲示板に[お知らせ]を貼る|動 notice 〜に気づく
+directory|名|名簿、案内板|check the staff [directory]|社員[名簿]を確認する|
+cabinet|名|戸棚、キャビネット|a filing [cabinet]|書類[整理棚]|
+forward|動|〜を転送する|[forward] an e-mail to a coworker|同僚にメールを[転送する]|
+attach|動|〜を添付する|[attach] a file to an e-mail|メールにファイルを[添付する]|名 attachment 添付ファイル
+reply|動|返事をする|[reply] to a message|メッセージに[返信する]|名 reply 返事
+absent|形|欠席の、不在の|be [absent] from work|仕事を[休んでいる]|名 absence 不在
+memo|名|社内連絡、メモ|send a [memo] to all staff|全社員に[社内連絡]を送る|
+@hr
+hire|動|〜を雇う|[hire] additional staff|追加のスタッフを[雇う]|
+applicant|名|応募者|interview an [applicant]|[応募者]を面接する|名 application 応募、申込書
+apply|動|応募する；申し込む|[apply] for a position|職に[応募する]|名 applicant 応募者
+position|名|職、地位|fill a [position]|[職]の欠員を埋める|
+résumé|名|履歴書|send a [résumé] and a cover letter|[履歴書]と添え状を送る|
+candidate|名|候補者|the best [candidate] for the job|その仕事に最適な[候補者]|
+qualified|形|資格のある、適任の|a highly [qualified] engineer|非常に[有能な]技術者|名 qualification 資格
+experience|名|経験|five years of [experience]|5年の[経験]|形 experienced 経験豊富な
+employee|名|従業員|a new [employee]|新しい[従業員]|名 employer 雇用主／動 employ 雇う
+train|動|〜を訓練する|[train] new staff|新人を[研修する]|名 training 研修
+promote|動|〜を昇進させる；〜を宣伝する|be [promoted] to manager|部長に[昇進する]|名 promotion 昇進、販売促進
+retire|動|退職する|[retire] after 30 years|30年勤めて[退職する]|名 retirement 退職
+transfer|動|異動する、転勤する|[transfer] to the Tokyo office|東京支社に[異動する]|名 transfer 異動
+recruit|動|〜を採用する、募集する|[recruit] college graduates|大卒者を[採用する]|名 recruitment 採用活動
+interview|名|面接|schedule an [interview]|[面接]の日程を決める|名 interviewer 面接官
+salary|名|給料|a competitive [salary]|他社に負けない[給与]|
+benefit|名|手当、福利厚生；利益|health [benefits]|健康保険の[手当]|形 beneficial 有益な
+reference|名|推薦状、照会先；参照|a letter of [reference]|[推薦]状|動 refer 参照する
+personnel|名|人事部；職員|the [personnel] department|[人事]部|
+evaluate|動|〜を評価する|[evaluate] job performance|勤務成績を[評価する]|名 evaluation 評価
+performance|名|業績、成績；公演|improve sales [performance]|販売[実績]を伸ばす|動 perform 行う、演じる
+workshop|名|研修会|attend a [workshop]|[研修会]に参加する|
+orientation|名|（新人）説明会|a new employee [orientation]|新入社員[オリエンテーション]|
+shift|名|勤務時間、交代制|work the night [shift]|夜[勤]をする|
+overtime|名|残業|work [overtime]|[残業]する|
+leave|名|休暇|take a week of [leave]|1週間の[休暇]を取る|熟 on leave 休暇中で
+vacancy|名|欠員；空室|fill a [vacancy]|[欠員]を埋める|形 vacant 空いている
+@biz
+client|名|顧客、依頼人|meet with a [client]|[顧客]と会う|
+contract|名|契約（書）|sign a [contract]|[契約]書に署名する|名 contractor 請負業者
+negotiate|動|交渉する|[negotiate] a price|価格を[交渉する]|名 negotiation 交渉
+agreement|名|合意、契約|reach an [agreement]|[合意]に達する|動 agree 同意する
+branch|名|支店|open a new [branch]|新しい[支店]を開く|
+headquarters|名|本社|move the [headquarters] to Osaka|[本社]を大阪に移す|
+merge|動|合併する|[merge] with a rival company|競合会社と[合併する]|名 merger 合併
+expand|動|〜を拡大する|[expand] the business overseas|事業を海外に[拡大する]|名 expansion 拡大
+profit|名|利益|increase [profits]|[利益]を増やす|形 profitable もうかる
+competitor|名|競合相手|compete with [competitors]|[競合他社]と競う|形 competitive 競争力のある
+partner|名|提携先、共同経営者|a business [partner]|ビジネス[パートナー]|名 partnership 提携
+launch|動|〜を発売する、開始する|[launch] a new product|新製品を[発売する]|名 launch 発売、開始
+goal|名|目標|achieve a sales [goal]|販売[目標]を達成する|
+strategy|名|戦略|a marketing [strategy]|マーケティング[戦略]|形 strategic 戦略的な
+decision|名|決定|make a final [decision]|最終[決定]を下す|動 decide 決める
+proposal|名|提案（書）|submit a [proposal]|[提案書]を提出する|動 propose 提案する
+deal|名|取引|close a [deal]|[取引]をまとめる|熟 deal with 〜に対処する
+firm|名|会社、事務所|a law [firm]|法律[事務所]|
+industry|名|業界、産業|the software [industry]|ソフトウェア[業界]|形 industrial 産業の
+market|名|市場|enter a new [market]|新しい[市場]に参入する|
+growth|名|成長|rapid [growth]|急[成長]|動 grow 成長する
+establish|動|〜を設立する|[establish] a company|会社を[設立する]|名 establishment 設立；施設
+founder|名|創業者|the company's [founder]|会社の[創業者]|動 found 設立する
+owner|名|所有者、経営者|the store [owner]|店の[オーナー]|動 own 所有する
+executive|名|重役、幹部|a senior [executive]|上級[幹部]|
+@money
+budget|名|予算|stay within [budget]|[予算]内に収める|
+invoice|名|請求書、送り状|send an [invoice]|[請求書]を送る|
+receipt|名|領収書、レシート|keep a [receipt]|[領収書]を保管する|動 receive 受け取る
+refund|名|返金|get a full [refund]|全額[返金]を受ける|動 refund 返金する
+payment|名|支払い|make a [payment] online|オンラインで[支払い]をする|動 pay 支払う
+expense|名|費用、経費|travel [expenses]|出張[経費]|形 expensive 高価な
+fee|名|料金、手数料|a registration [fee]|登録[料]|
+charge|動|〜を請求する|[charge] a small fee|少額の手数料を[請求する]|熟 free of charge 無料で
+account|名|口座；取引先|open a bank [account]|銀行[口座]を開く|名 accountant 会計士
+balance|名|残高|check the account [balance]|口座の[残高]を確認する|
+discount|名|割引|offer a 10 percent [discount]|10%の[割引]をする|
+rate|名|料金；割合|the hourly [rate]|時間[料金]|
+tax|名|税金|sales [tax]|売上[税]|
+revenue|名|収益、歳入|annual [revenue]|年間[収益]|
+financial|形|財務の、金融の|a [financial] report|[財務]報告書|名 finance 財務
+bill|名|請求書；紙幣|pay the electricity [bill]|電気代の[請求書]を払う|
+currency|名|通貨|foreign [currency]|外国[通貨]|
+credit|名|信用；クレジット|pay by [credit] card|[クレジット]カードで払う|
+loan|名|融資、ローン|apply for a [loan]|[融資]を申し込む|
+estimate|名|見積もり|get a cost [estimate]|費用の[見積もり]をもらう|動 estimate 見積もる
+afford|動|〜を買う余裕がある|can't [afford] a new car|新車を買う[余裕が]ない|形 affordable 手ごろな
+save|動|〜を節約する、貯める|[save] money on shipping|送料を[節約する]|名 savings 貯金
+spend|動|〜を費やす|[spend] time on research|研究に時間を[費やす]|
+earn|動|〜を稼ぐ、得る|[earn] a good salary|よい給料を[稼ぐ]|名 earnings 収入、所得
+`);
+
+</script>
+<script>
+(window.WORDS_SRC = window.WORDS_SRC || []).push(`
+#1
+@sales
+customer|名|顧客|serve [customers] politely|丁寧に[客]に応対する|
+advertise|動|〜を宣伝する|[advertise] a product online|ネットで製品を[宣伝する]|名 advertisement 広告
+brochure|名|パンフレット|a travel [brochure]|旅行[パンフレット]|
+catalog|名|カタログ|a product [catalog]|製品[カタログ]|
+sample|名|試供品、見本|a free [sample]|無料[サンプル]|
+survey|名|調査、アンケート|conduct a customer [survey]|顧客[アンケート]を行う|
+feedback|名|意見、感想|customer [feedback]|顧客の[意見]|
+demand|名|需要；要求|high [demand] for the product|製品への高い[需要]|動 demand 要求する
+sale|名|販売；特売|go on [sale]|[発売]される、特売になる|
+item|名|品目、商品|a popular [item]|人気[商品]|
+purchase|動|〜を購入する|[purchase] a ticket online|オンラインでチケットを[購入する]|名 purchase 購入（品）
+order|動|〜を注文する|[order] office supplies|事務用品を[注文する]|名 order 注文
+deliver|動|〜を配達する|[deliver] a package|荷物を[配達する]|名 delivery 配達
+retail|形|小売の|a [retail] store|[小売]店|名 retailer 小売業者
+brand|名|ブランド、銘柄|a well-known [brand]|有名[ブランド]|
+promotion|名|販売促進；昇進|a special [promotion]|特別[キャンペーン]|動 promote 宣伝する
+campaign|名|（組織的な）活動|an advertising [campaign]|広告[キャンペーン]|
+commercial|名|（放送の）広告|a television [commercial]|テレビ[コマーシャル]|形 commercial 商業の
+offer|動|〜を提供する、申し出る|[offer] free shipping|送料無料を[提供する]|名 offer 申し出
+quality|名|品質|high-[quality] products|高[品質]の製品|
+popular|形|人気のある|a [popular] restaurant|[人気の]レストラン|名 popularity 人気
+compare|動|〜を比較する|[compare] prices|価格を[比較する]|名 comparison 比較
+@shop
+counter|名|売り場、カウンター|the checkout [counter]|レジ[カウンター]|
+cashier|名|レジ係|pay the [cashier]|[レジ係]に支払う|
+exchange|動|〜を交換する|[exchange] a shirt for a larger size|シャツを大きいサイズと[交換する]|名 exchange 交換
+return|動|〜を返品する；戻る|[return] a damaged item|破損品を[返品する]|名 return 返品
+warranty|名|保証（書）|a two-year [warranty]|2年間の[保証]|類 guarantee
+repair|動|〜を修理する|[repair] a broken printer|壊れたプリンターを[修理する]|名 repair 修理
+replace|動|〜を交換する、取り替える|[replace] a battery|電池を[交換する]|名 replacement 交換（品）、後任
+stock|名|在庫|be out of [stock]|[在庫]切れである|動 stock 〜を仕入れておく
+aisle|名|通路|the cereal [aisle]|シリアル売り場の[通路]|
+shelf|名|棚|put books on a [shelf]|[棚]に本を置く|複 shelves
+display|動|〜を陳列する|[display] new products|新製品を[陳列する]|名 display 展示
+membership|名|会員資格|renew a [membership]|[会員資格]を更新する|名 member 会員
+coupon|名|クーポン、割引券|use a [coupon]|[クーポン]を使う|
+complaint|名|苦情|handle a customer [complaint]|顧客の[苦情]に対応する|動 complain 不満を言う
+assist|動|〜を手伝う|[assist] customers|客を[手伝う]|名 assistance 援助
+serve|動|（料理を）出す；〜に応対する|[serve] lunch from noon|正午から昼食を[出す]|名 service サービス
+cuisine|名|料理（法）|local [cuisine]|郷土[料理]|
+reservation|名|予約|make a [reservation]|[予約]する|動 reserve 予約する
+package|名|小包|send a [package]|[小包]を送る|
+label|名|ラベル、札|read the [label]|[ラベル]を読む|
+@travel
+flight|名|（飛行機の）便|book a [flight]|[航空便]を予約する|
+depart|動|出発する|[depart] from Gate 12|12番ゲートから[出発する]|名 departure 出発
+arrive|動|到着する|[arrive] at the airport|空港に[到着する]|名 arrival 到着
+delay|動|〜を遅らせる|be [delayed] by an hour|1時間[遅れる]|名 delay 遅延
+cancel|動|〜を中止する|[cancel] a trip|旅行を[キャンセルする]|名 cancellation 取り消し
+passenger|名|乗客|[passengers] on the train|電車の[乗客]|
+luggage|名|手荷物|check [luggage] at the counter|カウンターで[手荷物]を預ける|類 baggage
+boarding pass|名|搭乗券|show your [boarding pass]|[搭乗券]を見せる|動 board 乗り込む
+destination|名|目的地|reach a [destination]|[目的地]に着く|
+itinerary|名|旅程（表）|a travel [itinerary]|旅行の[日程表]|
+accommodation|名|宿泊施設|arrange [accommodation]|[宿泊先]を手配する|動 accommodate 収容する
+fare|名|運賃|a bus [fare]|バスの[運賃]|
+commute|動|通勤する|[commute] by train|電車で[通勤する]|名 commuter 通勤者
+traffic|名|交通（量）|heavy [traffic]|激しい[交通渋滞]|
+vehicle|名|乗り物、車両|park a [vehicle]|[車]を駐車する|
+schedule|名|予定（表）|a train [schedule]|電車の[時刻表]|動 schedule 予定する
+route|名|経路、路線|the shortest [route]|最短[ルート]|
+platform|名|（駅の）ホーム|wait on the [platform]|[ホーム]で待つ|
+tour|名|見学、ツアー|a guided [tour]|ガイド付き[ツアー]|
+sightseeing|名|観光|go [sightseeing]|[観光]に行く|
+overseas|副|海外へ|travel [overseas]|[海外へ]旅行する|形 overseas 海外の
+check in|熟|チェックインする|[check in] at the front desk|フロントで[チェックインする]|反 check out
+round-trip|形|往復の|a [round-trip] ticket|[往復]切符|反 one-way 片道の
+rent|動|〜を借りる|[rent] a car|車を[借りる]|名 rental 賃貸
+license|名|免許|a driver's [license]|運転[免許]|
+@event
+conference|名|会議、協議会|attend a [conference]|[会議]に出席する|
+register|動|登録する|[register] for a seminar|セミナーに[登録する]|名 registration 登録
+participant|名|参加者|[participants] in the workshop|研修会の[参加者]|動 participate 参加する
+attend|動|〜に出席する|[attend] a meeting|会議に[出席する]|名 attendee 出席者
+host|動|〜を主催する|[host] a dinner|夕食会を[主催する]|名 host 主催者
+organize|動|〜を準備する、企画する|[organize] a company picnic|社内ピクニックを[企画する]|名 organizer 主催者
+presentation|名|発表|give a [presentation]|[プレゼン]をする|動 present 提示する
+speaker|名|講演者|a guest [speaker]|ゲスト[講演者]|
+audience|名|聴衆|a large [audience]|大勢の[聴衆]|
+invite|動|〜を招待する|[invite] clients to a party|顧客をパーティーに[招待する]|名 invitation 招待（状）
+celebrate|動|〜を祝う|[celebrate] the company's success|会社の成功を[祝う]|名 celebration 祝賀
+anniversary|名|記念日|the tenth [anniversary]|10周年[記念]|
+banquet|名|宴会|an awards [banquet]|授賞[祝賀会]|
+exhibition|名|展示会|an art [exhibition]|美術[展]|動 exhibit 展示する
+trade show|名|見本市|a booth at a [trade show]|[見本市]のブース|
+venue|名|会場|change the [venue]|[会場]を変更する|
+postpone|動|〜を延期する|[postpone] a meeting|会議を[延期する]|類 put off
+session|名|（活動の）時間、会合|a training [session]|研修[会]|
+award|名|賞|win an [award]|[賞]を取る|動 award 授与する
+ceremony|名|式典|an opening [ceremony]|開会[式]|
+reception|名|歓迎会；受付|a welcome [reception]|歓迎[会]|名 receptionist 受付係
+volunteer|名|ボランティア|recruit [volunteers]|[ボランティア]を募る|
+`);
+
+</script>
+<script>
+(window.WORDS_SRC = window.WORDS_SRC || []).push(`
+#1
+@build
+construction|名|建設（工事）|be under [construction]|[工事]中である|動 construct 建設する
+renovate|動|〜を改装する|[renovate] the lobby|ロビーを[改装する]|名 renovation 改装
+facility|名|施設|a sports [facility]|スポーツ[施設]|
+floor|名|階；床|the third [floor]|3[階]|
+entrance|名|入り口|the main [entrance]|正面[入り口]|動 enter 入る
+exit|名|出口|the emergency [exit]|非常[口]|
+parking lot|名|駐車場|a crowded [parking lot]|混雑した[駐車場]|
+hallway|名|廊下|at the end of the [hallway]|[廊下]の突き当たり|
+lobby|名|ロビー|wait in the [lobby]|[ロビー]で待つ|
+maintenance|名|保守、整備|routine [maintenance]|定期[点検]|動 maintain 維持する
+equipment|名|機器、設備|office [equipment]|事務[機器]|動 equip 備え付ける
+install|動|〜を設置する|[install] new software|新しいソフトを[インストールする]|名 installation 設置
+property|名|物件、不動産|rent a [property]|[物件]を借りる|
+apartment|名|アパート、マンション|a two-bedroom [apartment]|寝室2つの[アパート]|
+tenant|名|賃借人、入居者|a new [tenant]|新しい[入居者]|
+landlord|名|家主|call the [landlord]|[大家]に電話する|
+lease|名|賃貸契約|sign a [lease]|[賃貸契約]に署名する|
+location|名|場所、所在地|a convenient [location]|便利な[立地]|動 locate 〜の位置を見つける
+space|名|空間、場所|office [space]|オフィス[スペース]|
+plumber|名|配管工|call a [plumber]|[配管工]を呼ぶ|名 plumbing 配管
+architect|名|建築家|a famous [architect]|有名な[建築家]|名 architecture 建築
+@make
+factory|名|工場|work at a [factory]|[工場]で働く|
+produce|動|〜を生産する|[produce] car parts|自動車部品を[生産する]|名 product 製品／production 生産
+manufacture|動|〜を製造する|[manufacture] electronics|電子機器を[製造する]|名 manufacturer メーカー
+shipment|名|発送（品）、積み荷|a large [shipment]|大量の[出荷品]|動 ship 発送する
+warehouse|名|倉庫|store goods in a [warehouse]|[倉庫]に商品を保管する|
+inventory|名|在庫（目録）|take [inventory]|[棚卸し]をする|
+supplier|名|供給業者、仕入れ先|choose a new [supplier]|新しい[仕入れ先]を選ぶ|動 supply 供給する
+material|名|材料；資料|raw [materials]|原[材料]|
+machinery|名|機械類|heavy [machinery]|重[機]|名 machine 機械
+operate|動|〜を操作する；営業する|[operate] heavy equipment|重機を[操作する]|名 operation 操作、事業
+process|名|工程、手順|the production [process]|生産[工程]|動 process 処理する
+quantity|名|量|a large [quantity] of paper|大[量]の紙|
+container|名|容器、コンテナ|a plastic [container]|プラスチックの[容器]|
+cargo|名|貨物|a [cargo] ship|[貨物]船|
+load|動|〜を積む|[load] boxes onto a truck|トラックに箱を[積み込む]|反 unload 降ろす
+safety|名|安全|[safety] regulations|[安全]規則|形 safe 安全な
+inspect|動|〜を検査する|[inspect] a product|製品を[検査する]|名 inspection 検査
+express|形|速達の、急行の|[express] delivery|[速達]便|
+track|動|〜を追跡する|[track] a package|荷物を[追跡する]|
+goods|名|商品、品物|export [goods]|[商品]を輸出する|
+@tech
+software|名|ソフトウェア|update the [software]|[ソフト]を更新する|
+device|名|機器、装置|a mobile [device]|携帯[端末]|
+upgrade|動|〜を改良する、アップグレードする|[upgrade] a computer system|コンピューターシステムを[アップグレードする]|
+log in|熟|ログインする|[log in] to your account|アカウントに[ログインする]|
+backup|名|予備、バックアップ|make a [backup] of files|ファイルの[バックアップ]を取る|
+access|名|利用（する権利）|have [access] to the database|データベースを[利用できる]|形 accessible 利用しやすい
+online|副|オンラインで|shop [online]|[オンラインで]買い物する|
+website|名|ウェブサイト|visit our [website]|当社の[ウェブサイト]を見る|
+research|名|研究、調査|conduct [research]|[研究]を行う|名 researcher 研究者
+laboratory|名|研究所、実験室|a research [laboratory]|研究[所]|
+data|名|データ|analyze [data]|[データ]を分析する|
+article|名|記事|read a newspaper [article]|新聞[記事]を読む|
+editor|名|編集者|a magazine [editor]|雑誌の[編集者]|動 edit 編集する
+publish|動|〜を出版する、公表する|[publish] a book|本を[出版する]|名 publisher 出版社
+journalist|名|記者|a local [journalist]|地元の[記者]|
+broadcast|動|〜を放送する|[broadcast] a program|番組を[放送する]|
+technology|名|技術|new [technology]|新しい[技術]|形 technical 技術的な
+technician|名|技術者|a computer [technician]|コンピューター[技術者]|
+program|名|番組；計画|a radio [program]|ラジオ[番組]|
+connect|動|〜を接続する|[connect] to the Internet|インターネットに[接続する]|名 connection 接続
+@life
+resident|名|住民|local [residents]|地元の[住民]|形 residential 住宅の
+community|名|地域社会|a [community] center|[地域]センター|
+appointment|名|（面会の）予約、約束|make a dental [appointment]|歯医者の[予約]を取る|
+patient|名|患者|treat a [patient]|[患者]を治療する|形 patient 忍耐強い
+pharmacy|名|薬局|pick up medicine at a [pharmacy]|[薬局]で薬を受け取る|
+prescription|名|処方箋|fill a [prescription]|[処方箋]の薬を出す|動 prescribe 処方する
+exercise|名|運動|get regular [exercise]|定期的に[運動]する|
+temperature|名|気温；体温|high [temperatures]|高い[気温]|
+forecast|名|予報、予測|the weather [forecast]|天気[予報]|
+neighborhood|名|近所、地域|a quiet [neighborhood]|静かな[地域]|
+admission|名|入場（料）；入学|free [admission]|[入場]無料|動 admit 入れる
+museum|名|美術館、博物館|visit a [museum]|[美術館]を訪れる|
+garden|名|庭、庭園|water the [garden]|[庭]に水をやる|
+recipe|名|調理法、レシピ|follow a [recipe]|[レシピ]どおりに作る|
+ingredient|名|材料、成分|fresh [ingredients]|新鮮な[材料]|
+local|形|地元の|a [local] newspaper|[地元]紙|
+public|形|公共の|[public] transportation|[公共]交通機関|
+recycle|動|〜を再利用する|[recycle] paper|紙を[リサイクルする]|
+fitness|名|健康、体力|a [fitness] center|[フィットネス]センター|
+health|名|健康|good for your [health]|[健康]によい|形 healthy 健康的な
+@gen
+necessary|形|必要な|if [necessary]|[必要]なら|名 necessity 必要性
+several|形|いくつかの|[several] times|[何度]か|
+recent|形|最近の|a [recent] survey|[最近の]調査|副 recently 最近
+current|形|現在の|the [current] price|[現在の]価格|副 currently 現在
+previous|形|前の、以前の|the [previous] year|[前]年|副 previously 以前に
+additional|形|追加の|[additional] information|[追加の]情報|名 addition 追加
+convenient|形|便利な、都合のよい|a [convenient] time|[都合のよい]時間|名 convenience 便利
+immediately|副|すぐに|reply [immediately]|[すぐに]返事をする|形 immediate 即座の
+probably|副|おそらく|will [probably] be late|[おそらく]遅れるだろう|
+usually|副|たいてい|[usually] closes at six|[たいてい]6時に閉まる|
+following|形|次の、以下の|the [following] week|[翌]週|
+various|形|さまざまな|[various] products|[さまざまな]製品|名 variety 多様性
+entire|形|全体の|the [entire] staff|[全]職員|副 entirely 完全に
+extra|形|余分の、追加の|at no [extra] cost|[追加]料金なしで|
+prepare|動|〜を準備する|[prepare] a report|報告書を[準備する]|名 preparation 準備
+provide|動|〜を提供する|[provide] free Wi-Fi|無料Wi-Fiを[提供する]|名 provider 提供者
+require|動|〜を必要とする|[require] a signature|署名を[必要とする]|名 requirement 必要条件
+include|動|〜を含む|[include] tax|税を[含む]|前 including 〜を含めて
+increase|動|増える；〜を増やす|[increase] sales|売上を[増やす]|名 increase 増加
+reduce|動|〜を減らす|[reduce] costs|費用を[減らす]|名 reduction 削減
+improve|動|〜を改善する|[improve] customer service|顧客サービスを[改善する]|名 improvement 改善
+`);
+
+</script>
+<script>
+(window.WORDS_SRC = window.WORDS_SRC || []).push(`
+#2
+@office
+coordinate|動|〜を調整する、取りまとめる|[coordinate] a project|プロジェクトを[取りまとめる]|名 coordinator 調整役
+handle|動|〜を処理する、扱う|[handle] customer inquiries|顧客の問い合わせを[処理する]|
+distribute|動|〜を配布する|[distribute] a newsletter|会報を[配布する]|名 distribution 配布、流通
+reschedule|動|〜の予定を変更する|[reschedule] an appointment|予約の[日時を変更する]|
+finalize|動|〜を仕上げる、最終決定する|[finalize] the plans|計画を[最終決定する]|
+revise|動|〜を修正する|[revise] a draft|草稿を[修正する]|名 revision 修正
+draft|名|草稿、下書き|the first [draft] of a report|報告書の最初の[草案]|
+review|動|〜を見直す、検討する|[review] the contract carefully|契約書を注意深く[見直す]|名 review 見直し、批評
+collaborate|動|協力する|[collaborate] on a project|プロジェクトで[協力する]|名 collaboration 協力
+priority|名|優先事項|a top [priority]|最[優先事項]|動 prioritize 優先する
+procedure|名|手順|follow the [procedure]|[手順]に従う|
+policy|名|方針、規定|a company [policy]|会社の[規定]|
+guideline|名|指針|safety [guidelines]|安全[指針]|
+instruction|名|指示；説明書|follow the [instructions]|[指示]に従う|動 instruct 指示する
+manual|名|説明書、手引き|a user [manual]|取扱[説明書]|形 manual 手作業の
+workload|名|仕事量|a heavy [workload]|重い[仕事量]|
+administrative|形|管理の、事務の|[administrative] work|[事務]作業|名 administration 管理、行政
+confidential|形|機密の|[confidential] information|[機密]情報|
+urgent|形|緊急の|an [urgent] matter|[緊急の]用件|名 urgency 緊急
+mandatory|形|義務的な、必須の|a [mandatory] meeting|[必須の]会議|類 compulsory
+optional|形|任意の|an [optional] session|[任意]参加の会|名 option 選択肢
+in charge of|熟|〜を担当して|be [in charge of] marketing|マーケティングを[担当している]|
+on behalf of|熟|〜を代表して|speak [on behalf of] the team|チームを[代表して]話す|
+fill out|熟|〜に記入する|[fill out] an application form|申込用紙に[記入する]|類 fill in
+sign up for|熟|〜に申し込む|[sign up for] a class|講座に[申し込む]|
+be supposed to|熟|〜することになっている|[be supposed to] arrive at noon|正午に着く[ことになっている]|
+stationery|名|文房具|buy [stationery]|[文房具]を買う|
+correspondence|名|通信、文書のやり取り|business [correspondence]|商用の[文書のやり取り]|動 correspond 連絡を取り合う
+notify|動|〜に通知する|[notify] employees of the change|従業員に変更を[通知する]|名 notification 通知
+acknowledge|動|〜を認める；受領を知らせる|[acknowledge] receipt of a letter|手紙の受け取りを[知らせる]|名 acknowledgment 受領通知
+@hr
+qualification|名|資格、適性|meet the [qualifications]|[資格要件]を満たす|形 qualified 資格のある
+requirement|名|必要条件|job [requirements]|職務の[必要条件]|
+internship|名|実習期間、インターン|complete an [internship]|[インターンシップ]を修了する|名 intern 実習生
+payroll|名|給与支払い（名簿）|the [payroll] department|[給与]課|
+raise|名|昇給|ask for a [raise]|[昇給]を求める|動 raise 〜を上げる
+bonus|名|賞与|receive a year-end [bonus]|年末[賞与]を受け取る|
+incentive|名|奨励（策）、報奨金|offer [incentives] to employees|従業員に[報奨金]を出す|
+pension|名|年金|a [pension] plan|[年金]制度|
+workforce|名|労働力、全従業員|a skilled [workforce]|熟練した[労働力]|
+job opening|名|求人、空き職|a [job opening] in sales|営業職の[求人]|
+job description|名|職務内容の説明|read the [job description]|[職務記述書]を読む|
+resign|動|辞職する|[resign] from a position|職を[辞する]|名 resignation 辞職
+successor|名|後任者|name a [successor]|[後任]を指名する|動 succeed 後を継ぐ
+mentor|名|指導者、助言者|work with a [mentor]|[指導役]と取り組む|
+expertise|名|専門知識|technical [expertise]|技術的な[専門知識]|名 expert 専門家
+fluent|形|流ちょうな|[fluent] in Spanish|スペイン語が[流ちょうな]|名 fluency 流ちょうさ
+enthusiastic|形|熱心な|an [enthusiastic] team member|[熱心な]チームの一員|名 enthusiasm 熱意
+motivated|形|意欲のある|a highly [motivated] worker|非常に[意欲的な]社員|名 motivation 意欲
+dedicated|形|献身的な；専用の|a [dedicated] employee|[献身的な]社員|名 dedication 献身
+reliable|形|信頼できる|a [reliable] assistant|[頼りになる]アシスタント|名 reliability 信頼性
+flexible|形|柔軟な、融通のきく|[flexible] working hours|[柔軟な]勤務時間|名 flexibility 柔軟性
+trainee|名|研修生|supervise [trainees]|[研修生]を監督する|
+commitment|名|献身、約束|a strong [commitment] to quality|品質への強い[こだわり]|動 commit 約束する
+contribution|名|貢献；寄付|make a major [contribution]|大きな[貢献]をする|動 contribute 貢献する
+achievement|名|業績、達成|recognize an [achievement]|[業績]をたたえる|動 achieve 達成する
+recognize|動|〜を表彰する；〜を認識する|[recognize] outstanding employees|優秀な社員を[表彰する]|名 recognition 評価、表彰
+leadership|名|指導力|strong [leadership] skills|高い[リーダーシップ]能力|
+supervise|動|〜を監督する|[supervise] a team of ten|10人のチームを[監督する]|名 supervision 監督
+dismiss|動|〜を解雇する；〜を退ける|[dismiss] an employee|従業員を[解雇する]|名 dismissal 解雇
+@biz
+acquire|動|〜を買収する、獲得する|[acquire] a small company|小さな会社を[買収する]|名 acquisition 買収
+subsidiary|名|子会社|a [subsidiary] in Brazil|ブラジルの[子会社]|
+corporation|名|企業、法人|a large [corporation]|大[企業]|形 corporate 企業の
+entrepreneur|名|起業家|a young [entrepreneur]|若い[起業家]|
+invest|動|投資する|[invest] in new equipment|新しい設備に[投資する]|名 investment 投資
+shareholder|名|株主|a [shareholders'] meeting|[株主]総会|類 stockholder
+board of directors|名|取締役会|The [board of directors] approved the plan.|[取締役会]が計画を承認した。|
+consultant|名|コンサルタント|hire a [consultant]|[コンサルタント]を雇う|動 consult 相談する
+outsource|動|〜を外部に委託する|[outsource] customer service|顧客サービスを[外注する]|
+objective|名|目的、目標|the main [objective]|主な[目的]|形 objective 客観的な
+initiative|名|新たな取り組み；主導権|a new environmental [initiative]|新しい環境[対策]|
+restructure|動|〜を再編する|[restructure] the company|会社を[再編する]|
+efficiency|名|効率|improve [efficiency]|[効率]を上げる|形 efficient 効率的な
+productivity|名|生産性|increase [productivity]|[生産性]を上げる|形 productive 生産的な
+terms|名|（契約の）条件|the [terms] of the contract|契約の[条件]|
+renew|動|〜を更新する|[renew] a contract|契約を[更新する]|名 renewal 更新
+expire|動|期限が切れる|The license will [expire] soon.|免許がまもなく[期限切れになる]。|名 expiration 満了
+comply with|熟|〜に従う、〜を遵守する|[comply with] regulations|規則を[遵守する]|名 compliance 遵守
+regulation|名|規則、規制|environmental [regulations]|環境[規制]|動 regulate 規制する
+authorize|動|〜を認可する、権限を与える|[authorize] a payment|支払いを[承認する]|名 authorization 認可
+division|名|部門|the sales [division]|営業[部門]|動 divide 分ける
+sector|名|部門、分野|the private [sector]|民間[部門]|
+domestic|形|国内の|the [domestic] market|[国内]市場|
+global|形|世界的な|a [global] company|[世界的な]企業|
+venture|名|（新）事業|a joint [venture]|合弁[事業]|
+operation|名|事業；運営|expand [operations] in Asia|アジアで[事業]を拡大する|動 operate 運営する
+annual|形|年1回の、年間の|an [annual] report|[年次]報告書|副 annually 毎年
+quarterly|形|四半期の|[quarterly] sales|[四半期]売上|名 quarter 四半期
+projection|名|予測、見積もり|sales [projections]|売上[予測]|動 project 予測する
+consumer|名|消費者|[consumer] trends|[消費者]動向|動 consume 消費する
+`);
+
+</script>
+<script>
+(window.WORDS_SRC = window.WORDS_SRC || []).push(`
+#2
+@money
+accounting|名|会計、経理|an [accounting] firm|[会計]事務所|名 accountant 会計士
+audit|名|会計監査|conduct an [audit]|[監査]を行う|名 auditor 監査役
+reimburse|動|〜を払い戻す、弁済する|[reimburse] travel expenses|出張費を[払い戻す]|名 reimbursement 払い戻し
+deposit|名|手付金、預金|pay a [deposit]|[手付金]を払う|動 deposit 預ける
+withdraw|動|〜を引き出す；撤回する|[withdraw] cash from an ATM|ATMで現金を[引き出す]|名 withdrawal 引き出し
+transaction|名|取引|an online [transaction]|オンライン[取引]|
+installment|名|分割払い（の1回分）|pay in monthly [installments]|毎月の[分割払い]で払う|
+outstanding|形|未払いの；傑出した|an [outstanding] balance|[未払い]残高|
+overdue|形|期限を過ぎた|an [overdue] payment|[期限切れの]支払い|
+due|形|期限の来た；到着予定の|The rent is [due] on Friday.|家賃は金曜日が[支払期限]だ。|
+fund|名|資金、基金|raise [funds] for a new hospital|新病院の[資金]を集める|名 fundraiser 資金集めの催し
+donation|名|寄付（金）|make a [donation]|[寄付]をする|動 donate 寄付する
+sponsor|名|後援者、スポンサー|a corporate [sponsor]|企業[スポンサー]|動 sponsor 後援する
+grant|名|助成金|receive a research [grant]|研究[助成金]を受ける|動 grant 与える
+allowance|名|手当；許容量|a travel [allowance]|出張[手当]|
+expenditure|名|支出|reduce [expenditures]|[支出]を減らす|動 expend 費やす
+fiscal year|名|会計年度|the current [fiscal year]|今[会計年度]|
+cost-effective|形|費用対効果の高い|a [cost-effective] solution|[費用対効果の高い]解決策|
+economical|形|経済的な、安上がりな|an [economical] car|[燃費のよい]車|名 economy 経済
+inexpensive|形|安価な|an [inexpensive] hotel|[安い]ホテル|
+quote|名|見積もり（額）|request a [quote]|[見積もり]を依頼する|動 quote 見積もる
+financing|名|資金調達、融資|secure [financing]|[資金]を確保する|
+asset|名|資産|company [assets]|会社の[資産]|
+debt|名|借金、負債|pay off a [debt]|[借金]を返済する|
+statement|名|明細書；声明|a monthly [statement]|月次の[明細書]|
+@sales
+merchandise|名|商品|display [merchandise]|[商品]を陳列する|
+target|動|〜を対象にする|[target] young consumers|若い消費者を[ターゲットにする]|名 target 目標
+potential|形|潜在的な、見込みのある|[potential] customers|[見込み]客|名 potential 可能性
+prospective|形|見込みのある、将来の|a [prospective] client|[見込み]客|
+loyal|形|忠実な、常連の|[loyal] customers|[常連]客|名 loyalty 忠誠
+feature|名|特徴、機能|a new [feature]|新[機能]|動 feature 〜を特集する
+competitive|形|競争力のある、他に負けない|[competitive] prices|[他社に負けない]価格|動 compete 競う
+exclusive|形|独占的な、限定の|an [exclusive] offer|[限定]の特典|副 exclusively もっぱら
+limited|形|限られた|a [limited]-time offer|[期間限定]の提供|
+boost|動|〜を増やす、押し上げる|[boost] sales|売上を[伸ばす]|
+attract|動|〜を引きつける|[attract] new customers|新しい客を[引きつける]|形 attractive 魅力的な
+appeal|動|（心に）訴える|[appeal] to young people|若者に[受ける]|名 appeal 魅力
+trend|名|傾向、流行|the latest [trends]|最新の[流行]|
+respond|動|返答する、反応する|[respond] to an e-mail|メールに[返信する]|名 response 返答
+questionnaire|名|アンケート用紙|fill out a [questionnaire]|[アンケート]に記入する|
+inquiry|名|問い合わせ|respond to an [inquiry]|[問い合わせ]に答える|動 inquire 尋ねる
+sales representative|名|営業担当者|speak to a [sales representative]|[営業担当者]と話す|
+distributor|名|販売代理店、卸業者|an authorized [distributor]|正規[販売代理店]|
+wholesale|形|卸売りの|[wholesale] prices|[卸売]価格|
+vendor|名|販売業者、売り手|a street [vendor]|露天[商]|
+bulk|名|大量|buy in [bulk]|[大量に]買う|
+outlet|名|直販店；コンセント|a factory [outlet]|工場直営[店]|
+showroom|名|展示室、ショールーム|visit a car [showroom]|車の[ショールーム]を訪れる|
+demonstration|名|実演|a product [demonstration]|製品の[実演]|動 demonstrate 実演する
+prototype|名|試作品|develop a [prototype]|[試作品]を開発する|
+publicity|名|宣伝、評判|get good [publicity]|よい[評判]を得る|動 publicize 宣伝する
+reputation|名|評判|a good [reputation]|よい[評判]|
+market share|名|市場占有率|increase [market share]|[市場シェア]を拡大する|
+@shop
+defective|形|欠陥のある|a [defective] product|[欠陥]品|名 defect 欠陥
+damaged|形|損傷した|a [damaged] package|[破損した]荷物|名 damage 損害
+voucher|名|引換券、割引券|a gift [voucher]|商品[券]|
+checkout|名|レジ、精算|the self-[checkout]|セルフ[レジ]|
+sold out|形|売り切れの|The tickets are [sold out].|チケットは[売り切れ]だ。|
+in stock|熟|在庫がある|The item is [in stock].|その品は[在庫がある]。|反 out of stock 在庫切れで
+shipping|名|発送、送料|free [shipping]|[送料]無料|動 ship 発送する
+courier|名|宅配業者|send documents by [courier]|[宅配便]で書類を送る|
+valid|形|有効な|a [valid] ticket|[有効な]切符|反 invalid 無効な
+complimentary|形|無料の；称賛の|a [complimentary] breakfast|[無料の]朝食|類 free
+courteous|形|礼儀正しい|[courteous] staff|[礼儀正しい]スタッフ|名 courtesy 礼儀
+prompt|形|迅速な|a [prompt] reply|[迅速な]返事|副 promptly 迅速に
+amenity|名|（快適な）設備|hotel [amenities]|ホテルの[設備]|
+refreshments|名|軽食、飲み物|Light [refreshments] will be served.|[軽食]が出されます。|
+beverage|名|飲み物|hot [beverages]|温かい[飲み物]|
+dine|動|食事をする|[dine] out with clients|顧客と[外食する]|名 diner 食事客
+cater|動|（宴会の）料理を提供する|[cater] a wedding|結婚式の[料理を請け負う]|名 catering 仕出し
+appetizer|名|前菜|order an [appetizer]|[前菜]を頼む|
+chef|名|料理長|the head [chef]|[料理長]|
+patron|名|（常連の）客、後援者|restaurant [patrons]|レストランの[客]|名 patronage 愛顧
+tip|名|チップ；助言|leave a [tip]|[チップ]を置く|
+specialty|名|名物、専門|the house [specialty]|店の[名物料理]|
+cash register|名|レジ|stand behind the [cash register]|[レジ]の後ろに立つ|
+bargain|名|お買い得品|a real [bargain]|本当の[掘り出し物]|
+@travel
+reserve|動|〜を予約する；取っておく|[reserve] a meeting room|会議室を[予約する]|名 reservation 予約
+book|動|〜を予約する|[book] a hotel room|ホテルの部屋を[予約する]|名 booking 予約
+layover|名|乗り継ぎ待ち|a two-hour [layover]|2時間の[乗り継ぎ待ち]|
+connecting flight|名|乗り継ぎ便|miss a [connecting flight]|[乗り継ぎ便]に乗り遅れる|
+aisle seat|名|通路側の席|request an [aisle seat]|[通路側の席]を希望する|反 window seat 窓側の席
+carry-on|形|機内持ち込みの|a [carry-on] bag|[機内持ち込み]のかばん|
+customs|名|税関|go through [customs]|[税関]を通る|
+declare|動|（税関で）申告する；宣言する|Do you have anything to [declare]?|何か[申告する]物はありますか。|名 declaration 申告
+board|動|〜に乗り込む|[board] a plane|飛行機に[搭乗する]|名 boarding 搭乗
+terminal|名|ターミナル|the international [terminal]|国際線[ターミナル]|
+shuttle|名|シャトル便|an airport [shuttle]|空港[シャトルバス]|
+transportation|名|交通機関、輸送|arrange [transportation]|[交通手段]を手配する|
+congestion|名|混雑|traffic [congestion]|交通[渋滞]|形 congested 混雑した
+detour|名|迂回路|take a [detour]|[迂回]する|
+toll|名|通行料|a highway [toll]|高速道路の[通行料]|
+fuel|名|燃料|[fuel] costs|[燃料]費|
+excursion|名|小旅行|a day [excursion]|日帰り[旅行]|
+landmark|名|名所、目印|a famous [landmark]|有名な[名所]|
+scenic|形|景色のよい|a [scenic] route|[景色のよい]ルート|名 scenery 景色
+attraction|名|名所、呼び物|a tourist [attraction]|観光[名所]|動 attract 引きつける
+souvenir|名|土産|buy [souvenirs]|[お土産]を買う|
+travel agency|名|旅行代理店|contact a [travel agency]|[旅行代理店]に連絡する|名 travel agent 旅行業者
+suite|名|スイートルーム|book a [suite]|[スイートルーム]を予約する|
+housekeeping|名|（ホテルの）客室清掃係|call [housekeeping]|[客室係]に電話する|
+check out|熟|チェックアウトする；調べる|[check out] of the hotel|ホテルを[チェックアウトする]|
+belongings|名|所持品|personal [belongings]|身の回りの[品]|
+timetable|名|時刻表|a bus [timetable]|バスの[時刻表]|
+jet lag|名|時差ぼけ|suffer from [jet lag]|[時差ぼけ]に苦しむ|
+passport|名|パスポート|renew a [passport]|[パスポート]を更新する|
+`);
+
+</script>
+<script>
+(window.WORDS_SRC = window.WORDS_SRC || []).push(`
+#2
+@event
+keynote|名|基調（講演）|deliver a [keynote] address|[基調]講演を行う|
+moderator|名|司会者|the panel [moderator]|パネル討論の[司会者]|動 moderate 司会をする
+panel|名|（討論の）パネル、委員団|a [panel] discussion|[パネル]ディスカッション|名 panelist 討論者
+facilitate|動|〜を促進する、進行する|[facilitate] a discussion|議論を[進行する]|名 facilitator 進行役
+minutes|名|議事録|take the [minutes]|[議事録]を取る|
+attendee|名|出席者|conference [attendees]|会議の[出席者]|
+fundraiser|名|資金集めの催し|a charity [fundraiser]|慈善[募金イベント]|
+occasion|名|（特別な）機会、行事|a special [occasion]|特別な[行事]|
+exhibit|名|展示品、展示会|a new [exhibit]|新しい[展示]|動 exhibit 展示する
+booth|名|（展示の）ブース|set up a [booth]|[ブース]を設営する|
+showcase|動|〜を披露する|[showcase] new products|新製品を[披露する]|
+nominate|動|〜を推薦する、指名する|[nominate] a candidate|候補者を[推薦する]|名 nomination 指名
+recipient|名|受賞者、受取人|the award [recipient]|[受賞者]|動 receive 受け取る
+honor|動|〜をたたえる|[honor] a retiring employee|退職する社員を[たたえる]|名 honor 名誉
+tribute|名|賛辞、敬意|pay [tribute] to the founder|創業者に[敬意]を表する|
+entry|名|応募（作品）；入場|submit an [entry]|[応募作品]を出す|
+capacity|名|収容能力；能力|a seating [capacity] of 500|500人の[収容能力]|
+intermission|名|休憩時間|a 15-minute [intermission]|15分の[休憩]|
+turnout|名|出席者数、人出|a large [turnout]|大勢の[人出]|
+@build
+remodel|動|〜を改築する|[remodel] a kitchen|台所を[改築する]|
+expansion|名|拡張|the [expansion] of the factory|工場の[拡張]|動 expand 拡張する
+blueprint|名|設計図|study the [blueprints]|[設計図]を調べる|
+floor plan|名|間取り図|a detailed [floor plan]|詳細な[間取り図]|
+contractor|名|請負業者|hire a building [contractor]|建築[請負業者]を雇う|
+crew|名|作業班、乗組員|a construction [crew]|工事[作業班]|
+site|名|現場、用地|a construction [site]|工事[現場]|
+layout|名|配置、レイアウト|the office [layout]|オフィスの[配置]|
+spacious|形|広々とした|a [spacious] room|[広々とした]部屋|
+furnished|形|家具付きの|a [furnished] apartment|[家具付き]のアパート|動 furnish 家具を備える
+utilities|名|公共料金（電気・ガス・水道）|[Utilities] are included in the rent.|[光熱費]は家賃に含まれる。|
+real estate|名|不動産|a [real estate] agent|[不動産]業者|
+residential|形|住宅の|a [residential] area|[住宅]地|名 resident 住民
+vacant|形|空いている|a [vacant] lot|[空き]地|名 vacancy 空き
+occupy|動|〜を占める、使用する|[occupy] the top floor|最上階を[使用している]|名 occupancy 使用、入居
+relocate|動|移転する|[relocate] to a larger office|より広いオフィスに[移転する]|名 relocation 移転
+accessible|形|行きやすい、利用しやすい|[accessible] by public transportation|公共交通機関で[行ける]|名 access 利用
+plumbing|名|配管（設備）|fix the [plumbing]|[配管]を修理する|
+wiring|名|配線|faulty [wiring]|欠陥のある[配線]|
+storage|名|保管、収納|[storage] space|[収納]スペース|動 store 保管する
+premises|名|敷地、構内|on the [premises]|[敷地内]で|
+@scene
+lean|動|寄りかかる；〜を立てかける|[lean] against a wall|壁に[寄りかかる]|
+stack|動|〜を積み重ねる|[stack] chairs|椅子を[積み重ねる]|名 stack 積み重ね
+pile|名|（積み重なった）山|a [pile] of documents|書類の[山]|動 pile 積み上げる
+arrange|動|〜を並べる；〜を手配する|[arrange] flowers in a vase|花瓶に花を[生ける]|名 arrangement 配置、手配
+hang|動|〜を掛ける、つるす|[hang] a picture on the wall|壁に絵を[掛ける]|
+fold|動|〜を折りたたむ|[fold] a towel|タオルを[たたむ]|
+pour|動|〜を注ぐ|[pour] coffee into a cup|カップにコーヒーを[注ぐ]|
+wipe|動|〜を拭く|[wipe] the counter|カウンターを[拭く]|
+sweep|動|〜を掃く|[sweep] the floor|床を[掃く]|
+mop|動|〜をモップで拭く|[mop] the floor|床に[モップをかける]|
+rake|動|〜を熊手でかき集める|[rake] leaves|落ち葉を[かき集める]|
+trim|動|〜を刈り込む|[trim] the bushes|茂みを[刈り込む]|
+water|動|〜に水をやる|[water] the plants|植物に[水をやる]|
+unload|動|〜を降ろす|[unload] a truck|トラックの荷を[降ろす]|反 load 積む
+stroll|動|ぶらぶら歩く|[stroll] along the beach|浜辺を[散歩する]|
+browse|動|（商品などを）見て回る|[browse] in a bookstore|書店で本を[見て回る]|
+examine|動|〜を調べる|[examine] a document|書類を[調べる]|名 examination 検査
+adjust|動|〜を調整する|[adjust] the height of a chair|椅子の高さを[調節する]|名 adjustment 調整
+reach for|熟|〜に手を伸ばす|[reach for] a book on a shelf|棚の本に[手を伸ばす]|
+point at|熟|〜を指さす|[point at] a screen|画面を[指さす]|
+face|動|〜の方を向く|[face] each other|お互いに[向き合う]|
+ladder|名|はしご|climb a [ladder]|[はしご]を登る|
+wheelbarrow|名|手押し車|push a [wheelbarrow]|[手押し車]を押す|
+curb|名|（歩道の）縁石|park along the [curb]|[縁石]沿いに駐車する|
+pedestrian|名|歩行者|[pedestrians] crossing the street|通りを渡る[歩行者]|
+railing|名|手すり|hold on to the [railing]|[手すり]につかまる|
+awning|名|日よけ|an [awning] over a window|窓の上の[日よけ]|
+dock|名|桟橋、波止場|a boat tied to a [dock]|[桟橋]につながれたボート|
+be lined up|熟|並んでいる|Cars [are lined up] at the light.|信号で車が[並んでいる]。|
+be occupied|熟|（席などが）ふさがっている|All the seats [are occupied].|すべての席が[ふさがっている]。|
+@make
+assemble|動|〜を組み立てる|[assemble] furniture|家具を[組み立てる]|名 assembly 組み立て
+assembly line|名|組み立てライン|work on an [assembly line]|[組み立てライン]で働く|
+component|名|部品、構成要素|electronic [components]|電子[部品]|
+durable|形|耐久性のある|[durable] materials|[丈夫な]素材|名 durability 耐久性
+fragile|形|壊れやすい|[fragile] items|[壊れやすい]品|
+defect|名|欠陥|a manufacturing [defect]|製造上の[欠陥]|形 defective 欠陥のある
+automated|形|自動化された|an [automated] system|[自動化された]システム|名 automation 自動化
+output|名|生産高|increase [output]|[生産高]を増やす|
+plant|名|工場|a power [plant]|発電[所]|
+distribution|名|流通、配布|a [distribution] center|[物流]センター|動 distribute 配布する
+freight|名|貨物（輸送）|[freight] charges|[貨物運送]料|
+carrier|名|運送業者、航空会社|a shipping [carrier]|配送[業者]|
+dispatch|動|〜を発送する、派遣する|[dispatch] an order|注文品を[発送する]|
+packaging|名|包装|eco-friendly [packaging]|環境に優しい[包装]|
+specifications|名|仕様（書）|meet the [specifications]|[仕様]を満たす|
+standard|名|基準|safety [standards]|安全[基準]|
+certified|形|認定を受けた|a [certified] technician|[認定]技術者|名 certification 認定
+logistics|名|物流|a [logistics] company|[物流]会社|
+`);
+
+</script>
+<script>
+(window.WORDS_SRC = window.WORDS_SRC || []).push(`
+#2
+@tech
+compatible|形|互換性のある|[compatible] with most devices|ほとんどの機器と[互換性がある]|
+malfunction|名|故障、誤作動|a system [malfunction]|システムの[故障]|動 malfunction 故障する
+troubleshoot|動|（問題を）解決する|[troubleshoot] a network problem|ネットワークの問題を[解決する]|
+technical support|名|技術サポート|contact [technical support]|[技術サポート]に連絡する|
+user-friendly|形|使いやすい|a [user-friendly] design|[使いやすい]デザイン|
+function|名|機能|a search [function]|検索[機能]|
+innovative|形|革新的な|an [innovative] product|[革新的な]製品|名 innovation 革新
+develop|動|〜を開発する|[develop] new software|新しいソフトを[開発する]|名 development 開発
+database|名|データベース|update a [database]|[データベース]を更新する|
+subscribe|動|定期購読する|[subscribe] to a magazine|雑誌を[定期購読する]|名 subscription 定期購読
+column|名|（新聞の）コラム；列|write a weekly [column]|週1回の[コラム]を書く|
+headline|名|見出し|read the [headlines]|[見出し]を読む|
+press release|名|報道発表|issue a [press release]|[プレスリリース]を出す|
+coverage|名|報道；補償範囲|media [coverage]|メディアの[報道]|動 cover 報道する
+issue|名|（雑誌の）号；問題|the latest [issue]|最新[号]|動 issue 発行する
+manuscript|名|原稿|submit a [manuscript]|[原稿]を提出する|
+proofread|動|〜を校正する|[proofread] an article|記事を[校正する]|
+edition|名|版|a special [edition]|特別[版]|
+subscriber|名|定期購読者|attract new [subscribers]|新しい[購読者]を獲得する|
+analysis|名|分析|a detailed [analysis]|詳しい[分析]|動 analyze 分析する
+experiment|名|実験|conduct an [experiment]|[実験]を行う|
+@life
+clinic|名|診療所|a dental [clinic]|歯科[医院]|
+physician|名|医師、内科医|consult a [physician]|[医師]に相談する|
+checkup|名|健康診断|a regular [checkup]|定期[健診]|
+symptom|名|症状|flu [symptoms]|インフルエンザの[症状]|
+medication|名|薬|take [medication]|[薬]を飲む|
+nutrition|名|栄養|good [nutrition]|十分な[栄養]|形 nutritious 栄養のある
+charity|名|慈善団体|donate to a [charity]|[慈善団体]に寄付する|
+municipal|形|市の、地方自治体の|a [municipal] library|[市立]図書館|
+city council|名|市議会|a [city council] meeting|[市議会]の会合|
+mayor|名|市長|the [mayor] of the city|その市の[市長]|
+recreation|名|娯楽、レクリエーション|a [recreation] center|[レクリエーション]センター|形 recreational 娯楽の
+environment|名|環境|protect the [environment]|[環境]を守る|形 environmental 環境の
+sustainable|形|持続可能な|[sustainable] energy|[持続可能な]エネルギー|
+conserve|動|〜を節約する、保護する|[conserve] energy|エネルギーを[節約する]|名 conservation 保護
+landscape|名|景観、風景|a beautiful [landscape]|美しい[景色]|
+gardening|名|園芸|a [gardening] tool|[園芸]用具|
+insurance|名|保険|health [insurance]|健康[保険]|
+emergency|名|緊急事態|in case of [emergency]|[緊急]時には|
+@gen
+approximately|副|約、およそ|[approximately] 200 people|[約]200人|形 approximate おおよその
+significantly|副|大幅に|[significantly] increase|[大幅に]増える|形 significant 重要な、かなりの
+gradually|副|徐々に|[gradually] improve|[徐々に]よくなる|形 gradual 段階的な
+frequently|副|頻繁に|[frequently] asked questions|[よく]ある質問|形 frequent 頻繁な
+occasionally|副|時々|[occasionally] work from home|[時々]在宅勤務する|
+temporarily|副|一時的に|be [temporarily] closed|[一時的に]閉まっている|形 temporary 一時的な
+permanently|副|永久に|be [permanently] closed|[永久に]閉鎖される|形 permanent 永続的な
+especially|副|特に|[especially] popular with tourists|観光客に[特に]人気がある|
+particularly|副|特に|[particularly] useful|[特に]役に立つ|形 particular 特定の
+relatively|副|比較的|[relatively] inexpensive|[比較的]安い|
+slightly|副|わずかに|[slightly] higher prices|[わずかに]高い価格|形 slight わずかな
+thoroughly|副|徹底的に|[thoroughly] check the data|データを[徹底的に]確認する|形 thorough 徹底的な
+accurate|形|正確な|[accurate] information|[正確な]情報|名 accuracy 正確さ
+efficient|形|効率的な|an [efficient] method|[効率的な]方法|名 efficiency 効率
+effective|形|効果的な；有効な|an [effective] strategy|[効果的な]戦略|名 effectiveness 有効性
+eligible|形|資格のある|be [eligible] for a discount|割引を受ける[資格がある]|名 eligibility 適格性
+appropriate|形|適切な|[appropriate] clothing|[適切な]服装|
+adequate|形|十分な、適切な|[adequate] time|[十分な]時間|
+sufficient|形|十分な|[sufficient] funds|[十分な]資金|
+considerable|形|かなりの|a [considerable] amount|[かなりの]量|副 considerably かなり
+substantial|形|相当な|a [substantial] increase|[相当な]増加|
+essential|形|不可欠な|[essential] skills|[必須の]技能|
+primary|形|主要な|the [primary] goal|[主要な]目標|副 primarily 主に
+numerous|形|多数の|[numerous] awards|[数々の]賞|
+temporary|形|一時的な、臨時の|a [temporary] worker|[臨時]社員|
+ensure|動|〜を確実にする|[ensure] safety|安全を[確保する]|
+enhance|動|〜を高める|[enhance] the quality|品質を[高める]|名 enhancement 向上
+maintain|動|〜を維持する|[maintain] high standards|高い水準を[維持する]|名 maintenance 維持
+obtain|動|〜を得る|[obtain] permission|許可を[得る]|
+achieve|動|〜を達成する|[achieve] a goal|目標を[達成する]|名 achievement 達成
+anticipate|動|〜を予期する|[anticipate] a delay|遅れを[予想する]|名 anticipation 予想
+indicate|動|〜を示す|[indicate] a problem|問題を[示す]|名 indication 兆候
+specify|動|〜を明記する|[specify] a date|日付を[明記する]|形 specific 具体的な
+clarify|動|〜を明確にする|[clarify] the details|詳細を[明確にする]|名 clarification 説明
+verify|動|〜を確認する、検証する|[verify] an address|住所を[確認する]|名 verification 検証
+modify|動|〜を修正する、変更する|[modify] a design|設計を[修正する]|名 modification 修正
+identify|動|〜を特定する|[identify] the cause|原因を[特定する]|名 identification 身分証明
+determine|動|〜を決定する、突き止める|[determine] the price|価格を[決定する]|
+recommend|動|〜を勧める|[recommend] a restaurant|レストランを[勧める]|名 recommendation 推薦
+encourage|動|〜を奨励する、励ます|[encourage] employees to exercise|社員に運動を[奨励する]|
+permit|動|〜を許可する|[permit] smoking|喫煙を[許可する]|名 permission 許可／permit 許可証
+prohibit|動|〜を禁止する|[prohibit] parking|駐車を[禁止する]|名 prohibition 禁止
+restrict|動|〜を制限する|[restrict] access|立ち入りを[制限する]|名 restriction 制限
+exceed|動|〜を超える|[exceed] expectations|期待を[上回る]|名 excess 超過
+decline|動|減少する；〜を断る|Sales [declined] last year.|昨年売上が[減少した]。|名 decline 減少
+reject|動|〜を拒否する|[reject] an offer|申し出を[断る]|名 rejection 拒否
+appreciate|動|〜に感謝する；〜を正しく評価する|[appreciate] your help|ご協力に[感謝する]|名 appreciation 感謝
+apologize|動|謝る|[apologize] for the delay|遅れを[わびる]|名 apology 謝罪
+address|動|〜に対処する；〜に演説する|[address] a problem|問題に[対処する]|
+resolve|動|〜を解決する|[resolve] a dispute|紛争を[解決する]|名 resolution 解決
+consider|動|〜を検討する|[consider] a proposal|提案を[検討する]|名 consideration 考慮
+suggest|動|〜を提案する|[suggest] a new idea|新しいアイデアを[提案する]|名 suggestion 提案
+inconvenience|名|不便、迷惑|apologize for the [inconvenience]|ご[不便]をおわびする|形 inconvenient 不便な
+`);
+
+</script>
+<script>
+(window.WORDS_SRC = window.WORDS_SRC || []).push(`
+#3
+@office
+oversee|動|〜を監督する|[oversee] a project|プロジェクトを[監督する]|
+delegate|動|〜を委任する|[delegate] tasks to staff|部下に仕事を[任せる]|名 delegation 委任；代表団
+implement|動|〜を実行する、導入する|[implement] a new system|新システムを[導入する]|名 implementation 実施
+streamline|動|〜を効率化する|[streamline] the process|手順を[効率化する]|
+expedite|動|〜を早める、促進する|[expedite] the shipping process|発送手続きを[早める]|
+consolidate|動|〜を統合する|[consolidate] two offices|2つの事務所を[統合する]|名 consolidation 統合
+allocate|動|〜を割り当てる、配分する|[allocate] funds|資金を[配分する]|名 allocation 配分
+designate|動|〜を指定する|a [designated] smoking area|[指定]喫煙所|名 designation 指定
+tentative|形|仮の、暫定的な|a [tentative] schedule|[仮の]予定|副 tentatively 仮に
+pending|形|未決定の、保留中の|a [pending] request|[保留中の]依頼|
+preliminary|形|予備の、事前の|[preliminary] results|[予備的な]結果|
+subsequent|形|その後の|[subsequent] meetings|[その後の]会議|副 subsequently その後
+prior to|熟|〜より前に|[prior to] the meeting|会議の[前に]|形 prior 前の
+in accordance with|熟|〜に従って|[in accordance with] the rules|規則に[従って]|
+regarding|前|〜に関して|questions [regarding] the order|注文に[関する]質問|類 concerning
+circulate|動|〜を回覧する|[circulate] a report|報告書を[回覧する]|名 circulation 流通
+compile|動|〜をまとめる、編集する|[compile] a list of names|名簿を[作成する]|
+disclose|動|〜を公開する、明らかにする|[disclose] information|情報を[開示する]|名 disclosure 開示
+duplicate|名|複製、写し|make a [duplicate] of the key|鍵の[合い鍵]を作る|
+obligation|名|義務|a legal [obligation]|法的[義務]|形 obligatory 義務的な
+clearance|名|許可；在庫一掃|security [clearance]|機密情報を扱う[許可]|
+at one's earliest convenience|熟|都合がつき次第|Please reply [at your earliest convenience].|[ご都合がつき次第]お返事ください。|
+hand in|熟|〜を提出する|[hand in] a report|報告書を[提出する]|類 submit, turn in
+look over|熟|〜にざっと目を通す|[look over] the proposal|提案書に[目を通す]|
+@hr
+credentials|名|資格、経歴|impressive [credentials]|すばらしい[経歴]|
+compensation|名|報酬；補償|a [compensation] package|[報酬]パッケージ|動 compensate 補償する
+appraisal|名|評価、査定|a performance [appraisal]|人事[考課]|動 appraise 査定する
+predecessor|名|前任者|my [predecessor] in this position|この職の私の[前任者]|反 successor 後任者
+proficient|形|熟達した|[proficient] in spreadsheet software|表計算ソフトに[熟達した]|名 proficiency 熟達
+diligent|形|勤勉な|a [diligent] worker|[勤勉な]働き手|名 diligence 勤勉
+competent|形|有能な|a [competent] manager|[有能な]管理者|名 competence 能力
+versatile|形|多才な、用途の広い|a [versatile] employee|[多才な]社員|
+aptitude|名|適性|an [aptitude] for sales|営業の[適性]|
+headcount|名|人員数|reduce [headcount]|[人員]を削減する|
+turnover|名|離職率；売上高|high employee [turnover]|高い[離職率]|
+morale|名|士気|boost employee [morale]|社員の[士気]を高める|
+commend|動|〜を称賛する|[commend] staff for their hard work|職員の努力を[称賛する]|名 commendation 表彰
+reassign|動|〜を配置換えする|be [reassigned] to another team|別のチームに[配置換えになる]|
+job fair|名|就職説明会|attend a [job fair]|[就職説明会]に参加する|
+seasoned|形|経験豊富な|a [seasoned] journalist|[ベテランの]記者|類 experienced
+novice|名|初心者|a [novice] programmer|[新米]プログラマー|
+workplace|名|職場|a safe [workplace]|安全な[職場]|
+apprentice|名|見習い|work as an [apprentice]|[見習い]として働く|
+retain|動|〜を保持する、引き留める|[retain] talented staff|有能な社員を[引き留める]|名 retention 保持
+lay off|熟|〜を解雇する|[lay off] workers|労働者を[解雇する]|名 layoff 一時解雇
+take over|熟|〜を引き継ぐ|[take over] a project|プロジェクトを[引き継ぐ]|
+@biz
+stakeholder|名|利害関係者|consult [stakeholders]|[利害関係者]と協議する|
+affiliate|名|関連会社|an [affiliate] of the bank|その銀行の[関連会社]|動 affiliate 提携する
+enterprise|名|企業、事業|a small [enterprise]|小規模[企業]|
+conglomerate|名|複合企業|a media [conglomerate]|メディア[複合企業]|
+lucrative|形|もうかる|a [lucrative] business|[もうかる]事業|
+feasible|形|実現可能な|a [feasible] plan|[実現可能な]計画|名 feasibility 実現可能性
+viable|形|実行可能な、存続できる|a [viable] option|[実行可能な]選択肢|
+prosper|動|繁栄する|The business [prospered].|事業は[繁盛した]。|形 prosperous 繁栄した
+flourish|動|繁盛する、栄える|a [flourishing] industry|[栄えている]産業|
+diversify|動|〜を多様化する|[diversify] the product line|製品ラインを[多様化する]|名 diversification 多様化
+dominate|動|〜を支配する|[dominate] the market|市場を[支配する]|名 dominance 優位
+clause|名|（契約の）条項|a [clause] in the contract|契約書の[条項]|
+stipulate|動|〜を規定する|as [stipulated] in the contract|契約で[規定された]とおり|
+binding|形|拘束力のある|a legally [binding] agreement|法的[拘束力のある]合意|
+terminate|動|〜を終了させる|[terminate] a contract|契約を[打ち切る]|名 termination 終了
+mutual|形|相互の|[mutual] benefit|[相互の]利益|
+counterpart|名|相当する人、相手方|meet with our overseas [counterparts]|海外の[担当者]と会う|
+consensus|名|合意、総意|reach a [consensus]|[合意]に達する|
+benchmark|名|基準、指標|set a [benchmark]|[基準]を設ける|
+rival|名|競争相手|a [rival] firm|[ライバル]会社|
+monopoly|名|独占|a [monopoly] on the market|市場の[独占]|
+incorporate|動|〜を組み込む|[incorporate] feedback into the design|意見を設計に[取り入れる]|
+@money
+incur|動|（費用など）を負担する、被る|[incur] additional costs|追加費用が[かかる]|
+waive|動|〜を免除する|[waive] the fee|手数料を[免除する]|名 waiver 権利放棄
+forfeit|動|〜を失う、没収される|[forfeit] a deposit|手付金を[没収される]|
+fluctuate|動|変動する|Prices [fluctuate] daily.|価格は毎日[変動する]。|名 fluctuation 変動
+surplus|名|余剰、黒字|a budget [surplus]|予算の[黒字]|
+deficit|名|赤字、不足|a trade [deficit]|貿易[赤字]|
+proceeds|名|収益金、売上金|the [proceeds] from the sale|販売の[収益金]|
+tuition|名|授業料|pay [tuition]|[授業料]を払う|
+appraise|動|〜を査定する|[appraise] a house|家を[査定する]|名 appraisal 査定
+inflation|名|物価上昇|the rate of [inflation]|[インフレ]率|
+recession|名|景気後退|an economic [recession]|[景気後退]|
+subsidy|名|補助金|a government [subsidy]|政府の[補助金]|動 subsidize 助成する
+itemize|動|〜を項目別にする|an [itemized] bill|[明細付きの]請求書|
+overhead|名|諸経費|reduce [overhead]|[諸経費]を減らす|
+dividend|名|配当|pay a [dividend]|[配当]を支払う|
+collateral|名|担保|[collateral] for a loan|融資の[担保]|
+liability|名|負債；責任|assets and [liabilities]|資産と[負債]|形 liable 責任がある
+compensate|動|〜に補償する|[compensate] customers for the delay|遅延について顧客に[補償する]|
+pay off|熟|〜を完済する；うまくいく|[pay off] a loan|ローンを[完済する]|
+fall short of|熟|〜に達しない|[fall short of] expectations|期待に[届かない]|
+account for|熟|〜を占める；〜を説明する|[account for] 30 percent of sales|売上の30％を[占める]|
+@sales
+clientele|名|顧客（層）|a loyal [clientele]|なじみの[客層]|
+testimonial|名|（顧客の）推薦の言葉|customer [testimonials]|お客様の[声]|
+endorse|動|〜を推奨する、支持する|[endorse] a product|製品を[推奨する]|名 endorsement 推奨
+promotional|形|販売促進の|[promotional] materials|[販促]資料|
+solicit|動|〜を求める、募る|[solicit] feedback|意見を[募る]|名 solicitation 勧誘
+unveil|動|〜を発表する、公開する|[unveil] a new model|新型を[発表する]|
+surge|名|急増|a [surge] in demand|需要の[急増]|動 surge 急増する
+plummet|動|急落する|Sales [plummeted].|売上が[急落した]。|
+soar|動|急上昇する|Prices [soared].|価格が[急騰した]。|
+saturated|形|飽和状態の|a [saturated] market|[飽和した]市場|
+niche|名|すき間市場、適所|a [niche] market|[ニッチ]市場|
+pricing|名|価格設定|competitive [pricing]|競争力のある[価格設定]|
+upscale|形|高級な|an [upscale] restaurant|[高級]レストラン|
+state-of-the-art|形|最新式の|[state-of-the-art] equipment|[最新式の]設備|
+cutting-edge|形|最先端の|[cutting-edge] technology|[最先端の]技術|
+commodity|名|商品、日用品|basic [commodities]|生活[必需品]|
+patronage|名|ひいき、愛顧|Thank you for your [patronage].|お[引き立て]ありがとうございます。|
+enticing|形|魅力的な|an [enticing] offer|[魅力的な]申し出|動 entice 誘う
+word of mouth|名|口コミ|spread by [word of mouth]|[口コミ]で広まる|
+comprehensive|形|包括的な|a [comprehensive] guide|[総合]ガイド|
+tailored|形|（ニーズに）合わせた|[tailored] services|[個別対応の]サービス|動 tailor 合わせる
+`);
+
+</script>
+<script>
+(window.WORDS_SRC = window.WORDS_SRC || []).push(`
+#3
+@travel
+accommodate|動|〜を収容する；〜に応じる|[accommodate] 200 guests|200人を[収容する]|名 accommodation 宿泊施設
+inclement|形|（天候が）荒れた|[inclement] weather|[悪]天候|
+disembark|動|（船・飛行機から）降りる|[disembark] from the ship|船から[降りる]|反 embark 乗り込む
+embark on|熟|〜に乗り出す|[embark on] a new project|新しい事業に[乗り出す]|
+vicinity|名|近所、付近|in the [vicinity] of the station|駅の[付近]に|
+en route|副|途中で|[en route] to the airport|空港へ[向かう途中で]|
+proximity|名|近さ|[proximity] to the station|駅への[近さ]|
+concierge|名|（ホテルの）接客係|ask the [concierge]|[コンシェルジュ]に尋ねる|
+lodging|名|宿泊（場所）|food and [lodging]|食事と[宿泊]|
+hospitality|名|もてなし|Thank you for your [hospitality].|お[もてなし]に感謝します。|
+valet|名|（駐車などの）係員|[valet] parking|[係員付き]駐車|
+@shop
+renowned|形|有名な|a [renowned] chef|[有名な]シェフ|
+authentic|形|本物の、本格的な|[authentic] Italian food|[本格的な]イタリア料理|
+culinary|形|料理の|[culinary] skills|[料理の]腕前|
+gourmet|形|グルメ向けの、高級料理の|a [gourmet] meal|[高級]料理|
+dietary|形|食事の|[dietary] restrictions|[食事]制限|名 diet 食事
+patio|名|テラス|dine on the [patio]|[テラス]で食事する|
+@event
+adjourn|動|（会議を）閉会にする|[adjourn] the meeting|会議を[散会する]|
+commemorate|動|〜を記念する|[commemorate] the anniversary|記念日を[祝う]|
+convene|動|（会議を）招集する；集まる|[convene] a meeting|会議を[招集する]|
+inaugural|形|最初の、就任の|the [inaugural] event|[第1回]イベント|名 inauguration 就任式
+spectator|名|観客|thousands of [spectators]|何千人もの[観客]|
+enroll|動|登録する、入学する|[enroll] in a course|講座に[登録する]|名 enrollment 登録
+preside over|熟|〜の議長を務める|[preside over] a meeting|会議の[議長を務める]|
+podium|名|演壇|stand at the [podium]|[演壇]に立つ|
+auditorium|名|講堂|the main [auditorium]|大[講堂]|
+brainstorm|動|アイデアを出し合う|[brainstorm] ideas|アイデアを[出し合う]|
+raffle|名|くじ引き|win a [raffle]|[くじ]に当たる|
+@build
+adjacent|形|隣接した|[adjacent] to the lobby|ロビーに[隣接した]|
+demolish|動|〜を取り壊す|[demolish] an old building|古い建物を[取り壊す]|名 demolition 取り壊し
+refurbish|動|〜を改装する|[refurbish] the guest rooms|客室を[改装する]|
+ventilation|名|換気|poor [ventilation]|悪い[換気]|
+scaffolding|名|（工事の）足場|put up [scaffolding]|[足場]を組む|
+occupant|名|居住者、使用者|the building's [occupants]|建物の[居住者]|
+dwelling|名|住居|a single-family [dwelling]|一戸建て[住宅]|
+zoning|名|区域指定（都市計画）|[zoning] regulations|[用途地域]規制|
+infrastructure|名|社会基盤|improve [infrastructure]|[インフラ]を改善する|
+fixture|名|備え付け品、設備|light [fixtures]|照明[器具]|
+insulation|名|断熱（材）|improve [insulation]|[断熱]性を高める|
+partition|名|仕切り|a glass [partition]|ガラスの[仕切り]|
+@make
+procure|動|〜を調達する|[procure] raw materials|原材料を[調達する]|名 procurement 調達
+yield|動|〜を生み出す|[yield] good results|よい結果を[生む]|名 yield 収穫量
+backlog|名|（未処理の）残務|a [backlog] of orders|[未処理の]注文|
+calibrate|動|〜を調整する、較正する|[calibrate] the machine|機械を[調整する]|
+recall|動|〜を回収する|[recall] a product|製品を[回収する]|名 recall 回収
+hazardous|形|危険な|[hazardous] materials|[危険]物|名 hazard 危険
+protective|形|保護用の|[protective] gear|[防護]用具|
+adhere to|熟|〜に従う、〜を守る|[adhere to] safety standards|安全基準を[守る]|
+disruption|名|混乱、中断|a [disruption] in supply|供給の[混乱]|動 disrupt 混乱させる
+bottleneck|名|障害、ネック|a production [bottleneck]|生産の[障害]|
+replenish|動|〜を補充する|[replenish] stock|在庫を[補充する]|
+perishable|形|傷みやすい|[perishable] goods|[生鮮]品|
+@tech
+obsolete|形|時代遅れの|[obsolete] equipment|[時代遅れの]機器|
+integrate|動|〜を統合する|[integrate] two systems|2つのシステムを[統合する]|名 integration 統合
+interface|名|（操作）画面、接点|a simple user [interface]|簡単な操作[画面]|
+glitch|名|（ちょっとした）不具合|a technical [glitch]|技術的な[不具合]|
+encrypt|動|〜を暗号化する|[encrypt] data|データを[暗号化する]|
+patent|名|特許|apply for a [patent]|[特許]を申請する|
+breakthrough|名|大発見、突破口|a medical [breakthrough]|医学上の[大発見]|
+pilot|形|試験的な|a [pilot] program|[試験]プログラム|
+circulation|名|発行部数；流通|a daily [circulation] of 50,000|1日5万部の[発行部数]|
+editorial|名|社説|write an [editorial]|[社説]を書く|
+correspondent|名|特派員、通信員|a foreign [correspondent]|海外[特派員]|
+anonymous|形|匿名の|an [anonymous] survey|[匿名の]アンケート|
+@life
+ailment|名|（軽い）病気|minor [ailments]|軽い[病気]|
+remedy|名|治療法、解決策|a home [remedy]|家庭[療法]|
+hygiene|名|衛生|good [hygiene]|よい[衛生]状態|
+contagious|形|伝染性の|a [contagious] disease|[伝染]病|
+nonprofit|形|非営利の|a [nonprofit] organization|[非営利]団体|
+petition|名|嘆願書|sign a [petition]|[嘆願書]に署名する|
+ordinance|名|条例|a city [ordinance]|市の[条例]|
+wellness|名|健康（増進）|a [wellness] program|[健康増進]プログラム|
+outreach|名|（地域への）支援活動|community [outreach]|地域の[支援活動]|
+@gen
+unprecedented|形|前例のない|[unprecedented] growth|[前例のない]成長|
+consecutive|形|連続した|three [consecutive] years|3年[連続]|
+prestigious|形|名声のある|a [prestigious] award|[権威ある]賞|名 prestige 名声
+meticulous|形|細心の|[meticulous] attention to detail|細部への[細心の]注意|
+imperative|形|絶対必要な|It is [imperative] that we act now.|今すぐ行動することが[不可欠]だ。|
+integral|形|不可欠な|an [integral] part of the team|チームの[不可欠な]一員|
+crucial|形|極めて重要な|a [crucial] decision|[極めて重要な]決定|
+vital|形|極めて重要な|[vital] information|[重要な]情報|
+tremendous|形|ものすごい|a [tremendous] success|[大]成功|
+exceptional|形|並外れた|[exceptional] service|[並外れた]サービス|
+noteworthy|形|注目に値する|a [noteworthy] achievement|[注目すべき]業績|
+prominent|形|著名な；目立つ|a [prominent] scientist|[著名な]科学者|
+reluctant|形|気が進まない|be [reluctant] to change|変えることに[気が進まない]|名 reluctance 気が進まないこと
+hesitant|形|ためらっている|be [hesitant] to ask questions|質問するのを[ためらう]|
+apparent|形|明らかな|for no [apparent] reason|[はっきりした]理由もなく|副 apparently どうやら
+respective|形|それぞれの|their [respective] departments|[それぞれの]部署|副 respectively それぞれ
+simultaneously|副|同時に|be released [simultaneously]|[同時に]発売される|
+consistently|副|一貫して|[consistently] high quality|[一貫して]高い品質|形 consistent 一貫した
+exclusively|副|もっぱら、独占的に|available [exclusively] online|オンライン[限定で]購入できる|
+readily|副|容易に、すぐに|[readily] available|[すぐに]手に入る|
+thereby|副|それによって|[thereby] reducing costs|[それによって]コストを減らす|
+nevertheless|副|それにもかかわらず|It was expensive; [nevertheless], it sold well.|高価だったが、[それでも]よく売れた。|
+furthermore|副|さらに|[Furthermore], the hotel offers free parking.|[さらに]、ホテルには無料駐車場がある。|
+otherwise|副|さもなければ；それ以外は|Hurry, [otherwise] you'll miss the bus.|急いで、[さもないと]バスに乗り遅れる。|
+whereas|接|〜であるのに対して|[whereas] sales rose in Asia|アジアでは売上が伸びた[のに対し]|
+provided that|接|〜という条件で|[provided that] the weather is good|天気がよい[という条件で]|
+unless|接|〜でない限り|[unless] otherwise noted|特に記載の[ない限り]|
+in light of|熟|〜を考慮して|[in light of] recent events|最近の出来事を[考慮して]|
+on account of|熟|〜のために|[on account of] bad weather|悪天候の[ため]|
+in the event of|熟|〜の場合には|[in the event of] rain|雨の[場合は]|
+as of|前|〜付けで、〜現在で|[as of] April 1|4月1日[付けで]|
+alleviate|動|〜を軽減する|[alleviate] traffic congestion|交通渋滞を[緩和する]|
+enforce|動|〜を施行する|[enforce] a rule|規則を[施行する]|名 enforcement 施行
+exempt|形|免除された|[exempt] from taxes|税金を[免除された]|名 exemption 免除
+defer|動|〜を延期する|[defer] payment|支払いを[延期する]|
+reinforce|動|〜を強化する|[reinforce] security|警備を[強化する]|
+undergo|動|〜を受ける、経験する|[undergo] renovations|改装[工事を受ける]|
+undertake|動|〜を引き受ける|[undertake] a project|事業を[引き受ける]|
+attribute|動|〜のおかげとする|[attribute] success to teamwork|成功をチームワークの[おかげとする]|
+commence|動|始まる；〜を始める|[commence] construction|建設を[開始する]|名 commencement 開始
+cease|動|〜をやめる|[cease] operations|営業を[停止する]|
+retrieve|動|〜を取り戻す、回収する|[retrieve] data|データを[取り出す]|
+reiterate|動|〜を繰り返し言う|[reiterate] the importance of safety|安全の重要性を[繰り返し述べる]|
+outline|動|〜の概要を述べる|[outline] a plan|計画の[概要を説明する]|名 outline 概要
+convey|動|〜を伝える|[convey] a message|メッセージを[伝える]|
+emphasize|動|〜を強調する|[emphasize] the importance|重要性を[強調する]|名 emphasis 強調
+concise|形|簡潔な|a [concise] summary|[簡潔な]要約|
+`);
+
+</script>
+<script>
+(window.WORDS_SRC = window.WORDS_SRC || []).push(`
+#4
+@office
+abide by|熟|〜を守る、〜に従う|[abide by] the rules|規則を[守る]|
+ascertain|動|〜を確かめる|[ascertain] the facts|事実を[確かめる]|
+discrepancy|名|食い違い|a [discrepancy] in the figures|数字の[食い違い]|
+succinct|形|簡潔な|a [succinct] explanation|[簡潔な]説明|
+cumbersome|形|面倒な、扱いにくい|a [cumbersome] process|[面倒な]手続き|
+redundant|形|余分な、重複した|[redundant] information|[重複した]情報|
+rectify|動|〜を正す|[rectify] an error|誤りを[正す]|
+reconcile|動|〜を一致させる；和解させる|[reconcile] the accounts|帳簿を[照合する]|
+supersede|動|〜に取って代わる|[supersede] the old policy|旧方針に[取って代わる]|
+revoke|動|〜を取り消す|[revoke] a license|免許を[取り消す]|
+rescind|動|〜を撤回する|[rescind] an offer|申し出を[撤回する]|
+liaison|名|連絡係|act as a [liaison]|[連絡係]を務める|
+interim|形|暫定の|an [interim] manager|[暫定]マネージャー|
+ad hoc|形|臨時の、その場限りの|an [ad hoc] committee|[臨時]委員会|
+at one's discretion|熟|〜の裁量で|[at the manager's discretion]|部長の[裁量で]|名 discretion 裁量
+in lieu of|熟|〜の代わりに|[in lieu of] a formal meeting|正式な会議の[代わりに]|
+with regard to|熟|〜に関して|[with regard to] your inquiry|お問い合わせ[に関して]|
+in compliance with|熟|〜に従って|[in compliance with] the law|法律に[従って]|
+to date|熟|これまでのところ|the best results [to date]|[これまでで]最高の結果|
+@hr
+commensurate|形|（〜に）見合った|a salary [commensurate] with experience|経験に[見合った]給与|
+remuneration|名|報酬|fair [remuneration]|正当な[報酬]|
+probation|名|試用期間|a three-month [probation] period|3か月の[試用]期間|
+tenure|名|在職期間|during her [tenure] as CEO|CEO[在任中]に|
+requisite|形|必要な|the [requisite] skills|[必要な]技能|
+exemplary|形|模範的な|[exemplary] performance|[模範的な]勤務ぶり|
+adept|形|熟練した|[adept] at negotiating|交渉に[長けた]|
+astute|形|抜け目のない、鋭い|an [astute] investor|[鋭い]投資家|
+esteemed|形|尊敬される|an [esteemed] colleague|[尊敬する]同僚|
+accolade|名|賞賛、栄誉|receive an [accolade]|[栄誉]を受ける|
+laud|動|〜を称賛する|be [lauded] for innovation|革新性で[称賛される]|
+garner|動|〜を獲得する、集める|[garner] praise|称賛を[集める]|
+@biz
+contingency|名|不測の事態|a [contingency] plan|[緊急時]対応計画|
+contingent|形|〜次第の|[contingent] on approval|承認[次第の]|
+reciprocal|形|相互の|a [reciprocal] agreement|[相互]協定|
+concur|動|同意する|[concur] with the proposal|提案に[同意する]|
+unanimous|形|満場一致の|a [unanimous] decision|[満場一致の]決定|
+intermediary|名|仲介者|act as an [intermediary]|[仲介者]となる|
+consignment|名|委託（品）|goods on [consignment]|[委託]販売品|
+embargo|名|禁輸（措置）|a trade [embargo]|貿易[禁止措置]|
+tariff|名|関税|import [tariffs]|輸入[関税]|
+proprietor|名|（店の）経営者|the restaurant [proprietor]|レストランの[店主]|
+equity|名|（株主）資本；公平|shareholders' [equity]|株主[資本]|
+leverage|動|〜を活用する|[leverage] technology|技術を[活用する]|
+spearhead|動|〜の先頭に立つ|[spearhead] a campaign|キャンペーンの[陣頭指揮をとる]|
+vie|動|競う|[vie] for market share|市場シェアを[争う]|
+burgeoning|形|急成長している|a [burgeoning] industry|[急成長]産業|
+ramification|名|（予期せぬ）影響、結果|legal [ramifications]|法的な[影響]|
+in tandem|熟|協力して、並行して|work [in tandem] with the sales team|営業チームと[連携して]働く|
+@money
+defray|動|（費用を）支払う、負担する|[defray] the cost|費用を[負担する]|
+delinquent|形|滞納している|a [delinquent] account|[支払い延滞]口座|
+disburse|動|〜を支払う、支出する|[disburse] funds|資金を[支出する]|
+remittance|名|送金（額）|send a [remittance]|[送金]する|
+levy|動|（税などを）課す|[levy] a tax|税を[課す]|
+nominal|形|わずかな；名目上の|a [nominal] fee|[わずかな]料金|
+exorbitant|形|法外な|[exorbitant] prices|[法外な]価格|
+frugal|形|倹約的な|a [frugal] budget|[切り詰めた]予算|
+per diem|名|日当|receive a [per diem] for meals|食事代の[日当]を受け取る|
+curtail|動|〜を削減する|[curtail] spending|支出を[削減する]|
+bolster|動|〜を強化する、てこ入れする|[bolster] sales|売上を[てこ入れする]|
+@sales
+patronize|動|〜をひいきにする|[patronize] local businesses|地元の店を[ひいきにする]|
+impeccable|形|申し分のない|[impeccable] service|[申し分のない]サービス|
+unparalleled|形|比類のない|[unparalleled] quality|[比類のない]品質|
+@build
+dilapidated|形|荒れ果てた|a [dilapidated] building|[荒れ果てた]建物|
+annex|名|別館|the hotel [annex]|ホテルの[別館]|
+@gen
+amenable|形|（快く）応じる|[amenable] to suggestions|提案を[受け入れる]|
+prudent|形|慎重な、賢明な|a [prudent] decision|[賢明な]判断|
+lenient|形|寛大な|a [lenient] policy|[寛大な]方針|
+stringent|形|厳しい|[stringent] regulations|[厳しい]規制|
+scrutinize|動|〜を精査する|[scrutinize] the budget|予算を[精査する]|名 scrutiny 精査
+painstaking|形|入念な|[painstaking] research|[入念な]調査|
+plausible|形|もっともらしい|a [plausible] explanation|[もっともらしい]説明|
+provisional|形|暫定的な|a [provisional] agreement|[暫定]合意|
+imminent|形|差し迫った|an [imminent] deadline|[差し迫った]締め切り|
+forthcoming|形|近く予定されている|the [forthcoming] conference|[今度の]会議|
+paramount|形|最も重要な|Safety is [paramount].|安全が[最優先]だ。|
+pivotal|形|極めて重要な|a [pivotal] role|[極めて重要な]役割|
+conducive|形|（〜の）助けとなる|[conducive] to learning|学習に[適した]|
+mitigate|動|〜を軽減する|[mitigate] risks|リスクを[軽減する]|
+foster|動|〜を促進する、育む|[foster] innovation|革新を[育む]|
+underscore|動|〜を強調する|[underscore] the need for change|変化の必要性を[強調する]|
+entail|動|〜を伴う|[entail] risks|リスクを[伴う]|
+encompass|動|〜を包含する|[encompass] several fields|いくつかの分野に[またがる]|
+relinquish|動|〜を手放す|[relinquish] control|支配権を[手放す]|
+dwindle|動|（徐々に）減少する|[dwindling] sales|[減少している]売上|
+escalate|動|段階的に拡大する、上昇する|[escalating] costs|[上昇し続ける]費用|
+culminate in|熟|最後に〜となる|[culminate in] an awards ceremony|授賞式で[締めくくられる]|
+inadvertently|副|うっかり|[inadvertently] delete a file|[うっかり]ファイルを消す|
+notwithstanding|前|〜にもかかわらず|[notwithstanding] the delay|遅延[にもかかわらず]|
+whereby|副|（それによって）〜する|a system [whereby] staff work from home|社員が在宅勤務[できる]制度|
+albeit|接|〜ではあるが|a small [albeit] important change|小さい[ながらも]重要な変更|
+thus|副|したがって、こうして|[thus] reducing waste|[こうして]廃棄物を減らす|
+hence|副|それゆえ|The road was closed, [hence] the delay.|道路が閉鎖されていた。[だから]遅れたのだ。|
+barring|前|〜がなければ|[barring] any delays|遅れが[なければ]|
+on the grounds that|熟|〜という理由で|[on the grounds that] it is too costly|費用がかかりすぎる[という理由で]|
+by means of|熟|〜によって|[by means of] a survey|アンケート[によって]|
+expedient|形|好都合な、便宜的な|an [expedient] solution|[便宜的な]解決策|
+ubiquitous|形|至る所にある|[ubiquitous] smartphones|[どこにでもある]スマートフォン|
+precarious|形|不安定な|a [precarious] financial situation|[不安定な]財政状況|
+`);
+
+</script>
+<script>
+/* words-common.js — parses the word data shared by both apps */
+(function () {
+'use strict';
+const THEMES = {
+  office: 'オフィス・社内', hr: '人事・採用', biz: '経営・取引', money: 'お金・経理', sales: '営業・販売',
+  shop: '買い物・飲食', travel: '出張・旅行', event: '会議・イベント', build: '建物・不動産',
+  scene: '写真描写（Part 1）', make: '製造・物流', tech: 'IT・メディア', life: '生活・地域', gen: '頻出の一般語'
+};
+const LEVELS = {
+  1: { name: 'Level 1', score: '600点', note: '基礎を固める' },
+  2: { name: 'Level 2', score: '730点', note: 'ここで差がつく' },
+  3: { name: 'Level 3', score: '860点', note: '800点の壁を越える' },
+  4: { name: 'Level 4', score: '990点', note: '上級者の語彙' }
+};
+const POS = { '動': '動詞', '名': '名詞', '形': '形容詞', '副': '副詞', '前': '前置詞', '接': '接続詞', '熟': '熟語' };
+const slug = w => w.toLowerCase().normalize('NFD').replace(/[̀-ͯ]/g, '').replace(/[^a-z0-9]+/g, '_').replace(/^_+|_+$/g, '');
+function parseRel(s) {
+  if (!s) return [];
+  return s.split('／').map(x => x.trim()).filter(Boolean).map(x => {
+    const m = x.match(/^(\S+)\s+([A-Za-z][A-Za-z '\-.,]*?)(?:\s+([^\x00-\x7F].*))?$/);
+    return m ? { tag: m[1], w: m[2].trim(), ja: (m[3] || '').trim() } : { tag: '', w: x, ja: '' };
+  });
+}
+function split(s) {
+  const a = s.indexOf('['), b = s.indexOf(']');
+  if (a < 0 || b < a) return { pre: s, key: '', post: '' };
+  return { pre: s.slice(0, a), key: s.slice(a + 1, b), post: s.slice(b + 1) };
+}
+function parse() {
+  const out = [], seen = new Set();
+  let lv = 1, th = 'gen', n = 0;
+  (window.WORDS_SRC || []).forEach(src => src.split('\n').forEach(raw => {
+    const line = raw.trim();
+    if (!line) return;
+    if (line[0] === '#') { lv = +line.slice(1) || 1; return; }
+    if (line[0] === '@') { th = line.slice(1).trim(); return; }
+    const p = line.split('|');
+    if (p.length < 6) return;
+    let id = slug(p[0]); while (seen.has(id)) id += '_'; seen.add(id);
+    n++;
+    const ph = split(p[3]), pj = split(p[4]);
+    out.push({
+      n, id, w: p[0], pos: p[1], ja: p[2], main: p[2].split('；')[0].trim(),
+      ph: p[3], phPre: ph.pre, phKey: ph.key, phPost: ph.post,
+      pj: p[4], pjPre: pj.pre, pjKey: pj.key, pjPost: pj.post,
+      rel: parseRel(p[5]), relRaw: p[5], lv, th
+    });
+  }));
+  return out;
+}
+const WORDS = parse();
+window.VOCAB = { WORDS, BY_ID: new Map(WORDS.map(w => [w.id, w])), THEMES, LEVELS, POS, slug, split };
+})();
+
+</script>
+<script>
+/* m-core.js — storage, FSRS memory model, exam-aware scheduling, speech, Claude helpers */
+(function () {
+'use strict';
+const V = window.VOCAB;
+const R = window.RC = { S: {} };
+const S = R.S;
+
+/* ---------- utils ---------- */
+const esc = s => String(s == null ? '' : s).replace(/[&<>"']/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c]));
+const pad = n => String(n).padStart(2, '0');
+const ymd = d => d.getFullYear() + '-' + pad(d.getMonth() + 1) + '-' + pad(d.getDate());
+const today = () => ymd(new Date());
+const addDays = (s, n) => { const [y, m, d] = s.split('-').map(Number); return ymd(new Date(y, m - 1, d + n)); };
+const diffDays = (a, b) => { const [y1, m1, d1] = a.split('-').map(Number), [y2, m2, d2] = b.split('-').map(Number); return Math.round((Date.UTC(y2, m2 - 1, d2) - Date.UTC(y1, m1 - 1, d1)) / 86400000); };
+const clone = o => JSON.parse(JSON.stringify(o));
+const sleep = ms => new Promise(r => setTimeout(r, ms));
+const clamp = (x, a, b) => Math.min(b, Math.max(a, x));
+function hash(s) { let h = 2166136261; for (let i = 0; i < s.length; i++) { h ^= s.charCodeAt(i); h = Math.imul(h, 16777619); } return h >>> 0; }
+const shuffle = a => { for (let i = a.length - 1; i > 0; i--) { const j = Math.floor(Math.random() * (i + 1)); const t = a[i]; a[i] = a[j]; a[j] = t; } return a; };
+Object.assign(R, { esc, today, addDays, diffDays, clone, sleep, clamp, hash, shuffle });
+const handlers = {};
+R.on = (ev, fn) => { (handlers[ev] = handlers[ev] || []).push(fn); };
+R.emit = (ev, x) => (handlers[ev] || []).forEach(fn => { try { fn(x); } catch (e) { console.error(e); } });
+
+R.EXAM = '2026-12-19';
+R.CUTOFF_DAYS = 12;            // stop adding new words this many days before the exam
+const DEFAULTS = { newPerDay: 'auto', retention: 0.9, autoplay: true, typing: false, autoAdvance: true, voice: '' };
+
+/* ---------- storage: artifact db when available, else this browser ---------- */
+const Store = R.Store = {
+  db: null, mode: 'local', mem: new Map(), pending: new Map(), failed: false, prefix: 'recall1000:',
+  async init() {
+    let db = null;
+    try { db = window.claude && typeof window.claude.use === 'function' ? await window.claude.use('db') : null; } catch (e) { db = null; }
+    if (db) { this.db = db; this.mode = 'db'; }
+  },
+  async get(path) {
+    if (this.db) { try { const s = await this.db.doc(path).get(); return s.exists ? clone(s.data()) : null; } catch (e) { this.fail(e); return null; } }
+    if (this.mem.has(path)) return clone(this.mem.get(path));
+    try { const v = localStorage.getItem(this.prefix + path); if (v) { const o = JSON.parse(v); this.mem.set(path, o); return clone(o); } } catch (e) { /* blocked */ }
+    return null;
+  },
+  async all(coll, opt) {
+    opt = opt || {};
+    if (this.db) {
+      try {
+        let q = this.db.collection(coll);
+        if (opt.orderBy) q = q.orderBy(opt.orderBy, opt.dir || 'asc');
+        q = q.limit(opt.limit || 1000);
+        const snap = await q.get();
+        return snap.docs.map(d => Object.assign(clone(d.data()), { _id: d.id }));
+      } catch (e) { this.fail(e); return []; }
+    }
+    const keys = new Set(this.mem.keys()), pre = coll + '/', out = [];
+    try { for (let i = 0; i < localStorage.length; i++) { const k = localStorage.key(i); if (k && k.indexOf(this.prefix) === 0) keys.add(k.slice(this.prefix.length)); } } catch (e) { /* blocked */ }
+    for (const k of keys) { if (k.indexOf(pre) === 0 && k.slice(pre.length).indexOf('/') < 0) { const o = await this.get(k); if (o) out.push(Object.assign(o, { _id: k.slice(pre.length) })); } }
+    if (opt.orderBy) { const f = opt.orderBy, s = opt.dir === 'desc' ? -1 : 1; out.sort((a, b) => (a[f] > b[f] ? 1 : a[f] < b[f] ? -1 : 0) * s); }
+    return opt.limit ? out.slice(0, opt.limit) : out;
+  },
+  save(path, data) {
+    let p = this.pending.get(path);
+    if (!p) { p = { data: null, running: false }; this.pending.set(path, p); }
+    const d = clone(data); delete d._id; p.data = d;
+    if (!p.running) this.flush(path, p);
+  },
+  remove(path) {
+    this.mem.delete(path);
+    try { localStorage.removeItem(this.prefix + path); } catch (e) { /* blocked */ }
+    if (this.db) this.db.doc(path).delete().catch(e => this.fail(e));
+  },
+  async flush(path, p) {
+    p.running = true;
+    while (p.data) {
+      const d = p.data; p.data = null;
+      if (this.db) {
+        try { await this.db.doc(path).set(d); }
+        catch (e) {
+          if (e && e.code === 'unavailable') { await sleep(400 + Math.random() * 800); try { await this.db.doc(path).set(d); } catch (e2) { this.fail(e2); } }
+          else this.fail(e);
+        }
+      } else {
+        this.mem.set(path, d);
+        try { localStorage.setItem(this.prefix + path, JSON.stringify(d)); } catch (e) { /* blocked */ }
+      }
+    }
+    p.running = false;
+  },
+  fail(e) {
+    console.warn('store', e);
+    if (this.failed) return; this.failed = true;
+    const c = e && e.code;
+    R.emit('banner', c === 'quota_exceeded' ? '保存容量の上限に達しました。' : c === 'invalid_argument' ? 'このアカウントでは記録を保存できません（閲覧のみ）。' : '記録の保存に失敗しました。ページを開き直してください。');
+  }
+};
+
+/* ---------- FSRS-5 memory model ---------- */
+const FS = R.FS = {
+  W: [0.40255, 1.18385, 3.173, 15.69105, 7.1949, 0.5345, 1.4604, 0.0046, 1.54575, 0.1192, 1.01925, 1.9395, 0.11, 0.29605, 2.2698, 0.2315, 2.9898, 0.51655, 0.6621],
+  DECAY: -0.5, FACTOR: 19 / 81,
+  R(t, s) { return Math.pow(1 + this.FACTOR * Math.max(0, t) / Math.max(0.01, s), this.DECAY); },
+  interval(s, r) { return Math.max(1, Math.round(s / this.FACTOR * (Math.pow(r, 1 / this.DECAY) - 1))); },
+  s0(g) { return this.W[g - 1]; },
+  d0(g) { return clamp(this.W[4] - Math.exp(this.W[5] * (g - 1)) + 1, 1, 10); },
+  nextD(d, g) { const d1 = d - this.W[6] * (g - 3) * (10 - d) / 9; return clamp(this.W[7] * this.d0(4) + (1 - this.W[7]) * d1, 1, 10); },
+  recall(d, s, r, g) { const W = this.W; return s * (1 + Math.exp(W[8]) * (11 - d) * Math.pow(s, -W[9]) * (Math.exp((1 - r) * W[10]) - 1) * (g === 2 ? W[15] : 1) * (g === 4 ? W[16] : 1)); },
+  forget(d, s, r) { const W = this.W; return Math.min(s, W[11] * Math.pow(d, -W[12]) * (Math.pow(s + 1, W[13]) - 1) * Math.exp((1 - r) * W[14])); },
+  sameDay(s, g) { return s * Math.exp(this.W[17] * (g - 3 + this.W[18])); }
+};
+
+/* ---------- state ---------- */
+S.settings = Object.assign({}, DEFAULTS);
+S.cards = new Map();
+S.days = [];
+S.ai = new Map();
+S.stories = [];
+const newDay = t => ({ date: t, rev: 0, nw: 0, ok: 0, ng: 0, sec: 0, known: 0 });
+R.load = async function () {
+  await Store.init();
+  const t = today();
+  const res = await Promise.all([Store.get('meta/settings'), Store.all('cards'), Store.all('days', { orderBy: 'date', dir: 'desc', limit: 140 }), Store.all('ai'), Store.all('stories', { orderBy: 'created', dir: 'desc', limit: 40 })]);
+  S.settings = Object.assign({}, DEFAULTS, res[0] || {});
+  res[1].forEach(c => { if (V.BY_ID.has(c._id)) { c.id = c._id; delete c._id; S.cards.set(c.id, c); } });
+  S.days = res[2];
+  res[3].forEach(a => S.ai.set(a._id, a));
+  S.stories = res[4];
+  S.day = S.days.find(d => d.date === t);
+  if (!S.day) { S.day = newDay(t); S.days.unshift(S.day); }
+};
+function rollDay() { const t = today(); if (S.day.date !== t) { S.day = newDay(t); S.days.unshift(S.day); } return t; }
+R.saveDay = () => { rollDay(); Store.save('days/' + S.day.date, S.day); };
+R.saveSettings = () => Store.save('meta/settings', S.settings);
+R.saveCard = c => Store.save('cards/' + c.id, c);
+
+/* ---------- scheduling ---------- */
+R.learned = c => !!c && (c.st === 'R' || c.st === 'K');
+R.rNow = c => FS.R(diffDays(c.last, today()), c.s);
+R.rAt = (c, date) => FS.R(diffDays(c.last, date), c.s);
+R.examDays = () => diffDays(today(), R.EXAM);
+function schedule(c) {
+  const t = today();
+  let due = addDays(t, FS.interval(c.s, S.settings.retention));
+  // exam-aware cap: if the next review would fall after the exam and recall on exam day would drop
+  // below the target, pull a final review into the week before the exam (spread to avoid a pile-up)
+  const ex = R.EXAM;
+  if (diffDays(t, ex) > 0 && due > addDays(ex, -2) && FS.R(diffDays(t, ex), c.s) < S.settings.retention) {
+    const d = addDays(ex, -3 - (hash(c.id) % 6));
+    due = d > t ? d : addDays(t, 1);
+  }
+  return due;
+}
+function logH(c, g, fmt, ms) { c.h = (c.h || []).concat([[today(), g, fmt || '', Math.round(ms || 0)]]).slice(-12); }
+/* grade: 1 Again, 2 Hard, 3 Good, 4 Easy */
+R.grade = function (id, g, fmt, ms) {
+  const t = rollDay(), W = V.BY_ID.get(id);
+  let c = S.cards.get(id);
+  if (!R.learned(c)) {                         // first time: initialise the memory state
+    c = Object.assign(c || { id }, { st: 'R', s: FS.s0(g), d: FS.d0(g), last: t, reps: 1, lapses: 0, intro: t });
+    delete c.prio;
+    S.day.nw++;
+  } else if (c.last === t) {                   // same-day repeat (learning step or relearning)
+    c.s = Math.max(0.05, FS.sameDay(c.s, g));
+  } else {
+    const r = FS.R(diffDays(c.last, t), c.s);
+    if (g === 1) { c.s = FS.forget(c.d, c.s, r); c.lapses = (c.lapses || 0) + 1; }
+    else c.s = FS.recall(c.d, c.s, r, g);
+    c.d = FS.nextD(c.d, g); c.reps = (c.reps || 0) + 1; c.last = t;
+    if (c.st === 'K' && g <= 2) c.st = 'R';
+    S.day.rev++;
+  }
+  c.s = Math.round(c.s * 1000) / 1000; c.d = Math.round(c.d * 1000) / 1000;
+  c.due = schedule(c);
+  c.leech = (c.lapses || 0) >= 3;
+  logH(c, g, fmt, ms);
+  if (g === 1) S.day.ng++; else S.day.ok++;
+  S.day.sec = Math.round(S.day.sec + Math.min(ms || 0, 30000) / 1000);
+  S.cards.set(id, c); R.saveCard(c); R.saveDay();
+  return c;
+};
+R.markKnown = function (id) {
+  const t = rollDay();
+  const c = Object.assign(S.cards.get(id) || { id }, { st: 'K', s: FS.s0(4), d: FS.d0(4), last: t, reps: 1, lapses: 0, intro: t });
+  delete c.prio;
+  c.due = schedule(c); logH(c, 4, 'scan', 0);
+  S.day.known++;
+  S.cards.set(id, c); R.saveCard(c); R.saveDay();
+  return c;
+};
+R.markPriority = function (id) {
+  const c = S.cards.get(id) || { id, st: 'N' };
+  if (R.learned(c)) return;
+  c.st = 'N'; c.prio = true; c.flagged = today();
+  S.cards.set(id, c); R.saveCard(c);
+};
+R.resetCard = function (id) { S.cards.delete(id); Store.remove('cards/' + id); };
+
+/* ---------- queries ---------- */
+R.due = () => { const t = today(); return [...S.cards.values()].filter(c => R.learned(c) && c.due <= t).sort((a, b) => R.rNow(a) - R.rNow(b)); };
+R.unlearned = () => V.WORDS.filter(w => !R.learned(S.cards.get(w.id)));
+R.newQueue = () => {
+  const list = R.unlearned();
+  const pri = list.filter(w => { const c = S.cards.get(w.id); return c && c.prio; });
+  const rest = list.filter(w => { const c = S.cards.get(w.id); return !(c && c.prio); });
+  return pri.concat(rest);
+};
+R.newTarget = () => {
+  if (S.settings.newPerDay !== 'auto') return +S.settings.newPerDay || 0;
+  const days = diffDays(today(), addDays(R.EXAM, -R.CUTOFF_DAYS));
+  if (days <= 0) return 0;
+  return clamp(Math.ceil(R.unlearned().length / days), 8, 30);
+};
+R.newLeft = () => Math.max(0, R.newTarget() - S.day.nw);
+R.counts = () => {
+  const out = { total: V.WORDS.length, learned: 0, known: 0, mastered: 0, leech: 0, byLevel: {} };
+  [1, 2, 3, 4].forEach(l => { out.byLevel[l] = { total: 0, learned: 0, mastered: 0 }; });
+  V.WORDS.forEach(w => {
+    const c = S.cards.get(w.id), L = out.byLevel[w.lv]; L.total++;
+    if (R.learned(c)) { out.learned++; L.learned++; if (c.st === 'K') out.known++; if (c.s >= 30) { out.mastered++; L.mastered++; } if (c.leech) out.leech++; }
+  });
+  return out;
+};
+/* expected number of words recalled on a date if study stopped today */
+R.expectedAt = date => { let n = 0; S.cards.forEach(c => { if (R.learned(c)) n += R.rAt(c, date); }); return n; };
+R.projection = () => {
+  const cut = addDays(R.EXAM, -R.CUTOFF_DAYS), days = Math.max(0, diffDays(today(), cut));
+  const willLearn = Math.min(V.WORDS.length, R.counts().learned + R.newLeft() + R.newTarget() * Math.max(0, days - 1));
+  return Math.round(willLearn * S.settings.retention);
+};
+R.forecast = n => { const t = today(), out = []; for (let i = 1; i <= n; i++) { const d = addDays(t, i); let k = 0; S.cards.forEach(c => { if (R.learned(c) && c.due === d) k++; }); out.push({ d, n: k }); } return out; };
+
+/* ---------- distractors ---------- */
+const normJA = s => s.replace(/[〜～]/g, '').replace(/（.*?）/g, '').replace(/[をにでがはのと、。・]/g, '').replace(/する$/, '');
+function similarJA(a, b) { const x = normJA(a), y = normJA(b); return !x || !y || x === y || x.indexOf(y) >= 0 || y.indexOf(x) >= 0; }
+const related = (a, b) => a.rel.some(r => r.w.toLowerCase() === b.w.toLowerCase()) || b.rel.some(r => r.w.toLowerCase() === a.w.toLowerCase());
+function candidates(w) {
+  return V.WORDS.filter(x => x.id !== w.id && x.pos === w.pos && !similarJA(x.main, w.main) && !related(w, x));
+}
+R.choicesJA = w => {
+  const pool = shuffle(candidates(w)).sort((a, b) => Math.abs(a.lv - w.lv) - Math.abs(b.lv - w.lv));
+  const picked = [];
+  for (const x of pool) { if (picked.every(p => !similarJA(p.main, x.main))) picked.push(x); if (picked.length === 3) break; }
+  return shuffle(picked.concat([w]));
+};
+R.choicesEN = w => {
+  const score = x => (x.w[0] === w.w[0] ? 0 : 2) + Math.abs(x.w.length - w.w.length) / 3 + Math.abs(x.lv - w.lv) + Math.random() * 1.5;
+  const pool = candidates(w).sort((a, b) => score(a) - score(b));
+  const picked = [];
+  for (const x of pool) { if (picked.every(p => !similarJA(p.main, x.main))) picked.push(x); if (picked.length === 3) break; }
+  return shuffle(picked.concat([w]));
+};
+
+/* ---------- speech ---------- */
+const quality = v => (/natural|neural|online/i.test(v.name) ? 3 : /google/i.test(v.name) ? 2 : 1);
+const TTS = R.TTS = {
+  ok: typeof window.speechSynthesis !== 'undefined' && typeof window.SpeechSynthesisUtterance !== 'undefined',
+  en: [], token: 0, _u: null,
+  init() {
+    if (!this.ok) return;
+    const load = () => {
+      let all = []; try { all = speechSynthesis.getVoices() || []; } catch (e) { all = []; }
+      this.en = all.filter(v => /^en([-_]|$)/i.test(v.lang)).sort((a, b) => quality(b) - quality(a) || (/en[-_]US/i.test(b.lang) ? 1 : 0) - (/en[-_]US/i.test(a.lang) ? 1 : 0));
+      R.emit('voices');
+    };
+    load();
+    try { speechSynthesis.addEventListener('voiceschanged', load); } catch (e) { speechSynthesis.onvoiceschanged = load; }
+  },
+  voice() { return this.en.find(v => v.name === S.settings.voice) || this.en[0] || null; },
+  stop() { this.token++; try { if (this.ok) speechSynthesis.cancel(); } catch (e) { /* ignore */ } },
+  speak(text, opt) {
+    opt = opt || {};
+    return new Promise(res => {
+      if (!this.ok || !text) return res(false);
+      if (!opt.queue) this.stop();
+      const token = this.token, u = new SpeechSynthesisUtterance(text), v = this.voice();
+      if (v) u.voice = v; u.lang = v ? v.lang : 'en-US'; u.rate = opt.rate || 0.95;
+      let done = false; const fin = ok => { if (!done) { done = true; clearTimeout(g); res(ok && token === this.token); } };
+      u.onend = () => fin(true); u.onerror = () => fin(false);
+      const g = setTimeout(() => fin(true), 4000 + text.length * 150);
+      this._u = u;
+      setTimeout(() => { try { speechSynthesis.speak(u); } catch (e) { fin(false); } }, 40);
+    });
+  }
+};
+
+/* ---------- Claude (the page's sample capability) ---------- */
+const AI = R.AI = {
+  sample: null, ready: false, off: false,
+  async init() {
+    try { this.sample = window.claude && typeof window.claude.use === 'function' ? await window.claude.use('sample') : null; } catch (e) { this.sample = null; }
+    this.ready = true; R.emit('ai');
+  },
+  get on() { return !!this.sample && !this.off; },
+  message(e) {
+    const c = e && e.code;
+    if (c === 'cancelled') return '';
+    if (['not_granted', 'sampling_disabled', 'not_declared', 'capability_disabled', 'capability_removed'].indexOf(c) >= 0) { this.off = true; R.emit('ai'); return 'Claude の機能はオンライン版（claude.ai）で使えます。'; }
+    if (c === 'rate_limited') return '混み合っているか利用上限に達しました。少し時間をおいて試してください。';
+    if (c === 'session_expired') return 'claude.ai に再ログインしてから試してください。';
+    if (c === 'invalid_json' || c === 'empty_completion') return 'うまく作れませんでした。もう一度試してください。';
+    if (c === 'refused') return 'この依頼には応答できませんでした。';
+    return '通信が途切れました。もう一度試してください。';
+  },
+  wordLine(w) { return `英単語: ${w.w}（${V.POS[w.pos] || w.pos}）／意味: ${w.ja}／フレーズ: ${w.ph.replace(/[[\]]/g, '')}（${w.pj.replace(/[[\]]/g, '')}）`; },
+  async mnemonic(w, opt) {
+    if (!this.on) throw { code: 'not_granted' };
+    const prompt = `あなたは記憶術と語源に詳しい英語講師です。日本人のTOEIC学習者（目標800点）が次の単語を長期記憶できるように材料を作ってください。\n${this.wordLine(w)}\n\n出力はJSONのみ:\n{"etym":"語の成り立ち（接頭辞・語根・接尾辞とその意味）。確実でない場合は空文字","image":"意味・音・つづりを結びつける鮮明な情景（1〜2文）","hook":"覚えるための短いフック（語呂合わせが自然に作れる時だけ。無理なら空文字）","example":{"en":"TOEICに出そうな新しい例文（フレーズとは別の場面）","ja":"その和訳"},"confuse":[{"word":"紛らわしい語","note":"違い（1文）"}]}\nconfuse は本当に紛らわしい語がある時だけ最大2つ。すべて日本語（例文の en を除く）。`;
+    const d = await this.sample.json(prompt, { cache: false, signal: opt && opt.signal, onText: opt && opt.onText });
+    const s = v => (typeof v === 'string' ? v.trim() : '');
+    const out = {
+      etym: s(d && d.etym), image: s(d && d.image), hook: s(d && d.hook),
+      ex: d && d.example && s(d.example.en) ? [{ en: s(d.example.en), ja: s(d.example.ja) }] : [],
+      confuse: (d && Array.isArray(d.confuse) ? d.confuse : []).filter(x => x && s(x.word)).slice(0, 2).map(x => ({ word: s(x.word), note: s(x.note) }))
+    };
+    if (!out.etym && !out.image && !out.hook && !out.ex.length) throw { code: 'invalid_json' };
+    const prev = S.ai.get(w.id) || {};
+    const rec = Object.assign({}, prev, out, { ex: (prev.ex || []).concat(out.ex).slice(-4), updated: new Date().toISOString() });
+    S.ai.set(w.id, rec); Store.save('ai/' + w.id, rec);
+    return rec;
+  },
+  async example(w) {
+    if (!this.on) throw { code: 'not_granted' };
+    const prev = S.ai.get(w.id) || {};
+    const used = (prev.ex || []).map(e => e.en).join(' / ');
+    const d = await this.sample.json(`TOEICに出そうな自然な英文を1つ作ってください。見出し語を必ず含め、ビジネスや日常の具体的な場面にしてください。\n${this.wordLine(w)}\n${used ? '既出の例文（これとは違う場面に）: ' + used + '\n' : ''}出力はJSONのみ: {"en":"例文","ja":"自然な和訳"}`, { cache: false, modelTier: 'quick' });
+    if (!d || typeof d.en !== 'string' || !d.en.trim()) throw { code: 'invalid_json' };
+    const rec = Object.assign({}, prev, { ex: (prev.ex || []).concat([{ en: d.en.trim(), ja: String(d.ja || '').trim() }]).slice(-4), updated: new Date().toISOString() });
+    S.ai.set(w.id, rec); Store.save('ai/' + w.id, rec);
+    return rec;
+  },
+  async story(words, opt) {
+    if (!this.on) throw { code: 'not_granted' };
+    const list = words.map(w => `- ${w.id}: ${w.w}（${w.main}）`).join('\n');
+    const prompt = `TOEIC Part 7 風の短い英文（メール・社内通知・記事・広告のいずれか、130〜190語）を書いてください。次の目標語をできるだけ全部、自然な文脈で使ってください（活用形は可）。\n${list}\n\nルール:\n- 本文中の目標語は必ず [[本文での形|id]] の形で囲む（例: [[reserved|reserve]]）。id は上のリストの左側の文字列。\n- 目標語以外は囲まない。架空の会社名・人名を使う。\n- 本文のあとに、目標語の意味の理解を問う4択問題を3問（例: 'The word "X" in paragraph 1 is closest in meaning to'、または文脈から意味を問う問題）。\n- 解説は日本語で1〜2文。\n出力はJSONのみ: {"title":"日本語の短いタイトル","kind":"E-mail","text":"本文（段落は\\n\\nで区切る）","questions":[{"q":"...","choices":["","","",""],"answer":0,"ex":"..."}]}`;
+    const d = await this.sample.json(prompt, { cache: false, signal: opt && opt.signal, onText: opt && opt.onText });
+    if (!d || typeof d.text !== 'string' || d.text.indexOf('[[') < 0) throw { code: 'invalid_json' };
+    const qs = (Array.isArray(d.questions) ? d.questions : []).filter(q => q && Array.isArray(q.choices) && q.choices.length === 4 && Number(q.answer) >= 0 && Number(q.answer) < 4).slice(0, 3)
+      .map(q => ({ q: String(q.q || ''), choices: q.choices.map(String), answer: Number(q.answer), ex: String(q.ex || '') }));
+    const st = { id: 's' + Date.now().toString(36), created: new Date().toISOString(), words: words.map(w => w.id), title: String(d.title || 'Reading'), kind: String(d.kind || 'Text'), text: d.text, qs, done: false };
+    S.stories.unshift(st); Store.save('stories/' + st.id, st);
+    return st;
+  }
+};
+})();
+
+</script>
+<script>
+/* m-ui.js — shell, dashboard, word list, word detail, settings */
+(function () {
+'use strict';
+const R = window.RC, S = R.S, V = window.VOCAB, esc = R.esc;
+const $ = (s, r) => (r || document).querySelector(s);
+const view = () => $('#view');
+const pct = x => Math.round(x * 100) + '%';
+const SPK = '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 9v6h4l5 4V5L8 9H4zm12.5 3a4.5 4.5 0 0 0-2.5-4v8a4.5 4.5 0 0 0 2.5-4zM14 3.2v2.1a7 7 0 0 1 0 13.4v2.1a9 9 0 0 0 0-17.6z"/></svg>';
+R.SPK = SPK;
+
+/* ---------- shell ---------- */
+let tt = null;
+R.toast = m => { const t = $('#toast'); t.textContent = m; t.hidden = false; clearTimeout(tt); tt = setTimeout(() => { t.hidden = true; }, 2600); };
+R.on('banner', m => { $('#bannerText').textContent = m; $('#banner').hidden = false; });
+R.current = 'home';
+R.go = name => {
+  if (R.leaveSession) R.leaveSession();
+  R.TTS.stop(); R.closeModal();
+  R.current = name;
+  document.querySelectorAll('#tabs button').forEach(b => { if (b.dataset.view === name) b.setAttribute('aria-current', 'page'); else b.removeAttribute('aria-current'); });
+  (VIEWS[name] || VIEWS.home)();
+  window.scrollTo(0, 0);
+};
+const refresh = () => { if (R.loaded && VIEWS[R.current]) VIEWS[R.current](); };
+R.on('ai', refresh);
+function dday() { const n = R.examDays(); $('#dday').textContent = n > 0 ? '本番まで ' + n + '日' : n === 0 ? '本番当日' : ''; }
+R.statusOf = w => {
+  const c = S.cards.get(w.id);
+  if (!R.learned(c)) return c && c.prio ? { k: 'new', t: '優先して学ぶ' } : { k: 'new', t: '未学習' };
+  if (c.leech) return { k: 'lee', t: '苦手' };
+  if (c.st === 'K') return { k: 'ok', t: '既知' };
+  if (c.s >= 30) return { k: 'mst', t: '定着' };
+  return { k: c.s < 5 ? 'lrn' : 'ok', t: c.s < 5 ? '学習中' : '復習中' };
+};
+R.phraseHTML = (w, gap) => esc(w.phPre) + (gap ? '<span class="gap">?</span>' : '<span class="mk">' + esc(w.phKey) + '</span>') + esc(w.phPost);
+R.pjHTML = w => esc(w.pjPre) + '<b>' + esc(w.pjKey) + '</b>' + esc(w.pjPost);
+R.relHTML = w => w.rel.length ? w.rel.map(r => `<span>${esc(r.tag)} <span class="en">${esc(r.w)}</span>${r.ja ? ' ' + esc(r.ja) : ''}</span>`).join('　') : '';
+
+/* ---------- charts ---------- */
+function curveSVG() {
+  const t = R.today(), days = Math.max(1, R.examDays()), total = V.WORDS.length;
+  const W = 540, H = 200, L = 40, Rt = 14, T = 16, B = 28;
+  const X = d => L + d / days * (W - L - Rt), Y = v => T + (1 - v / total) * (H - T - B);
+  const N = Math.min(days, 80), pts = [];
+  for (let i = 0; i <= N; i++) { const d = Math.round(i * days / N); pts.push([d, R.expectedAt(R.addDays(t, d))]); }
+  const line = pts.map((p, i) => (i ? 'L' : 'M') + X(p[0]).toFixed(1) + ' ' + Y(p[1]).toFixed(1)).join(' ');
+  const area = line + ` L${X(days).toFixed(1)} ${Y(0)} L${X(0)} ${Y(0)} Z`;
+  const proj = R.projection();
+  const grid = [0, 250, 500, 750, 1000].map(v => `<line x1="${L}" x2="${W - Rt}" y1="${Y(v)}" y2="${Y(v)}" stroke="var(--line)" stroke-width="1"/><text x="${L - 6}" y="${Y(v) + 3.5}" text-anchor="end">${v}</text>`).join('');
+  const has = pts[0][1] > 0.5;
+  return `<svg class="curve" viewBox="0 0 ${W} ${H}" role="img" aria-label="本番までの記憶の予測グラフ">
+    ${grid}
+    <line x1="${L}" x2="${W - Rt}" y1="${Y(proj)}" y2="${Y(proj)}" stroke="var(--ink-3)" stroke-dasharray="5 4"/>
+    <text x="${W - Rt}" y="${Y(proj) - 6}" text-anchor="end" style="fill:var(--ink-2)">計画どおり続けた場合 約${proj}語</text>
+    ${has ? `<path d="${area}" fill="var(--accent-soft)" opacity=".8"/><path d="${line}" fill="none" stroke="var(--accent)" stroke-width="2"/>
+    <circle cx="${X(0)}" cy="${Y(pts[0][1])}" r="4" fill="var(--accent)"/><circle cx="${X(days)}" cy="${Y(pts[pts.length - 1][1])}" r="4" fill="var(--accent)"><title>本番日の予測 ${Math.round(pts[pts.length - 1][1])}語</title></circle>`
+      : `<text x="${(L + W) / 2}" y="${Y(500)}" text-anchor="middle" style="fill:var(--ink-2)">学習を始めると、ここに記憶の予測曲線が表示されます</text>`}
+    <text x="${X(0)}" y="${H - 8}">今日</text><text x="${X(days)}" y="${H - 8}" text-anchor="end">本番 12/19</text>
+  </svg>`;
+}
+function ring(done, goal) {
+  const r = 34, c = 2 * Math.PI * r, f = goal ? Math.min(1, done / goal) : 1;
+  return `<svg class="ring" viewBox="0 0 84 84" role="img" aria-label="今日の進み具合 ${done}/${goal}"><circle cx="42" cy="42" r="${r}" fill="none" stroke="var(--sunk)" stroke-width="8"/>
+    <circle cx="42" cy="42" r="${r}" fill="none" stroke="var(--accent)" stroke-width="8" stroke-linecap="round" stroke-dasharray="${(c * f).toFixed(1)} ${c.toFixed(1)}" transform="rotate(-90 42 42)"/>
+    <text x="42" y="47" text-anchor="middle">${Math.round(f * 100)}%</text></svg>`;
+}
+function heatmap() {
+  const t = R.today(), start = R.addDays(t, -(7 * 14 + new Date().getDay()));
+  const by = new Map(S.days.map(d => [d.date, (d.rev || 0) + (d.nw || 0) + (d.known || 0)]));
+  let cells = '';
+  for (let d = start; d <= t; d = R.addDays(d, 1)) {
+    const n = by.get(d) || 0, l = n === 0 ? '' : n < 10 ? 'l1' : n < 25 ? 'l2' : n < 50 ? 'l3' : 'l4';
+    cells += `<i class="${l}" title="${d}：${n}語"></i>`;
+  }
+  return `<div class="heat" role="img" aria-label="直近15週の学習量">${cells}</div>`;
+}
+function forecastBars() {
+  const f = R.forecast(14), max = Math.max(5, ...f.map(x => x.n)), W = 540, H = 120, bw = 26, gap = (W - 20 - 14 * bw) / 13;
+  return `<svg class="bars7" viewBox="0 0 ${W} ${H}" role="img" aria-label="今後14日の復習予定">${f.map((x, i) => { const h = Math.round(x.n / max * 72), X = 10 + i * (bw + gap); return `<g><title>${x.d}：${x.n}語</title><rect x="${X}" y="${92 - h}" width="${bw}" height="${h}" rx="4" fill="var(--accent)"/>${x.n ? `<text x="${X + bw / 2}" y="${86 - h}" text-anchor="middle" style="fill:var(--ink-2)">${x.n}</text>` : ''}${i % 2 === 0 ? `<text x="${X + bw / 2}" y="110" text-anchor="middle">${x.d.slice(5).replace('-', '/')}</text>` : ''}</g>`; }).join('')}<line x1="6" x2="${W - 6}" y1="92.5" y2="92.5" stroke="var(--line)"/></svg>`;
+}
+
+/* ---------- views ---------- */
+const VIEWS = R.VIEWS = {};
+VIEWS.home = () => {
+  dday();
+  const due = R.due(), nl = R.newLeft(), cnt = R.counts(), total = V.WORDS.length;
+  const exp = Math.round(R.expectedAt(R.EXAM));
+  const doneToday = (S.day.rev || 0) + (S.day.nw || 0), goal = doneToday + due.length + nl;
+  const mins = Math.max(1, Math.round((due.length * 8 + nl * 45) / 60));
+  const leeches = [...S.cards.values()].filter(c => R.learned(c) && c.leech).slice(0, 12);
+  view().innerHTML = `<div class="stack">
+    <section class="card hero">
+      <div>
+        <div class="eyebrow">12/19 の本番で思い出せる見込み</div>
+        <div class="big" style="margin-top:6px">${exp}<small>/ ${total}語</small></div>
+        <p class="note" style="margin-top:10px">今日で学習をやめた場合の予測です。記憶モデル FSRS が単語ごとの忘れ方を計算しています。毎日続けると、忘れかけた単語だけが復習に出て、この数字は点線（計画どおり続けた場合）に向かって伸びます。</p>
+      </div>
+      ${curveSVG()}
+    </section>
+
+    <section class="card">
+      <div class="today">
+        ${ring(doneToday, goal)}
+        <div>
+          <h2 style="font-size:18px">今日の学習</h2>
+          <div class="kv" style="margin-top:8px">
+            <div><b>${due.length}</b><span>復習する単語</span></div>
+            <div><b>${nl}</b><span>新しい単語${S.settings.newPerDay === 'auto' ? '（自動）' : ''}</span></div>
+            <div><b>${goal ? mins : 0}</b><span>分くらい</span></div>
+          </div>
+        </div>
+        <div class="go row">
+          ${due.length || nl ? '<button class="btn primary big" id="start">学習を始める</button>' : '<button class="btn big" id="more">今日の分は完了。もう5語学ぶ</button>'}
+        </div>
+      </div>
+      <div class="row" style="margin-top:14px;justify-content:space-between">
+        <p class="note">1回は約20問・5分ほどです。空いた時間に少しずつ進めると記憶に残りやすくなります。</p>
+        <button class="btn sm" id="scan">知っている単語を先に除外する</button>
+      </div>
+    </section>
+
+    <div class="grid2">
+      <section class="card">
+        <div class="sec-h"><h2>レベル別の進み具合</h2><span class="note">濃い色＝定着（1か月以上もつ）</span></div>
+        ${[1, 2, 3, 4].map(l => { const b = cnt.byLevel[l]; return `<div class="lv"><span>${V.LEVELS[l].name} <span class="faint">${V.LEVELS[l].score}</span></span>
+          <div class="lvbar" title="学習済み ${b.learned} / 定着 ${b.mastered} / 全 ${b.total}"><i style="width:${b.learned / b.total * 100}%"></i><b style="width:${b.mastered / b.total * 100}%"></b></div>
+          <span class="mono" style="text-align:right">${b.learned}/${b.total}</span></div>`; }).join('')}
+        <p class="note" style="margin-top:8px">学習済み ${cnt.learned}語（うち既知 ${cnt.known}）・定着 ${cnt.mastered}語</p>
+      </section>
+      <section class="card">
+        <div class="sec-h"><h2>今後14日の復習予定</h2></div>
+        ${forecastBars()}
+        <p class="note">本番直前の週に、忘れかけの単語の最終復習が自動で入ります。</p>
+      </section>
+    </div>
+
+    <div class="grid2">
+      <section class="card">
+        <div class="sec-h"><h2>学習の記録</h2><span class="note">直近15週</span></div>
+        ${heatmap()}
+      </section>
+      <section class="card">
+        <div class="sec-h"><h2>苦手な単語</h2><span class="note">3回以上忘れた単語</span></div>
+        ${leeches.length ? `<div class="row">${leeches.map(c => `<button class="chip bad" data-word="${esc(c.id)}"><span class="en">${esc(V.BY_ID.get(c.id).w)}</span></button>`).join('')}</div><p class="note" style="margin-top:8px">タップで詳しく見られます。覚え方の作成はオンライン版で使えます。</p>` : '<p class="note">まだありません。何度も忘れる単語はここに集まり、覚え方を工夫できます。</p>'}
+      </section>
+    </div>
+  </div>`;
+  const st = $('#start'); if (st) st.onclick = () => R.startSession({});
+  const mo = $('#more'); if (mo) mo.onclick = () => R.startSession({ extraNew: 5 });
+  $('#scan').onclick = () => R.startScan();
+  view().querySelectorAll('[data-word]').forEach(b => { b.onclick = () => R.openWord(b.dataset.word); });
+};
+
+let listState = { q: '', lv: '0', st: 'all', limit: 150 };
+VIEWS.words = () => {
+  dday();
+  view().innerHTML = `<div class="stack">
+    <div class="tools">
+      <input id="q" type="search" placeholder="英語か日本語で検索" value="${esc(listState.q)}" aria-label="検索">
+      <select id="lv" aria-label="レベル"><option value="0">全レベル</option>${[1, 2, 3, 4].map(l => `<option value="${l}" ${listState.lv == l ? 'selected' : ''}>${V.LEVELS[l].name}（${V.LEVELS[l].score}）</option>`).join('')}</select>
+      <select id="st" aria-label="状態">${[['all', 'すべて'], ['new', '未学習'], ['lrn', '学習中'], ['ok', '復習中・既知'], ['mst', '定着'], ['lee', '苦手']].map(o => `<option value="${o[0]}" ${listState.st === o[0] ? 'selected' : ''}>${o[1]}</option>`).join('')}</select>
+    </div>
+    <div class="wl" id="wl"></div>
+  </div>`;
+  const draw = () => {
+    const q = listState.q.trim().toLowerCase();
+    const rows = V.WORDS.filter(w => (listState.lv === '0' || w.lv == listState.lv) && (!q || w.w.toLowerCase().indexOf(q) >= 0 || w.ja.indexOf(listState.q.trim()) >= 0)
+      && (listState.st === 'all' || R.statusOf(w).k === listState.st));
+    const shown = rows.slice(0, listState.limit);
+    $('#wl').innerHTML = (rows.length ? shown.map(w => { const s = R.statusOf(w), c = S.cards.get(w.id); return `<button class="wr" data-word="${esc(w.id)}"><span class="no">${String(w.n).padStart(4, '0')}</span>
+      <span style="min-width:0"><span class="ww">${esc(w.w)}</span> <span class="faint" style="font-size:12px">${esc(w.pos)}</span><br><span class="wj">${esc(w.ja)}</span></span>
+      <span class="note" style="text-align:right;white-space:nowrap"><span class="dot ${s.k}"></span>${s.t}${R.learned(c) ? '<br><span class="mono faint">' + pct(R.rNow(c)) + '</span>' : ''}</span></button>`; }).join('') : '<div class="empty">該当する単語がありません。</div>')
+      + (rows.length > shown.length ? `<div class="row" style="justify-content:center;margin-top:12px"><button class="btn" id="moreRows">さらに表示（残り ${rows.length - shown.length}語）</button></div>` : '');
+    $('#wl').querySelectorAll('[data-word]').forEach(b => { b.onclick = () => R.openWord(b.dataset.word); });
+    const m = $('#moreRows'); if (m) m.onclick = () => { listState.limit += 300; draw(); };
+  };
+  let deb = null;
+  $('#q').oninput = e => { clearTimeout(deb); deb = setTimeout(() => { listState.q = e.target.value; listState.limit = 150; draw(); }, 150); };
+  $('#lv').onchange = e => { listState.lv = e.target.value; listState.limit = 150; draw(); };
+  $('#st').onchange = e => { listState.st = e.target.value; listState.limit = 150; draw(); };
+  draw();
+};
+
+VIEWS.settings = () => {
+  dday();
+  const st = S.settings;
+  const sw = (id, label, note, on) => `<div class="switch"><div><div>${label}</div><div class="note">${note}</div></div><button class="btn sm" id="${id}" aria-pressed="${on}">${on ? 'オン' : 'オフ'}</button></div>`;
+  view().innerHTML = `<div class="stack">
+    <section class="card"><div class="sec-h"><h2>学習の量</h2></div>
+      <div class="grid2">
+        <div class="field"><label for="npd">1日の新しい単語</label><select id="npd">
+          <option value="auto" ${st.newPerDay === 'auto' ? 'selected' : ''}>自動（本番から逆算・今は${R.newTarget()}語）</option>
+          ${[5, 10, 15, 20, 25, 30].map(n => `<option value="${n}" ${st.newPerDay == n ? 'selected' : ''}>${n}語</option>`).join('')}</select></div>
+        <div class="field"><label for="ret">目標の定着率</label><select id="ret">
+          ${[[0.85, '85%（復習が少なめ）'], [0.9, '90%（おすすめ）'], [0.95, '95%（復習が多め）']].map(o => `<option value="${o[0]}" ${st.retention == o[0] ? 'selected' : ''}>${o[1]}</option>`).join('')}</select></div>
+      </div>
+      <p class="note" style="margin-top:10px">「自動」は、本番の${R.CUTOFF_DAYS}日前までに全単語を1周できる数を毎日計算します。最後の${R.CUTOFF_DAYS}日間は新しい単語を増やさず、復習で仕上げます。</p>
+    </section>
+    <section class="card"><div class="sec-h"><h2>問題の出し方</h2></div>
+      ${sw('autoAdvance', '正解したら自動で次へ', '1.5秒後に進みます。評価ボタンを押すと止まります。', st.autoAdvance)}
+      ${sw('autoplay', '英単語を自動で読み上げる', '発音と一緒に覚えるとリスニングにも効きます。', st.autoplay)}
+      ${sw('typing', 'つづりを入力する問題も出す', 'よく覚えた単語で、英語を打ち込んで答える問題が出ます。', st.typing)}
+    </section>
+    <section class="card"><div class="sec-h"><h2>英語の音声</h2></div>
+      ${R.TTS.ok ? `<div class="field" style="max-width:420px"><label for="voice">声</label><select id="voice"><option value="">自動（いちばん自然な声）</option>${R.TTS.en.map(v => `<option value="${esc(v.name)}" ${v.name === st.voice ? 'selected' : ''}>${esc(v.name)}</option>`).join('')}</select></div>
+      <div class="row" style="margin-top:10px"><button class="btn sm" id="vtest">試しに聞く</button><span class="note">Microsoft Edge だと自然な「Natural」音声が使えます。</span></div>` : '<p class="note">このブラウザは読み上げに対応していません。</p>'}
+    </section>
+    <section class="card"><div class="sec-h"><h2>データ</h2></div>
+      <p class="note">保存先：${R.Store.mode === 'db' ? 'この学習ページ（どの端末から開いても同じ記録）' : 'この端末'}。キットのホームから記録のバックアップを書き出せます。</p>
+    </section>
+  </div>`;
+  $('#npd').onchange = e => { st.newPerDay = e.target.value === 'auto' ? 'auto' : +e.target.value; R.saveSettings(); R.toast('保存しました'); };
+  $('#ret').onchange = e => { st.retention = +e.target.value; R.saveSettings(); R.toast('保存しました'); };
+  ['autoAdvance', 'autoplay', 'typing'].forEach(k => { $('#' + k).onclick = e => { st[k] = !st[k]; R.saveSettings(); e.target.setAttribute('aria-pressed', String(st[k])); e.target.textContent = st[k] ? 'オン' : 'オフ'; }; });
+  const vs = $('#voice'); if (vs) vs.onchange = e => { st.voice = e.target.value; R.saveSettings(); R.toast('保存しました'); };
+  const vt = $('#vtest'); if (vt) vt.onclick = () => R.TTS.speak('Please reserve a table for four at seven o\'clock.');
+};
+
+/* ---------- word detail ---------- */
+R.closeModal = () => { const m = $('#modal'); if (m) m.innerHTML = ''; document.removeEventListener('keydown', escClose); };
+function escClose(e) { if (e.key === 'Escape') R.closeModal(); }
+function wordCurve(c) {
+  const t = R.today(), days = Math.max(14, R.examDays()), W = 520, H = 120, L = 34, Rt = 10, T = 10, B = 22;
+  const X = d => L + d / days * (W - L - Rt), Y = v => T + (1 - v) * (H - T - B);
+  const pts = []; for (let i = 0; i <= 60; i++) { const d = i * days / 60; pts.push([d, R.rAt(c, R.addDays(t, Math.round(d)))]); }
+  const due = Math.max(0, R.diffDays(t, c.due));
+  return `<svg class="curve" viewBox="0 0 ${W} ${H}" role="img" aria-label="この単語の忘却曲線">
+    ${[0, 0.5, 1].map(v => `<line x1="${L}" x2="${W - Rt}" y1="${Y(v)}" y2="${Y(v)}" stroke="var(--line)"/><text x="${L - 5}" y="${Y(v) + 3.5}" text-anchor="end">${v * 100}%</text>`).join('')}
+    <path d="${pts.map((p, i) => (i ? 'L' : 'M') + X(p[0]).toFixed(1) + ' ' + Y(p[1]).toFixed(1)).join(' ')}" fill="none" stroke="var(--accent)" stroke-width="2"/>
+    ${due <= days ? `<line x1="${X(due)}" x2="${X(due)}" y1="${T}" y2="${H - B}" stroke="var(--ink-3)" stroke-dasharray="3 3"/><text x="${X(due)}" y="${H - 6}" text-anchor="middle">次の復習</text>` : ''}
+    <text x="${L}" y="${H - 6}">今日</text>${R.examDays() > 0 ? `<text x="${X(R.examDays())}" y="${T + 10}" text-anchor="end" style="fill:var(--ink-2)">本番</text>` : ''}
+  </svg>`;
+}
+function aiHTML(a) {
+  if (!a) return '';
+  const dl = [];
+  if (a.etym) dl.push(['語の成り立ち', esc(a.etym)]);
+  if (a.image) dl.push(['イメージ', esc(a.image)]);
+  if (a.hook) dl.push(['覚え方', esc(a.hook)]);
+  (a.ex || []).forEach((e, i) => dl.push([i ? '例文' + (i + 1) : '例文', `<span class="en">${esc(e.en)}</span><br><span class="muted">${esc(e.ja)}</span>`]));
+  (a.confuse || []).forEach(x => dl.push(['紛らわしい語', `<span class="en">${esc(x.word)}</span>：${esc(x.note)}`]));
+  return dl.length ? `<dl class="aibox">${dl.map(d => `<dt>${d[0]}</dt><dd>${d[1]}</dd>`).join('')}</dl>` : '';
+}
+R.aiHTML = aiHTML;
+R.openWord = id => {
+  const w = V.BY_ID.get(id); if (!w) return;
+  const c = S.cards.get(id), learned = R.learned(c), a = S.ai.get(id), s = R.statusOf(w);
+  $('#modal').innerHTML = `<div class="scrim" id="scrim"><div class="sheet" role="dialog" aria-modal="true" aria-label="${esc(w.w)}">
+    <div class="row" style="justify-content:space-between"><span class="note">No.${String(w.n).padStart(4, '0')}・${V.LEVELS[w.lv].name}・${esc(V.THEMES[w.th] || '')}</span><button class="btn sm ghost" id="mclose">閉じる</button></div>
+    <div class="winfo" style="margin-top:8px">
+      <div class="top-line"><span class="w" style="font-size:34px">${esc(w.w)}</span><span class="chip">${esc(V.POS[w.pos] || w.pos)}</span><button class="spk" data-say="${esc(w.w)}" aria-label="発音を聞く">${SPK}</button></div>
+      <div class="ja">${esc(w.ja)}</div>
+      <div class="row" style="gap:8px"><span class="phrase">${R.phraseHTML(w)}</span><button class="spk" data-say="${esc(w.ph.replace(/[[\]]/g, ''))}" aria-label="フレーズを聞く">${SPK}</button></div>
+      <div class="phrase-ja">${R.pjHTML(w)}</div>
+      ${w.rel.length ? `<div class="rel">${R.relHTML(w)}</div>` : ''}
+    </div>
+    <div class="card" style="margin-top:14px;padding:14px 16px;background:var(--sunk);border:0">
+      <div class="row" style="justify-content:space-between"><b style="font-size:14px">記憶の状態</b><span class="chip"><span class="dot ${s.k}"></span>${s.t}</span></div>
+      ${learned ? `<div class="kv" style="margin-top:8px">
+        <div><b>${pct(R.rNow(c))}</b><span>いま思い出せる確率</span></div>
+        <div><b>${pct(R.rAt(c, R.EXAM))}</b><span>本番日の予測</span></div>
+        <div><b>${c.s < 1 ? '<1' : Math.round(c.s)}日</b><span>記憶の安定度</span></div>
+        <div><b>${c.due.slice(5).replace('-', '/')}</b><span>次の復習</span></div></div>
+        ${wordCurve(c)}
+        <p class="note">復習 ${c.reps || 0}回・忘れた回数 ${c.lapses || 0}回。安定度は「思い出せる確率が90%に下がるまでの日数」です。</p>` : '<p class="note" style="margin-top:6px">まだ学習していません。</p>'}
+    </div>
+    <div id="aiArea">${aiHTML(a)}</div>
+    <div class="row" style="margin-top:14px">
+      ${R.AI.on ? `<button class="btn sm primary" id="mn">${a && (a.etym || a.image) ? '覚え方を作り直す' : 'Claude に覚え方を作ってもらう'}</button><button class="btn sm" id="ex">例文をもう1つ</button>` : ''}
+      ${!learned ? '<button class="btn sm" id="known">もう知っている</button><button class="btn sm" id="prio">優先して学ぶ</button>' : ''}
+      ${c ? '<button class="btn sm ghost" id="reset">記録をリセット</button>' : ''}
+    </div>
+    <div id="confirm"></div>
+  </div></div>`;
+  document.addEventListener('keydown', escClose);
+  $('#scrim').onclick = e => { if (e.target.id === 'scrim') R.closeModal(); };
+  $('#mclose').onclick = R.closeModal;
+  $('#modal').querySelectorAll('[data-say]').forEach(b => { b.onclick = () => R.TTS.speak(b.dataset.say); });
+  const run = async (btn, fn) => {
+    btn.disabled = true; const label = btn.textContent; btn.innerHTML = '<span class="spin"></span> 作成中…';
+    try { const rec = await fn(); $('#aiArea').innerHTML = aiHTML(rec); btn.textContent = label; }
+    catch (e) { R.toast(R.AI.message(e) || '中断しました'); btn.textContent = label; }
+    finally { btn.disabled = false; }
+  };
+  const mn = $('#mn'); if (mn) mn.onclick = () => run(mn, () => R.AI.mnemonic(w));
+  const ex = $('#ex'); if (ex) ex.onclick = () => run(ex, () => R.AI.example(w));
+  const kn = $('#known'); if (kn) kn.onclick = () => { R.markKnown(id); R.toast('既知にしました（本番前に一度だけ確認が出ます）'); R.openWord(id); refresh(); };
+  const pr = $('#prio'); if (pr) pr.onclick = () => { R.markPriority(id); R.toast('次の学習で優先して出します'); R.openWord(id); };
+  const rs = $('#reset'); if (rs) rs.onclick = () => {
+    $('#confirm').innerHTML = '<div class="row" style="margin-top:10px"><span class="note">この単語の記憶データを消して、未学習に戻しますか？</span><button class="btn sm" id="rsYes">リセットする</button><button class="btn sm ghost" id="rsNo">やめる</button></div>';
+    $('#rsYes').onclick = () => { R.resetCard(id); R.toast('リセットしました'); R.openWord(id); refresh(); };
+    $('#rsNo').onclick = () => { $('#confirm').innerHTML = ''; };
+  };
+};
+
+/* ---------- boot ---------- */
+document.getElementById('tabs').addEventListener('click', e => { const b = e.target.closest('button[data-view]'); if (b) R.go(b.dataset.view); });
+R.on('voices', () => { if (R.current === 'settings') VIEWS.settings(); });
+async function boot() {
+  R.TTS.init(); R.AI.init();
+  await R.load();
+  R.loaded = true;
+  R.go('home');
+}
+if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', boot); else setTimeout(boot, 0);
+})();
+
+</script>
+<script>
+/* m-session.js — learning sessions (pretest → encode → spaced retrieval) and the known-word scan */
+(function () {
+'use strict';
+const R = window.RC, S = R.S, V = window.VOCAB, esc = R.esc;
+const $ = (s, r) => (r || document).querySelector(s);
+const view = () => $('#view');
+const FMT = { mc: '意味を選ぶ', aud: '聞いて意味を選ぶ', clz: 'フレーズを完成させる', rev: '英語で言うと？', typ: 'つづりを書く' };
+const SLOW = { mc: 6000, aud: 7000, clz: 9000, rev: 8000, typ: 15000 };
+let ses = null, cur = null;
+
+function pickFmt(c, avoid) {
+  const s = (c && c.s) || 0;
+  let list = s < 3 ? ['mc', 'aud', 'mc'] : s < 10 ? ['aud', 'clz', 'mc'] : s < 30 ? ['clz', 'rev', 'aud'] : ['rev', 'clz', 'aud'];
+  if (S.settings.typing && s >= 10) list.push('typ');
+  if (!R.TTS.ok) list = list.filter(f => f !== 'aud');
+  const last = c && c.h && c.h.length ? c.h[c.h.length - 1][2] : '';
+  const opts = list.filter(f => f !== last && f !== avoid);
+  const pool = opts.length ? opts : list;
+  return pool[Math.floor(Math.random() * pool.length)];
+}
+/* re-insert a word later in the session; at most 5 prompts per word so one hard word cannot take over */
+const insertAt = (k, item) => {
+  const n = ses.items.filter(x => x.id === item.id).length;
+  if (n >= 5) return;
+  ses.items.splice(Math.min(ses.items.length, ses.i + 1 + k), 0, item);
+};
+
+/* ---------- session ---------- */
+R.startSession = opt => {
+  opt = opt || {};
+  R.leaveSession(); R.TTS.stop(); R.closeModal();
+  const due = R.due().slice(0, 30);
+  const nNew = Math.min(opt.extraNew || R.newLeft(), 6);
+  const fresh = R.newQueue().slice(0, nNew);
+  const items = [];
+  let ri = 0;
+  fresh.forEach(w => { for (let j = 0; j < 2 && ri < due.length; j++) items.push({ kind: 'q', id: due[ri++].id, mode: 'review' }); items.push({ kind: 'intro', id: w.id }); });
+  while (ri < due.length) items.push({ kind: 'q', id: due[ri++].id, mode: 'review' });
+  if (!items.length) { R.toast('今日の学習はすべて終わっています'); return; }
+  ses = { items, i: 0, started: Date.now(), res: [], expBefore: R.expectedAt(R.EXAM), learned: 0 };
+  R.current = 'session';
+  document.querySelectorAll('#tabs button').forEach(b => b.removeAttribute('aria-current'));
+  show();
+};
+R.leaveSession = () => {
+  if (cur && cur.answered && !cur.applied) apply(cur.sugg);
+  if (cur) clearTimeout(cur.timer);
+  ses = null; cur = null;
+};
+function bar() {
+  const n = ses.items.length;
+  return `<div class="qwrap"><div class="sbar"><div class="prog"><i style="width:${Math.round(ses.i / n * 100)}%"></i></div><span class="cnt">${Math.min(ses.i + 1, n)} / ${n}</span><button class="btn sm ghost" id="quit">終了</button></div>`;
+}
+function show() {
+  if (!ses) return;
+  if (ses.i >= ses.items.length) return summary();
+  const it = ses.items[ses.i], w = V.BY_ID.get(it.id);
+  if (!w) { ses.i++; return show(); }
+  const c = S.cards.get(it.id);
+  if (it.kind === 'q' && !it.fmt) it.fmt = it.mode === 'review' ? pickFmt(c) : it.mode === 'new1' ? (R.TTS.ok ? 'aud' : 'mc') : it.mode === 'new2' ? 'clz' : pickFmt(c, it.avoid);
+  cur = { it, w, c, t0: Date.now(), answered: false, applied: false, sugg: 3, choice: null };
+  if (it.kind === 'intro') renderIntro(); else renderQ();
+  window.scrollTo(0, 0);
+}
+function next() { if (!ses) return; if (cur) clearTimeout(cur.timer); ses.i++; show(); }
+
+/* ---------- new word: guess first, then encode ---------- */
+function renderIntro() {
+  const w = cur.w, opts = R.choicesJA(w);
+  cur.opts = opts;
+  view().innerHTML = bar() + `<div class="qcard">
+    <div class="qlabel"><span class="fmt">新しい単語 ・ まず推測</span><span class="chip">${esc(V.LEVELS[w.lv].name)}・${esc(V.THEMES[w.th] || '')}</span></div>
+    <div class="row" style="gap:12px"><span class="word">${esc(w.w)}</span><button class="spk" id="say" aria-label="発音を聞く">${R.SPK}</button></div>
+    <p class="phrase" style="margin-top:8px">${R.phraseHTML(w)}</p>
+    <p class="note" style="margin-top:4px">フレーズをヒントに意味を推測してください。外れても大丈夫です。先に推測すると、答えを見たときに記憶に残りやすくなります。</p>
+    <div class="opts">${opts.map((o, i) => `<button class="opt" data-i="${i}"><span class="k">${i + 1}</span><span class="t">${esc(o.main)}</span></button>`).join('')}</div>
+    <div class="row idk"><button class="btn sm ghost" id="idk">見当がつかない <span class="kbd">0</span></button></div>
+    <div id="fb"></div></div></div>`;
+  bindCommon();
+  view().querySelectorAll('.opt').forEach(b => { b.onclick = () => answerIntro(+b.dataset.i); });
+  $('#idk').onclick = () => answerIntro(-1);
+  if (S.settings.autoplay) R.TTS.speak(w.w);
+}
+function answerIntro(i) {
+  if (cur.answered) return;
+  cur.answered = true; cur.applied = true;
+  const w = cur.w, ok = i >= 0 && cur.opts[i].id === w.id, ms = Date.now() - cur.t0;
+  markOpts(i, cur.opts.findIndex(o => o.id === w.id));
+  ses.res.push({ id: w.id, kind: 'intro', ok });
+  const a = S.ai.get(w.id);
+  $('#fb').innerHTML = `<div class="fb">
+    <div class="verdict ${ok ? 'good' : 'bad'}">${ok ? '推測どおり！' : i < 0 ? 'ここで覚えましょう' : '惜しい、正解はこちら'}</div>
+    ${winfo(w)}
+    <div id="aiIntro">${R.aiHTML(a)}</div>
+    <div class="grades">
+      <button class="btn primary" id="got">覚えた、次へ <span class="kbd" style="color:inherit;border-color:currentColor">Enter</span></button>
+      ${R.AI.on && !(a && (a.etym || a.image)) ? '<button class="btn" id="mnI">Claude に覚え方を作ってもらう</button>' : ''}
+      ${ok && ms < 5000 ? '<button class="btn ghost" id="knew">もともと知っていた</button>' : ''}
+    </div></div>`;
+  $('#got').onclick = () => { ses.learned++; insertAt(3, { kind: 'q', id: w.id, mode: 'new1' }); next(); };
+  const kn = $('#knew'); if (kn) kn.onclick = () => { R.markKnown(w.id); R.toast('既知にしました'); next(); };
+  const mn = $('#mnI'); if (mn) mn.onclick = () => aiMnemonic(mn, w, '#aiIntro');
+  bindSpeak();
+  $('#got').focus({ preventScroll: true });
+}
+async function aiMnemonic(btn, w, target) {
+  btn.disabled = true; btn.innerHTML = '<span class="spin"></span> 考えています…';
+  try { const rec = await R.AI.mnemonic(w); const box = $(target); if (box) box.innerHTML = R.aiHTML(rec); btn.remove(); }
+  catch (e) { btn.disabled = false; btn.textContent = 'Claude に覚え方を作ってもらう'; R.toast(R.AI.message(e) || '中断しました'); }
+}
+function winfo(w) {
+  return `<div class="winfo">
+    <div class="top-line"><span class="w">${esc(w.w)}</span><span class="chip">${esc(V.POS[w.pos] || w.pos)}</span><button class="spk" data-say="${esc(w.w)}" aria-label="発音を聞く">${R.SPK}</button></div>
+    <div class="ja">${esc(w.ja)}</div>
+    <div class="row" style="gap:8px"><span class="phrase" style="font-size:18px">${R.phraseHTML(w)}</span><button class="spk" data-say="${esc(w.ph.replace(/[[\]]/g, ''))}" aria-label="フレーズを聞く">${R.SPK}</button></div>
+    <div class="phrase-ja">${R.pjHTML(w)}</div>
+    ${w.rel.length ? `<div class="rel">${R.relHTML(w)}</div>` : ''}</div>`;
+}
+
+/* ---------- retrieval questions ---------- */
+function renderQ() {
+  const it = cur.it, w = cur.w, f = it.fmt;
+  const tag = it.mode === 'review' ? '復習' : it.mode === 'relearn' ? 'もう一度' : '確認';
+  let prompt = '', body = '';
+  if (f === 'mc') {
+    prompt = `<div class="row" style="gap:12px"><span class="word">${esc(w.w)}</span><button class="spk" id="say" aria-label="発音を聞く">${R.SPK}</button></div>`;
+  } else if (f === 'aud') {
+    prompt = `<div class="row" style="gap:14px"><button class="btn big" id="say">${R.SPK.replace('<svg', '<svg width="18" height="18"')} もう一度聞く</button><span class="note">聞こえた単語の意味は？<br><span class="kbd">Space</span> で再生</span></div>`;
+  } else if (f === 'clz') {
+    prompt = `<p class="phrase" style="font-size:22px">${R.phraseHTML(w, true)}</p><p class="phrase-ja" style="margin-top:6px">${R.pjHTML(w)}</p>${w.phKey.toLowerCase() !== w.w.toLowerCase() ? '<p class="note">選択肢は元の形で表示しています</p>' : ''}`;
+  } else if (f === 'rev' || f === 'typ') {
+    prompt = `<div class="jp-prompt">${esc(w.ja)}</div><p class="phrase" style="margin-top:8px;font-size:18px">${R.phraseHTML(w, true)}</p><p class="phrase-ja">${R.pjHTML(w)}</p>`;
+  }
+  if (f === 'typ') {
+    body = `<form class="typer" id="tform"><input id="tin" autocomplete="off" autocapitalize="off" spellcheck="false" placeholder="英語で入力" aria-label="英語で入力"><button class="btn primary" type="submit">答える</button></form>
+      <div class="row idk"><button class="btn sm ghost" id="idk">わからない</button><span class="note">頭文字：<span class="en">${esc(w.w[0])}</span>・${w.w.length}文字</span></div>`;
+  } else {
+    const opts = (f === 'mc' || f === 'aud') ? R.choicesJA(w) : R.choicesEN(w);
+    cur.opts = opts;
+    const en = !(f === 'mc' || f === 'aud');
+    body = `<div class="opts">${opts.map((o, i) => `<button class="opt" data-i="${i}"><span class="k">${i + 1}</span><span class="t ${en ? 'en' : ''}">${esc(en ? o.w : o.main)}</span></button>`).join('')}</div>
+      <div class="row idk"><button class="btn sm ghost" id="idk">わからない <span class="kbd">0</span></button></div>`;
+  }
+  view().innerHTML = bar() + `<div class="qcard"><div class="qlabel"><span class="fmt">${FMT[f]}</span><span class="chip ${it.mode === 'review' ? '' : 'acc'}">${tag}</span></div>${prompt}${body}<div id="fb"></div></div></div>`;
+  bindCommon();
+  view().querySelectorAll('.opt').forEach(b => { b.onclick = () => answer(+b.dataset.i); });
+  $('#idk').onclick = () => answer(-1);
+  const tf = $('#tform');
+  if (tf) { tf.onsubmit = e => { e.preventDefault(); answerTyped($('#tin').value); }; setTimeout(() => { const i = $('#tin'); if (i) i.focus(); }, 60); }
+  if (f === 'aud') { cur.t0 = Date.now() + 99999; R.TTS.speak(w.w).then(() => { if (cur && cur.w === w && !cur.answered) cur.t0 = Date.now(); }); setTimeout(() => { if (cur && cur.w === w && cur.t0 > Date.now()) cur.t0 = Date.now(); }, 2500); }
+  else if (f === 'mc' && S.settings.autoplay) R.TTS.speak(w.w);
+}
+const norm = s => String(s || '').toLowerCase().normalize('NFD').replace(/[̀-ͯ]/g, '').replace(/[^a-z0-9' -]/g, '').replace(/\s+/g, ' ').trim();
+function lev(a, b) { const m = a.length, n = b.length, d = []; for (let i = 0; i <= m; i++) { d[i] = [i]; } for (let j = 1; j <= n; j++) d[0][j] = j; for (let i = 1; i <= m; i++) for (let j = 1; j <= n; j++) d[i][j] = Math.min(d[i - 1][j] + 1, d[i][j - 1] + 1, d[i - 1][j - 1] + (a[i - 1] === b[j - 1] ? 0 : 1)); return d[m][n]; }
+function answerTyped(v) {
+  if (cur.answered) return;
+  const w = cur.w, x = norm(v), targets = [norm(w.w), norm(w.phKey)];
+  const exact = targets.indexOf(x) >= 0, near = !exact && x.length >= 5 && targets.some(t => lev(x, t) === 1);
+  finishAnswer(exact || near, near ? 'スペルが1文字違います' : '');
+}
+function answer(i) {
+  if (cur.answered) return;
+  const ok = i >= 0 && cur.opts[i].id === cur.w.id;
+  markOpts(i, cur.opts.findIndex(o => o.id === cur.w.id));
+  finishAnswer(ok, '');
+}
+function markOpts(i, correct) {
+  view().querySelectorAll('.opt').forEach(b => {
+    const k = +b.dataset.i; b.disabled = true;
+    if (k === correct) b.classList.add('good'); else if (k === i) b.classList.add('bad'); else b.classList.add('dim');
+  });
+}
+function finishAnswer(ok, note) {
+  const it = cur.it, w = cur.w, ms = Math.max(300, Date.now() - cur.t0);
+  cur.answered = true; cur.ok = ok; cur.ms = ms;
+  cur.sugg = !ok ? 1 : (note || ms > SLOW[it.fmt]) ? 2 : 3;
+  const idk = $('#idk'); if (idk) idk.disabled = true;
+  const tin = $('#tin'); if (tin) tin.disabled = true;
+  const c = S.cards.get(w.id), a = S.ai.get(w.id), leech = c && c.leech;
+  $('#fb').innerHTML = `<div class="fb">
+    <div class="verdict ${ok ? 'good' : 'bad'}">${ok ? '正解' : '不正解'}${note ? `<span class="chip hard">${esc(note)}</span>` : ''}${ok ? `<span class="mono faint" style="font-weight:400;font-size:12.5px">${(ms / 1000).toFixed(1)}秒</span>` : ''}${leech ? '<span class="chip bad">苦手な単語</span>' : ''}</div>
+    ${winfo(w)}
+    ${!ok ? `<div id="aiQ">${R.aiHTML(a)}</div>` : ''}
+    <div class="grades">${ok ? `
+      <button class="btn" data-g="2" aria-pressed="${cur.sugg === 2}">迷った <span class="kbd">H</span></button>
+      <button class="btn" data-g="3" aria-pressed="${cur.sugg === 3}">覚えてた <span class="kbd">Enter</span></button>
+      <button class="btn" data-g="4" aria-pressed="false">簡単すぎ <span class="kbd">E</span></button>`
+      : `<button class="btn primary" data-g="1">次へ <span class="kbd" style="color:inherit;border-color:currentColor">Enter</span></button>${R.AI.on && !(a && (a.etym || a.image)) ? '<button class="btn" id="mnQ">Claude に覚え方を作ってもらう</button>' : ''}`}
+    </div>
+    ${ok && S.settings.autoAdvance ? '<div class="timerline"><i id="tl"></i></div>' : ''}
+  </div>`;
+  view().querySelectorAll('[data-g]').forEach(b => { b.onclick = () => { clearTimeout(cur.timer); apply(+b.dataset.g); next(); }; });
+  const mn = $('#mnQ'); if (mn) mn.onclick = () => aiMnemonic(mn, w, '#aiQ');
+  bindSpeak();
+  if (!ok && it.fmt !== 'aud') R.TTS.speak(w.w);
+  if (ok && S.settings.autoAdvance) {
+    const tl = $('#tl');
+    if (tl) { tl.style.transition = 'none'; tl.style.width = '100%'; requestAnimationFrame(() => { tl.style.transition = 'width 1.5s linear'; tl.style.width = '0%'; }); }
+    const me = cur;
+    cur.timer = setTimeout(() => { if (cur === me && !me.applied) { apply(me.sugg); next(); } }, 1500);
+    view().querySelector('.fb').addEventListener('pointerdown', () => { clearTimeout(me.timer); const t = $('#tl'); if (t) t.parentElement.remove(); }, { once: true });
+  }
+}
+function apply(g) {
+  if (!cur || cur.applied) return;
+  cur.applied = true;
+  const it = cur.it, w = cur.w;
+  R.grade(w.id, g, it.fmt, cur.ms);
+  ses && ses.res.push({ id: w.id, kind: it.mode, ok: g > 1, g });
+  if (!ses) return;
+  if (it.mode === 'new1') { insertAt(g === 1 ? 3 : 6, { kind: 'q', id: w.id, mode: g === 1 ? 'new1b' : 'new2' }); if (g === 1) insertAt(8, { kind: 'q', id: w.id, mode: 'new2' }); }
+  else if ((it.mode === 'review' || it.mode === 'relearn' || it.mode === 'new2' || it.mode === 'new1b') && g === 1 && (it.tries || 0) < 2) insertAt(4, { kind: 'q', id: w.id, mode: 'relearn', avoid: it.fmt, tries: (it.tries || 0) + 1 });
+}
+
+/* ---------- shared bindings ---------- */
+function bindSpeak() { view().querySelectorAll('[data-say]').forEach(b => { b.onclick = () => R.TTS.speak(b.dataset.say); }); }
+function bindCommon() {
+  $('#quit').onclick = () => summary();
+  const say = $('#say'); if (say) say.onclick = () => R.TTS.speak(cur.w.w);
+}
+document.addEventListener('keydown', e => {
+  if (R.current !== 'session' || !cur) return;
+  const tag = (e.target && e.target.tagName) || '';
+  if (tag === 'INPUT' || tag === 'TEXTAREA' || tag === 'SELECT' || e.ctrlKey || e.metaKey || e.altKey) return;
+  const k = e.key.toLowerCase();
+  if (tag === 'BUTTON' && (k === 'enter' || k === ' ')) return;
+  if (!cur.answered) {
+    if (/^[1-4]$/.test(k)) { e.preventDefault(); if (cur.it.kind === 'intro') answerIntro(+k - 1); else if (cur.opts) answer(+k - 1); }
+    else if (k === '0') { e.preventDefault(); if (cur.it.kind === 'intro') answerIntro(-1); else answer(-1); }
+    else if (k === ' ') { e.preventDefault(); R.TTS.speak(cur.w.w); }
+    return;
+  }
+  if (cur.it.kind === 'intro') { if (k === 'enter') { e.preventDefault(); const b = $('#got'); if (b) b.click(); } return; }
+  const g = k === 'enter' ? cur.sugg : k === 'h' && cur.ok ? 2 : k === 'e' && cur.ok ? 4 : 0;
+  if (g) { e.preventDefault(); clearTimeout(cur.timer); apply(g); next(); }
+});
+
+/* ---------- summary ---------- */
+function summary() {
+  const s = ses; if (!s) { R.go('home'); return; }
+  if (cur && cur.answered && !cur.applied) apply(cur.sugg);
+  if (cur) clearTimeout(cur.timer);
+  ses = null; cur = null; R.TTS.stop();
+  R.current = 'summary';
+  const qs = s.res.filter(r => r.kind !== 'intro'), ok = qs.filter(r => r.ok).length;
+  const expAfter = R.expectedAt(R.EXAM), gain = Math.round(expAfter - s.expBefore);
+  const mins = Math.max(1, Math.round((Date.now() - s.started) / 60000));
+  const missed = [...new Set(qs.filter(r => !r.ok).map(r => r.id))];
+  const more = R.due().length + R.newLeft();
+  view().innerHTML = `<div class="qwrap stack">
+    <section class="card">
+      <div class="eyebrow">セッション完了</div>
+      <h1 style="font-size:22px;margin-top:4px">おつかれさまでした</h1>
+      <div class="kv" style="margin-top:14px">
+        <div><b>${qs.length}</b><span>問に解答</span></div>
+        <div><b>${qs.length ? Math.round(ok / qs.length * 100) + '%' : '—'}</b><span>正答率</span></div>
+        <div><b>${s.learned}</b><span>新しく覚えた単語</span></div>
+        <div><b>${mins}</b><span>分</span></div>
+      </div>
+      <p class="note" style="margin-top:12px">本番日の予測：<b class="mono">${Math.round(expAfter)}語</b>（今回 ${gain >= 0 ? '+' : ''}${gain}語）</p>
+    </section>
+    ${missed.length ? `<section class="card"><div class="sec-h"><h2>今回まちがえた単語</h2></div><div class="row">${missed.map(id => `<button class="chip bad" data-word="${esc(id)}"><span class="en">${esc(V.BY_ID.get(id).w)}</span></button>`).join('')}</div><p class="note" style="margin-top:8px">これらは近いうちにもう一度出題されます。タップで詳しく見られます。</p></section>` : ''}
+    <div class="row">${more ? `<button class="btn primary big" id="again">続けてもう1セット（残り${more}語）</button>` : ''}<button class="btn big" id="home">ホームへ</button></div>
+  </div>`;
+  window.scrollTo(0, 0);
+  const ag = $('#again'); if (ag) ag.onclick = () => R.startSession({});
+  $('#home').onclick = () => R.go('home');
+  view().querySelectorAll('[data-word]').forEach(b => { b.onclick = () => R.openWord(b.dataset.word); });
+}
+
+/* ---------- known-word scan ---------- */
+let scan = null;
+R.startScan = () => {
+  R.leaveSession(); R.TTS.stop(); R.closeModal();
+  const list = R.unlearned().filter(w => { const c = S.cards.get(w.id); return !(c && c.prio); });
+  if (!list.length) { R.toast('スキャンする単語が残っていません'); return; }
+  scan = { list, i: 0, known: 0, unknown: 0 };
+  R.current = 'scan';
+  document.querySelectorAll('#tabs button').forEach(b => b.removeAttribute('aria-current'));
+  scanShow();
+};
+function scanShow(stage) {
+  if (!scan) return;
+  if (scan.i >= scan.list.length) return scanEnd();
+  const w = scan.list[scan.i];
+  if (!stage) {
+    view().innerHTML = `<div class="qwrap"><div class="sbar"><div class="prog"><i style="width:${Math.round(scan.i / scan.list.length * 100)}%"></i></div><span class="cnt">既知 ${scan.known}・未知 ${scan.unknown}</span><button class="btn sm ghost" id="sq">終了</button></div>
+      <div class="qcard"><div class="qlabel"><span class="fmt">知っている単語を仕分ける</span><span class="chip">${esc(V.LEVELS[w.lv].name)}</span></div>
+      <div class="row" style="gap:12px"><span class="word">${esc(w.w)}</span><button class="spk" id="say" aria-label="発音を聞く">${R.SPK}</button></div>
+      <p class="note" style="margin-top:8px">意味がすぐに浮かぶなら「知っている」。確認問題に正解すると学習リストから外れ、本番前に一度だけ確認が出ます。</p>
+      <div class="opts"><button class="opt" id="yes"><span class="k">1</span><span class="t">知っている</span></button><button class="opt" id="no"><span class="k">2</span><span class="t">知らない・自信がない</span></button></div>
+      </div></div>`;
+    $('#sq').onclick = scanEnd;
+    $('#say').onclick = () => R.TTS.speak(w.w);
+    $('#yes').onclick = () => scanShow('check');
+    $('#no').onclick = () => { R.markPriority(w.id); scan.unknown++; scan.i++; scanShow(); };
+    if (S.settings.autoplay) R.TTS.speak(w.w);
+    return;
+  }
+  const opts = R.choicesJA(w), t0 = Date.now();
+  view().querySelector('.opts').outerHTML = `<div class="opts">${opts.map((o, i) => `<button class="opt" data-i="${i}"><span class="k">${i + 1}</span><span class="t">${esc(o.main)}</span></button>`).join('')}</div>`;
+  view().querySelector('.note').textContent = '確認：意味を選んでください。';
+  view().querySelectorAll('.opt').forEach(b => { b.onclick = () => {
+    const i = +b.dataset.i, ok = opts[i].id === w.id && Date.now() - t0 < 8000;
+    view().querySelectorAll('.opt').forEach(x => { x.disabled = true; const k = +x.dataset.i; x.classList.add(opts[k].id === w.id ? 'good' : k === i ? 'bad' : 'dim'); });
+    if (ok) { R.markKnown(w.id); scan.known++; } else { R.markPriority(w.id); scan.unknown++; }
+    setTimeout(() => { if (scan) { scan.i++; scanShow(); } }, ok ? 450 : 1300);
+  }; });
+}
+function scanEnd() {
+  const s = scan; scan = null;
+  if (!s) return R.go('home');
+  R.current = 'summary';
+  view().innerHTML = `<div class="qwrap"><section class="card"><div class="eyebrow">仕分け完了</div><h1 style="font-size:22px;margin-top:4px">${s.known}語を学習リストから外しました</h1>
+    <p class="note" style="margin-top:10px">「知らない」と答えた${s.unknown}語は優先して学習します。既知にした単語も、本番前に思い出せるか一度だけ確認が出ます。</p>
+    <div class="row" style="margin-top:16px"><button class="btn primary" id="h">ホームへ</button></div></section></div>`;
+  $('#h').onclick = () => R.go('home');
+}
+document.addEventListener('keydown', e => {
+  if (R.current !== 'scan' || !scan) return;
+  if (e.ctrlKey || e.metaKey || e.altKey) return;
+  const b = e.key === '1' ? view().querySelector('#yes') || view().querySelector('.opt[data-i="0"]') : e.key === '2' ? view().querySelector('#no') || view().querySelector('.opt[data-i="1"]') : e.key === '3' ? view().querySelector('.opt[data-i="2"]') : e.key === '4' ? view().querySelector('.opt[data-i="3"]') : null;
+  if (b && !b.disabled) { e.preventDefault(); b.click(); }
+});
+})();
+
+</script>
+<script>
+/* m-story.js — Claude writes a TOEIC-style passage from the words you are learning */
+(function () {
+'use strict';
+const R = window.RC, S = R.S, V = window.VOCAB, esc = R.esc;
+const $ = (s, r) => (r || document).querySelector(s);
+const view = () => $('#view');
+let ctl = null;
+
+function pickWords() {
+  const t = R.today(), cards = [...S.cards.values()].filter(c => R.learned(c) && c.st !== 'K');
+  const score = c => (c.leech ? 0 : 3) + (c.intro && R.diffDays(c.intro, t) <= 7 ? 0 : 2) + R.rNow(c) + Math.random() * 0.8;
+  return cards.sort((a, b) => score(a) - score(b)).slice(0, 10).map(c => V.BY_ID.get(c.id)).filter(Boolean);
+}
+function storyHTML(st) {
+  const parts = [], re = /\[\[([^\]|]+)\|([^\]]+)\]\]/g;
+  let last = 0, m;
+  while ((m = re.exec(st.text))) {
+    parts.push(esc(st.text.slice(last, m.index)));
+    const id = m[2].trim(), w = V.BY_ID.get(id);
+    parts.push(w ? `<button class="tw" data-id="${esc(id)}">${esc(m[1])}</button>` : esc(m[1]));
+    last = re.lastIndex;
+  }
+  parts.push(esc(st.text.slice(last)));
+  return parts.join('');
+}
+R.VIEWS.read = () => {
+  const words = pickWords();
+  view().innerHTML = `<div class="stack">
+    <section class="card">
+      <div class="eyebrow">Reading with your words</div>
+      <h1 style="font-size:20px;margin-top:4px">覚えた単語で読むストーリー</h1>
+      <p class="note" style="margin-top:8px">最近覚えた単語と苦手な単語を使って、Claude が TOEIC Part 7 風の英文を書き下ろします。単語帳で覚えた意味を実際の文脈で読むと、使い方ごと記憶に定着し、長文を読むスピードも上がります。</p>
+      ${!R.AI.on ? '<p class="note" style="margin-top:10px">Claude の機能はオンライン版（claude.ai）で使えます。</p>'
+        : words.length < 4 ? '<p class="note" style="margin-top:10px">学習済みの単語が4語以上になると作れます。まずは「今日」から学習を始めましょう。</p>'
+        : `<p class="note" style="margin-top:10px">使う単語：${words.map(w => `<span class="en">${esc(w.w)}</span>`).join('、')}</p><div class="row" style="margin-top:12px"><button class="btn primary" id="gen">ストーリーを作る</button><span class="note">20〜60秒かかります</span></div>`}
+      <div id="genOut"></div>
+    </section>
+    <section class="card"><div class="sec-h"><h2>これまでのストーリー</h2></div>
+      ${S.stories.length ? `<div class="wl">${S.stories.map(st => `<button class="wr" data-st="${esc(st.id)}" style="grid-template-columns:auto minmax(0,1fr) auto"><span class="chip ${st.done ? 'good' : 'acc'}">${st.done ? '読了' : '未読'}</span><span style="min-width:0"><b>${esc(st.title)}</b><br><span class="wj">${esc(st.kind)}・${st.words.length}語</span></span><span class="mono faint">${esc(String(st.created).slice(5, 10).replace('-', '/'))}</span></button>`).join('')}</div>` : '<p class="note">まだありません。</p>'}
+    </section>
+  </div>`;
+  const g = $('#gen');
+  if (g) g.onclick = async () => {
+    g.disabled = true;
+    const out = $('#genOut');
+    out.innerHTML = '<p class="note" style="margin-top:12px"><span class="spin"></span> Claude が書いています… <button class="btn sm ghost" id="stop">中止</button></p>';
+    ctl = new AbortController();
+    $('#stop').onclick = () => ctl && ctl.abort();
+    try { const st = await R.AI.story(words, { signal: ctl.signal }); openStory(st.id); }
+    catch (e) { const m = R.AI.message(e); out.innerHTML = m ? `<p class="note" style="margin-top:12px">${esc(m)}</p>` : ''; g.disabled = false; }
+    finally { ctl = null; }
+  };
+  view().querySelectorAll('[data-st]').forEach(b => { b.onclick = () => openStory(b.dataset.st); });
+};
+function openStory(id) {
+  const st = S.stories.find(s => s.id === id);
+  if (!st) return;
+  const picked = {};
+  view().innerHTML = `<div class="qwrap stack">
+    <div class="row"><button class="btn sm ghost" id="back">← ストーリー一覧</button></div>
+    <section class="card">
+      <div class="eyebrow">${esc(st.kind)}</div>
+      <h1 style="font-size:20px;margin-top:4px">${esc(st.title)}</h1>
+      <p class="note" style="margin:6px 0 14px">マーカーの単語をタップすると意味を確認できます。まずは意味を思い出しながら読んでみてください。</p>
+      <div class="story">${storyHTML(st)}</div>
+      <div id="pop"></div>
+    </section>
+    ${st.qs.length ? `<section class="card"><div class="sec-h"><h2>確認問題</h2></div>${st.qs.map((q, qi) => `<div style="margin-bottom:16px"><p class="en" style="font-size:16.5px;margin-bottom:8px">${qi + 1}. ${esc(q.q)}</p><div class="opts" style="margin-top:0">${q.choices.map((c, ci) => `<button class="opt" data-q="${qi}" data-c="${ci}"><span class="k">${'ABCD'[ci]}</span><span class="t en">${esc(c)}</span></button>`).join('')}</div><div class="note" id="qx${qi}" style="margin-top:8px"></div></div>`).join('')}</section>` : ''}
+  </div>`;
+  window.scrollTo(0, 0);
+  $('#back').onclick = () => R.VIEWS.read();
+  view().querySelectorAll('.tw').forEach(b => { b.onclick = () => {
+    const w = V.BY_ID.get(b.dataset.id); if (!w) return;
+    $('#pop').innerHTML = `<div class="pop"><div class="row" style="justify-content:space-between"><span><b class="en" style="font-size:18px">${esc(w.w)}</b>　${esc(w.ja)}</span><span class="row" style="gap:6px"><button class="spk" id="psay" aria-label="発音を聞く">${R.SPK}</button><button class="btn sm ghost" id="pdet">詳しく</button></span></div><div class="phrase" style="font-size:16px;margin-top:4px">${R.phraseHTML(w)}</div></div>`;
+    $('#psay').onclick = () => R.TTS.speak(w.w);
+    $('#pdet').onclick = () => R.openWord(w.id);
+  }; });
+  view().querySelectorAll('.opt[data-q]').forEach(b => { b.onclick = () => {
+    const qi = +b.dataset.q, ci = +b.dataset.c, q = st.qs[qi];
+    if (picked[qi] != null) return;
+    picked[qi] = ci;
+    view().querySelectorAll(`.opt[data-q="${qi}"]`).forEach(x => { x.disabled = true; const k = +x.dataset.c; x.classList.add(k === q.answer ? 'good' : k === ci ? 'bad' : 'dim'); });
+    $('#qx' + qi).textContent = (ci === q.answer ? '正解。' : '不正解。') + (q.ex || '');
+    if (Object.keys(picked).length === st.qs.length && !st.done) { st.done = true; R.Store.save('stories/' + st.id, st); }
+  }; });
+}
+})();
+
+</script>
+<script>
+/* pwa.js — offline kit glue shared by every page: service worker, link back to the kit home, persistent storage */
+(function () {
+  'use strict';
+  if ('serviceWorker' in navigator && location.protocol.indexOf('http') === 0) {
+    window.addEventListener('load', function () { navigator.serviceWorker.register('sw.js').catch(function () { /* offline cache is optional */ }); });
+  }
+  try {
+    if (navigator.storage && navigator.storage.persist) {
+      navigator.storage.persisted().then(function (p) { if (!p) return navigator.storage.persist(); }).catch(function () {});
+    }
+  } catch (e) { /* ignore */ }
+  function addHome() {
+    var top = document.querySelector('.top-in');
+    if (!top || document.querySelector('.kit-home')) return;
+    var a = document.createElement('a');
+    a.href = './';
+    a.className = 'kit-home';
+    a.textContent = '‹ Kit';
+    a.setAttribute('aria-label', 'TOEIC Study Kit のホームに戻る');
+    a.style.cssText = 'font:600 13px/1 system-ui,-apple-system,sans-serif;color:inherit;opacity:.7;text-decoration:none;padding:10px 6px 10px 0;white-space:nowrap';
+    top.insertBefore(a, top.firstChild);
+  }
+  if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', addHome); else addHome();
+})();
+
+</script>
+</body>
+</html>

@@ -1,0 +1,45 @@
+{
+  "name": "TOEIC Study Kit",
+  "short_name": "TOEIC Kit",
+  "lang": "ja",
+  "description": "TOEIC 800点に向けた単語・問題演習アプリ集（オフライン対応）",
+  "start_url": "./",
+  "scope": "./",
+  "display": "standalone",
+  "background_color": "#F2F3F1",
+  "theme_color": "#F2F3F1",
+  "icons": [
+    {
+      "src": "icons/icon-192.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "any"
+    },
+    {
+      "src": "icons/icon-512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any"
+    },
+    {
+      "src": "icons/icon-512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "maskable"
+    }
+  ],
+  "shortcuts": [
+    {
+      "name": "Recall 1000",
+      "url": "./recall.html"
+    },
+    {
+      "name": "Phrase 1000",
+      "url": "./phrase.html"
+    },
+    {
+      "name": "TOEIC 800 Drill",
+      "url": "./drill.html"
+    }
+  ]
+}
