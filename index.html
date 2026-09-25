@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="ja" data-build="20260925-094318">
+<html lang="ja" data-build="20260925-143405">
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
@@ -18,7 +18,7 @@
 :root{
   --bg:#F2F3F1; --surface:#FFFFFF; --sunk:#ECEEEB; --line:#DEE1E4;
   --ink:#16191C; --ink-2:#5B6167; --ink-3:#8A9096;
-  --drill:#C8466A; --recall:#0C7A62; --phrase:#CF2E2E;
+  --drill:#C8466A; --recall:#0C7A62; --phrase:#CF2E2E; --reading:#2E8B62;
   --ok:#1F8A5B; --ok-soft:#DFF3E8; --warn:#A86A12; --warn-soft:#F6EBD6; --danger:#B8322F;
   --f:system-ui,-apple-system,"Hiragino Sans","Yu Gothic UI","Meiryo",sans-serif;
   --mono:ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;
@@ -28,7 +28,7 @@
     color-scheme:dark;
     --bg:#111315; --surface:#181B1E; --sunk:#1F2327; --line:#2B3035;
     --ink:#E7EAEC; --ink-2:#A5ACB2; --ink-3:#767D84;
-    --drill:#EC809A; --recall:#4CCAA8; --phrase:#FF6F66;
+    --drill:#EC809A; --recall:#4CCAA8; --phrase:#FF6F66; --reading:#62D29E;
     --ok:#58C995; --ok-soft:#153326; --warn:#E0A64E; --warn-soft:#35280F; --danger:#F2807A;
   }
 }
@@ -36,7 +36,7 @@
   color-scheme:dark;
   --bg:#111315; --surface:#181B1E; --sunk:#1F2327; --line:#2B3035;
   --ink:#E7EAEC; --ink-2:#A5ACB2; --ink-3:#767D84;
-  --drill:#EC809A; --recall:#4CCAA8; --phrase:#FF6F66;
+  --drill:#EC809A; --recall:#4CCAA8; --phrase:#FF6F66; --reading:#62D29E;
   --ok:#58C995; --ok-soft:#153326; --warn:#E0A64E; --warn-soft:#35280F; --danger:#F2807A;
 }
 *{box-sizing:border-box}
@@ -111,6 +111,11 @@ footer{font-size:12px;color:var(--ink-3);text-align:center}
       <span><b>TOEIC 800 Drill</b><span class="what">Part 2〜7 の問題演習と復習</span><span class="st" id="sDrill">…</span></span>
       <span class="go" aria-hidden="true">›</span>
     </a>
+    <a class="app" href="reading.html">
+      <span class="mark" style="color:var(--reading)"><i></i></span>
+      <span><b>Elias Reading Room</b><span class="what">トリッカルの世界の短編で英語長文を読む</span><span class="st" id="sReading">…</span></span>
+      <span class="go" aria-hidden="true">›</span>
+    </a>
   </nav>
 
   <section class="card" id="install">
@@ -138,6 +143,7 @@ footer{font-size:12px;color:var(--ink-3);text-align:center}
       <li><a href="https://claude.ai/artifact/H6E3DUdDDLFCwMrc8z1RoW" target="_blank" rel="noopener">Recall 1000（オンライン版）</a></li>
       <li><a href="https://claude.ai/artifact/5vUZkbRaTDoUGKzoYZwVb7" target="_blank" rel="noopener">Phrase 1000（オンライン版）</a></li>
       <li><a href="https://claude.ai/artifact/HM8FMrSPnyuqAKXspJdbHB" target="_blank" rel="noopener">TOEIC 800 Drill（オンライン版）</a></li>
+      <li><a href="https://claude.ai/artifact/HJajwmRHBnskASWmjMsHis" target="_blank" rel="noopener">Elias Reading Room（オンライン版・新しいお話の執筆）</a></li>
     </ul>
   </section>
   <footer id="ver"></footer>
@@ -147,7 +153,7 @@ footer{font-size:12px;color:var(--ink-3);text-align:center}
 <script>
 (function () {
   'use strict';
-  var EXAM = '2026-12-19', PREFIXES = ['toeic800:', 'recall1000:', 'phrase1000:'];
+  var EXAM = '2026-12-19', PREFIXES = ['toeic800:', 'recall1000:', 'phrase1000:', 'elias:'];
   var $ = function (s) { return document.querySelector(s); };
   var pad = function (n) { return String(n).padStart(2, '0'); };
   var d0 = new Date(), today = d0.getFullYear() + '-' + pad(d0.getMonth() + 1) + '-' + pad(d0.getDate());
@@ -166,13 +172,15 @@ footer{font-size:12px;color:var(--ink-3);text-align:center}
   $('#dd').innerHTML = (left > 0 ? left : 0) + '<small>' + (left > 0 ? '日で本番' : left === 0 ? '本番当日' : '本番終了') + '</small>';
 
   function stats() {
-    var all = readAll(), rDue = 0, rLearned = 0, pChk = 0, dDue = 0, dN = 0;
+    var all = readAll(), rDue = 0, rLearned = 0, pChk = 0, dDue = 0, dN = 0, eRead = 0, eBest = 0;
     Object.keys(all).forEach(function (k) {
       if (k.indexOf('recall1000:cards/') === 0) { var c = parse(all[k]); if (c && (c.st === 'R' || c.st === 'K')) { rLearned++; if (c.due <= today) rDue++; } }
       else if (k === 'phrase1000:marks/all') { var m = (parse(all[k]) || {}).m || {}; Object.keys(m).forEach(function (id) { if (m[id] & 1) pChk++; }); }
       else if (k.indexOf('toeic800:review/') === 0) { var r = parse(all[k]); if (r && !r.done && r.due <= today) dDue++; }
       else if (k === 'toeic800:meta/stats') { var s = parse(all[k]); if (s && s.parts) Object.keys(s.parts).forEach(function (p) { dN += s.parts[p].n || 0; }); }
+      else if (k.indexOf('elias:progress/') === 0) { var e = parse(all[k]); if (e && e.reads && e.reads.length) { eRead++; eBest = Math.max(eBest, e.best || 0); } }
     });
+    $('#sReading').textContent = eRead ? '読んだお話 ' + eRead + '話・最高 ' + eBest + 'WPM' : 'まだ読んでいません';
     $('#sRecall').textContent = rLearned ? '今日の復習 ' + rDue + '語・学習済み ' + rLearned + '/1000' : 'まだ学習していません';
     $('#sPhrase').textContent = pChk ? '1周目チェック ' + pChk + '/1000' : 'チェックはまだありません';
     $('#sDrill').textContent = dN ? '今日の復習 ' + dDue + '問・累計 ' + dN + '問' : 'まだ解いていません';
@@ -186,7 +194,7 @@ footer{font-size:12px;color:var(--ink-3);text-align:center}
       var keys = await caches.keys(), k = keys.filter(function (x) { return x.indexOf('kit-') === 0 && x !== 'kit-fonts'; })[0];
       if (k) {
         var c = await caches.open(k);
-        var hits = await Promise.all(['index.html', 'drill.html', 'recall.html', 'phrase.html'].map(function (u) { return c.match(u); }));
+        var hits = await Promise.all(['index.html', 'drill.html', 'recall.html', 'phrase.html', 'reading.html'].map(function (u) { return c.match(u); }));
         if (hits.every(Boolean)) { set('ok', 'オフライン対応：準備完了'); return; }
       }
       set('wait', 'オフライン用に保存しています…');

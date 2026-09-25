@@ -1,0 +1,1297 @@
+<!doctype html>
+<html lang="ja" data-build="20260925-143405">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="theme-color" content="#F6F4FB" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#15131C" media="(prefers-color-scheme: dark)">
+<link rel="manifest" href="manifest.webmanifest">
+<link rel="icon" href="icons/icon-192.png">
+<link rel="apple-touch-icon" href="icons/apple-touch-icon.png">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-title" content="TOEIC Kit">
+<meta name="apple-mobile-web-app-status-bar-style" content="default">
+<style>:root{color-scheme:light;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}body{margin:0}img{max-width:100%}[hidden]{display:none!important}</style>
+<title>Elias Reading Room</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fredoka:wght@400;500;600&family=Literata:opsz,wght@7..72,400;7..72,600&family=M+PLUS+Rounded+1c:wght@400;500;700&display=swap">
+<style>
+:root{
+  --bg:#F6F4FB; --surface:#FFFFFF; --sunk:#EEEAF6; --line:#E0DAEC;
+  --ink:#231F33; --ink-2:#5E5872; --ink-3:#8F89A3;
+  --accent:#2E8B62; --accent-ink:#FFFFFF; --accent-soft:#DDF1E6;
+  --cheek:#E0528F; --cheek-soft:#FBE3EE;
+  --marker:#FFE08A; --good:#2E8B62; --good-soft:#DDF1E6; --bad:#C8414B; --bad-soft:#F9E1E3;
+  --f-disp:"Fredoka","M PLUS Rounded 1c",system-ui,sans-serif;
+  --f-en:"Literata","Georgia","Times New Roman",serif;
+  --f-jp:"M PLUS Rounded 1c","Hiragino Sans","Yu Gothic UI","Meiryo",system-ui,sans-serif;
+  --read:19px;
+}
+@media (prefers-color-scheme: dark){
+  :root:not([data-theme="light"]){
+    color-scheme:dark;
+    --bg:#15131C; --surface:#1D1A27; --sunk:#252134; --line:#342F46;
+    --ink:#EDEAF5; --ink-2:#B1ABC4; --ink-3:#7F7996;
+    --accent:#62D29E; --accent-ink:#0B2419; --accent-soft:#1B3A2C;
+    --cheek:#F27FB0; --cheek-soft:#3B1D2B;
+    --marker:rgba(255,214,102,.30); --good:#62D29E; --good-soft:#1B3A2C; --bad:#F2808A; --bad-soft:#3C1C22;
+  }
+}
+:root[data-theme="dark"]{
+  color-scheme:dark;
+  --bg:#15131C; --surface:#1D1A27; --sunk:#252134; --line:#342F46;
+  --ink:#EDEAF5; --ink-2:#B1ABC4; --ink-3:#7F7996;
+  --accent:#62D29E; --accent-ink:#0B2419; --accent-soft:#1B3A2C;
+  --cheek:#F27FB0; --cheek-soft:#3B1D2B;
+  --marker:rgba(255,214,102,.30); --good:#62D29E; --good-soft:#1B3A2C; --bad:#F2808A; --bad-soft:#3C1C22;
+}
+*{box-sizing:border-box}
+body{background:var(--bg);color:var(--ink);font-family:var(--f-jp);font-size:15px;line-height:1.7;-webkit-font-smoothing:antialiased}
+button,input,textarea,select{font:inherit;color:inherit}
+button{cursor:pointer}
+:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
+h1,h2,h3{margin:0;line-height:1.3;text-wrap:balance}
+p{margin:0}
+.disp{font-family:var(--f-disp)}
+.en{font-family:var(--f-en)}
+.note{font-size:13px;color:var(--ink-2);line-height:1.65}
+.eyebrow{font-family:var(--f-disp);font-size:12px;font-weight:600;letter-spacing:.08em;text-transform:uppercase;color:var(--accent)}
+
+/* frame */
+.top{position:sticky;top:env(safe-area-inset-top,0px);z-index:20;background:var(--bg);border-bottom:1px solid var(--line)}
+.top-in{max-width:980px;margin:0 auto;padding-inline:16px;display:flex;align-items:center;gap:12px;min-height:56px;flex-wrap:wrap}
+.brand{display:flex;align-items:center;gap:10px;margin-right:auto}
+.brand b{font-family:var(--f-disp);font-weight:600;font-size:19px;letter-spacing:.01em}
+.leaf{width:26px;height:26px;border-radius:50% 50% 50% 8px;background:var(--accent);transform:rotate(-45deg);display:inline-block;position:relative}
+.leaf::after{content:"";position:absolute;inset:6px;border-radius:50%;background:var(--cheek);opacity:.75}
+.tabs{display:flex;gap:2px}
+.tabs button{background:none;border:0;padding:15px 10px 13px;color:var(--ink-2);border-bottom:2px solid transparent;font-size:14px}
+.tabs button[aria-current="page"]{color:var(--ink);border-bottom-color:var(--accent);font-weight:700}
+main{max-width:980px;margin:0 auto;padding-inline:16px;padding-block:22px 90px}
+.banner{max-width:980px;margin:10px auto 0;padding-inline:16px}
+.banner p{background:var(--cheek-soft);border-radius:10px;padding:8px 12px;font-size:13px}
+.stack{display:flex;flex-direction:column;gap:18px}
+.row{display:flex;gap:10px;align-items:center;flex-wrap:wrap}
+.card{background:var(--surface);border:1px solid var(--line);border-radius:18px;padding:18px 20px}
+.sec-h{display:flex;align-items:baseline;justify-content:space-between;gap:12px;margin-bottom:12px}
+.sec-h h2{font-family:var(--f-disp);font-weight:600;font-size:18px}
+
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;border-radius:12px;padding:9px 16px;border:1px solid var(--line);background:var(--surface);font-size:14px;min-height:42px;line-height:1.3}
+.btn:hover{border-color:var(--ink-3)}
+.btn.primary{background:var(--accent);border-color:var(--accent);color:var(--accent-ink);font-weight:700}
+.btn.ghost{background:none;border-color:transparent;color:var(--ink-2)}
+.btn.sm{min-height:32px;padding:5px 11px;font-size:13px}
+.btn[aria-pressed="true"]{background:var(--ink);color:var(--bg);border-color:var(--ink)}
+.btn[disabled]{opacity:.45;cursor:not-allowed}
+.chip{display:inline-flex;align-items:center;gap:5px;border:1px solid var(--line);border-radius:99px;padding:2px 10px;font-size:12.5px;background:var(--surface);color:var(--ink-2);white-space:nowrap}
+.chip.acc{background:var(--accent-soft);color:var(--accent);border-color:transparent}
+.chip.cheek{background:var(--cheek-soft);color:var(--cheek);border-color:transparent}
+button.chip{cursor:pointer}
+button.chip[aria-pressed="true"]{background:var(--accent);color:var(--accent-ink);border-color:var(--accent)}
+
+/* library */
+.intro{display:grid;grid-template-columns:minmax(0,1.3fr) minmax(0,1fr);gap:18px 28px;align-items:center}
+@media (max-width:720px){.intro{grid-template-columns:1fr}}
+.intro h1{font-family:var(--f-disp);font-weight:600;font-size:28px;line-height:1.2}
+.kpis{display:grid;grid-template-columns:repeat(3,1fr);gap:10px}
+.kpi{background:var(--sunk);border-radius:14px;padding:10px 12px}
+.kpi b{display:block;font-family:var(--f-disp);font-weight:600;font-size:24px;line-height:1.2}
+.kpi span{font-size:12px;color:var(--ink-2)}
+.shelf{display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:14px}
+.story{display:flex;flex-direction:column;gap:8px;text-align:left;background:var(--surface);border:1px solid var(--line);border-radius:18px;padding:16px 18px;width:100%}
+.story:hover{border-color:var(--ink-3)}
+.story .no{font-family:var(--f-disp);font-size:12.5px;color:var(--ink-3)}
+.story h3{font-family:var(--f-disp);font-weight:600;font-size:19px}
+.story .jt{font-size:13px;color:var(--ink-2)}
+.story .meta{display:flex;gap:6px;flex-wrap:wrap}
+.story .foot{display:flex;justify-content:space-between;align-items:center;font-size:12.5px;color:var(--ink-2);margin-top:auto;padding-top:6px;border-top:1px dashed var(--line)}
+.done{color:var(--good);font-weight:700}
+
+/* reader */
+.rhead{display:flex;flex-direction:column;gap:6px}
+.rhead h1{font-family:var(--f-disp);font-weight:600;font-size:30px;line-height:1.2}
+.tools{display:flex;gap:8px;flex-wrap:wrap;align-items:center;position:sticky;top:calc(env(safe-area-inset-top,0px) + 57px);z-index:10;background:var(--bg);padding:10px 0;border-bottom:1px solid var(--line)}
+.timer{font-family:var(--f-disp);font-weight:600;font-size:18px;min-width:64px;text-align:center}
+.text{max-width:70ch;margin:0 auto}
+.para{position:relative;padding:6px 0}
+.para p.en{font-size:var(--read);line-height:1.85}
+.para .tr{font-size:14.5px;color:var(--ink-2);background:var(--sunk);border-radius:10px;padding:8px 12px;margin:6px 0 4px}
+.para .pbtn{position:absolute;left:-44px;top:10px;display:flex;flex-direction:column;gap:4px}
+@media (max-width:1060px){.para .pbtn{position:static;flex-direction:row;margin-top:4px}}
+.pbtn button{border:1px solid var(--line);background:var(--surface);border-radius:8px;font-size:11.5px;padding:1px 7px;color:var(--ink-3);min-width:32px;min-height:26px}
+.pbtn button:hover{color:var(--ink);border-color:var(--ink-3)}
+.th{font-style:italic;color:var(--ink-2)}
+.vw{font:inherit;color:inherit;background:linear-gradient(transparent 58%,var(--marker) 58%);border:0;padding:0 1px;border-radius:2px;cursor:pointer}
+.hide-vocab .vw{background:none;cursor:text}
+.reading .vw{background:none}
+.now p.en{background:var(--accent-soft);border-radius:6px}
+.pop{position:fixed;z-index:40;max-width:min(320px,calc(100vw - 32px));background:var(--ink);color:var(--bg);border-radius:12px;padding:10px 12px;font-size:14px;box-shadow:0 10px 30px rgba(0,0,0,.25)}
+.pop b{font-family:var(--f-en);font-size:17px}
+.pop .badge{display:inline-block;margin-left:6px;font-size:11px;background:var(--accent);color:var(--accent-ink);border-radius:6px;padding:0 6px}
+.result{display:grid;grid-template-columns:auto 1fr;gap:16px;align-items:center}
+.wpm{font-family:var(--f-disp);font-weight:600;font-size:52px;line-height:1}
+.wpm small{font-size:16px;color:var(--ink-2);margin-left:4px}
+.gauge{height:12px;background:var(--sunk);border-radius:6px;position:relative;overflow:visible;margin-top:8px}
+.gauge i{position:absolute;left:0;top:0;bottom:0;border-radius:6px;background:var(--accent)}
+.gauge .tick{position:absolute;top:-4px;bottom:-4px;width:2px;background:var(--cheek)}
+.q{padding:12px 0;border-top:1px dashed var(--line)}
+.q:first-of-type{border-top:0}
+.q p.en{font-size:16.5px;margin-bottom:8px}
+.opts{display:flex;flex-direction:column;gap:6px}
+.opt{display:flex;gap:10px;align-items:flex-start;text-align:left;border:1px solid var(--line);background:var(--surface);border-radius:12px;padding:9px 12px;font-family:var(--f-en);font-size:15.5px}
+.opt:hover{background:var(--sunk)}
+.opt .k{flex:none;font-family:var(--f-disp);font-weight:600;color:var(--ink-3);width:18px}
+.opt.good{border-color:var(--good);background:var(--good-soft)}
+.opt.bad{border-color:var(--bad);background:var(--bad-soft)}
+.opt[disabled]{cursor:default}
+.ex{margin-top:8px;font-size:14px;color:var(--ink-2)}
+.vtable{width:100%;border-collapse:collapse;font-size:14px}
+.vtable td{padding:7px 6px;border-bottom:1px dashed var(--line);vertical-align:top}
+.vtable td:first-child{font-family:var(--f-en);font-weight:600;white-space:nowrap}
+.navrow{display:flex;justify-content:space-between;gap:10px;flex-wrap:wrap}
+
+/* compose */
+.picker{display:flex;flex-wrap:wrap;gap:6px}
+.picker button.chip{font-size:13px;padding:4px 11px}
+.gen{display:flex;flex-direction:column;align-items:center;gap:10px;padding:28px 10px;text-align:center}
+.spin{display:inline-block;width:16px;height:16px;border:2px solid var(--line);border-top-color:var(--accent);border-radius:50%;animation:sp .9s linear infinite;vertical-align:-3px}
+@keyframes sp{to{transform:rotate(360deg)}}
+
+/* stats */
+.chart{width:100%;height:auto;display:block}
+.chart text{font-family:var(--f-disp);font-size:11px;fill:var(--ink-3)}
+.toast{position:fixed;left:50%;bottom:calc(env(safe-area-inset-bottom,0px) + 18px);transform:translateX(-50%);background:var(--ink);color:var(--bg);padding:9px 16px;border-radius:12px;font-size:13.5px;z-index:60;max-width:calc(100vw - 32px)}
+.empty{padding:26px;text-align:center;color:var(--ink-2);border:1px dashed var(--line);border-radius:14px}
+.field{display:flex;flex-direction:column;gap:6px}
+.field label{font-size:13px;color:var(--ink-2)}
+.field select{border:1px solid var(--line);border-radius:10px;padding:8px 10px;background:var(--surface);min-height:40px}
+@media (prefers-reduced-motion:reduce){*{transition:none!important;animation:none!important}}
+</style>
+</head>
+<body>
+<header class="top">
+  <div class="top-in">
+    <div class="brand"><span class="leaf" aria-hidden="true"></span><b>Elias Reading Room</b></div>
+    <nav class="tabs" id="tabs" aria-label="メイン">
+      <button data-view="shelf">本棚</button>
+      <button data-view="write">新しいお話</button>
+      <button data-view="stats">記録</button>
+    </nav>
+  </div>
+</header>
+<div class="banner" id="banner" hidden><p id="bannerText"></p></div>
+<main id="view"><div class="empty"><span class="spin"></span> 読み込み中…</div></main>
+<div id="popHost"></div>
+<div class="toast" id="toast" hidden></div>
+<script>
+/* Elias Reading Room — original fan-made short stories (unofficial). Stories 1–2. */
+window.STORIES = window.STORIES || [];
+STORIES.push({
+  id: 'overdue-tab', no: 1,
+  title: 'The Overdue Tab', ja: '女王陛下のツケ',
+  cast: ['Ashur', 'Erpin', 'Ner', 'Master'], place: "Erpien · Ashur's Bakery",
+  paras: [
+    [`The bell above the door of Ashur's Bakery rang, and the Master stepped inside. Erpin followed close behind and immediately pressed her face against the display case.`,
+     `「エシュールのパン屋」のドアの上でベルが鳴り、教主が店に入った。すぐ後ろについてきたエルフィンは、さっそくショーケースに顔を押しつけている。`],
+    [`"It's a magic school," said a voice from behind the counter. Ashur appeared, holding a rolling pin like a wand. "Not a bakery. Please remember that."`,
+     `「魔法学校よ」とカウンターの奥から声がした。麺棒を杖のように構えたエシュールが現れる。「パン屋じゃないの。覚えておいて」`],
+    [`"Good morning, Ashur," the Master said. "Erpin says you wanted to see us."`,
+     `「おはよう、エシュール」と教主は言った。「用があるってエルフィンから聞いたけど」`],
+    [`"I did." Ashur placed a sheet of paper on the counter. It unrolled, and kept unrolling, until it reached the floor. "This is an invoice. For Her Majesty's tab."`,
+     `「ええ」エシュールがカウンターに紙を置くと、それはくるくると広がり、さらに広がって、床まで届いた。「これは請求書。女王陛下のツケのね」`],
+    [`Erpin blinked. "A what?"`,
+     `エルフィンはまばたきした。「せーきゅーしょ？」`],
+    [`"An invoice. A list of everything you ate without paying." Ashur pointed at the first line. "Thirty-seven strawberry cakes. Twelve cream puffs. One cake shaped like Yggdrasil, which was for display only."`,
+     `「請求書。あなたがお金を払わずに食べたものの一覧よ」エシュールは一行目を指さした。「いちごケーキ37個。シュークリーム12個。それから世界樹の形のケーキ1個。あれは展示用だったのに」`],
+    [`"It looked lonely," Erpin said.`,
+     `「さみしそうだったんだもん」とエルフィン。`],
+    [`"The balance is now three months overdue," Ashur went on, ignoring her. "My flour supplier wants her money by Friday. She doesn't accept excuses. Or cake."`,
+     `「残高はもう3か月も支払期限を過ぎてるの」エシュールは彼女を無視して続けた。「小麦粉の仕入れ先には金曜までに払わなきゃいけないのよ。言い訳は通用しない。ケーキもね」`],
+    [`(So that's why she called us,) the Master thought, and turned to Erpin. "Can you afford to pay this?"`,
+     `（それで呼ばれたのか）と教主は思い、エルフィンのほうを向いた。「これ、払える余裕はある？」`],
+    [`Erpin puffed out her cheeks. "I'm the Queen! The Guardian of Elias! Queens don't pay for cake. Cake is a gift from the people."`,
+     `エルフィンはほっぺをふくらませた。「わたしは女王なのよ！ エーリアスの守護者！ 女王はケーキにお金なんて払わないの。ケーキは国民からの贈り物なんだから」`],
+    [`"The people," Ashur said through her teeth, "would like to be paid."`,
+     `「その国民は」エシュールは歯を食いしばって言った。「お金を払ってほしいそうよ」`],
+    [`The bell rang again. Ner walked in, calm and serious as always. "I heard there was a financial problem," she said. "As High Priestess, I will review the document."`,
+     `またベルが鳴った。いつものように落ち着いた真面目な顔でネルが入ってくる。「お金の問題が起きていると聞きました」と彼女は言った。「司祭長として、その書類を確認します」`],
+    [`She read the invoice slowly, line by line, the way she read everything that involved the Order's money. Then she stopped. "Ashur. What is this item near the end? 'Magic lesson for the Queen, one hour.'"`,
+     `ネルは、教団のお金が絡むものを読むときと同じように、一行ずつゆっくりと請求書を読んだ。そして手を止めた。「エシュール。最後のほうのこの項目は何ですか？『女王への魔法の授業、1時間』」`],
+    [`Ashur coughed. "She stood in my classroom for an hour."`,
+     `エシュールは咳払いした。「1時間、教室に立ってたのよ」`],
+    [`"She was waiting for the cakes to come out of the oven," Ner said. "I will remove that line. I would also like to request a discount, since the Queen is your most loyal customer."`,
+     `「ケーキがオーブンから出てくるのを待っていただけです」とネル。「この行は削除します。それと、女王はあなたの一番のお得意様ですから、割引をお願いしたいですね」`],
+    [`"She's my most EXPENSIVE customer!"`,
+     `「一番お金のかかる客よ！」`],
+    [`The Master raised a hand before the argument could grow. "I have an idea. Erpin works here this weekend, and every hour she works reduces the balance. Ashur gets help, and the tab gets smaller."`,
+     `言い争いが大きくなる前に、教主は手を挙げた。「提案がある。今週末はエルフィンがここで働いて、1時間ごとに残高を減らすのはどう？ エシュールは人手が増えるし、ツケも減る」`],
+    [`Ashur narrowed her eyes. Ner nodded once. Erpin looked at the cakes, then at the Master, and smiled far too brightly. "Deal!"`,
+     `エシュールは目を細めた。ネルは一度うなずいた。エルフィンはケーキを見て、それから教主を見て、明るすぎる笑顔を浮かべた。「のった！」`],
+    [`On Saturday, Erpin wore an apron and stood behind the counter. By noon the shop had sold out, and Ashur was almost smiling. Then she checked the inventory.`,
+     `土曜日、エルフィンはエプロンをつけてカウンターに立った。昼には店の品物が売り切れ、エシュールはほとんど笑顔だった。そして在庫を確認した。`],
+    [`"Forty cookies are missing," she said.`,
+     `「クッキーが40枚足りない」と彼女は言った。`],
+    [`Erpin's cheeks were suspiciously round. "Quality control," she mumbled.`,
+     `エルフィンのほっぺは怪しいほど丸かった。「ひんしつかんり」と彼女はもごもご言った。`],
+    [`The Master gently pulled one of those round cheeks, and a cookie crumb fell out. Ashur picked up her pen and added a new line to the invoice.`,
+     `教主がその丸いほっぺをそっと引っぱると、クッキーのかけらがぽろりと落ちた。エシュールはペンを取り、請求書に新しい行を書き足した。`],
+    [`That night, the Master opened the diary that Ner checked every morning and wrote three sentences: "Erpin worked at a magic school today. Her tab went down by two hours and up by forty cookies. I think Ashur needs a longer roll of paper."`,
+     `その夜、教主はネルが毎朝チェックする日記を開き、3つの文を書いた。「今日、エルフィンは魔法学校で働いた。ツケは2時間分減って、クッキー40枚分増えた。エシュールにはもっと長い紙が必要だと思う」`]
+  ],
+  vocab: [
+    ['invoice', '請求書', 'invoice|invoices'], ['balance', '残高', 'balance'], ['overdue', '支払期限を過ぎた', 'overdue'],
+    ['supplier', '仕入れ先', 'supplier'], ['afford', '〜する余裕がある', 'afford'], ['financial', '金銭の、財務の', 'financial'],
+    ['review', '確認する、見直す', 'review'], ['discount', '割引', 'discount'], ['loyal', '常連の、忠実な', 'loyal'],
+    ['reduce', '減らす', 'reduces|reduce'], ['sold out', '売り切れた', 'sold out'], ['inventory', '在庫', 'inventory']
+  ],
+  qs: [
+    { q: 'Why did Ashur ask the Master and Erpin to come to her shop?', c: ['To get paid for food Erpin ate without paying', 'To invite them to a magic lesson', 'To sell them a new kind of cake', 'To complain about Ner'], a: 0,
+      ex: 'エシュールは女王のツケ（Her Majesty’s tab）の請求書を見せ、仕入れ先への支払いに困っていると話しています。' },
+    { q: 'What did Ner remove from the invoice?', c: ['The price of the cream puffs', 'A charge for a magic lesson', "Ashur's flour costs", 'The Yggdrasil-shaped cake'], a: 1,
+      ex: '‘Magic lesson for the Queen, one hour’ について I will remove that line と言っています。' },
+    { q: 'The word "reduces" in the Master’s plan is closest in meaning to', c: ['records', 'doubles', 'lowers', 'reviews'], a: 2,
+      ex: 'reduce the balance ＝ 残高を減らす。lower（下げる）が最も近い意味です。' }
+  ]
+});
+
+STORIES.push({
+  id: 'signed-squashed', no: 2,
+  title: 'Signed, Sealed, Squashed', ja: '配達完了（ただし中身はぺしゃんこ）',
+  cast: ['Shoupan', 'Ner', 'Speaki', 'Master'], place: 'Order Headquarters · Courtyard',
+  paras: [
+    [`At 1:58 p.m., a message popped up on the Master's phone: "Your package is out for delivery! Estimated arrival: 3:00 p.m. — Shoupan Express."`,
+     `午後1時58分、教主のスマホに通知が届いた。「お荷物は配達中です！ 到着予定：午後3時 ― シュパン急便」`],
+    [`"Did someone order something?" the Master asked.`,
+     `「誰か何か注文した？」と教主はたずねた。`],
+    [`Ner, who was sorting documents at her desk in the Order Headquarters, did not look up. "I did. Supplies for an important meeting at three o'clock. Please make sure the package is received safely."`,
+     `教団本部の机で書類を整理していたネルは、顔も上げずに答えた。「私です。3時の大事な会議のための備品です。荷物が無事に届くよう見ていてください」`],
+    [`(Supplies. For a meeting. With exactly one guest, probably.) The Master had seen the order form on her desk: one melon bocconcini tower, extra large, marked FRAGILE in three different colors.`,
+     `（備品。会議用の。参加者はたぶん一人だけ）教主は彼女の机の上の注文書を見ていた。メロン・ボッコンチーニのタワー、特大サイズが1つ。「割れ物注意」の文字が3色で書かれている。`],
+    [`At 2:31, the tracking page updated: "Package has left Erpien. Current speed: very fast."`,
+     `2時31分、追跡ページが更新された。「荷物はエルフィンランドを出発しました。現在の速度：とても速い」`],
+    [`At 2:40: "Short delay. The courier has taken a creative route through the Banquet Hall."`,
+     `2時40分。「少し遅れています。配達員は宴会場を抜ける独創的なルートを選びました」`],
+    [`At 2:52, a cloud of dust stopped in front of the gate, and Shoupan hopped off the Shoupabolt with a proud grin. "Shoupan Express! Eight minutes early! Is the recipient here? I need a signature."`,
+     `2時52分、土煙が門の前で止まり、シュパンが得意げな笑顔で「シュパボルト」から飛び降りた。「シュパン急便です！ 8分早く到着！ 受取人さんはいますか？ サインをお願いします」`],
+    [`Before the Master could answer, a familiar figure hurried across the courtyard. Neat robe. Serious face. "I'm Ner, the priestess of Yggdrasil," she announced. "I will sign for it."`,
+     `教主が答える前に、見慣れた姿が中庭を急いでやって来た。きちんとした法衣。真面目な顔。「私はネル、世界樹の司祭です」と彼女は名乗った。「私がサインします」`],
+    [`Shoupan handed over her pen without a second look. To her, and to everyone else in the courtyard, it was Ner.`,
+     `シュパンは確かめもせずにペンを渡した。彼女にとっても、中庭にいた他の誰にとっても、それはネルだった。`],
+    [`But the Master knew better. Only a few people could see through that kind of disguise, and the Master was one of them. This "Ner" had a small pumpkin leaf stuck in her hair.`,
+     `だが教主にはわかっていた。あの手の変装を見破れる者はほんのわずかで、教主はその一人なのだ。この「ネル」の髪には、小さなかぼちゃの葉がくっついていた。`],
+    [`"Speaki," the Master said quietly.`,
+     `「スピッキー」と教主は静かに言った。`],
+    [`The fake Ner froze. Then she grabbed the box and ran.`,
+     `偽のネルは固まった。そして箱をつかむと走り出した。`],
+    [`"Delivery confirmed!" Shoupan shouted happily after her. "Please rate us five stars!"`,
+     `「配達完了です！」シュパンがうれしそうにその背中へ叫んだ。「星5つの評価をお願いします！」`],
+    [`The Master followed the footprints to Speaki's pumpkin patch, where the box was already open. Several pumpkins had been arranged in a circle around it, like guests at a party.`,
+     `教主が足跡をたどってスピッキーのかぼちゃ畑へ行くと、箱はもう開けられていた。そのまわりには、パーティーの客のようにいくつものかぼちゃが輪になって並べられている。`],
+    [`"I just wanted to share," Speaki sniffed, back in her own form. "The pumpkins never get any dessert."`,
+     `「分けてあげたかっただけなの」元の姿に戻ったスピッキーが鼻をすすった。「かぼちゃたちは、いつもデザートをもらえないんだもん」`],
+    [`The Master looked inside the box. The melon bocconcini tower was no longer a tower. It was a flat, sticky circle. Shoupan's deliveries were always on time. The condition of the contents was a different story.`,
+     `教主は箱の中をのぞいた。メロン・ボッコンチーニのタワーは、もはやタワーではなかった。平たくてべたべたした円盤だ。シュパンの配達はいつも時間どおり。中身の状態はまた別の話だった。`],
+    [`Footsteps crunched behind them. The real Ner stood there, as calm as ever, but her left eye was twitching.`,
+     `背後で足音がした。本物のネルが立っていた。いつもどおり落ち着いているが、左目がぴくぴくしている。`],
+    [`"Speaki," she said. "Kneel. Arms up."`,
+     `「スピッキー」と彼女は言った。「正座。両手を上げなさい」`],
+    [`Speaki knelt and raised her arms like a small, sad tree. "I didn't do anything that bad..."`,
+     `スピッキーは正座して、小さくて悲しい木のように両腕を上げた。「そんなに悪いことしてないのに……」`],
+    [`Ner picked up the box and studied the ruined dessert for a long moment. Then she turned to the Master. "The meeting," she said, "has been postponed."`,
+     `ネルは箱を持ち上げ、つぶれたデザートを長いあいだ見つめた。それから教主のほうを向いた。「会議は」と彼女は言った。「延期になりました」`],
+    [`"Was anyone else invited?" the Master asked.`,
+     `「他に誰か招待してたの？」と教主はたずねた。`],
+    [`Ner took a spoon from her sleeve. "Please don't ask questions you already know the answer to, Master."`,
+     `ネルは袖からスプーンを取り出した。「答えがわかっている質問はしないでください、教主様」`],
+    [`That evening, the Master left a review on the delivery page: "Arrived early. Contents flattened. The customer ate them anyway."`,
+     `その晩、教主は配達ページにレビューを書いた。「予定より早く到着。中身はぺしゃんこ。それでもお客さんは完食しました」`]
+  ],
+  vocab: [
+    ['package', '荷物、小包', 'package'], ['delivery', '配達', 'delivery|deliveries'], ['estimated', '見積もられた、予定の', 'estimated'],
+    ['supplies', '備品', 'supplies'], ['fragile', '壊れやすい', 'fragile|FRAGILE'], ['tracking', '追跡', 'tracking'],
+    ['delay', '遅れ', 'delay'], ['route', '経路', 'route'], ['recipient', '受取人', 'recipient'], ['signature', '署名', 'signature'],
+    ['confirmed', '確認された', 'confirmed'], ['postpone', '延期する', 'postponed'], ['review', 'レビュー、評価', 'review']
+  ],
+  qs: [
+    { q: 'What did Ner say the package was for?', c: ['A gift for the Master', 'Supplies for a meeting', "Food for Speaki's pumpkins", 'A party at the Banquet Hall'], a: 1,
+      ex: 'Supplies for an important meeting at three o’clock と答えています（実際は自分のおやつでした）。' },
+    { q: 'How did the Master know that the "Ner" at the gate was not the real one?', c: ['Shoupan asked her for identification.', 'She arrived after the delivery.', 'The Master is able to see through such disguises.', 'She could not write her name.'], a: 2,
+      ex: 'Only a few people could see through that kind of disguise, and the Master was one of them. が根拠です。' },
+    { q: 'What is implied about Ner’s "important meeting"?', c: ['It was moved to the next morning.', 'It was really a plan to eat the dessert herself.', 'Speaki was the main guest.', 'It was held in the Banquet Hall.'], a: 1,
+      ex: '他に誰も招待されておらず、袖からスプーンを取り出したことから、自分で食べるつもりだったとわかります。' }
+  ]
+});
+
+</script>
+<script>
+/* Elias Reading Room — original fan-made short stories (unofficial). Stories 3–4. */
+window.STORIES = window.STORIES || [];
+STORIES.push({
+  id: 'forty-three-books', no: 3,
+  title: 'Forty-Three Overdue Books', ja: '返却期限切れの43冊',
+  cast: ['Kommy', 'Barie', 'Master'], place: 'Werebeast Village → Belitein Public Library',
+  paras: [
+    [`The letter arrived on black paper with silver ink. The Master read it aloud: "Final notice. Library member Kommy has forty-three overdue books. Please return them to the Public Library of Belitein within three days, or..." The rest of the letter was a drawing of a very angry witch.`,
+     `手紙は黒い紙に銀色のインクで書かれていた。教主は声に出して読んだ。「最終通知。図書館利用者コミーは、43冊の本を返却期限切れのまま借りています。3日以内にベリタイン（魔女の王国）公立図書館へ返却してください。さもないと……」手紙の残りは、ものすごく怒った魔女の絵だった。`],
+    [`Kommy was lying on a pile of cushions in her room in the Werebeast Village, with an open book over her face. "Kommy is not home," said the book.`,
+     `コミーは獣人の村にある自分の部屋で、クッションの山の上に寝そべり、開いた本を顔にのせていた。「コミーは留守です」と本が言った。`],
+    [`The Master looked around. There were books on the shelves, books on the floor, and books holding up a table with one short leg.`,
+     `教主は部屋を見回した。本棚に本、床にも本、脚が1本短いテーブルを支えているのも本だった。`],
+    [`"The deadline was last month," the Master said.`,
+     `「返却期限は先月だったよ」と教主は言った。`],
+    [`"Deadlines are just numbers," Kommy said. "Kommy read that somewhere."`,
+     `「締め切りなんてただの数字です」とコミーは言った。「どこかの本で読みました」`],
+    [`"Barie doesn't think so."`,
+     `「バリエはそう思ってないみたいだけど」`],
+    [`That got her attention. Kommy slowly lifted the book from her face. Everyone in Elias knew about Barie, the witch intern who managed the library. She was quiet and polite, and absolutely terrifying whenever a book was damaged.`,
+     `それでようやくコミーの気を引いた。彼女はゆっくりと顔から本をどけた。エーリアスで、図書館を管理する見習い魔女バリエのことを知らない者はいない。静かで礼儀正しく、そして本が傷んでいたときには本当に恐ろしいのだ。`],
+    [`Moving forty-three books to the Witch Kingdom took two backpacks, one wheelbarrow, and a great deal of complaining. Belitein lay deep underground, and the library stood at the end of a long, dim street lined with lanterns. Inside, it was so quiet that the Master could almost hear the pages breathing.`,
+     `43冊の本を魔女の王国まで運ぶには、リュック2つと手押し車1台、そして山ほどの文句が必要だった。ベリタインは地下深くにあり、図書館はランタンが並ぶ長く薄暗い通りの突き当たりに建っている。中はとても静かで、ページの息づかいまで聞こえてきそうだった。`],
+    [`Barie looked up from the front desk. "Weeelcome," she whispered, stretching the word like warm taffy. "Are you... returning... something?"`,
+     `受付カウンターのバリエが顔を上げた。「いらっしゃいませぇぇ」と、温かいタフィーを引き伸ばすように言葉を伸ばしてささやく。「返却……ですか……？」`],
+    [`"Forty-three books," the Master said. "We're sorry they're late."`,
+     `「43冊です」と教主は言った。「遅くなってすみません」`],
+    [`Barie checked each book carefully. She opened the covers, examined the spines, and counted the pages. The Master held their breath at book number thirty-one, which had a small tea stain on the back.`,
+     `バリエは1冊ずつ丁寧に確認した。表紙を開き、背を調べ、ページを数える。31冊目で教主は息をのんだ。裏表紙に小さな紅茶のしみがあったのだ。`],
+    [`"This... stain," Barie said softly. "Explaaain... please."`,
+     `「この……しみは」とバリエは静かに言った。「説明……してくださぁい」`],
+    [`"Kommy was reading about an ancient kingdom," Kommy said. "The kingdom fell. Kommy was shocked. The tea was also shocked."`,
+     `「コミーは古代の王国の本を読んでいました」とコミーは言った。「王国が滅びました。コミーはびっくりしました。紅茶もびっくりしました」`],
+    [`For a long moment, Barie said nothing. Then she glanced at the title, and her expression changed. "You... finished this?"`,
+     `しばらくのあいだ、バリエは何も言わなかった。それから題名に目をやり、表情が変わった。「これを……読み終えたんですか？」`],
+    [`"Twice," Kommy said. "The footnotes are the best part."`,
+     `「2回です」とコミー。「脚注がいちばん面白いです」`],
+    [`Barie's eyes lit up. Very few borrowers ever read the footnotes. "Library policy... allows members to renew books... in good condition," she said. "And members who truly read... may reserve new arrivals... before anyone else."`,
+     `バリエの目が輝いた。脚注まで読む利用者などめったにいないのだ。「図書館の規則では……状態のよい本は……貸出を延長できます」と彼女は言った。「そして、本当に本を読む利用者は……新着の本を……誰よりも先に予約できます」`],
+    [`Kommy's ears stood straight up. "New arrivals?"`,
+     `コミーの耳がぴんと立った。「新着？」`],
+    [`Barie led them to a shelf marked COMING SOON. Kommy stared at it the way Erpin stared at cake.`,
+     `バリエは「近日入荷」と書かれた棚へ二人を案内した。コミーは、エルフィンがケーキを見つめるときのようにその棚を見つめた。`],
+    [`In the end, they left with a warning about the tea, a small cleaning fee, and eleven new books. The Master carried all of them.`,
+     `結局、二人は紅茶についての注意と、少額のクリーニング代と、新しい本11冊を持って図書館を出た。本は全部、教主が運んだ。`],
+    [`On the way back to the surface, Kommy fell asleep in the wheelbarrow with one hand resting on the top book.`,
+     `地上へ戻る途中、コミーは積んだ本のいちばん上に片手をのせたまま、手押し車の中で眠ってしまった。`],
+    [`(Forty-three books returned. Eleven borrowed,) the Master thought, pushing the wheelbarrow up the long slope. (Next time, I'm setting a reminder.)`,
+     `（43冊返却。11冊貸出）長い坂道で手押し車を押しながら、教主は思った。（次からはリマインダーを設定しよう）`]
+  ],
+  vocab: [
+    ['notice', '通知', 'notice'], ['overdue', '期限を過ぎた', 'overdue'], ['deadline', '期限、締め切り', 'deadline|deadlines'],
+    ['intern', '見習い、実習生', 'intern'], ['damaged', '損傷した', 'damaged'], ['examine', '調べる', 'examined'],
+    ['policy', '規則、方針', 'policy'], ['renew', '（貸出などを）延長する', 'renew'], ['condition', '状態', 'condition'],
+    ['reserve', '予約する', 'reserve'], ['arrival', '新着品、到着', 'arrivals'], ['fee', '料金', 'fee'], ['reminder', 'リマインダー、通知', 'reminder']
+  ],
+  qs: [
+    { q: 'What was the purpose of the letter?', c: ['To invite Kommy to a reading event', 'To ask Kommy to return late books', 'To announce new library hours', 'To offer Kommy a job at the library'], a: 1,
+      ex: 'Final notice ... forty-three overdue books. Please return them ... が根拠。返却期限切れの本の返却を求める通知です。' },
+    { q: 'Why did Barie’s attitude toward Kommy change?', c: ['Kommy paid a large fee.', 'The Master apologized twice.', 'She learned that Kommy had read the book carefully.', 'The tea stain was easy to remove.'], a: 2,
+      ex: '題名を見て You... finished this? と驚き、脚注まで読んだと知って目を輝かせています。' },
+    { q: 'What is NOT mentioned as a result of the visit?', c: ['Kommy received a warning.', 'Kommy paid a cleaning fee.', 'Kommy borrowed new books.', 'Kommy got a new library card.'], a: 3,
+      ex: '注意（warning）、クリーニング代（cleaning fee）、新しい本11冊は本文にあります。新しい利用者カードの話はありません。' }
+  ]
+});
+
+STORIES.push({
+  id: 'night-shift', no: 4,
+  title: 'Help Wanted: Night Shift', ja: '夜勤スタッフ募集中',
+  cast: ['Levi', 'Goldy', 'Xion', 'Master'], place: 'Monatium · Monatium 25',
+  paras: [
+    [`"Yes, hello?? Is there a reason you called?"`,
+     `「はい、もしもし？？ ご用件は何でしょうか？」`],
+    [`Levi answered before the first ring had even finished. The Master had learned to call her only in emergencies, because Levi treated every call as a possible job offer.`,
+     `レヴィは1回目の呼び出し音が鳴り終わる前に電話に出た。教主は緊急時にしか彼女に電話しないようにしていた。レヴィはどんな電話も仕事の依頼かもしれないと思って出るからだ。`],
+    [`"It's me," the Master said. "You wanted me to be your reference?"`,
+     `「私だよ」と教主は言った。「推薦人になってほしいんだって？」`],
+    [`"Yes! Monatium 25 is hiring for the night shift!" Levi's voice was bright and very, very tired. "It'll be my ninth part-time job, but it's the first one with a chair."`,
+     `「はい！ モナティウム25が夜勤の人を募集してるんです！」レヴィの声は明るく、そしてものすごく疲れていた。「9つ目のアルバイトになりますけど、椅子があるのは初めてなんです」`],
+    [`The interview took place in the back room of the convenience store, between boxes of instant noodles and a refrigerator that hummed like a sleepy dragon. Goldy, the store manager, sat behind a small desk with a clipboard. Xion, the senior part-timer, leaned against the wall with her arms folded and her eyes half closed, as if she could see things no one else could.`,
+     `面接はコンビニの奥の部屋で、カップ麺の箱と、眠そうなドラゴンのようにうなる冷蔵庫のあいだで行われた。店長のゴールディは、クリップボードを手に小さな机の向こうに座っている。先輩アルバイトのシオンは腕を組んで壁にもたれ、他の誰にも見えないものが見えているかのように目を半分閉じていた。`],
+    [`"So," Goldy said with a professional smile, "tell me about your experience, customer— I mean, applicant."`,
+     `「では」ゴールディは営業用の笑顔で言った。「これまでのご経験を教えてください、お客様――いえ、応募者様」`],
+    [`Levi handed over her résumé. It was twelve pages long and written in very small letters. Delivery assistant. Bakery helper. Library shelf organizer. Potion tester for a certain shop, weekends only.`,
+     `レヴィは履歴書を差し出した。12ページもあり、とても小さな字でびっしり書かれている。配達アシスタント。パン屋の手伝い。図書館の本棚整理。とある店の薬の試飲係（週末のみ）。`],
+    [`"Impressive," Goldy said, flipping through the pages. "Very flexible. How many hours do you sleep?"`,
+     `「すばらしいですね」ゴールディはページをめくりながら言った。「とても融通がききそう。睡眠は何時間ですか？」`],
+    [`"On average?" Levi counted on her fingers and stopped at two.`,
+     `「平均でですか？」レヴィは指を折って数え、2本目で止めた。`],
+    [`Goldy turned to the Master. "And you're the reference. Is she reliable?"`,
+     `ゴールディは教主のほうを向いた。「そしてあなたが推薦人ですね。彼女は信頼できますか？」`],
+    [`(She once worked three jobs in one day and still returned a library book on time.) "She's the hardest-working person I know," the Master said. "Maybe too hard-working."`,
+     `（一日に3つの仕事をこなして、それでも図書館の本を期限内に返したことがある）「私が知る中で一番の働き者です」と教主は言った。「働きすぎなくらいに」`],
+    [`Xion finally opened her eyes. "The night shift is no ordinary battlefield," she said in a low voice. "When the moon rises, the customers of darkness arrive. Are you prepared to face them?"`,
+     `シオンがようやく目を開けた。「夜勤はただの戦場ではない」と彼女は低い声で言った。「月が昇るとき、闇の客たちがやって来る。お前にそれと向き合う覚悟はあるか？」`],
+    [`"The customers of darkness?" Levi asked.`,
+     `「闇の客……ですか？」とレヴィ。`],
+    [`"Elves who forgot to buy milk," Goldy explained.`,
+     `「牛乳を買い忘れたエルフたちのことです」とゴールディが説明した。`],
+    [`Levi took a small purple bottle from her pocket. It was an invigoration potion from Posher's shop, and she drank it in one gulp. Her eyes opened wide. Her hair stood up slightly. "I am prepared," she said, and her voice echoed a little.`,
+     `レヴィはポケットから小さな紫色の瓶を取り出した。ポーシャーの店の元気が出る薬で、彼女はそれを一気に飲み干した。目が大きく見開かれ、髪が少し逆立つ。「覚悟はできています」と言った彼女の声は、少しエコーがかかっていた。`],
+    [`"...Does that potion have side effects?" the Master asked.`,
+     `「……その薬、副作用はあるの？」と教主はたずねた。`],
+    [`"Only a few," Levi said. "For the next hour, I can hear colors."`,
+     `「ちょっとだけです」とレヴィ。「これから1時間、色が聞こえるようになります」`],
+    [`Goldy wrote something on her clipboard and nodded. "You're hired. Your first shift starts tonight at ten. Overtime is paid in cash. Please don't listen to the colors while you're using the register."`,
+     `ゴールディはクリップボードに何か書き込んでうなずいた。「採用です。初回の勤務は今夜10時から。残業代は現金で支払います。レジを打っているあいだは、色の声を聞かないでくださいね」`],
+    [`Outside the store, Levi bowed so deeply that she almost fell over. "Thank you for the recommendation, Master!"`,
+     `店の外で、レヴィは転びそうになるほど深くお辞儀をした。「推薦してくださってありがとうございます、教主様！」`],
+    [`"Promise me one thing," the Master said. "Take one day off this week."`,
+     `「ひとつだけ約束して」と教主は言った。「今週は1日休むこと」`],
+    [`Levi thought about it very seriously. Then her phone rang. "Yes, hello?? Is there a reason you called?"`,
+     `レヴィはとても真剣に考えた。そのとき、電話が鳴った。「はい、もしもし？？ ご用件は何でしょうか？」`],
+    [`The Master sighed and went back inside to buy her a sandwich for later.`,
+     `教主はため息をつき、あとで食べる用のサンドイッチを買いに店の中へ戻った。`]
+  ],
+  vocab: [
+    ['reference', '推薦人、照会先', 'reference'], ['hire', '雇う', 'hiring|hired'], ['shift', '勤務時間（帯）', 'shift'],
+    ['part-time', 'アルバイトの、非常勤の', 'part-time|part-timer'], ['interview', '面接', 'interview'], ['experience', '経験', 'experience'],
+    ['applicant', '応募者', 'applicant'], ['résumé', '履歴書', 'résumé'], ['flexible', '融通のきく', 'flexible'],
+    ['reliable', '信頼できる', 'reliable'], ['side effect', '副作用', 'side effects'], ['overtime', '残業（代）', 'overtime'],
+    ['recommendation', '推薦', 'recommendation']
+  ],
+  qs: [
+    { q: 'What position is Levi applying for?', c: ['A delivery job in Erpien', 'A night-shift job at a store', "A job at Posher's shop", 'A librarian position'], a: 1,
+      ex: 'Monatium 25 is hiring for the night shift! と言い、コンビニで面接を受けています。' },
+    { q: 'According to Goldy, who are "the customers of darkness"?', c: ['Dangerous monsters', 'Phantoms from the marsh', 'People who shop late at night', 'Customers who never pay'], a: 2,
+      ex: 'Elves who forgot to buy milk ＝ 夜中に買い物に来る普通のお客さんのことです。' },
+    { q: 'What can be inferred about Levi at the end of the story?', c: ['She is unlikely to take a day off.', 'She has quit her other jobs.', 'She did not like the potion.', 'She was not hired.'], a: 0,
+      ex: '休むよう約束を求められた直後に、また仕事の電話に出ています。休みを取りそうにないと推測できます。' }
+  ]
+});
+
+</script>
+<script>
+/* Elias Reading Room — original fan-made short stories (unofficial). Stories 5–6. */
+window.STORIES = window.STORIES || [];
+STORIES.push({
+  id: 'comedy-hour', no: 5,
+  title: "Rim's Comedy Hour", ja: 'リムのお笑いアワー',
+  cast: ['Rim', 'Renewa', 'Erpin', 'Canna', 'Selene', 'Master'], place: 'Sprite Kingdom · Elias Theater',
+  paras: [
+    [`Posters were taped to every lamppost in the Sprite Kingdom: ONE NIGHT ONLY! RIM'S COMEDY HOUR! ELIAS THEATER, SMALL HALL. ADMISSION FREE. PUMPKIN SOUP INCLUDED.`,
+     `妖精王国じゅうの街灯にポスターが貼られていた。「一夜かぎり！ リムのお笑いアワー！ エーリアス劇場・小ホール。入場無料。かぼちゃスープつき」`],
+    [`"Free admission," Erpin read with suspicion. "And free soup. That's a trap."`,
+     `「入場無料」エルフィンが疑わしそうに読み上げた。「スープも無料。これは罠よ」`],
+    [`"It's Rim," the Master said. "She just wants people to come."`,
+     `「リムだよ」と教主は言った。「ただ人に来てほしいだけだって」`],
+    [`Rim, the phantom of balance, lived alone in a tall tower, and most phantoms kept their distance from her. It wasn't because she was dangerous. It was because of the puns. She couldn't stop making them, and she knew it.`,
+     `均衡の幽霊リムは高い塔にひとりで住んでいて、ほとんどの幽霊は彼女と距離を置いていた。危険だからではない。ダジャレのせいだ。彼女はダジャレをやめられず、自分でもそれをわかっていた。`],
+    [`At the theater, Renewa sat in the ticket booth with a stack of reservation cards. "Good evening! You're our first guests," she said. "Actually, you're the only guests who reserved seats. The hall has a capacity of eighty."`,
+     `劇場では、リニュアがチケット売り場で予約カードの束を前に座っていた。「こんばんは！ 最初のお客様です」と彼女は言った。「というか、席を予約したお客様はみなさんだけなんです。ホールの定員は80人なんですけど」`],
+    [`"How many reservations are there?" the Master asked.`,
+     `「予約は何件あるの？」と教主はたずねた。`],
+    [`Renewa checked her list. "Three. You, Her Majesty, and Canna."`,
+     `リニュアはリストを確認した。「3件です。教主様と、女王陛下と、カンナさん」`],
+    [`Canna was already sitting in the front row with her arms crossed. "I'm here to provide security," she said. "If the jokes become dangerous, I'll take appropriate action."`,
+     `カンナはもう最前列で腕を組んで座っていた。「警備のために来た」と彼女は言った。「ジョークが危険な域に達したら、適切な措置を取る」`],
+    [`"What kind of action?"`,
+     `「どんな措置？」`],
+    [`"The kind that goes boom."`,
+     `「ドカンといくやつだ」`],
+    [`The lights dimmed. Rim floated onto the stage with her scythe, G, which seemed to lean away from her in advance.`,
+     `照明が落ちた。リムが大鎌のGを持ってふわりと舞台に現れる。Gは早くも彼女から身を引いているように見えた。`],
+    [`"Good evening, everyone," Rim said. "Tonight I'll be telling jokes about phantoms. I hope you find them... boo-tiful."`,
+     `「みなさん、こんばんは」とリムは言った。「今夜は幽霊にまつわるジョークをお届けします。きっと……ブーティフル（boo＋beautiful）だと思ってもらえるはず」`],
+    [`Silence. Somewhere in the back, a cricket stopped chirping out of respect.`,
+     `沈黙。後ろのどこかで、コオロギまでが遠慮して鳴くのをやめた。`],
+    [`"Why did the phantom skip the party? Because she had no body to go with." Rim's voice grew smaller. "And what do phantoms drink at the theater? Boo-ze... but only with a valid ID."`,
+     `「幽霊がパーティーに行かなかったのはなぜでしょう？ 一緒に行く体がなかったから（no body＝nobody）」リムの声が小さくなっていく。「では、幽霊が劇場で飲むものは？ ブーズ（boo＋booze＝お酒）……ただし有効な身分証をお持ちの方のみ」`],
+    [`Erpin made a sound like a balloon losing air. Canna reached slowly for her belt.`,
+     `エルフィンは空気の抜ける風船のような声を出した。カンナはゆっくりとベルトに手を伸ばした。`],
+    [`Then a quiet click came from the side of the stage. Selene, the phantom of provocation, was taking photos of Canna's furious face. "Priceless," she whispered. "Absolutely priceless."`,
+     `そのとき、舞台袖から小さなシャッター音がした。挑発の幽霊セリーネが、カンナの怒り顔を写真に撮っていたのだ。「最高」と彼女はささやいた。「最高の表情ね」`],
+    [`Canna jumped up. Selene ran. Erpin laughed so hard that she fell out of her seat, and the Master, who had been holding it in for ten minutes, finally laughed too.`,
+     `カンナが飛び上がった。セリーネが逃げ出した。エルフィンは笑いすぎて椅子から転げ落ち、10分間こらえていた教主もついに吹き出した。`],
+    [`Rim looked at them in surprise. She wasn't sure whether they were laughing at her jokes, at Canna, or at Erpin rolling on the floor. But for the first time in a long time, the room was full of laughter, and she was standing right in the middle of it.`,
+     `リムは驚いてみんなを見つめた。自分のジョークに笑っているのか、カンナに笑っているのか、床を転げ回るエルフィンに笑っているのか、よくわからない。それでも久しぶりに部屋は笑い声でいっぱいで、彼女はそのまんなかに立っていた。`],
+    [`After the show, Renewa handed out survey forms. Most of them came back with the same feedback: Too many puns. Please make fewer.`,
+     `公演のあと、リニュアはアンケート用紙を配った。返ってきた用紙のほとんどに、同じ感想が書かれていた。「ダジャレが多すぎます。減らしてください」`],
+    [`Rim read them one by one, very seriously. Then she folded the stack neatly and looked up at the Master with the smallest smile.`,
+     `リムはそれを1枚ずつ、とても真剣に読んだ。そして束をきちんと折りたたみ、ほんの小さな笑みを浮かべて教主を見上げた。`],
+    [`"I think they want two many puns," she said.`,
+     `「みんな、ダジャレは『2つ多め（too many→two many）』がいいみたいね」と彼女は言った。`],
+    [`G, the scythe, tried to hide behind the curtain.`,
+     `大鎌のGは、カーテンの陰に隠れようとした。`]
+  ],
+  vocab: [
+    ['admission', '入場（料）', 'admission|ADMISSION'], ['include', '含む', 'included|INCLUDED'], ['reservation', '予約', 'reservation|reservations'],
+    ['reserve', '予約する', 'reserved'], ['capacity', '定員、収容能力', 'capacity'], ['provide', '提供する', 'provide'],
+    ['security', '警備', 'security'], ['appropriate', '適切な', 'appropriate'], ['valid', '有効な', 'valid'],
+    ['furious', '激怒した', 'furious'], ['survey', 'アンケート', 'survey'], ['feedback', '意見、感想', 'feedback']
+  ],
+  qs: [
+    { q: 'How many people had reserved seats for the show?', c: ['Eighty', 'Three', 'None', 'About forty'], a: 1,
+      ex: 'How many reservations are there? に Three. You, Her Majesty, and Canna. と答えています。定員（capacity）80と混同しないこと。' },
+    { q: 'What finally made the audience laugh?', c: ["Rim's joke about boo-ze", 'The free pumpkin soup', 'Selene photographing Canna and the chaos that followed', 'A cricket on the stage'], a: 2,
+      ex: 'セリーネがカンナの怒り顔を撮影 → カンナが追いかけ、エルフィンが転げ落ちて笑いが起きました。' },
+    { q: 'What does Rim’s last line suggest?', c: ['She will keep making puns.', 'She is going to quit comedy.', 'She wants a bigger theater.', 'She did not read the surveys.'], a: 0,
+      ex: '「too many（多すぎる）」を「two many」とダジャレにしており、懲りずに続けるつもりだとわかります。' }
+  ]
+});
+
+STORIES.push({
+  id: 'carrot-contract', no: 6,
+  title: 'The Carrot That Needed a Contract', ja: '契約が必要なにんじん',
+  cast: ['Kyarot', 'Marie', 'Elena', 'Amelia', 'Master'], place: "Kyarot's Garden · around Yggdrasil",
+  paras: [
+    [`Kyarot's garden surrounded Yggdrasil like a green ocean, and everything in it was enormous. There were cabbages the size of houses and strawberries you could sit on. And this morning, in the middle of it all, there was a carrot so tall that its leaves brushed the clouds.`,
+     `キャロットの菜園は緑の海のように世界樹を取り囲み、そこにあるものはどれも巨大だった。家ほどもあるキャベツに、座れるほど大きないちご。そして今朝、そのまんなかに、葉が雲に届くほど背の高いにんじんが生えていた。`],
+    [`"Isn't she beautiful?" Kyarot said, patting the orange trunk. "I grew her by hand. No magic shortcuts. Just love, water, and lots of encouraging shouts."`,
+     `「きれいでしょう？」キャロットはオレンジ色の幹をなでながら言った。「手作業で育てたの。魔法の近道はなし。愛情と、水と、たくさんの応援の声だけ」`],
+    [`"It's amazing," the Master said, looking up until their neck hurt. "How are we going to get it out of the ground?"`,
+     `「すごいね」教主は首が痛くなるまで見上げた。「これ、どうやって地面から抜くの？」`],
+    [`"That's the problem," Kyarot admitted. "She's a little stuck."`,
+     `「そこが問題なの」とキャロットは認めた。「ちょっと引っかかっちゃってて」`],
+    [`Marie arrived first, carrying a bag that ticked. "Easy," she said. "We blow up the soil around it."`,
+     `最初にやって来たのは、チクタク音のする袋を抱えたマリーだった。「簡単よ」と彼女は言った。「まわりの土を吹き飛ばせばいいの」`],
+    [`"No explosives in my garden!" Kyarot hugged the carrot protectively.`,
+     `「私の菜園で爆発物は禁止！」キャロットはにんじんをかばうように抱きしめた。`],
+    [`The second visitor arrived in a quiet elven vehicle. Elena, mayor of Monatium, stepped out holding a frozen hot Americano, followed by her secretary, Amelia, who carried a thick folder.`,
+     `二人目の訪問者は、静かなエルフの乗り物でやって来た。モナティウム市長のエレナが、フローズン・ホット・アメリカーノを手に降りてくる。そのあとに、分厚いファイルを抱えた秘書のアメリアが続いた。`],
+    [`"I heard you have a transportation problem," Elena said. "Monatium has the equipment to solve it. Our newest lifting machine can pull up anything and deliver it anywhere in Elias."`,
+     `「運搬の問題を抱えていると聞いたわ」とエレナは言った。「モナティウムにはそれを解決する機材がある。最新の吊り上げ機なら、何でも引き抜いて、エーリアスのどこへでも届けられる」`],
+    [`"For free?" Kyarot asked hopefully.`,
+     `「無料で？」キャロットは期待をこめて聞いた。`],
+    [`Elena smiled. "If necessary, a fair contract will be established." Amelia opened the folder. The contract was sixty pages long.`,
+     `エレナはほほえんだ。「必要なら、公正な契約を結びましょう」アメリアがファイルを開く。契約書は60ページもあった。`],
+    [`The Master read the first page and frowned. "Terms and conditions... The fee is 'thirty percent of the carrot'?"`,
+     `教主は1ページ目を読んで顔をしかめた。「契約条件……料金は『にんじんの30パーセント』？」`],
+    [`"Standard terms," Amelia said. "The mayor's brain runs on coffee, and her engineers run on carrot cake."`,
+     `「標準的な条件です」とアメリア。「市長の頭脳はコーヒーで動き、技術者たちはキャロットケーキで動きますので」`],
+    [`Kyarot looked at the Master with teary eyes. (All right. Time to negotiate.)`,
+     `キャロットが涙目で教主を見た。（よし。交渉の時間だ）`],
+    [`"Here's a better deal," the Master said. "Ten percent of the carrot, and you use this job as a demonstration. Everyone in Elias will watch your machine lift the largest vegetable in history. That's free advertising."`,
+     `「もっといい条件がある」と教主は言った。「にんじんの10パーセント。それに、この仕事を実演として使えばいい。エーリアス中が、史上最大の野菜を持ち上げるあなたの機械を見ることになる。無料の宣伝だよ」`],
+    [`Elena considered this, took a slow sip of coffee, and nodded. "Fifteen percent, and Kyarot appears in our promotional video."`,
+     `エレナは考え、ゆっくりとコーヒーをひと口飲んでからうなずいた。「15パーセント。それとキャロットが宣伝動画に出演すること」`],
+    [`"Deal!" Kyarot said, before anyone else could speak.`,
+     `「のった！」誰かが口を開く前に、キャロットが言った。`],
+    [`The machine unfolded with a loud hiss. Its metal arms took hold of the carrot and pulled. The ground shook. Marie cheered. Then, with a sound like the world's biggest cork, the carrot came free and rose into the air.`,
+     `機械が大きな音を立てて展開した。金属の腕がにんじんをつかみ、引っぱる。地面が揺れた。マリーが歓声を上げる。そして世界一大きなコルク栓のような音とともに、にんじんが抜けて宙に浮かんだ。`],
+    [`It was beautiful for exactly four seconds. Then the machine's arms began to shake.`,
+     `その光景が美しかったのは、ちょうど4秒間だった。やがて機械の腕が震え始めた。`],
+    [`"Amelia," Elena said calmly, "what is the maximum load?"`,
+     `「アメリア」エレナは落ち着いて言った。「最大積載量は？」`],
+    [`Amelia checked the specifications. "Not this."`,
+     `アメリアは仕様書を確認した。「これではありません」`],
+    [`The carrot landed in the middle of the garden with a tremendous thump. Nobody was hurt, although one nearby cabbage was never quite the same again.`,
+     `にんじんはものすごい音を立てて菜園のまんなかに落ちた。けが人は出なかったが、近くにあったキャベツが一つ、二度と元の姿には戻らなかった。`],
+    [`That evening, the Banquet Hall served carrot soup, carrot bread, carrot cake, and four hundred plates of fried carrots. Ashur arrived with her own fork. Monatium received its fifteen percent, delivered in slices.`,
+     `その夜、宴会場ではにんじんスープ、にんじんパン、キャロットケーキ、そして揚げにんじん400皿がふるまわれた。エシュールはマイフォークを持ってやって来た。モナティウムには約束の15パーセントが、輪切りで届けられた。`],
+    [`Elena's promotional video was never released. Kyarot, however, framed a photo of herself hugging the carrot and hung it above the garden gate.`,
+     `エレナの宣伝動画が公開されることはなかった。けれどキャロットは、にんじんを抱きしめる自分の写真を額に入れ、菜園の門の上に飾った。`]
+  ],
+  vocab: [
+    ['transportation', '運搬、輸送', 'transportation'], ['equipment', '機材、設備', 'equipment'], ['deliver', '届ける', 'deliver|delivered'],
+    ['contract', '契約（書）', 'contract'], ['establish', '結ぶ、設立する', 'established'], ['terms', '（契約の）条件', 'terms|Terms'],
+    ['fee', '料金', 'fee'], ['negotiate', '交渉する', 'negotiate'], ['demonstration', '実演', 'demonstration'],
+    ['advertising', '宣伝', 'advertising'], ['promotional', '販売促進の、宣伝用の', 'promotional'], ['load', '積載量、荷', 'load'],
+    ['specifications', '仕様（書）', 'specifications'], ['release', '公開する', 'released']
+  ],
+  qs: [
+    { q: 'Why did Elena come to Kyarot’s garden?', c: ['To buy the garden', 'To offer a machine to move the carrot for a fee', "To stop Marie's explosion", 'To film a cooking show'], a: 1,
+      ex: 'transportation problem を解決する機材がある、と申し出て、契約書（料金30%）を出しています。' },
+    { q: 'What did the Master offer during the negotiation?', c: ['Payment in coffee', "A share of Ashur's bakery", 'A smaller fee plus free advertising', 'Sixty pages of new terms'], a: 2,
+      ex: 'Ten percent of the carrot ... That’s free advertising. ＝ 料金を下げる代わりに宣伝の機会を提案しています。' },
+    { q: 'What happened to the promotional video?', c: ['It was never released.', 'It became popular in Monatium.', 'Kyarot refused to appear in it.', 'It was shown at the Banquet Hall.'], a: 0,
+      ex: '最終段落 Elena’s promotional video was never released. が根拠です。' }
+  ]
+});
+
+</script>
+<script>
+/* Elias Reading Room — original fan-made short stories (unofficial). Stories 7–8. */
+window.STORIES = window.STORIES || [];
+STORIES.push({
+  id: 'buried-treasure', no: 7,
+  title: "Butter's Buried Treasure", ja: 'バターの埋めた宝物',
+  cast: ['Butter', 'Diana', 'Kommy', 'Master'], place: 'Werebeast Village',
+  paras: [
+    [`Winter was coming to the Werebeast Village, and Chief Diana wanted a proper inventory.`,
+     `獣人の村に冬が近づいていて、村長のディアナはきちんとした在庫調べをしたいと考えていた。`],
+    [`"Every can of chow in the village will be counted," she announced in front of the village hall. "We will record the numbers and store the cans in the new warehouse. No more hiding food in the ground."`,
+     `「村にある缶詰フードを1つ残らず数えます」と彼女は村の集会所の前で宣言した。「数を記録して、新しい倉庫に保管します。もう地面に食べ物を隠すのはおしまいです」`],
+    [`Everyone slowly turned to look at Butter.`,
+     `みんなが、ゆっくりとバターのほうを振り向いた。`],
+    [`Butter wagged her tail. "Butter doesn't hide food!" she said happily. "Butter saves food for later. In lots of different places."`,
+     `バターはしっぽを振った。「バターは食べ物を隠したりしないよ！」と彼女はうれしそうに言った。「あとのために取っておいてるの。いろんな場所にね」`],
+    [`"How many places?" the Master asked.`,
+     `「何か所くらい？」と教主はたずねた。`],
+    [`Butter thought about it. Her smile didn't change at all. "Um... all of them?"`,
+     `バターは考えた。笑顔はまったく変わらない。「うーん……ぜんぶ？」`],
+    [`The Master sighed and took out a notebook. "Then let's make a map."`,
+     `教主はため息をつき、ノートを取り出した。「じゃあ、地図を作ろう」`],
+    [`They spent the whole morning digging. Butter remembered some places perfectly: under the big oak tree, behind the blacksmith's forge, next to a rock that looked like a sleeping pig. Other places she remembered by smell, which was faster but less reliable. Twice she dug the same hole. Once she dug up a can that belonged to someone else.`,
+     `午前中いっぱい、みんなで穴を掘った。バターがはっきり覚えている場所もあった。大きな樫の木の下、鍛冶屋の裏、眠っている豚みたいな岩の隣。においで覚えている場所もあって、そちらのほうが早いけれど当てにならなかった。同じ穴を2回掘ったこともあったし、他の誰かの缶を掘り当てたこともあった。`],
+    [`"That one's mine," said a voice from inside a hole.`,
+     `「それ、わたしの」と穴の中から声がした。`],
+    [`Kommy was lying at the bottom, curled up on a bed of leaves. "Kommy started hibernating early," she explained, without opening her eyes. "Please close the door."`,
+     `コミーが穴の底で、落ち葉のベッドに丸まって寝ていた。「コミーは早めに冬眠を始めました」と、目も開けずに説明する。「ドアを閉めてください」`],
+    [`"It's a hole," the Master said.`,
+     `「穴だよ」と教主は言った。`],
+    [`"Please close the hole."`,
+     `「穴を閉めてください」`],
+    [`By lunchtime, the Master's notebook was full of small X marks, and the wheelbarrow held one hundred and twelve cans. Diana checked the numbers carefully.`,
+     `昼までに教主のノートは小さな×印でいっぱいになり、手押し車には缶が112個たまった。ディアナは数を注意深く確認した。`],
+    [`"According to last year's records, Butter received about two hundred cans," Diana said. "Where are the rest?"`,
+     `「去年の記録によると、バターが受け取った缶は約200個」とディアナは言った。「残りはどこですか？」`],
+    [`Butter's ears drooped. "Butter can't remember," she admitted. "Butter is sorry."`,
+     `バターの耳がしゅんと垂れた。「バター、思い出せない」と彼女は認めた。「ごめんなさい」`],
+    [`Then she stopped, sniffed the air, and ran toward the edge of the forest. Beside a young tree covered in yellow flowers, she began to dig very carefully, using both hands, as if she were afraid of waking someone.`,
+     `そこで彼女はぴたりと止まり、空気のにおいをかぐと、森のはずれへ駆けだした。黄色い花におおわれた若い木のそばで、誰かを起こしてしまうのをこわがるように、両手でとても慎重に掘り始めた。`],
+    [`Inside was a small wooden box. It was full of cans, and every can had a name written on it in crooked letters: Diana. Kommy. Mago. Master.`,
+     `中には小さな木箱があった。缶がぎっしり詰まっていて、どの缶にもゆがんだ字で名前が書いてあった。ディアナ。コミー。マーゴ。教主。`],
+    [`"Butter saved these for friends," she said. "In case the winter is long."`,
+     `「これはね、友だちのために取っておいたの」とバターは言った。「冬が長くなったときのために」`],
+    [`Diana was quiet for a moment. Then she closed her eyes. "Even closing my eyes has its limits," she said softly. "But today, I did not see this box."`,
+     `ディアナはしばらく黙っていた。それから目を閉じた。「目をつぶるのにも限度があります」と彼女は静かに言った。「でも今日は、この箱を見ませんでした」`],
+    [`The warehouse was finished the following week. One shelf was labeled VILLAGE SUPPLIES. The other was labeled BUTTER'S FRIENDS, in Butter's crooked handwriting.`,
+     `倉庫は翌週に完成した。一つの棚には「村の備蓄品」、もう一つの棚にはバターのゆがんだ字で「バターの友だち」と札が貼られた。`],
+    [`That night, the Master wrote three sentences in the diary: "Eighty-eight cans are still missing. I have decided not to look for them. Some things are better left buried."`,
+     `その夜、教主は日記に3つの文を書いた。「缶はまだ88個見つかっていない。探さないことにした。埋めたままのほうがいいものもある」`]
+  ],
+  vocab: [
+    ['inventory', '在庫（調べ）', 'inventory'], ['record', '記録（する）', 'record|records'], ['store', '保管する', 'store'],
+    ['warehouse', '倉庫', 'warehouse'], ['reliable', '当てになる、信頼できる', 'reliable'], ['belong to', '〜のものである', 'belonged to'],
+    ['according to', '〜によると', 'According to'], ['receive', '受け取る', 'received'], ['admit', '認める', 'admitted'],
+    ['supplies', '備蓄品、物資', 'SUPPLIES'], ['label', '札をつける', 'labeled']
+  ],
+  qs: [
+    { q: 'Why did Diana want every can to be counted?', c: ['To sell them to the elves', 'To punish Butter', 'To prepare for winter and store them in a warehouse', 'To find out where Kommy was sleeping'], a: 2,
+      ex: 'Winter was coming ... We will record the numbers and store the cans in the new warehouse. が根拠です。' },
+    { q: 'Who was found sleeping in one of the holes?', c: ['Mago', 'Kommy', 'Diana', 'Butter'], a: 1,
+      ex: 'Kommy was lying at the bottom ... Kommy started hibernating early と書かれています。' },
+    { q: 'What does Diana mean when she says, "today, I did not see this box"?', c: ['Her eyesight is getting worse.', 'She will count the box tomorrow.', 'She wants Butter to hide the box better.', 'She will let Butter keep the cans for her friends.'], a: 3,
+      ex: '友だちのための缶だと知り、在庫に数えずに見逃すという意味です。倉庫に「バターの友だち」の棚ができたことからもわかります。' }
+  ]
+});
+
+STORIES.push({
+  id: 'three-sentences', no: 8,
+  title: 'Three Sentences a Day', ja: '一日三行の日記',
+  cast: ['Ner', 'Erpin', 'Youngchun', 'Master'], place: 'Order Headquarters',
+  paras: [
+    [`Every morning at seven, Ner knocked twice on the Master's door and held out her hand. "Your diary, please."`,
+     `毎朝7時、ネルは教主の部屋のドアを2回ノックして手を差し出す。「日記をお願いします」`],
+    [`It was a rule of the Yggdrasil Order, or at least a rule of Ner's: the Master and the Queen had to write at least three sentences every day. According to Ner, a leader who could not reflect on the past could not guide the future. According to Erpin, it was the worst homework in the history of Elias.`,
+     `それは世界樹教団の決まり――少なくともネルの決まりだった。教主と女王は毎日最低3つの文を書かなければならない。ネルいわく、過去を振り返れない指導者に未来は導けない。エルフィンいわく、エーリアス史上最悪の宿題。`],
+    [`The Master didn't mind. Some days the entries were short: "Ate lunch. Ashur yelled. The weather was nice." Other days there was more to say, like the day a giant carrot fell on the garden, or the night Rim filled a theater with laughter.`,
+     `教主は気にしていなかった。短い日もある。「昼ごはんを食べた。エシュールが怒鳴った。いい天気だった」。書くことが多い日もある。巨大なにんじんが菜園に落ちた日や、リムが劇場を笑い声でいっぱいにした夜のように。`],
+    [`This morning, however, Ner arrived with two diaries and placed them side by side on the desk.`,
+     `ところが今朝、ネルは日記を2冊持ってきて、机の上に並べて置いた。`],
+    [`"Master," she said, "please look at these entries."`,
+     `「教主様」と彼女は言った。「この記録を見てください」`],
+    [`The Master read Erpin's diary first: "Today the Master and I ate cake. Ashur yelled. The weather was nice."`,
+     `教主はまずエルフィンの日記を読んだ。「今日は教主とケーキを食べた。エシュールが怒鳴った。いい天気だった」`],
+    [`Then the Master read their own: "Today Erpin and I ate cake. Ashur yelled. The weather was nice."`,
+     `次に自分の日記を読んだ。「今日はエルフィンとケーキを食べた。エシュールが怒鳴った。いい天気だった」`],
+    [`"The Queen," Ner said, "has been copying your diary for three weeks."`,
+     `「女王は」とネルは言った。「3週間も教主様の日記を写しています」`],
+    [`On the windowsill, Youngchun, who usually napped there all morning, opened one eye. "Busted," she yawned, and closed it again.`,
+     `いつも午前中は窓辺で昼寝をしているブルーミーが、片目を開けた。「バレたね」とあくび混じりに言って、また目を閉じた。`],
+    [`Erpin was summoned. She arrived with cream on her face and a look of total innocence. "I didn't copy! We just had the same day!"`,
+     `エルフィンが呼び出された。顔にクリームをつけ、まったく無実だという表情でやって来る。「写してないもん！ 同じ一日を過ごしただけ！」`],
+    [`"You wrote that you went to the Witch Kingdom on Tuesday," Ner said. "On Tuesday, you were in bed with a stomachache. From eating eleven parfaits."`,
+     `「火曜日に魔女の王国へ行ったと書いていますね」とネル。「火曜日、あなたは腹痛で寝込んでいました。パフェを11個食べたせいで」`],
+    [`Erpin opened her mouth, closed it, and then pointed at the Master. "The Master's diary is easier to read! Their handwriting is nicer!"`,
+     `エルフィンは口を開け、閉じて、それから教主を指さした。「教主の日記のほうが読みやすいんだもん！ 字がきれいなんだもん！」`],
+    [`(That's not the defense she thinks it is.)`,
+     `（それは本人が思っているほどの言い訳になってない）`],
+    [`Ner sighed. "As a penalty, the Queen will write one full page today, in her own words, about something she learned. I will review it this evening."`,
+     `ネルはため息をついた。「罰として、女王は今日、自分の言葉で、何か学んだことについて1ページまるごと書くこと。今晩、私が確認します」`],
+    [`"A whole page?!" Erpin cried. "That's like fifty sentences!"`,
+     `「1ページまるごと？！」エルフィンは叫んだ。「50文くらいあるじゃない！」`],
+    [`"About fifteen," the Master said.`,
+     `「15文くらいだよ」と教主は言った。`],
+    [`Erpin sat at the desk and stared at the empty page for a very long time. She chewed her pen. She drew a strawberry in the corner. Then, slowly, she began to write.`,
+     `エルフィンは机に向かい、白紙のページをとても長いあいだ見つめた。ペンをかじった。すみっこにいちごを描いた。それから、ゆっくりと書き始めた。`],
+    [`That evening, Ner took the diary to her room. She read it once, and then again. It was messy and full of spelling mistakes. It was about a day when Erpin had tried to be a good queen and failed, and how Ner had quietly fixed everything without saying a word, and how Erpin wished she were the kind of queen who could say thank you properly.`,
+     `その晩、ネルは日記を自分の部屋に持っていった。一度読み、もう一度読んだ。字はぐちゃぐちゃで、つづりの間違いだらけだった。それは、エルフィンがよい女王になろうとして失敗した日のこと。ネルが何も言わずにこっそり全部を直してくれたこと。そして、ちゃんと「ありがとう」を言える女王になりたいということが書かれていた。`],
+    [`Ner closed the diary and sat still for a while.`,
+     `ネルは日記を閉じ、しばらくじっと座っていた。`],
+    [`The next morning, she returned it with a single comment in her neat handwriting: Approved. Three sentences tomorrow will be enough.`,
+     `翌朝、ネルは整った字でひと言だけ添えて日記を返した。「承認。明日は3文で十分です」`],
+    [`The Master noticed that Ner's eyes looked a little red, and decided not to ask.`,
+     `教主はネルの目が少し赤いことに気づいたが、たずねないことにした。`]
+  ],
+  vocab: [
+    ['reflect on', '〜を振り返る', 'reflect on'], ['entry', '記録、書き込み', 'entries'], ['copy', '写す、まねる', 'copying|copy'],
+    ['summon', '呼び出す', 'summoned'], ['penalty', '罰', 'penalty'], ['review', '確認する', 'review'],
+    ['properly', 'きちんと', 'properly'], ['comment', 'コメント、意見', 'comment'], ['approve', '承認する', 'Approved'],
+    ['handwriting', '筆跡、字', 'handwriting']
+  ],
+  qs: [
+    { q: 'Why did Ner bring two diaries to the Master?', c: ['To ask the Master to write for Erpin', "To show that Erpin had copied the Master's entries", 'To return diaries that had been lost', 'To praise both writers'], a: 1,
+      ex: 'The Queen has been copying your diary for three weeks. と言うために、2冊を並べて見せています。' },
+    { q: 'How did Ner know that Erpin’s diary was not true?', c: ['Erpin was sick in bed on the day she said she traveled.', 'Youngchun told her.', 'The handwriting was different.', 'Erpin forgot to write the date.'], a: 0,
+      ex: '火曜日に魔女の王国へ行ったと書いたが、実際はパフェの食べすぎで寝込んでいた、と指摘しています。' },
+    { q: 'What is suggested about Ner at the end of the story?', c: ['She was angry about the spelling mistakes.', 'She had not slept all night.', 'She was moved by what Erpin wrote.', 'She wanted Erpin to write more pages.'], a: 2,
+      ex: '日記を2回読み、しばらくじっと座り、翌朝は目が赤かった ＝ 感動して涙ぐんだと推測できます。' }
+  ]
+});
+
+</script>
+<script>
+/* roster.js — canon brief and character sheet used for story generation (researched from the global version). */
+window.ELIAS = {
+  world: [
+    'Elias is a small land protected by the World Tree Yggdrasil. Its residents are chibi people collectively nicknamed the "Squeezy Cheeks":',
+    'Sprites (sweet-obsessed, can use magic from birth, floating detached wings; their kingdom is Erpien, the Sprite Kingdom),',
+    'Werebeasts (simple and playful; the Werebeast Village), Elves (arrived from another dimension; high-tech city of Monatium with City Hall, a university hospital, a monorail, the Elfnet and the convenience store Monatium 25),',
+    'Elementals (Elemental Mountain), Phantoms (mischievous; Phantom Marsh), Dragons (materialistic, strict ranking hierarchy) and Witches (the underground Witch Kingdom, Belitein).',
+    'The player character is "the Master": a human from Earth, summoned by a prophecy as the Deliverer and made head of the Yggdrasil Order (the Order Headquarters has a courtyard). Every Apostle calls them "Master".',
+    'The Master is about twice as tall as Elias natives, practical, kind and dryly funny, and often pulls or squeezes an Apostle\'s soft cheeks (affection or gentle discipline).',
+    'Nobody in Elias can die, because Yggdrasil abolished death: accidents only knock people out. Tiny non-sentient bugs are said to "go to the Weekend Farm".',
+    'Common things: the Banquet Hall where the Master serves dishes, Elias Theater, Kyarot\'s giant garden around Yggdrasil, Ashur\'s Bakery, Speaki\'s pumpkin patch, Rim\'s tower,',
+    'the diary in which Ner makes the Master and Queen Erpin write at least three sentences every day, sweets such as strawberry cake, bean logs (a sweet bean jelly sprites hate),',
+    'canned chow (werebeast food), Candy and Star Candy.'
+  ].join(' '),
+  jaNames: 'Master=教主, Apostle=使徒, Yggdrasil=世界樹, Elias=エーリアス, Erpien=エルフィンランド, Sprite=妖精, Werebeast=獣人, Elf=エルフ, Elemental=精霊, Phantom=幽霊, Dragon=竜族, Witch=魔女',
+  roster: [
+    ['Erpin', 'エルフィン', 'Sprite', 'Innocent', 'Immature, gluttonous Queen of Erpien and a figurehead; announces herself as "the Guardian of Elias"; loves strawberry cake and chocolate ice cream, hates bean logs and pumpkins; secretly wants to be a good queen. Her big sister is Belita.'],
+    ['Ner', 'ネル', 'Sprite', 'Mad', 'High Priestess of the Yggdrasil Order; strict orthodox perfectionist devoted to Yggdrasil ("For Yggdrasil, I\'ll do anything."); polite and formal, tightfisted with money; checks the diaries every morning; punishes troublemakers by making them kneel with arms raised; secretly loves melon bocconcini and mallow mocharons.'],
+    ['Ashur', 'エシュール', 'Sprite', 'Depressed', 'Self-proclaimed greatest archwizard who runs "Ashur\'s Bakery" but insists it is a magic school, not a bakery; always short of money because Erpin never pays her tab; strict, sarcastic teacher who adds "...NOT!"; loves caramel popcorn and fried carrots.'],
+    ['Shoupan', 'シュパン', 'Sprite', 'Vivacious', 'Speed-loving courier who rides her Segway, the "Shoupabolt"; her deliveries are always on time, but the contents are rarely intact.'],
+    ['Mayo', 'マヨ', 'Sprite', 'Mad', 'Collector of unique (often stolen) goods who runs a shop; very hard to get anything back from her; quietly protective of the Master.'],
+    ['Kyarot', 'キャロット', 'Sprite', 'Innocent', 'Priestess-gardener who grows gigantic crops by hand around Yggdrasil; cheerful ("Wanna come play in my garden?"); older sister of Carren.'],
+    ['Marie', 'マリー', 'Sprite', 'Vivacious', 'Explorer of ruins who solves most problems with explosives.'],
+    ['Kommy', 'コミー', 'Werebeast', 'Depressed', 'Lazy, sleepy cat werebeast who is surprisingly well-read and quotes books; speaks of herself in the third person ("Can Kommy sleep now?").'],
+    ['Butter', 'バター', 'Werebeast', 'Vivacious', 'Cheerful golden-retriever werebeast who loves friends and games ("C\'mon, come play with me!"); sometimes speaks in the third person; buries cans of chow all over Elias; has a scary side if mistreated.'],
+    ['Diana', 'ディアナ', 'Werebeast', 'Mad', 'Deer werebeast and chief of the village; a strict but motherly elder, once very powerful ("Even closing my eyes has its limits.").'],
+    ['Mago', 'マーゴ', 'Werebeast', 'Innocent', 'Peace-loving sheep werebeast, friendly with every animal, avoids conflict ("Let\'s all get along and play together.").'],
+    ['Elena', 'エレナ', 'Elf', 'Composed', 'Machiavellian mayor of Monatium and proud inventor-engineer; always for the benefit of the elves ("If necessary, a fair contract will be established."); her brain runs on coffee (frozen hot Americano).'],
+    ['Amelia', 'アメリア', 'Elf', 'Composed', 'Elena\'s efficient, obsessively loyal secretary ("This is Amelia, the mayor\'s secretary."); loves space food.'],
+    ['Canna', 'カンナ', 'Elf', 'Vivacious', 'Chief of Monatium\'s Suppression Unit and a former soldier ("Command received!"); jokes about blowing herself up when things get unbearable.'],
+    ['Rohne', 'ローネ', 'Elf', 'Innocent', 'Spy of the Intelligence Unit who wears medieval armor ("It\'s your friendly neighborhood spy, Rohne!").'],
+    ['Risty', 'リスティ', 'Elf', 'Depressed', 'Stay-at-home pro gamer and self-proclaimed hacker; her teddy bear holds an AI friend named Glove.'],
+    ['Speaki', 'スピッキー', 'Phantom', 'Innocent', 'Copycat phantom of identity who imitates others, especially Ner ("I\'m Ner, the priestess of Yggdrasil!"); only the Master, Youngchun and the person being copied can see through her disguises; tends a pumpkin patch and treats pumpkins as friends; when caught she protests "I didn\'t do anything that bad".'],
+    ['Rim', 'リム', 'Phantom', 'Depressed', 'Phantom of balance and order who lives alone in a tower; cannot stop making terrible puns ("boo-ze"); her scythe is named G; likes pumpkin soup.'],
+    ['Shaydi', 'シェイディ', 'Phantom', 'Mad', 'Phantom of chaos and self-proclaimed top prankster with a fan club; very sensitive about her age; hates puns.'],
+    ['Selene', 'セリーネ', 'Phantom', 'Vivacious', 'Phantom of provocation who teases people to photograph their angry faces ("That expression you made just now was priceless.").'],
+    ['Alice', 'アリス', 'Phantom', 'Mad', 'Fortune-telling phantom of fate who reads tarot cards and sometimes rigs them.'],
+    ['Daya', 'ダーヤ', 'Dragon', 'Innocent', 'Diamond dragon, the strongest and leader of the dragons; loves grooming and adorning herself.'],
+    ['Sist', 'シスト', 'Dragon', 'Mad', 'Amethyst dragon trader who tries to pull a fast one on customers ("Looking to buy something?").'],
+    ['Belita', 'ベリータ', 'Witch', 'Mad', 'Witch Queen of Belitein, dignified in public but secretly lazy and a big eater of sweets; Erpin\'s big sister.'],
+    ['Levi', 'レヴィ', 'Witch', 'Depressed', 'Overworked witch intern with countless part-time jobs; answers every call with "Yes, hello?? Is there a reason you called?"; survives on invigoration potions.'],
+    ['Barie', 'バリエ', 'Witch', 'Depressed', 'Long-suffering librarian of Belitein\'s public library; drags out her words ("Quiiiet... pleeease..."); terrifying when books are mishandled.'],
+    ['Posher', 'ポーシャー', 'Witch', 'Depressed', 'Potion shop owner whose potions work but have strange side effects; likes testing them on the Master.'],
+    ['Xion', 'シオン', 'Phantom', 'Depressed', 'Dramatic, chuunibyou phantom sniper who works part-time at Monatium 25 and writes a web novel as "Dark Bullet".'],
+    ['Aya', 'アヤ', 'Witch', 'Composed', 'Snow witch living on Elemental Mountain; mature, thoughtful, a caring listener.'],
+    ['Youngchun', 'ブルーミー', 'Yggdrasil', '-', 'Small forsythia-like being who carries Yggdrasil\'s power; mostly naps and chats near the Master.'],
+    ['Renewa', 'リニュア', 'Elf', 'Mad', 'Time traveler from the future who works part-time at the Elias Theater ticket booth.'],
+    ['Goldy', 'ゴールディ', 'Dragon', '-', 'Gold dragon businesswoman ("Hello, customer!"); runs a premium store and a real estate agency and manages Monatium 25.']
+  ],
+  themes: [
+    ['work', '仕事・お店', 'a job, a shop, a delivery, an interview or another workplace situation'],
+    ['event', 'お祭り・イベント', 'planning or running an event, festival, show or celebration'],
+    ['food', '食べ物', 'food, cooking, sweets or a meal at the Banquet Hall'],
+    ['trouble', 'ハプニング', 'a small problem or misunderstanding that gets out of hand'],
+    ['warm', 'ほっこり', 'a heart-warming moment between the Master and the Apostles'],
+    ['free', 'おまかせ', 'any theme that fits the chosen characters']
+  ],
+  // TOEIC-useful words to weave in (a subset of Recall 1000)
+  toeic: 'schedule deadline reservation invoice refund discount delivery shipment inventory warehouse contract negotiate budget estimate expense receipt venue register attend postpone cancel confirm reminder applicant interview hire promote supervisor colleague department proposal approve submit revise review announce customer complaint warranty replace repair supplies equipment facility renovate maintenance appointment available convenient necessary immediately approximately temporarily efficient reliable eligible appropriate sufficient ensure enhance maintain obtain anticipate indicate specify clarify verify notify modify identify recommend encourage prohibit restrict exceed decline appreciate apologize resolve consider suggest itinerary accommodation destination luggage commute fare depart arrive delay route passenger'.split(' ')
+};
+
+</script>
+<script>
+/* generated by build.py */
+window.RECALL_WORDS = ["submit", "deadline", "colleague", "supervisor", "department", "assign", "available", "document", "confirm", "remind", "inform", "extension", "agenda", "handout", "supplies", "update", "responsible", "task", "request", "approve", "complete", "announce", "notice", "directory", "cabinet", "forward", "attach", "reply", "absent", "memo", "hire", "applicant", "apply", "position", "résumé", "candidate", "qualified", "experience", "employee", "train", "promote", "retire", "transfer", "recruit", "interview", "salary", "benefit", "reference", "personnel", "evaluate", "performance", "workshop", "orientation", "shift", "overtime", "leave", "vacancy", "client", "contract", "negotiate", "agreement", "branch", "headquarters", "merge", "expand", "profit", "competitor", "partner", "launch", "goal", "strategy", "decision", "proposal", "deal", "firm", "industry", "market", "growth", "establish", "founder", "owner", "executive", "budget", "invoice", "receipt", "refund", "payment", "expense", "fee", "charge", "account", "balance", "discount", "rate", "tax", "revenue", "financial", "bill", "currency", "credit", "loan", "estimate", "afford", "save", "spend", "earn", "customer", "advertise", "brochure", "catalog", "sample", "survey", "feedback", "demand", "sale", "item", "purchase", "order", "deliver", "retail", "brand", "promotion", "campaign", "commercial", "offer", "quality", "popular", "compare", "counter", "cashier", "exchange", "return", "warranty", "repair", "replace", "stock", "aisle", "shelf", "display", "membership", "coupon", "complaint", "assist", "serve", "cuisine", "reservation", "package", "label", "flight", "depart", "arrive", "delay", "cancel", "passenger", "luggage", "boarding pass", "destination", "itinerary", "accommodation", "fare", "commute", "traffic", "vehicle", "schedule", "route", "platform", "tour", "sightseeing", "overseas", "check in", "round-trip", "rent", "license", "conference", "register", "participant", "attend", "host", "organize", "presentation", "speaker", "audience", "invite", "celebrate", "anniversary", "banquet", "exhibition", "trade show", "venue", "postpone", "session", "award", "ceremony", "reception", "volunteer", "construction", "renovate", "facility", "floor", "entrance", "exit", "parking lot", "hallway", "lobby", "maintenance", "equipment", "install", "property", "apartment", "tenant", "landlord", "lease", "location", "space", "plumber", "architect", "factory", "produce", "manufacture", "shipment", "warehouse", "inventory", "supplier", "material", "machinery", "operate", "process", "quantity", "container", "cargo", "load", "safety", "inspect", "express", "track", "goods", "software", "device", "upgrade", "log in", "backup", "access", "online", "website", "research", "laboratory", "data", "article", "editor", "publish", "journalist", "broadcast", "technology", "technician", "program", "connect", "resident", "community", "appointment", "patient", "pharmacy", "prescription", "exercise", "temperature", "forecast", "neighborhood", "admission", "museum", "garden", "recipe", "ingredient", "local", "public", "recycle", "fitness", "health", "necessary", "several", "recent", "current", "previous", "additional", "convenient", "immediately", "probably", "usually", "following", "various", "entire", "extra", "prepare", "provide", "require", "include", "increase", "reduce", "improve", "coordinate", "handle", "distribute", "reschedule", "finalize", "revise", "draft", "review", "collaborate", "priority", "procedure", "policy", "guideline", "instruction", "manual", "workload", "administrative", "confidential", "urgent", "mandatory", "optional", "in charge of", "on behalf of", "fill out", "sign up for", "be supposed to", "stationery", "correspondence", "notify", "acknowledge", "qualification", "requirement", "internship", "payroll", "raise", "bonus", "incentive", "pension", "workforce", "job opening", "job description", "resign", "successor", "mentor", "expertise", "fluent", "enthusiastic", "motivated", "dedicated", "reliable", "flexible", "trainee", "commitment", "contribution", "achievement", "recognize", "leadership", "supervise", "dismiss", "acquire", "subsidiary", "corporation", "entrepreneur", "invest", "shareholder", "board of directors", "consultant", "outsource", "objective", "initiative", "restructure", "efficiency", "productivity", "terms", "renew", "expire", "comply with", "regulation", "authorize", "division", "sector", "domestic", "global", "venture", "operation", "annual", "quarterly", "projection", "consumer", "accounting", "audit", "reimburse", "deposit", "withdraw", "transaction", "installment", "outstanding", "overdue", "due", "fund", "donation", "sponsor", "grant", "allowance", "expenditure", "fiscal year", "cost-effective", "economical", "inexpensive", "quote", "financing", "asset", "debt", "statement", "merchandise", "target", "potential", "prospective", "loyal", "feature", "competitive", "exclusive", "limited", "boost", "attract", "appeal", "trend", "respond", "questionnaire", "inquiry", "sales representative", "distributor", "wholesale", "vendor", "bulk", "outlet", "showroom", "demonstration", "prototype", "publicity", "reputation", "market share", "defective", "damaged", "voucher", "checkout", "sold out", "in stock", "shipping", "courier", "valid", "complimentary", "courteous", "prompt", "amenity", "refreshments", "beverage", "dine", "cater", "appetizer", "chef", "patron", "tip", "specialty", "cash register", "bargain", "reserve", "book", "layover", "connecting flight", "aisle seat", "carry-on", "customs", "declare", "board", "terminal", "shuttle", "transportation", "congestion", "detour", "toll", "fuel", "excursion", "landmark", "scenic", "attraction", "souvenir", "travel agency", "suite", "housekeeping", "check out", "belongings", "timetable", "jet lag", "passport", "keynote", "moderator", "panel", "facilitate", "minutes", "attendee", "fundraiser", "occasion", "exhibit", "booth", "showcase", "nominate", "recipient", "honor", "tribute", "entry", "capacity", "intermission", "turnout", "remodel", "expansion", "blueprint", "floor plan", "contractor", "crew", "site", "layout", "spacious", "furnished", "utilities", "real estate", "residential", "vacant", "occupy", "relocate", "accessible", "plumbing", "wiring", "storage", "premises", "lean", "stack", "pile", "arrange", "hang", "fold", "pour", "wipe", "sweep", "mop", "rake", "trim", "water", "unload", "stroll", "browse", "examine", "adjust", "reach for", "point at", "face", "ladder", "wheelbarrow", "curb", "pedestrian", "railing", "awning", "dock", "be lined up", "be occupied", "assemble", "assembly line", "component", "durable", "fragile", "defect", "automated", "output", "plant", "distribution", "freight", "carrier", "dispatch", "packaging", "specifications", "standard", "certified", "logistics", "compatible", "malfunction", "troubleshoot", "technical support", "user-friendly", "function", "innovative", "develop", "database", "subscribe", "column", "headline", "press release", "coverage", "issue", "manuscript", "proofread", "edition", "subscriber", "analysis", "experiment", "clinic", "physician", "checkup", "symptom", "medication", "nutrition", "charity", "municipal", "city council", "mayor", "recreation", "environment", "sustainable", "conserve", "landscape", "gardening", "insurance", "emergency", "approximately", "significantly", "gradually", "frequently", "occasionally", "temporarily", "permanently", "especially", "particularly", "relatively", "slightly", "thoroughly", "accurate", "efficient", "effective", "eligible", "appropriate", "adequate", "sufficient", "considerable", "substantial", "essential", "primary", "numerous", "temporary", "ensure", "enhance", "maintain", "obtain", "achieve", "anticipate", "indicate", "specify", "clarify", "verify", "modify", "identify", "determine", "recommend", "encourage", "permit", "prohibit", "restrict", "exceed", "decline", "reject", "appreciate", "apologize", "address", "resolve", "consider", "suggest", "inconvenience", "oversee", "delegate", "implement", "streamline", "expedite", "consolidate", "allocate", "designate", "tentative", "pending", "preliminary", "subsequent", "prior to", "in accordance with", "regarding", "circulate", "compile", "disclose", "duplicate", "obligation", "clearance", "at one's earliest convenience", "hand in", "look over", "credentials", "compensation", "appraisal", "predecessor", "proficient", "diligent", "competent", "versatile", "aptitude", "headcount", "turnover", "morale", "commend", "reassign", "job fair", "seasoned", "novice", "workplace", "apprentice", "retain", "lay off", "take over", "stakeholder", "affiliate", "enterprise", "conglomerate", "lucrative", "feasible", "viable", "prosper", "flourish", "diversify", "dominate", "clause", "stipulate", "binding", "terminate", "mutual", "counterpart", "consensus", "benchmark", "rival", "monopoly", "incorporate", "incur", "waive", "forfeit", "fluctuate", "surplus", "deficit", "proceeds", "tuition", "appraise", "inflation", "recession", "subsidy", "itemize", "overhead", "dividend", "collateral", "liability", "compensate", "pay off", "fall short of", "account for", "clientele", "testimonial", "endorse", "promotional", "solicit", "unveil", "surge", "plummet", "soar", "saturated", "niche", "pricing", "upscale", "state-of-the-art", "cutting-edge", "commodity", "patronage", "enticing", "word of mouth", "comprehensive", "tailored", "accommodate", "inclement", "disembark", "embark on", "vicinity", "en route", "proximity", "concierge", "lodging", "hospitality", "valet", "renowned", "authentic", "culinary", "gourmet", "dietary", "patio", "adjourn", "commemorate", "convene", "inaugural", "spectator", "enroll", "preside over", "podium", "auditorium", "brainstorm", "raffle", "adjacent", "demolish", "refurbish", "ventilation", "scaffolding", "occupant", "dwelling", "zoning", "infrastructure", "fixture", "insulation", "partition", "procure", "yield", "backlog", "calibrate", "recall", "hazardous", "protective", "adhere to", "disruption", "bottleneck", "replenish", "perishable", "obsolete", "integrate", "interface", "glitch", "encrypt", "patent", "breakthrough", "pilot", "circulation", "editorial", "correspondent", "anonymous", "ailment", "remedy", "hygiene", "contagious", "nonprofit", "petition", "ordinance", "wellness", "outreach", "unprecedented", "consecutive", "prestigious", "meticulous", "imperative", "integral", "crucial", "vital", "tremendous", "exceptional", "noteworthy", "prominent", "reluctant", "hesitant", "apparent", "respective", "simultaneously", "consistently", "exclusively", "readily", "thereby", "nevertheless", "furthermore", "otherwise", "whereas", "provided that", "unless", "in light of", "on account of", "in the event of", "as of", "alleviate", "enforce", "exempt", "defer", "reinforce", "undergo", "undertake", "attribute", "commence", "cease", "retrieve", "reiterate", "outline", "convey", "emphasize", "concise", "abide by", "ascertain", "discrepancy", "succinct", "cumbersome", "redundant", "rectify", "reconcile", "supersede", "revoke", "rescind", "liaison", "interim", "ad hoc", "at one's discretion", "in lieu of", "with regard to", "in compliance with", "to date", "commensurate", "remuneration", "probation", "tenure", "requisite", "exemplary", "adept", "astute", "esteemed", "accolade", "laud", "garner", "contingency", "contingent", "reciprocal", "concur", "unanimous", "intermediary", "consignment", "embargo", "tariff", "proprietor", "equity", "leverage", "spearhead", "vie", "burgeoning", "ramification", "in tandem", "defray", "delinquent", "disburse", "remittance", "levy", "nominal", "exorbitant", "frugal", "per diem", "curtail", "bolster", "patronize", "impeccable", "unparalleled", "dilapidated", "annex", "amenable", "prudent", "lenient", "stringent", "scrutinize", "painstaking", "plausible", "provisional", "imminent", "forthcoming", "paramount", "pivotal", "conducive", "mitigate", "foster", "underscore", "entail", "encompass", "relinquish", "dwindle", "escalate", "culminate in", "inadvertently", "notwithstanding", "whereby", "albeit", "thus", "hence", "barring", "on the grounds that", "by means of", "expedient", "ubiquitous", "precarious"];
+
+</script>
+<script>
+/* app.js — Elias Reading Room: timed reading, glossed vocabulary, paragraph translations, audio, quizzes, Claude-written stories */
+(function () {
+'use strict';
+const $ = (s, r) => (r || document).querySelector(s);
+const view = () => $('#view');
+const esc = s => String(s == null ? '' : s).replace(/[&<>"']/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c]));
+const escRe = s => s.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
+const clone = o => JSON.parse(JSON.stringify(o));
+const pad = n => String(n).padStart(2, '0');
+const today = () => { const d = new Date(); return d.getFullYear() + '-' + pad(d.getMonth() + 1) + '-' + pad(d.getDate()); };
+const countWords = s => (String(s).match(/[A-Za-z0-9'’\-]+/g) || []).length;
+const fmt = s => Math.floor(s / 60) + ':' + pad(Math.floor(s % 60));
+const E = window.ELIAS;
+const RECALL = new Set((window.RECALL_WORDS || []).map(w => w.toLowerCase()));
+
+/* ---------- storage: artifact db when available, else this browser ---------- */
+const Store = {
+  db: null, prefix: 'elias:', pending: new Map(), failed: false,
+  async init() { try { this.db = window.claude && typeof window.claude.use === 'function' ? await window.claude.use('db') : null; } catch (e) { this.db = null; } },
+  async get(path) {
+    if (this.db) { try { const s = await this.db.doc(path).get(); return s.exists ? clone(s.data()) : null; } catch (e) { this.fail(e); return null; } }
+    try { const v = localStorage.getItem(this.prefix + path); return v ? JSON.parse(v) : null; } catch (e) { return null; }
+  },
+  async all(coll) {
+    if (this.db) {
+      try { const snap = await this.db.collection(coll).limit(500).get(); return snap.docs.map(d => Object.assign(clone(d.data()), { _id: d.id })); }
+      catch (e) { this.fail(e); return []; }
+    }
+    const out = [];
+    try {
+      for (let i = 0; i < localStorage.length; i++) {
+        const k = localStorage.key(i), pre = this.prefix + coll + '/';
+        if (k && k.indexOf(pre) === 0) { const o = JSON.parse(localStorage.getItem(k)); if (o) out.push(Object.assign(o, { _id: k.slice(pre.length) })); }
+      }
+    } catch (e) { /* blocked */ }
+    return out;
+  },
+  save(path, data) {
+    let p = this.pending.get(path);
+    if (!p) { p = { data: null, running: false }; this.pending.set(path, p); }
+    const d = clone(data); delete d._id; p.data = d;
+    if (!p.running) this.flush(path, p);
+  },
+  remove(path) {
+    try { localStorage.removeItem(this.prefix + path); } catch (e) { /* blocked */ }
+    if (this.db) this.db.doc(path).delete().catch(e => this.fail(e));
+  },
+  async flush(path, p) {
+    p.running = true;
+    while (p.data) {
+      const d = p.data; p.data = null;
+      if (this.db) { try { await this.db.doc(path).set(d); } catch (e) { this.fail(e); } }
+      else { try { localStorage.setItem(this.prefix + path, JSON.stringify(d)); } catch (e) { /* blocked */ } }
+    }
+    p.running = false;
+  },
+  fail(e) {
+    console.warn('store', e);
+    if (this.failed) return; this.failed = true;
+    banner(e && e.code === 'invalid_argument' ? 'このアカウントでは記録を保存できません（閲覧のみ）。' : '記録の保存に失敗しました。ページを開き直してください。');
+  }
+};
+function banner(m) { $('#bannerText').textContent = m; $('#banner').hidden = false; }
+let tt = null;
+function toast(m) { const t = $('#toast'); t.textContent = m; t.hidden = false; clearTimeout(tt); tt = setTimeout(() => { t.hidden = true; }, 2600); }
+
+/* ---------- state ---------- */
+const S = { settings: { target: 150, font: 19, vocab: true, rate: 0.95 }, progress: {}, gen: [] };
+function stories() { return (window.STORIES || []).concat(S.gen); }
+const byId = id => stories().find(s => s.id === id);
+function words(st) { if (!st._w) st._w = st.paras.reduce((a, p) => a + countWords(p[0]), 0); return st._w; }
+function prog(id) { return S.progress[id] || (S.progress[id] = { reads: [], best: 0, quiz: null }); }
+const saveProg = id => Store.save('progress/' + id, S.progress[id]);
+const saveSettings = () => Store.save('meta/settings', S.settings);
+function normGen(d) {
+  const s = v => (typeof v === 'string' ? v.trim() : '');
+  const paras = (Array.isArray(d.paras) ? d.paras : []).map(p => [s(p && p.en), s(p && p.ja)]).filter(p => p[0]);
+  const text = paras.map(p => p[0]).join(' ');
+  const vocab = (Array.isArray(d.vocab) ? d.vocab : []).map(v => {
+    const forms = (Array.isArray(v.forms) ? v.forms : [v.w]).map(s).filter(Boolean).filter(f => new RegExp('(^|[^A-Za-z])' + escRe(f) + '(?![A-Za-z])', 'i').test(text));
+    return forms.length ? [s(v.w), s(v.ja), forms.join('|')] : null;
+  }).filter(Boolean).slice(0, 14);
+  const qs = (Array.isArray(d.qs) ? d.qs : []).filter(q => q && Array.isArray(q.c) && q.c.length === 4 && Number(q.a) >= 0 && Number(q.a) < 4)
+    .map(q => ({ q: s(q.q), c: q.c.map(s), a: Number(q.a), ex: s(q.ex) })).slice(0, 3);
+  return { title: s(d.title) || 'Untitled', ja: s(d.ja), place: s(d.place), cast: (Array.isArray(d.cast) ? d.cast : []).map(s).filter(Boolean), paras, vocab, qs };
+}
+
+/* ---------- speech ---------- */
+const TTS = {
+  ok: typeof window.speechSynthesis !== 'undefined' && typeof window.SpeechSynthesisUtterance !== 'undefined',
+  voice: null, token: 0, _u: null,
+  init() {
+    if (!this.ok) return;
+    const q = v => (/natural|neural|online|premium|enhanced/i.test(v.name) ? 3 : /google|siri/i.test(v.name) ? 2 : 1);
+    const load = () => { let all = []; try { all = speechSynthesis.getVoices() || []; } catch (e) { all = []; } this.voice = all.filter(v => /^en[-_]/i.test(v.lang)).sort((a, b) => q(b) - q(a) || (/en[-_]US/i.test(b.lang) ? 1 : 0) - (/en[-_]US/i.test(a.lang) ? 1 : 0))[0] || null; };
+    load(); try { speechSynthesis.addEventListener('voiceschanged', load); } catch (e) { speechSynthesis.onvoiceschanged = load; }
+  },
+  stop() { this.token++; try { if (this.ok) speechSynthesis.cancel(); } catch (e) { /* ignore */ } },
+  say(text, token) {
+    return new Promise(res => {
+      if (!this.ok || token !== this.token) return res(false);
+      const u = new SpeechSynthesisUtterance(text.replace(/[()]/g, ''));
+      if (this.voice) { u.voice = this.voice; u.lang = this.voice.lang; } else u.lang = 'en-US';
+      u.rate = S.settings.rate || 0.95;
+      let done = false; const fin = ok => { if (!done) { done = true; clearTimeout(g); res(ok && token === this.token); } };
+      u.onend = () => fin(true); u.onerror = () => fin(false);
+      const g = setTimeout(() => fin(true), 6000 + text.length * 120);
+      this._u = u; speechSynthesis.speak(u);
+    });
+  },
+  async play(list, onIdx) {
+    this.stop(); const token = ++this.token;
+    await new Promise(r => setTimeout(r, 60));
+    for (const [i, text] of list) {
+      if (token !== this.token) return false;
+      onIdx(i);
+      // long paragraphs are spoken sentence by sentence (some engines stop after ~15 s)
+      for (const part of text.match(/[^.!?]+[.!?]+["')\]]*\s*|[^.!?]+$/g) || [text]) { if (!(await this.say(part.trim(), token))) { onIdx(-1); return false; } }
+      await new Promise(r => setTimeout(r, 250));
+    }
+    onIdx(-1);
+    return true;
+  }
+};
+
+/* ---------- Claude ---------- */
+const AI = {
+  sample: null, off: false,
+  async init() { try { this.sample = window.claude && typeof window.claude.use === 'function' ? await window.claude.use('sample') : null; } catch (e) { this.sample = null; } if (cur.view === 'write') views.write(); },
+  get on() { return !!this.sample && !this.off; },
+  message(e) {
+    const c = e && e.code;
+    if (c === 'cancelled') return '';
+    if (['not_granted', 'sampling_disabled', 'not_declared', 'capability_disabled', 'capability_removed'].indexOf(c) >= 0) { this.off = true; return 'この表示では Claude の機能を使えません。'; }
+    if (c === 'rate_limited') return '混み合っているか利用上限に達しました。少し時間をおいて試してください。';
+    if (c === 'invalid_json' || c === 'empty_completion') return 'うまく書けませんでした。もう一度試してください。';
+    if (c === 'refused') return 'この依頼には応答できませんでした。組み合わせを変えて試してください。';
+    return '通信が途切れました。もう一度試してください。';
+  },
+  prompt(cast, theme, focus) {
+    const sheet = E.roster.filter(r => cast.indexOf(r[0]) >= 0).map(r => `- ${r[0]} (${r[2]}, ${r[3]}; Japanese name ${r[1]}): ${r[4]}`).join('\n');
+    const th = E.themes.find(t => t[0] === theme) || E.themes[E.themes.length - 1];
+    const used = stories().map(s => s.title).join('; ');
+    return `You are writing an ORIGINAL, unofficial fan-made short story set in the world of the mobile game "Trickcal: Chibi Go" (global English version). The reader is a Japanese adult practicing English reading for the TOEIC test (goal: 800).
+
+CANON GUIDE (follow it; never contradict it):
+${E.world}
+
+CHARACTERS IN THIS STORY (keep each exactly in character, including speech habits):
+- The Master: the player character. Gender-neutral: refer to them as "the Master" or "they/their". Their inner thoughts appear in parentheses, e.g. (Here we go again.)
+${sheet}
+
+THEME: ${th[2]}.
+
+REQUIREMENTS
+- 470 to 530 English words, split into 16 to 26 short paragraphs. Third-person narration with lively dialogue.
+- Natural modern English at CEFR B1+ to B2. Use at least 8 of these TOEIC words naturally: ${focus.join(', ')}.
+- Tone like the game's Apostle Stories: warm slice-of-life comedy, gentle slapstick, a small twist, and a funny or heart-warming ending. Nobody dies.
+- Original scenes only. Do not retell the game's main story. Short signature catchphrases are fine.
+- Do not reuse these existing titles or their plots: ${used}.
+- For every paragraph give a natural Japanese translation. Use these Japanese names: ${E.jaNames}, and each character's Japanese name above.
+- "vocab": 10 to 14 useful words or phrases that appear in the story, with Japanese meanings and "forms" = the exact spellings used in the text.
+- "qs": 3 TOEIC Part 7 style questions (one detail, one inference, one vocabulary-in-context), 4 choices each, one clearly correct answer ("a" is its 0-based index), and a Japanese explanation quoting the evidence.
+
+Reply with only this JSON:
+{"title":"English title","ja":"日本語タイトル","place":"Place · detail","cast":["Name"],"paras":[{"en":"...","ja":"..."}],"vocab":[{"w":"invoice","ja":"請求書","forms":["invoice","invoices"]}],"qs":[{"q":"...","c":["","","",""],"a":0,"ex":"..."}]}`;
+  }
+};
+
+/* ---------- views ---------- */
+const cur = { view: 'shelf', story: null, timer: null, t0: 0, answers: {} };
+const views = {};
+function go(name, arg) {
+  TTS.stop(); closePop();
+  if (cur.timer) { clearInterval(cur.timer); cur.timer = null; }
+  cur.view = name;
+  document.querySelectorAll('#tabs button').forEach(b => { if (b.dataset.view === name) b.setAttribute('aria-current', 'page'); else b.removeAttribute('aria-current'); });
+  views[name](arg);
+  window.scrollTo(0, 0);
+}
+
+views.shelf = () => {
+  const all = stories();
+  const reads = all.map(s => prog(s.id)).filter(p => p.reads.length);
+  const recent = [].concat(...all.map(s => prog(s.id).reads)).sort((a, b) => (a.d > b.d ? 1 : -1)).slice(-10);
+  const avg = recent.length ? Math.round(recent.reduce((a, r) => a + r.wpm, 0) / recent.length) : 0;
+  const totalWords = all.reduce((a, s) => a + prog(s.id).reads.length * words(s), 0);
+  view().innerHTML = `<div class="stack">
+    <section class="card intro">
+      <div>
+        <div class="eyebrow">Reading practice in Elias</div>
+        <h1 style="margin-top:6px">トリッカルの世界で、英語の長文を読む</h1>
+        <p class="note" style="margin-top:10px">グローバル版の設定に沿って書いた、非公式のオリジナル短編集です。1話約500語で、TOEIC Part 7 の長めの文書2つ分にあたります。時間を計って読むと1分あたりの語数（WPM）を記録します。本番のリーディングを時間内に解き切る目安は150WPMです。</p>
+      </div>
+      <div class="kpis">
+        <div class="kpi"><b>${reads.length}</b><span>読んだ話</span></div>
+        <div class="kpi"><b>${avg || '—'}</b><span>平均WPM（直近）</span></div>
+        <div class="kpi"><b>${totalWords.toLocaleString()}</b><span>読んだ語数</span></div>
+      </div>
+    </section>
+    <div class="shelf">${all.map(s => {
+      const p = prog(s.id), w = words(s);
+      return `<button class="story" data-open="${esc(s.id)}">
+        <span class="no">${s.gen ? '<span class="chip cheek">Claude作</span>' : 'No.' + pad(s.no)}</span>
+        <h3>${esc(s.title)}</h3><span class="jt">${esc(s.ja)}</span>
+        <span class="meta">${s.cast.filter(c => c !== 'Master').map(c => `<span class="chip">${esc(c)}</span>`).join('')}</span>
+        <span class="foot"><span>${w}語・${Math.max(1, Math.round(w / S.settings.target))}分</span>${p.reads.length ? `<span class="done">読了 ${p.best}WPM${p.quiz ? '・' + p.quiz.score + '/' + p.quiz.total : ''}</span>` : '<span>未読</span>'}</span>
+      </button>`;
+    }).join('')}</div>
+    <p class="note">これは非公式の二次創作です。キャラクターと世界観の権利は EPIDGames に帰属します。</p>
+  </div>`;
+  view().querySelectorAll('[data-open]').forEach(b => { b.onclick = () => openStory(b.dataset.open); });
+};
+
+function markup(text, vocab, used) {
+  const hits = [];
+  vocab.forEach((v, vi) => {
+    if (used.has(vi)) return;
+    for (const form of v[2].split('|')) {
+      const m = new RegExp('(^|[^A-Za-z])(' + escRe(form) + ')(?![A-Za-z])', 'i').exec(text);
+      if (m) { const at = m.index + m[1].length; hits.push([at, at + m[2].length, vi]); break; }
+    }
+  });
+  hits.sort((a, b) => a[0] - b[0]);
+  let out = '', pos = 0;
+  hits.forEach(h => { if (h[0] < pos) return; out += esc(text.slice(pos, h[0])) + `<button class="vw" data-v="${h[2]}">${esc(text.slice(h[0], h[1]))}</button>`; pos = h[1]; used.add(h[2]); });
+  out += esc(text.slice(pos));
+  return out.replace(/\(([^()]{2,240})\)/g, '<span class="th">($1)</span>');
+}
+function openStory(id) {
+  const st = byId(id); if (!st) return go('shelf');
+  cur.story = st; cur.answers = {};
+  go('reader', st);
+}
+views.reader = st => {
+  const used = new Set(), all = stories(), i = all.indexOf(st), p = prog(st.id), w = words(st);
+  view().innerHTML = `<div class="stack">
+    <div class="rhead">
+      <div class="row"><button class="btn sm ghost" id="back">← 本棚</button><span class="eyebrow">${st.gen ? 'Claude作' : 'Story ' + pad(st.no)}</span></div>
+      <h1>${esc(st.title)}</h1>
+      <p class="note">${esc(st.ja)}・${esc(st.place)}</p>
+      <div class="row">${st.cast.map(c => `<span class="chip ${c === 'Master' ? 'cheek' : 'acc'}">${esc(c)}</span>`).join('')}<span class="note">${w}語・目標 ${Math.max(1, Math.round(w / S.settings.target))}分（${S.settings.target}WPM）</span></div>
+    </div>
+    <div class="tools">
+      <button class="btn primary" id="time">⏱ 時間を計って読む</button>
+      <span class="timer" id="clock" hidden>0:00</span>
+      <button class="btn" id="listen">▶ 音声で聞く</button>
+      <button class="btn" id="trAll" aria-pressed="false">訳をすべて表示</button>
+      <button class="btn sm" id="vocabBtn" aria-pressed="${S.settings.vocab}">重要語</button>
+      <button class="btn sm" id="smaller" aria-label="文字を小さく">A−</button><button class="btn sm" id="bigger" aria-label="文字を大きく">A＋</button>
+    </div>
+    <article class="text ${S.settings.vocab ? '' : 'hide-vocab'}" id="text" style="--read:${S.settings.font}px">
+      ${st.paras.map((pp, k) => `<div class="para" data-i="${k}"><p class="en">${markup(pp[0], st.vocab, used)}</p>
+        <div class="pbtn"><button data-tr="${k}" aria-label="この段落の訳">訳</button><button data-say="${k}" aria-label="この段落を聞く">▶</button></div>
+        <p class="tr" hidden>${esc(pp[1])}</p></div>`).join('')}
+    </article>
+    <section class="card" id="result" hidden></section>
+    <section class="card"><div class="sec-h"><h2>確認問題</h2><span class="note">TOEIC Part 7 形式</span></div>
+      ${st.qs.map((q, qi) => `<div class="q"><p class="en">${qi + 1}. ${esc(q.q)}</p><div class="opts">${q.c.map((c, ci) => `<button class="opt" data-q="${qi}" data-c="${ci}"><span class="k">${'ABCD'[ci]}</span><span>${esc(c)}</span></button>`).join('')}</div><div class="ex" id="ex${qi}"></div></div>`).join('')}
+      <p class="note" id="qscore" style="margin-top:8px">${p.quiz ? '前回：' + p.quiz.score + '/' + p.quiz.total + '問正解' : ''}</p>
+    </section>
+    <section class="card"><div class="sec-h"><h2>重要語</h2><span class="note">緑の印＝Recall 1000 に収録</span></div>
+      <table class="vtable">${st.vocab.map(v => `<tr><td>${esc(v[0])}</td><td>${esc(v[1])}${RECALL.has(v[0].toLowerCase()) ? ' <span class="chip acc">Recall 1000</span>' : ''}</td></tr>`).join('')}</table>
+    </section>
+    <div class="navrow">
+      ${i > 0 ? `<button class="btn" data-open="${esc(all[i - 1].id)}">← ${esc(all[i - 1].title)}</button>` : '<span></span>'}
+      ${i < all.length - 1 ? `<button class="btn" data-open="${esc(all[i + 1].id)}">${esc(all[i + 1].title)} →</button>` : ''}
+    </div>
+    ${st.gen ? '<div class="row"><button class="btn sm ghost" id="del">このお話を削除</button><span id="delc"></span></div>' : ''}
+  </div>`;
+  $('#back').onclick = () => go('shelf');
+  view().querySelectorAll('[data-open]').forEach(b => { b.onclick = () => openStory(b.dataset.open); });
+  view().querySelectorAll('[data-tr]').forEach(b => { b.onclick = () => { const t = b.closest('.para').querySelector('.tr'); t.hidden = !t.hidden; }; });
+  view().querySelectorAll('[data-say]').forEach(b => { b.onclick = () => { const k = +b.dataset.say; TTS.play([[k, st.paras[k][0]]], hl); }; });
+  view().querySelectorAll('.vw').forEach(b => { b.onclick = e => { e.stopPropagation(); showPop(b, st.vocab[+b.dataset.v]); }; });
+  $('#trAll').onclick = e => { const on = e.target.getAttribute('aria-pressed') !== 'true'; e.target.setAttribute('aria-pressed', String(on)); e.target.textContent = on ? '訳をすべて隠す' : '訳をすべて表示'; view().querySelectorAll('.tr').forEach(t => { t.hidden = !on; }); };
+  $('#vocabBtn').onclick = e => { S.settings.vocab = !S.settings.vocab; saveSettings(); e.target.setAttribute('aria-pressed', String(S.settings.vocab)); $('#text').classList.toggle('hide-vocab', !S.settings.vocab); };
+  const font = d => { S.settings.font = Math.min(26, Math.max(15, S.settings.font + d)); saveSettings(); $('#text').style.setProperty('--read', S.settings.font + 'px'); };
+  $('#smaller').onclick = () => font(-1); $('#bigger').onclick = () => font(1);
+  let listening = false;
+  $('#listen').onclick = async () => {
+    if (listening) { TTS.stop(); return; }
+    if (!TTS.ok) { toast('このブラウザは読み上げに対応していません'); return; }
+    listening = true; $('#listen').textContent = '■ 止める';
+    await TTS.play(st.paras.map((pp, k) => [k, pp[0]]), hl);
+    listening = false; const b = $('#listen'); if (b) b.textContent = '▶ 音声で聞く';
+  };
+  $('#time').onclick = () => { if (cur.timer) finishTiming(st); else startTiming(); };
+  view().querySelectorAll('.opt').forEach(b => { b.onclick = () => answer(st, +b.dataset.q, +b.dataset.c); });
+  const del = $('#del');
+  if (del) del.onclick = () => {
+    $('#delc').innerHTML = '<span class="note">削除しますか？</span> <button class="btn sm" id="dy">削除する</button> <button class="btn sm ghost" id="dn">やめる</button>';
+    $('#dy').onclick = () => { S.gen = S.gen.filter(x => x.id !== st.id); Store.remove('gen/' + st.id); toast('削除しました'); go('shelf'); };
+    $('#dn').onclick = () => { $('#delc').innerHTML = ''; };
+  };
+};
+function hl(i) { view().querySelectorAll('.para').forEach(el => el.classList.toggle('now', +el.dataset.i === i)); if (i >= 0) { const el = view().querySelector(`.para[data-i="${i}"]`); if (el) el.scrollIntoView({ block: 'center', behavior: 'smooth' }); } }
+function startTiming() {
+  TTS.stop(); closePop();
+  view().querySelectorAll('.tr').forEach(t => { t.hidden = true; });
+  $('#text').classList.add('reading');
+  $('#clock').hidden = false;
+  cur.t0 = Date.now();
+  $('#time').textContent = '✓ 読み終えた';
+  cur.timer = setInterval(() => { const c = $('#clock'); if (c) c.textContent = fmt((Date.now() - cur.t0) / 1000); }, 500);
+  $('#text').scrollIntoView({ block: 'start', behavior: 'smooth' });
+}
+function finishTiming(st) {
+  clearInterval(cur.timer); cur.timer = null;
+  const sec = Math.max(1, (Date.now() - cur.t0) / 1000), w = words(st), wpm = Math.round(w / (sec / 60));
+  $('#text').classList.remove('reading');
+  $('#time').textContent = '⏱ もう一度計る';
+  if (wpm > 500) {
+    const r0 = $('#result'); r0.hidden = false;
+    r0.innerHTML = `<p>${fmt(sec)} で読み終えたことになっています（${wpm}WPM）。さすがに速すぎるので、今回は記録しませんでした。本文を最後まで読んでから「読み終えた」を押してください。</p>`;
+    r0.scrollIntoView({ block: 'center', behavior: 'smooth' });
+    return;
+  }
+  const p = prog(st.id);
+  p.reads = p.reads.concat([{ d: today(), sec: Math.round(sec), wpm }]).slice(-20);
+  p.best = Math.max(p.best || 0, wpm);
+  saveProg(st.id);
+  const target = S.settings.target, max = Math.max(260, wpm + 20);
+  const verdict = wpm >= 200 ? 'とても速いペースです。内容もつかめていれば上級者の速さです。' : wpm >= target ? '本番で時間内に読み切れるペースです。確認問題で理解度も確かめましょう。' : wpm >= 110 ? 'あと少しで目標ペースです。音声で1回聞いてから読み直すと速くなります。' : 'まずは内容をつかむことを優先しましょう。訳で確認してから読み直すと効果的です。';
+  const r = $('#result');
+  r.hidden = false;
+  r.innerHTML = `<div class="result"><div class="wpm">${wpm}<small>WPM</small></div>
+    <div><p>${fmt(sec)} で ${w}語を読みました。${verdict}</p>
+    <div class="gauge" role="img" aria-label="${wpm}WPM、目標${target}WPM"><i style="width:${Math.min(100, wpm / max * 100)}%"></i><span class="tick" style="left:${target / max * 100}%" title="目標 ${target}WPM"></span></div>
+    <p class="note" style="margin-top:6px">ピンクの線＝目標 ${target}WPM（TOEIC リーディングを時間内に終える目安）</p></div></div>`;
+  r.scrollIntoView({ block: 'center', behavior: 'smooth' });
+}
+function answer(st, qi, ci) {
+  if (cur.answers[qi] != null) return;
+  cur.answers[qi] = ci;
+  const q = st.qs[qi];
+  view().querySelectorAll(`.opt[data-q="${qi}"]`).forEach(b => { b.disabled = true; const k = +b.dataset.c; if (k === q.a) b.classList.add('good'); else if (k === ci) b.classList.add('bad'); });
+  $('#ex' + qi).textContent = (ci === q.a ? '✓ 正解。' : '✕ 不正解。正解は ' + 'ABCD'[q.a] + '。') + q.ex;
+  if (Object.keys(cur.answers).length === st.qs.length) {
+    const score = st.qs.reduce((a, qq, k) => a + (cur.answers[k] === qq.a ? 1 : 0), 0);
+    const p = prog(st.id); p.quiz = { score, total: st.qs.length, d: today() };
+    if (!p.reads.length) p.reads = [];
+    saveProg(st.id);
+    $('#qscore').textContent = `${score}/${st.qs.length}問正解。${score === st.qs.length ? 'ばっちりです！' : '間違えた問題は、訳をひらいて根拠の文を確かめましょう。'}`;
+  }
+}
+function showPop(anchor, v) {
+  closePop();
+  const r = anchor.getBoundingClientRect();
+  const el = document.createElement('div');
+  el.className = 'pop'; el.setAttribute('role', 'dialog');
+  el.innerHTML = `<b>${esc(v[0])}</b>${RECALL.has(v[0].toLowerCase()) ? '<span class="badge">Recall 1000</span>' : ''}<div>${esc(v[1])}</div>`;
+  $('#popHost').appendChild(el);
+  const w = el.offsetWidth, h = el.offsetHeight;
+  el.style.left = Math.max(16, Math.min(window.innerWidth - w - 16, r.left + r.width / 2 - w / 2)) + 'px';
+  el.style.top = (r.top > h + 16 ? r.top - h - 8 : r.bottom + 8) + 'px';
+  if (TTS.ok) { TTS.stop(); TTS.play([[-2, v[0]]], () => {}); }
+}
+function closePop() { const h = $('#popHost'); if (h) h.innerHTML = ''; }
+document.addEventListener('click', e => { if (!e.target.closest('.vw') && !e.target.closest('.pop')) closePop(); });
+window.addEventListener('scroll', closePop, { passive: true });
+
+views.write = () => {
+  const on = AI.on;
+  const picked = new Set(cur.cast || []), theme = cur.theme || 'free';
+  view().innerHTML = `<div class="stack">
+    <section class="card">
+      <div class="eyebrow">Write with Claude</div>
+      <h1 class="disp" style="font-size:24px;margin-top:4px">新しいお話を書いてもらう</h1>
+      <p class="note" style="margin-top:8px">登場させたい使徒を1〜4人とテーマを選ぶと、Claude がこの本棚と同じ形式（約500語・段落ごとの訳・重要語・確認問題）で新しいお話を書きます。調べた原作設定とキャラクターの口調を守るよう指示しています。1話につき30秒〜2分ほどかかります。</p>
+      ${on ? '' : '<p class="note" style="margin-top:8px"><b>この表示では Claude の機能を使えません。</b>オンライン版（claude.ai）で使えます。書いてもらったお話はオンライン版に保存されます。</p>'}
+    </section>
+    <section class="card"><div class="sec-h"><h2>登場する使徒</h2><span class="note" id="pc">${picked.size}/4人（教主は必ず登場）</span></div>
+      <div class="picker">${E.roster.map(r => `<button class="chip" data-c="${esc(r[0])}" aria-pressed="${picked.has(r[0])}" title="${esc(r[2] + '・' + r[4])}">${esc(r[1])} <span class="en" style="opacity:.7">${esc(r[0])}</span></button>`).join('')}</div>
+    </section>
+    <section class="card"><div class="sec-h"><h2>テーマ</h2></div>
+      <div class="picker">${E.themes.map(t => `<button class="chip" data-t="${t[0]}" aria-pressed="${t[0] === theme}">${esc(t[1])}</button>`).join('')}</div>
+      <div class="row" style="margin-top:16px"><button class="btn primary" id="go" ${on ? '' : 'disabled'}>Claude に書いてもらう</button><span class="note">TOEIC頻出語を自動で8語以上入れます</span></div>
+      <div id="gen"></div>
+    </section>
+  </div>`;
+  view().querySelectorAll('[data-c]').forEach(b => { b.onclick = () => {
+    const c = b.dataset.c;
+    if (picked.has(c)) picked.delete(c); else if (picked.size < 4) picked.add(c); else { toast('4人まで選べます'); return; }
+    cur.cast = [...picked]; b.setAttribute('aria-pressed', String(picked.has(c))); $('#pc').textContent = picked.size + '/4人（教主は必ず登場）';
+  }; });
+  view().querySelectorAll('[data-t]').forEach(b => { b.onclick = () => { cur.theme = b.dataset.t; view().querySelectorAll('[data-t]').forEach(x => x.setAttribute('aria-pressed', String(x === b))); }; });
+  $('#go').onclick = () => generate([...picked], cur.theme || 'free');
+};
+async function generate(cast, theme) {
+  if (!cast.length) { toast('使徒を1人以上選んでください'); return; }
+  const box = $('#gen'), btn = $('#go');
+  const pool = E.toeic.slice().sort(() => Math.random() - 0.5).slice(0, 14);
+  const ctl = new AbortController();
+  btn.disabled = true;
+  box.innerHTML = `<div class="gen"><span class="spin"></span><p class="note" id="gp">Claude が構想を練っています…</p><button class="btn sm ghost" id="stop">中止</button></div>`;
+  $('#stop').onclick = () => ctl.abort();
+  try {
+    const d = await AI.sample.json(AI.prompt(cast, theme, pool), { cache: false, signal: ctl.signal, onText: ({ text }) => { const g = $('#gp'); if (g) g.textContent = `書いています… ${text.length.toLocaleString()}文字`; } });
+    const st = normGen(d || {});
+    if (st.paras.length < 8 || countWords(st.paras.map(p => p[0]).join(' ')) < 250) throw { code: 'invalid_json' };
+    st.id = 'g' + Date.now().toString(36); st.gen = true; st.created = new Date().toISOString(); st.no = 0;
+    if (st.cast.indexOf('Master') < 0) st.cast.push('Master');
+    S.gen.unshift(st);
+    Store.save('gen/' + st.id, st);
+    toast('新しいお話ができました');
+    openStory(st.id);
+  } catch (e) {
+    const m = AI.message(e);
+    box.innerHTML = m ? `<p class="note" style="margin-top:10px">${esc(m)}</p>` : '';
+    const b = $('#go'); if (b) b.disabled = !AI.on;
+  }
+}
+
+views.stats = () => {
+  const all = stories();
+  const reads = [].concat(...all.map(s => prog(s.id).reads.map(r => Object.assign({ t: s.title }, r)))).sort((a, b) => (a.d > b.d ? 1 : a.d < b.d ? -1 : 0));
+  const quizzes = all.map(s => prog(s.id).quiz).filter(Boolean);
+  const qa = quizzes.reduce((a, q) => [a[0] + q.score, a[1] + q.total], [0, 0]);
+  const pts = reads.slice(-30), target = S.settings.target;
+  const W = 560, H = 190, L = 34, R = 12, T = 12, B = 26, max = Math.max(260, ...pts.map(p => p.wpm + 20));
+  const X = i => L + (pts.length <= 1 ? (W - L - R) / 2 : i / (pts.length - 1) * (W - L - R)), Y = v => T + (1 - v / max) * (H - T - B);
+  view().innerHTML = `<div class="stack">
+    <div class="kpis" style="grid-template-columns:repeat(auto-fit,minmax(150px,1fr))">
+      <div class="kpi"><b>${reads.length}</b><span>計測した回数</span></div>
+      <div class="kpi"><b>${reads.length ? Math.max(...reads.map(r => r.wpm)) : '—'}</b><span>最高WPM</span></div>
+      <div class="kpi"><b>${qa[1] ? Math.round(qa[0] / qa[1] * 100) + '%' : '—'}</b><span>確認問題の正答率</span></div>
+    </div>
+    <section class="card"><div class="sec-h"><h2>読むスピードの推移</h2><span class="note">直近30回・ピンクの線＝目標${target}WPM</span></div>
+      ${pts.length ? `<svg class="chart" viewBox="0 0 ${W} ${H}" role="img" aria-label="WPMの推移">
+        ${[0, 100, 200].filter(v => v < max).map(v => `<line x1="${L}" x2="${W - R}" y1="${Y(v)}" y2="${Y(v)}" stroke="var(--line)"/><text x="${L - 6}" y="${Y(v) + 4}" text-anchor="end">${v}</text>`).join('')}
+        <line x1="${L}" x2="${W - R}" y1="${Y(target)}" y2="${Y(target)}" stroke="var(--cheek)" stroke-dasharray="5 4"/>
+        <path d="${pts.map((p, i) => (i ? 'L' : 'M') + X(i).toFixed(1) + ' ' + Y(p.wpm).toFixed(1)).join(' ')}" fill="none" stroke="var(--accent)" stroke-width="2"/>
+        ${pts.map((p, i) => `<circle cx="${X(i).toFixed(1)}" cy="${Y(p.wpm).toFixed(1)}" r="4.5" fill="var(--accent)" stroke="var(--surface)" stroke-width="2"><title>${esc(p.d)} ${esc(p.t)}：${p.wpm}WPM</title></circle>`).join('')}
+      </svg>` : '<div class="empty">本棚のお話を「時間を計って読む」で読むと、ここに記録がたまります。</div>'}
+    </section>
+    <section class="card"><div class="sec-h"><h2>お話ごとの記録</h2></div>
+      <table class="vtable">${all.map(s => { const p = prog(s.id); return `<tr><td>${esc(s.title)}</td><td>${p.reads.length ? '最高 ' + p.best + 'WPM・' + p.reads.length + '回' : '—'}${p.quiz ? '・問題 ' + p.quiz.score + '/' + p.quiz.total : ''}</td></tr>`; }).join('')}</table>
+    </section>
+    <section class="card"><div class="sec-h"><h2>設定</h2></div>
+      <div class="row">
+        <div class="field"><label for="tg">目標スピード</label><select id="tg">${[120, 150, 180, 200].map(v => `<option value="${v}" ${v === target ? 'selected' : ''}>${v} WPM</option>`).join('')}</select></div>
+        <div class="field"><label for="rt">読み上げの速さ</label><select id="rt">${[0.8, 0.9, 0.95, 1, 1.1].map(v => `<option value="${v}" ${v === S.settings.rate ? 'selected' : ''}>${v}×</option>`).join('')}</select></div>
+      </div>
+    </section>
+  </div>`;
+  $('#tg').onchange = e => { S.settings.target = +e.target.value; saveSettings(); toast('保存しました'); };
+  $('#rt').onchange = e => { S.settings.rate = +e.target.value; saveSettings(); toast('保存しました'); };
+};
+
+/* ---------- boot ---------- */
+document.getElementById('tabs').addEventListener('click', e => { const b = e.target.closest('button[data-view]'); if (b) go(b.dataset.view); });
+async function boot() {
+  TTS.init();
+  await Store.init();
+  const [settings, progress, gen] = await Promise.all([Store.get('meta/settings'), Store.all('progress'), Store.all('gen')]);
+  Object.assign(S.settings, settings || {});
+  progress.forEach(p => { S.progress[p._id] = { reads: p.reads || [], best: p.best || 0, quiz: p.quiz || null }; });
+  S.gen = gen.map(g => Object.assign(g, { id: g._id, gen: true })).sort((a, b) => (a.created < b.created ? 1 : -1));
+  go('shelf');
+  AI.init();
+}
+if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', boot); else setTimeout(boot, 0);
+})();
+
+</script>
+<script>
+/* pwa.js — offline kit glue shared by every page: service worker, link back to the kit home, persistent storage */
+(function () {
+  'use strict';
+  if ('serviceWorker' in navigator && location.protocol.indexOf('http') === 0) {
+    window.addEventListener('load', function () { navigator.serviceWorker.register('sw.js').catch(function () { /* offline cache is optional */ }); });
+  }
+  try {
+    if (navigator.storage && navigator.storage.persist) {
+      navigator.storage.persisted().then(function (p) { if (!p) return navigator.storage.persist(); }).catch(function () {});
+    }
+  } catch (e) { /* ignore */ }
+  function addHome() {
+    var top = document.querySelector('.top-in');
+    if (!top || document.querySelector('.kit-home')) return;
+    var a = document.createElement('a');
+    a.href = './';
+    a.className = 'kit-home';
+    a.textContent = '‹ Kit';
+    a.setAttribute('aria-label', 'TOEIC Study Kit のホームに戻る');
+    a.style.cssText = 'font:600 13px/1 system-ui,-apple-system,sans-serif;color:inherit;opacity:.7;text-decoration:none;padding:10px 6px 10px 0;white-space:nowrap';
+    top.insertBefore(a, top.firstChild);
+  }
+  if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', addHome); else addHome();
+})();
+
+</script>
+</body>
+</html>

@@ -40,6 +40,10 @@
     {
       "name": "TOEIC 800 Drill",
       "url": "./drill.html"
+    },
+    {
+      "name": "Elias Reading Room",
+      "url": "./reading.html"
     }
   ]
 }
