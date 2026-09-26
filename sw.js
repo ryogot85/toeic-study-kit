@@ -1,5 +1,5 @@
 /* sw.js — offline cache for TOEIC Study Kit. The build stamps VERSION so every deploy refreshes the cache. */
-const VERSION = 'kit-20260925-143405';
+const VERSION = 'kit-20260926-221206';
 const FONTS = 'kit-fonts';
 const CORE = ['./', 'index.html', 'drill.html', 'recall.html', 'phrase.html', 'reading.html', 'manifest.webmanifest',
   'icons/icon-192.png', 'icons/icon-512.png', 'icons/apple-touch-icon.png'];

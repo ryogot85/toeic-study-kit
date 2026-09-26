@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="ja" data-build="20260925-143405">
+<html lang="ja" data-build="20260926-221206">
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
@@ -108,6 +108,9 @@ button.chip[aria-pressed="true"]{background:var(--accent);color:var(--accent-ink
 .story .meta{display:flex;gap:6px;flex-wrap:wrap}
 .story .foot{display:flex;justify-content:space-between;align-items:center;font-size:12.5px;color:var(--ink-2);margin-top:auto;padding-top:6px;border-top:1px dashed var(--line)}
 .done{color:var(--good);font-weight:700}
+.season{display:flex;flex-direction:column;gap:12px}
+.season-h{display:flex;flex-direction:column;gap:4px}
+.season-h h2{font-family:var(--f-disp);font-weight:600;font-size:21px;display:flex;align-items:center;gap:8px;flex-wrap:wrap}
 
 /* reader */
 .rhead{display:flex;flex-direction:column;gap:6px}
@@ -151,6 +154,10 @@ button.chip[aria-pressed="true"]{background:var(--accent);color:var(--accent-ink
 .vtable td{padding:7px 6px;border-bottom:1px dashed var(--line);vertical-align:top}
 .vtable td:first-child{font-family:var(--f-en);font-weight:600;white-space:nowrap}
 .navrow{display:flex;justify-content:space-between;gap:10px;flex-wrap:wrap}
+.notes{display:flex;flex-direction:column;gap:14px}
+.notes .n{border-left:3px solid var(--cheek);padding:1px 0 1px 13px}
+.notes .n h3{font-size:15px;font-weight:700;margin-bottom:3px}
+.notes .n p{font-size:14px;color:var(--ink-2);line-height:1.8}
 
 /* compose */
 .picker{display:flex;flex-wrap:wrap;gap:6px}
@@ -289,16 +296,16 @@ STORIES.push({
      `「配達完了です！」シュパンがうれしそうにその背中へ叫んだ。「星5つの評価をお願いします！」`],
     [`The Master followed the footprints to Speaki's pumpkin patch, where the box was already open. Several pumpkins had been arranged in a circle around it, like guests at a party.`,
      `教主が足跡をたどってスピッキーのかぼちゃ畑へ行くと、箱はもう開けられていた。そのまわりには、パーティーの客のようにいくつものかぼちゃが輪になって並べられている。`],
-    [`"I just wanted to share," Speaki sniffed, back in her own form. "The pumpkins never get any dessert."`,
-     `「分けてあげたかっただけなの」元の姿に戻ったスピッキーが鼻をすすった。「かぼちゃたちは、いつもデザートをもらえないんだもん」`],
+    [`"Speaki just wanted to share," Speaki sniffed, back in her own form. "The pumpkins never get any dessert."`,
+     `「スピッキーは、分けてあげたかっただけです」元の姿に戻ったスピッキーが鼻をすすった。「かぼちゃたちは、いつもデザートをもらえないんです」`],
     [`The Master looked inside the box. The melon bocconcini tower was no longer a tower. It was a flat, sticky circle. Shoupan's deliveries were always on time. The condition of the contents was a different story.`,
      `教主は箱の中をのぞいた。メロン・ボッコンチーニのタワーは、もはやタワーではなかった。平たくてべたべたした円盤だ。シュパンの配達はいつも時間どおり。中身の状態はまた別の話だった。`],
     [`Footsteps crunched behind them. The real Ner stood there, as calm as ever, but her left eye was twitching.`,
      `背後で足音がした。本物のネルが立っていた。いつもどおり落ち着いているが、左目がぴくぴくしている。`],
     [`"Speaki," she said. "Kneel. Arms up."`,
      `「スピッキー」と彼女は言った。「正座。両手を上げなさい」`],
-    [`Speaki knelt and raised her arms like a small, sad tree. "I didn't do anything that bad..."`,
-     `スピッキーは正座して、小さくて悲しい木のように両腕を上げた。「そんなに悪いことしてないのに……」`],
+    [`Speaki knelt and raised her arms like a small, sad tree. "Speaki didn't do anything that bad..."`,
+     `スピッキーは正座して、小さくて悲しい木のように両腕を上げた。「スピッキー、そんなに悪いことしてないのに……」`],
     [`Ner picked up the box and studied the ruined dessert for a long moment. Then she turned to the Master. "The meeting," she said, "has been postponed."`,
      `ネルは箱を持ち上げ、つぶれたデザートを長いあいだ見つめた。それから教主のほうを向いた。「会議は」と彼女は言った。「延期になりました」`],
     [`"Was anyone else invited?" the Master asked.`,
@@ -732,6 +739,472 @@ STORIES.push({
 
 </script>
 <script>
+/* Elias Reading Room — Season 2 (written after studying the global script and voiced story videos). Stories 9–10. */
+window.STORIES = window.STORIES || [];
+STORIES.push({
+  id: 'five-minute-warranty', no: 9, season: 2,
+  title: 'The Five-Minute Warranty', ja: '保証期間は5分間',
+  cast: ['Shoupan', 'Bana', 'Amelia', 'Elena', 'Master'], place: 'Order Headquarters → Werebeast Village forge',
+  paras: [
+    [`Shoupan skidded to a stop in front of the Order Headquarters and tapped the shiny helmet on her head. "Look, Master! A SpeedHelmet 3! Made by the elves, and I bought it on Elfnet at a forty percent discount!"`,
+     `シュパンは教団本部の前で急停止し、頭にかぶったぴかぴかのヘルメットを軽くたたいた。「見て、教主！ スピードヘルメット3だよ！ エルフ製で、Elfnetで4割引で買ったんだ！」`],
+    [`"It looks expensive," the Master said.`,
+     `「高そうだね」と教主は言った。`],
+    [`"It shows the fastest route, reads my messages out loud, and plays music," Shoupan said proudly. "And it comes with a warranty!"`,
+     `「最速ルートを表示して、メッセージを読み上げて、音楽も流してくれるんだ」シュパンは誇らしげに言った。「しかも保証つき！」`],
+    [`(A discount on elven technology,) the Master thought. (That's never a good sign.)`,
+     `（エルフの技術が割引……）と教主は思った。（いい予感がしない）`],
+    [`Shoupan zoomed off on the Shoupabolt for her first delivery of the day. Exactly six minutes later, she was back. The helmet was singing the Monatium city anthem at full volume, and it would not come off.`,
+     `シュパンはその日最初の配達へ、シュパボルトで飛び出していった。ちょうど6分後、彼女は戻ってきた。ヘルメットはモナティウムの市歌を大音量で歌っていて、どうやっても脱げなかった。`],
+    [`"Help!" she shouted over the music. "It's been singing since the bridge!"`,
+     `「助けて！」音楽に負けない声で彼女は叫んだ。「橋のあたりからずっと歌ってるんだ！」`],
+    [`The Master found the customer service number on the box and called. After one ring, a calm voice answered. "This is Amelia, the mayor's secretary. May I ask the reason for this call?"`,
+     `教主は箱に書かれたカスタマーサービスの番号に電話をかけた。1回の呼び出しで、落ち着いた声が出た。「市長秘書のアメリアです。ご用件をうかがってもよろしいですか？」`],
+    [`"Why is the mayor's secretary answering customer service calls?"`,
+     `「どうして市長秘書がカスタマーサービスの電話に出るの？」`],
+    [`"Budget efficiency," Amelia said. "How can I help you?"`,
+     `「予算の効率化です」とアメリア。「どういったご用件でしょう？」`],
+    [`The Master explained the problem. There was a short pause and the sound of typing. "I see. The warranty for the SpeedHelmet 3 is valid for five minutes after purchase. According to our records, your friend has used it for six. We can offer a repair service for three thousand Candy. I will send the invoice now."`,
+     `教主が事情を説明すると、少し間があって、キーボードを打つ音がした。「承知しました。スピードヘルメット3の保証は、購入から5分間有効です。記録によると、ご友人は6分間お使いになっています。修理サービスでしたら3000キャンディで承ります。ただいま請求書をお送りします」`],
+    [`Shoupan's eyes narrowed. "Five minutes? That's it. I'm going to Monatium. Revenge mode."`,
+     `シュパンの目が細くなった。「5分？ もういい。モナティウムに行く。復讐モードだ」`],
+    [`"Wait," the Master said, grabbing the Shoupabolt's handle. "Let's get a second opinion first."`,
+     `「待って」教主はシュパボルトのハンドルをつかんだ。「先に別の人にも見てもらおう」`],
+    [`Bana, the werebeast blacksmith, turned the helmet over in her hands. "I've never seen a machine this complicated," she said happily, and picked up a tiny screwdriver. "Let's see what's inside. And you. Stop singing."`,
+     `獣人の鍛冶屋バナは、ヘルメットを手の中でひっくり返した。「こんなに複雑な機械は初めて見たよ」とうれしそうに言って、小さなドライバーを手に取った。「中を見てみようか。そこのお前、歌うのをやめな」`],
+    [`The helmet stopped singing.`,
+     `ヘルメットは歌うのをやめた。`],
+    [`Two minutes later, Bana held up a part the size of a candy. Printed on it in tiny letters were the words SCHEDULED MALFUNCTION UNIT — DO NOT REMOVE.`,
+     `2分後、バナはキャンディほどの大きさの部品をつまみ上げた。そこには小さな字でこう印刷されていた。「計画的故障ユニット ― 取り外し禁止」`],
+    [`"Werebeast wisdom," Bana said. "When something breaks, suspect the elves first. You're usually right." Then, already reaching for more tools, she added, "While I'm at it, this thing could use a few upgrades."`,
+     `「獣人の知恵だよ」とバナは言った。「何かが壊れたら、まずエルフを疑え。だいたい当たるから」それから、もう次の工具に手を伸ばしながら付け加えた。「ついでだから、ちょっと改造もしておこうか」`],
+    [`The Master called again and described the evidence. "Please hold," said Amelia. Soft music played. Then a new voice came on the line. "This is Elena. I hear there has been a... misunderstanding."`,
+     `教主がもう一度電話をかけて証拠のことを伝えると、「少々お待ちください」とアメリアが言った。穏やかな保留音が流れ、それから新しい声が電話に出た。「エレナよ。何か……誤解があったと聞いたわ」`],
+    [`"A part designed to break is not a misunderstanding," the Master said.`,
+     `「壊れるように作った部品は誤解とは言わないよ」と教主は言った。`],
+    [`"If necessary, a fair contract will be established," Elena said smoothly. "We will provide a free replacement. In return, Shoupan will wear Monatium advertising stickers during every delivery for one month."`,
+     `「必要なら、公正な契約を結びましょう」エレナはなめらかに言った。「無料で交換品をお渡しします。その代わり、シュパンには1か月間、すべての配達でモナティウムの広告ステッカーを貼ってもらうわ」`],
+    [`Shoupan thought about it. "Deal. But the stickers go on my back."`,
+     `シュパンは考えた。「いいよ。でもステッカーは背中に貼る」`],
+    [`"Why the back?" Elena asked.`,
+     `「どうして背中なの？」とエレナは聞いた。`],
+    [`"Because I'm so fast that nobody ever sees it," Shoupan said, and hung up.`,
+     `「私は速すぎて、誰も背中なんて見られないからだよ」とシュパンは言って、電話を切った。`],
+    [`The replacement helmet arrived the next morning. The Master checked the receipt. At the bottom, in very small letters, it said: Warranty valid for ten minutes.`,
+     `交換品のヘルメットは翌朝届いた。教主はレシートを確認した。いちばん下に、とても小さな字でこう書いてあった。「保証期間：10分間」`],
+    [`That night, the Master wrote three sentences in the diary: "Shoupan got a new helmet. Its warranty is twice as long as the old one. I think that counts as progress."`,
+     `その夜、教主は日記に3つの文を書いた。「シュパンが新しいヘルメットを手に入れた。保証期間は前の2倍だ。これも進歩と言えるだろう」`]
+  ],
+  vocab: [
+    ['discount', '割引', 'discount'], ['route', 'ルート、経路', 'route'], ['warranty', '保証', 'warranty'],
+    ['customer service', '顧客サービス窓口', 'customer service'], ['valid', '有効な', 'valid'], ['purchase', '購入', 'purchase'],
+    ['according to', '〜によると', 'According to'], ['record', '記録', 'records'], ['repair', '修理', 'repair'],
+    ['invoice', '請求書', 'invoice'], ['evidence', '証拠', 'evidence'], ['replacement', '交換品', 'replacement'],
+    ['advertising', '宣伝、広告', 'advertising'], ['receipt', 'レシート、領収書', 'receipt']
+  ],
+  qs: [
+    { q: "Why did Shoupan's helmet need to be repaired?", c: ['It showed the wrong route.', 'It kept singing and could not be removed.', 'It broke in a crash.', 'Its battery ran out.'], a: 1,
+      ex: 'The helmet was singing ... at full volume, and it would not come off. が根拠です。' },
+    { q: 'According to Amelia, why would the repair not be free?', c: ['Shoupan bought the helmet on sale.', 'The receipt had been lost.', 'The warranty period had already ended.', 'Shoupan is not an elf.'], a: 2,
+      ex: '保証は購入から5分間有効（valid for five minutes）で、すでに6分使っていたからです。' },
+    { q: 'What did Bana find inside the helmet?', c: ['A part made to cause breakdowns', 'A tracking device', 'A piece of candy', 'A spare battery'], a: 0,
+      ex: 'SCHEDULED MALFUNCTION UNIT（計画的に故障させる部品）＝ 故障を起こすための部品です。' }
+  ],
+  notes: [
+    ['シュパボルトとエルフ', 'シュパボルトは、モナティウムから贈られた最新型「サンダーボルト4.1」をシュパンが名づけたもの。イベント「A Fast & Furious Delivery!」では、エルフがわざと故障する仕掛け（故障タイマー）を組み込んでいたことが、バナの修理で発覚します。'],
+    ['鍛冶屋バナ', 'げっ歯類の獣人で、獣人の村で鍛冶場を営んでいます。同じイベントでシュパボルトを修理し、「何か問題が起きたら、とりあえずエルフを疑うとだいたい当たる」という獣人の常識を語ります。シュパンの改造案を「この程度じゃ全然物足りない」と言い出す凝り性の職人でもあります。'],
+    ['アメリアとエレナの決め台詞', '"This is Amelia, the mayor’s secretary. May I ask the reason for this call?" と "If necessary, a fair contract will be established." は、それぞれのキャラクター紹介に出てくる台詞です。']
+  ]
+});
+
+STORIES.push({
+  id: 'honey-tea-incident', no: 10, season: 2,
+  title: 'The Honey Tea Incident', ja: 'はちみつティー消失事件',
+  cast: ['Tig', 'Rufo', 'Beni', 'Diana', 'Butter', 'Master'], place: 'Werebeast Village',
+  paras: [
+    [`Every autumn, the Werebeast Village stored one hundred jars of honey tea in the old shed behind the chief's house. This morning, the shed was empty.`,
+     `毎年秋になると、獣人の村は村長の家の裏にある古い物置に、はちみつティーの瓶を100個しまっておく。ところが今朝、物置は空っぽだった。`],
+    [`"An outrage!" Tig shouted, standing on a barrel. "The Chow Rebels will open an official investigation!"`,
+     `「許せない！」樽の上に立ったティグが叫んだ。「Chow Rebels が正式に捜査を開始する！」`],
+    [`Rufo pushed up the aluminum-foil hat on her head. "I already know the answer," she said. "Elf drones. They fly in at night, read our minds, and steal our tea. That is why I wear this."`,
+     `ルポは頭のアルミホイルの帽子を押し上げた。「答えはもうわかってるのだ」と彼女は言った。「エルフのドローンなのだ。夜に飛んできて、心を読んで、お茶を盗んでいく。だからこれをかぶってるのだ」`],
+    [`Beni nodded seriously. She was wearing earplugs and had not heard a single word.`,
+     `ベニーは真剣にうなずいた。耳栓をしていたので、ひと言も聞こえていなかった。`],
+    [`Chief Diana sighed and turned to the Master. "Master, dear, would you help these children? If they march on Monatium again, I will have to discipline them. Even closing my eyes has its limits."`,
+     `ディアナ村長はため息をつき、教主のほうを向いた。「教主様、この子たちを手伝ってやってくれないかね。またモナティウムに攻め込んだりしたら、しつけをしなきゃならない。目をつぶるのにも限度があるからね」`],
+    [`The Master examined the shed. The floor was sticky, and a line of small, sticky footprints led toward the forest.`,
+     `教主は物置を調べた。床はべたべたしていて、小さなべたべたの足跡が森のほうへ続いていた。`],
+    [`Everyone slowly turned to look at Butter.`,
+     `みんながゆっくりとバターのほうを振り向いた。`],
+    [`"Butter didn't take it!" Butter said, wagging her tail. "Butter only hides chow. Honey tea is too sticky for the secret storage."`,
+     `「バターじゃないよ！」バターはしっぽを振りながら言った。「バターが隠すのは缶詰フードだけ。はちみつティーはべたべたしすぎて、秘密の倉庫には入れないもん」`],
+    [`(That is a surprisingly reasonable alibi,) the Master thought.`,
+     `（意外とちゃんとしたアリバイだ）と教主は思った。`],
+    [`They followed the footprints deep into the forest. The prints were strangely small and evenly spaced, and they stopped at the foot of a tall oak tree. High in the branches, something was blinking red.`,
+     `一行は足跡をたどって森の奥へ進んだ。足跡は妙に小さく、等間隔に並んでいて、背の高い樫の木の根元で途切れていた。枝の高いところで、何かが赤く点滅している。`],
+    [`It was a small delivery drone, covered in honey. Around it, one hundred jars hung neatly from the branches like strange fruit. A label on its side read: MONATIUM EXPRESS — TEST FLIGHT.`,
+     `それは、はちみつまみれの小さな配達ドローンだった。そのまわりには、100個の瓶が奇妙な果物のように枝からきちんと吊るされている。機体の側面のラベルにはこう書いてあった。「モナティウム急便 ― 試験飛行中」`],
+    [`"I told you!" Rufo cried. "The elves!"`,
+     `「言ったとおりなのだ！」ルポが叫んだ。「エルフなのだ！」`],
+    [`"WHAT?" Beni shouted.`,
+     `「なにー？」ベニーが大声で言った。`],
+    [`The Master climbed the tree, checked the drone's screen, and read the delivery log aloud. "Task: collect all packages in the area. Package definition: any round object with a lid."`,
+     `教主は木に登ってドローンの画面を確認し、配送記録を読み上げた。「任務：周辺の荷物をすべて回収せよ。荷物の定義：ふたのついた丸いもの全般」`],
+    [`Tig raised her sword. "To Monatium! Today, the Chow Rebels get justice!"`,
+     `ティグが剣を掲げた。「モナティウムへ！ 今日こそ Chow Rebels が正義を果たす！」`],
+    [`Before anyone could march anywhere, a message arrived on the Master's phone. It was from Amelia: "We have confirmed that one of our test drones made an unauthorized pickup in the Werebeast Village. The mayor sends her apologies, a full refund, and a coupon for ten percent off our next delivery service."`,
+     `誰かが進軍を始める前に、教主のスマホにメッセージが届いた。アメリアからだった。「当市の試験用ドローン1機が、獣人の村で許可のない回収を行ったことを確認しました。市長よりお詫びと全額返金、さらに次回の配達サービス10%割引のクーポンをお送りします」`],
+    [`Rufo read the message twice. "A refund," she whispered. "The elves apologized. That has never happened in history."`,
+     `ルポはメッセージを2回読んだ。「返金なのだ」と彼女はささやいた。「エルフが謝ったのだ。歴史上、一度もなかったことなのだ」`],
+    [`Tig slowly lowered her sword. "Then... this is our first victory?"`,
+     `ティグはゆっくりと剣を下ろした。「じゃあ……これは俺たちの初勝利ってことか？」`],
+    [`That evening, the whole village sat in front of the chief's house and drank honey tea. The Chow Rebels gave a long speech about their great victory. Beni, still wearing her earplugs, clapped at all the wrong moments.`,
+     `その晩、村じゅうが村長の家の前に集まって、はちみつティーを飲んだ。Chow Rebels は大勝利について長い演説をした。まだ耳栓をしたままのベニーは、ことごとく的外れなところで拍手をした。`],
+    [`Diana sipped her tea and smiled at the Master. "Thank you, dear. Now I only have to worry about the coupon."`,
+     `ディアナはお茶をすすり、教主にほほえんだ。「ありがとうね。あとはクーポンのことだけ心配すればいいよ」`],
+    [`"Why worry about the coupon?"`,
+     `「どうしてクーポンが心配なの？」`],
+    [`Diana pointed at the small print: Valid only for deliveries to Monatium made by the Chow Rebels, who must wear matching elf uniforms.`,
+     `ディアナは小さな文字を指さした。「本クーポンは、Chow Rebels がおそろいのエルフの制服を着て、モナティウムへ配達する場合にのみ有効です」`],
+    [`(The elves never lose,) the Master thought. (They just apologize with extra conditions.)`,
+     `（エルフは決して負けない）と教主は思った。（謝るときも、ちゃっかり条件をつけてくるだけだ）`]
+  ],
+  vocab: [
+    ['store', '保管する', 'stored'], ['investigation', '調査、捜査', 'investigation'], ['examine', '調べる', 'examined'],
+    ['label', 'ラベル', 'label'], ['delivery', '配達', 'delivery'], ['collect', '回収する', 'collect'],
+    ['confirm', '確認する', 'confirmed'], ['unauthorized', '許可のない', 'unauthorized'], ['apology', 'お詫び', 'apologies|apologized'],
+    ['refund', '返金', 'refund'], ['coupon', 'クーポン', 'coupon'], ['valid', '有効な', 'Valid'], ['condition', '条件', 'conditions']
+  ],
+  qs: [
+    { q: 'What problem did the village discover?', c: ["Butter's chow was missing.", 'The honey tea in the shed was gone.', "A drone attacked the chief's house.", 'The Chow Rebels had run away.'], a: 1,
+      ex: '冒頭で、物置に保管していた100個のはちみつティーがなくなっていた（the shed was empty）とわかります。' },
+    { q: 'Why did the drone take the jars?', c: ['Rufo ordered it to.', 'Butter hid them in the tree.', 'Its program treated them as packages.', 'It wanted to drink the tea.'], a: 2,
+      ex: '配送記録に「荷物の定義：ふたのついた丸いもの全般」とあり、瓶を荷物と判断していました。' },
+    { q: 'What is implied about the coupon?', c: ['It is hard to use without doing extra work for the elves.', 'It can be used at any shop.', 'Diana is planning to sell it.', 'It was sent by mistake.'], a: 0,
+      ex: 'エルフの制服を着てモナティウムへ配達する場合だけ有効 ＝ エルフのために働かないと使えない、ということです。' }
+  ],
+  notes: [
+    ['Chow Rebels（反アニマル缶戦線）', 'ティグ（隊長）・ルポ（参謀）・ベニー（力持ち）の3人組。第2章「Chow Unites Us All」では、ベニーが説得を聞かないよう耳栓をしてくる作戦が登場します。本人たちは反乱をごっこ遊びとして楽しんでいます。'],
+    ['ルポのアルミホイル帽子', '第2章のルポの陰謀論ネタ。第3章では、エレナの猫型ロボット M.E.O.W. が本当にアルミホイルで魔法を防いでいたと判明し、ルポの説があながち外れではなかったことになります。'],
+    ['はちみつティーとディアナ村長', 'はちみつティーは獣人の森の特産品（第2章でエルフィンがねだる）。"Even closing my eyes has its limits." はディアナの決め台詞です。']
+  ]
+});
+
+</script>
+<script>
+/* Elias Reading Room — Season 2. Stories 11–12. */
+window.STORIES = window.STORIES || [];
+STORIES.push({
+  id: 'pumpkin-sermon', no: 11, season: 2,
+  title: 'Pumpkin Sermons, Now Half Price', ja: 'かぼちゃ説法、ただいま半額',
+  cast: ['Speaki', 'Ner', 'Erpin', 'Master'], place: "Order Headquarters → Speaki's pumpkin patch",
+  paras: [
+    [`The posters appeared overnight on every tree near the Order Headquarters: PUMPKIN CHAPEL — SERMONS BY HIGH PRIESTESS NER — DONATIONS NOW HALF PRICE!`,
+     `ひと晩のうちに、教団本部の近くの木という木にポスターが貼られた。「かぼちゃ礼拝堂 ― 司祭長ネルによる説法 ― お布施ただいま半額！」`],
+    [`Erpin read one with her mouth full of cookie. "Half price? Ner is never half price. Ner is always full price. Ner is extra price."`,
+     `エルフィンはクッキーをほおばったまま、それを読んだ。「半額？ ネルが半額なわけないじゃない。ネルはいつも定価よ。むしろ割増よ」`],
+    [`Ner stood behind her, reading the same poster in silence. Her left eye twitched once. (Calm,) she told herself. (A priestess does not get angry.)`,
+     `その後ろでネルが黙って同じポスターを読んでいた。左目が一度ぴくりと動く。（落ち着きなさい）と彼女は自分に言い聞かせた。（司祭は怒らないものです）`],
+    [`"Ner, are you angry?" Erpin asked.`,
+     `「ネル、怒ってる？」とエルフィンが聞いた。`],
+    [`"Have I ever been angry, Your Majesty?"`,
+     `「私がこれまでに怒ったことがありますか、女王様？」`],
+    [`"Yesterday. The day before yesterday. Probably tomorrow."`,
+     `「昨日。おととい。たぶん明日も」`],
+    [`The Pumpkin Chapel turned out to be a wooden crate in the middle of Speaki's pumpkin patch. About twenty sprites sat in front of it, and on top of the crate stood a perfect copy of Ner, holding a staff and two very serious-looking pumpkins.`,
+     `かぼちゃ礼拝堂の正体は、スピッキーのかぼちゃ畑のまんなかに置かれた木箱だった。その前に20人ほどの妖精が座っていて、木箱の上には、杖と、とても真面目な顔つきのかぼちゃを2つ抱えた完璧なネルのそっくりさんが立っていた。`],
+    [`To everyone except the Master and the real Ner, it was simply Ner. The Master, however, could clearly see Speaki underneath.`,
+     `教主と本物のネル以外の全員にとって、それはどう見てもネルだった。しかし教主には、その下にいるスピッキーがはっきり見えていた。`],
+    [`"Yggdrasil has spoken!" the fake Ner announced. "Pumpkins are our friends! Also, Your Majesty, please stop eating cake before dinner! The Order's budget is very, very small!"`,
+     `「世界樹はおっしゃいました！」偽のネルが宣言した。「かぼちゃは私たちの友達です！ それから女王様、夕食の前にケーキを食べるのはやめてください！ 教団の予算はとってもとっても少ないんです！」`],
+    [`The sprites applauded. Erpin looked offended. "She even copies Ner's nagging."`,
+     `妖精たちが拍手した。エルフィンはむっとした顔をした。「ネルの小言までまねしてる」`],
+    [`"And now," the fake Ner continued, "my assistants, Pumpoo and Pumpking, will collect your donations." The two pumpkins did not move. One polite sprite placed a cookie on each of them anyway.`,
+     `「では」と偽のネルは続けた。「助手のパンプーとパンプキングが、みなさんのお布施を集めます」2つのかぼちゃは動かなかった。それでも礼儀正しい妖精が1人、それぞれの上にクッキーを1枚ずつ置いた。`],
+    [`The real Ner stepped forward. "I am Ner, the priestess of Yggdrasil."`,
+     `本物のネルが前に進み出た。「私がネル、世界樹の司祭です」`],
+    [`"No," said the fake Ner. "I am Ner."`,
+     `「いいえ」と偽のネルが言った。「私がネルです」`],
+    [`"Can we keep the cheaper one?" Erpin whispered to the Master. The real Ner's hand moved slowly toward her axe.`,
+     `「安いほうを残しちゃだめ？」とエルフィンが教主にささやいた。本物のネルの手が、ゆっくりと斧のほうへ動いた。`],
+    [`The sprites looked from one Ner to the other. After a short discussion, they voted for the one on the crate. "She's half price," one of them explained.`,
+     `妖精たちは2人のネルを見比べた。少し話し合ったあと、木箱の上のほうに票を入れた。「こっちは半額だから」と1人が説明した。`],
+    [`(The Order is losing to a discount,) the Master thought, and raised a hand. "One question for both of you. How many sentences must be written in the diary every day?"`,
+     `（教団が割引に負けている）教主はそう思いながら手を挙げた。「2人に質問。日記には毎日何文書かなきゃいけない？」`],
+    [`"Fifty!" said the fake Ner.`,
+     `「50文です！」と偽のネル。`],
+    [`"At least three," said the real Ner.`,
+     `「最低3文です」と本物のネル。`],
+    [`The sprites gasped. "The half-price one is stricter!" someone cried, and the whole congregation ran away.`,
+     `妖精たちが息をのんだ。「半額のほうが厳しい！」と誰かが叫び、信者たちは全員逃げていった。`],
+    [`Speaki turned back into herself and sat down on the crate, sniffing. "Speaki just wanted everyone to like Ner," she said. "People are scared of Ner, so Speaki made a nicer Ner. A cheaper Ner. Pumpoo and Pumpking helped."`,
+     `スピッキーは元の姿に戻り、鼻をすすりながら木箱に座り込んだ。「スピッキーは、みんなにネルを好きになってほしかっただけです」と彼女は言った。「みんなネルを怖がるから、スピッキーがやさしいネルを作ったんです。安いネルを。パンプーとパンプキングも手伝ってくれました」`],
+    [`Ner opened the donation box. Inside were twelve Candy and a note in careful, crooked letters: For the real Ner. For Yggdrasil.`,
+     `ネルはお布施箱を開けた。中には12キャンディと、丁寧だけれどゆがんだ字のメモが入っていた。「本物のネルへ。世界樹のために」`],
+    [`For a long moment, Ner said nothing. Then she said, "Speaki. Kneel. Arms up."`,
+     `しばらくのあいだ、ネルは何も言わなかった。それから言った。「スピッキー。正座。両手を上げなさい」`],
+    [`"Speaki didn't do anything that bad..." Speaki whispered, but she knelt. Ner placed the two serious pumpkins beside her, so that they seemed to be kneeling too.`,
+     `「そんなに悪いことしてないのに……」とスピッキーはつぶやいたが、正座した。ネルは真面目な顔のかぼちゃ2つを彼女の横に置いた。かぼちゃまで正座しているように見えた。`],
+    [`That evening, the Master noticed a new line in the Order's account book, written in Ner's neat handwriting: Donation — 12 Candy — Pumpkin Chapel (unofficial branch).`,
+     `その晩、教主は教団の会計帳簿に、ネルの整った字で新しい行が書き加えられているのに気づいた。「お布施 ― 12キャンディ ― かぼちゃ礼拝堂（非公式支部）」`],
+    [`(In Ner's language,) the Master thought, (I'm fairly sure that means thank you.)`,
+     `（ネルの言葉では）と教主は思った。（たぶんあれが「ありがとう」なんだろう）`]
+  ],
+  vocab: [
+    ['donation', '寄付、お布施', 'DONATIONS|donation'], ['announce', '宣言する、発表する', 'announced'], ['budget', '予算', 'budget'],
+    ['applaud', '拍手する', 'applauded'], ['discussion', '話し合い', 'discussion'], ['vote', '投票する', 'voted'],
+    ['discount', '割引', 'discount'], ['strict', '厳しい', 'stricter'], ['account book', '会計帳簿', 'account book'],
+    ['handwriting', '筆跡', 'handwriting'], ['unofficial', '非公式の', 'unofficial'], ['branch', '支部、支店', 'branch']
+  ],
+  qs: [
+    { q: 'Why were many sprites at the Pumpkin Chapel?', c: ['Free cake was being served.', 'Erpin had ordered them to go.', 'Donations there were half price.', 'The real Ner had invited them.'], a: 2,
+      ex: 'ポスターの DONATIONS NOW HALF PRICE と、投票の理由 "She’s half price" が根拠です。' },
+    { q: 'How did the Master show which Ner was real?', c: ['By asking about the diary rule', 'By pulling her cheeks', 'By checking her staff', 'By asking the pumpkins'], a: 0,
+      ex: '日記には毎日何文書くか、と質問し、本物は「最低3文」と正しく答えました。' },
+    { q: 'What is suggested by the new line in the account book?', c: ['Ner fined Speaki 12 Candy.', 'The Order opened a new chapel.', 'Ner lost the donation box.', 'Ner accepted the donation as a kind of thank-you.'], a: 3,
+      ex: 'お布施を「非公式支部」からの寄付として帳簿に記入した ＝ 口には出さないが受け取って感謝している、と教主は解釈しています。' }
+  ],
+  notes: [
+    ['ネルに化けるスピッキー', 'スピッキーは「アイデンティティ」の幽霊で、いちばん好きなまねの相手はネル。プロフィールの台詞からして "I’m Ner, the priestess of Yggdrasil! Oh? Who’s Speaki?" です。変装を見破れるのは、教主・まねされた本人・ブルーミーだけ。杖を持っていて、ネルの斧をうらやましがっています。かぼちゃを友達だと思っていて、なかでもパンプーとパンプキングが仲よしです。'],
+    ['「私がこれまでに怒ったことがありますか？」', '第1章で、怒らないと約束させられたネルがこう言い、エルフィンが「おとといも昨日も今日も、そして明日も怒ってる」と返す掛け合いが元になっています。'],
+    ['正座と「そんなに悪いことしてないのに」', 'ネルの罰「正座して両手を上げる」と、捕まったスピッキーの言い訳は原作の定番（イベント「Dancing Fate in the Card Deck」など）。スピッキーは自分のことを「スピッキー」と呼びます。']
+  ]
+});
+
+STORIES.push({
+  id: 'open-campus', no: 12, season: 2,
+  title: 'Open Campus Day (Not a Bakery)', ja: 'オープンキャンパス（パン屋ではありません）',
+  cast: ['Ashur', 'Patula', 'Erpin', 'Kommy', 'Master'], place: "Erpien · Ashur's Magic School",
+  paras: [
+    [`Ashur had been preparing for weeks. She printed five hundred brochures, cleaned every classroom, and hung a huge banner over the door: SPRITE KINGDOM MAGIC SCHOOL — OPEN CAMPUS DAY — FREE SAMPLE LESSONS!`,
+     `エシュールは何週間も前から準備していた。パンフレットを500部刷り、教室を隅々まで掃除し、ドアの上に大きな横断幕を掲げた。「妖精王国魔法学校 ― オープンキャンパス ― 無料体験授業！」`],
+    [`"This time," she told the Master, "real students will come. Not customers. Students."`,
+     `「今度こそ」と彼女は教主に言った。「本物の生徒が来るわ。お客じゃなくて。生徒がね」`],
+    [`At nine o'clock, the doors opened, and a long line of sprites rushed in. "Welcome to Ashur's Bakery!" Ashur cried with tears of joy. "I mean, Magic School!" Then she noticed that every single one of them was holding a plate.`,
+     `9時にドアが開くと、長い列の妖精たちがなだれ込んできた。「エシュールのパン屋へようこそ！」エシュールは喜びの涙を浮かべて叫んだ。「じゃなくて、魔法学校へ！」それから彼女は、1人残らず皿を持っていることに気づいた。`],
+    [`"Where are the free samples?" asked the first sprite in line. It was Erpin.`,
+     `「無料サンプルはどこ？」と列の先頭の妖精が聞いた。エルフィンだった。`],
+    [`"Sample LESSONS," Ashur said. "Not sample bread!"`,
+     `「体験『授業』よ」とエシュールは言った。「試食パンじゃないの！」`],
+    [`"The posters in town just say FREE SAMPLES," said Patula, the apprentice baker, who was helping in the kitchen. "In very large letters. I made them large myself."`,
+     `「町のポスターには『無料サンプル』としか書いてないですよ」とキッチンを手伝っていた見習いパン職人のパトラが言った。「すごく大きな字で。私が大きくしたんです」`],
+    [`Ashur grabbed her wand, took a deep breath, and walked to the front of the classroom. "Fine. Today's lecture is the foundation of all magic. Everyone, pay attention."`,
+     `エシュールは杖をつかみ、深呼吸して教室の前へ歩いていった。「いいわ。今日の講義は、すべての魔法の基礎よ。全員、注目」`],
+    [`She raised the wand high. Then she put it down, rolled up her sleeves, and punched a large ball of dough so hard that it flew across the room.`,
+     `彼女は杖を高く掲げた。それから杖を置き、袖をまくって、大きなパン生地の塊を力いっぱい殴った。生地は部屋の反対側まで飛んでいった。`],
+    [`"The foundation of all magic," Ashur said, "is physics."`,
+     `「すべての魔法の基礎は」とエシュールは言った。「物理よ」`],
+    [`(That's not magic,) the Master thought. (That's kneading.)`,
+     `（それは魔法じゃない）と教主は思った。（ただの生地こねだ）`],
+    [`In the back row, Kommy had already fallen asleep on her textbook. "Kommy came for the lecture," she murmured. "Lectures are very good for sleeping."`,
+     `最後列では、コミーがもう教科書の上で眠っていた。「コミーは講義を聞きに来ました」と彼女はつぶやいた。「講義は眠るのにとてもいいです」`],
+    [`Still, by noon, something strange had happened. Twenty-three sprites had filled out registration forms. Ashur stared at the stack of paper as if it were made of gold.`,
+     `それでも昼には、不思議なことが起きていた。23人の妖精が登録用紙に記入していたのだ。エシュールは、金でできているかのように書類の束を見つめた。`],
+    [`"Twenty-three applicants," she whispered. "My degree has finally paid off."`,
+     `「23人の応募者……」と彼女はささやいた。「ついに私の学位が報われたわ」`],
+    [`The Master picked up the top form and read the heading aloud. "Ashur's Bakery — Enrollment Form. Course: Bread Basics."`,
+     `教主はいちばん上の用紙を手に取り、見出しを読み上げた。「エシュールのパン屋 ― 入学申込書。コース：パンの基礎」`],
+    [`Every single form said the same thing.`,
+     `どの用紙にも同じことが書かれていた。`],
+    [`"The printer made a mistake!" Ashur cried. "Is it my fault that the printer can't spell MAGIC SCHOOL? Is it my fault that everyone wants to learn baking? Is it my fault that my bread is delicious?!"`,
+     `「印刷屋のミスよ！」エシュールは叫んだ。「印刷屋が『魔法学校』ってつづれないのは私のせい？ みんながパン作りを習いたがるのは私のせい？ 私のパンがおいしいのは私のせいなの？！」`],
+    [`(The printer only prints what it is given,) the Master thought, but decided not to say it.`,
+     `（印刷屋は渡された原稿を刷るだけなんだけど）と教主は思ったが、言わないでおいた。`],
+    [`"What if you combine them?" the Master suggested. "A course called Magic Baking. Students use levitation magic to knead the dough. It's magic, and it's baking."`,
+     `「両方を組み合わせたら？」と教主は提案した。「『魔法パン作り』っていう講座。生徒は浮遊魔法で生地をこねるんだ。魔法でもあるし、パン作りでもある」`],
+    [`Ashur thought about it for a long time. Then she took a red pen and corrected every form by hand. Course: Magic Baking. Tuition: reasonable.`,
+     `エシュールは長いあいだ考えた。それから赤ペンを取り、すべての用紙を手書きで直した。「コース：魔法パン作り。授業料：良心的」`],
+    [`The first Magic Baking class was a great success. Twenty-three balls of dough floated through the air, and only four of them hit the ceiling.`,
+     `最初の「魔法パン作り」の授業は大成功だった。23個の生地が宙を舞い、天井にぶつかったのは4個だけだった。`],
+    [`Patula marched between the tables like a general. "Don't mess around when you're in the kitchen!" she shouted, and quietly added mint to every single ball of dough.`,
+     `パトラは将軍のようにテーブルのあいだを歩き回った。「キッチンでふざけないで！」と彼女は叫び、生地という生地にこっそりミントを入れていった。`],
+    [`"Hey, baguette brain!" Ashur shouted at the Master, who had somehow become a student too. "Don't just float there like a lazy bagel. Knead!"`,
+     `「ちょっと、バゲット頭！」エシュールは、いつの間にか生徒にされていた教主に怒鳴った。「怠けたベーグルみたいにぷかぷか浮いてないで。こねなさい！」`],
+    [`As the students were leaving, Erpin handed in one last form. "Can I pay the tuition on my tab?"`,
+     `生徒たちが帰りかけたころ、エルフィンが最後の用紙を差し出した。「授業料、ツケで払ってもいい？」`],
+    [`Ashur smiled sweetly. "Of course, Your Majesty... NOT!"`,
+     `エシュールはにっこり笑った。「もちろんですとも、女王様……なーんてね！」`]
+  ],
+  vocab: [
+    ['brochure', 'パンフレット', 'brochures'], ['sample', '試供品、見本', 'samples|SAMPLE'], ['apprentice', '見習い', 'apprentice'],
+    ['lecture', '講義', 'lecture'], ['foundation', '基礎', 'foundation'], ['registration', '登録', 'registration'],
+    ['applicant', '応募者', 'applicants'], ['enrollment', '入学、登録', 'Enrollment'], ['course', '講座、コース', 'Course|course'],
+    ['suggest', '提案する', 'suggested'], ['combine', '組み合わせる', 'combine'], ['tuition', '授業料', 'Tuition|tuition'], ['reasonable', '手ごろな、良心的な', 'reasonable']
+  ],
+  qs: [
+    { q: 'Why did so many sprites come to the school in the morning?', c: ['They wanted to meet the Master.', 'Ashur paid them to attend.', 'They thought free bread samples were being offered.', 'The school was giving away wands.'], a: 2,
+      ex: '全員が皿を持ってきて "Where are the free samples?" と聞いています。町のポスターには FREE SAMPLES としか書かれていませんでした。' },
+    { q: 'What was wrong with the registration forms?', c: ['They were printed as a bakery’s enrollment form.', 'They had no space for names.', 'Erpin had signed all of them.', 'They were written in the witch language.'], a: 0,
+      ex: '見出しが Ashur’s Bakery — Enrollment Form、コースが Bread Basics になっていました。' },
+    { q: 'What does Ashur mean when she says, "Of course, Your Majesty... NOT!"?', c: ['Erpin may attend for free.', 'Erpin cannot pay the tuition on her tab.', 'She wants Erpin to teach a class.', 'The next class is canceled.'], a: 1,
+      ex: '最後の NOT! で直前の Of course を打ち消しています。ツケ払いは認めない、という意味です。' }
+  ],
+  notes: [
+    ['「〜は私のせい？」', 'エシュールの初登場場面（第1章）の名物。「妖精が生まれつき魔法を使えるのは私のせい？」「魔法よりパン作りの才能があるのは私のせい？」と連発します。'],
+    ['すべての魔法の基礎は物理', '第1章で、エシュールが「すべての魔法の基礎は物理」と言いながら力ずくで問題を解決する場面が元になっています。教えるときは別人のように厳しく、使徒ストーリーでは教主を "panini head" と呼んでしごきます（このSSのバゲット頭はそのもじり）。'],
+    ['パン屋じゃなくて魔法学校', 'エシュールは自分の店を「魔法学校」と言い張るのに、うっかり「パン屋」と言ってはすぐ言い直します。皮肉のあとに "NOT!" を付けるのも口ぐせ。魔法理論の学位を持っていて、「やっと学位が役に立った！」と喜ぶ場面もあります。パトラは短気な見習いパン職人で、師匠の一人がエシュール。筋金入りのミント推しで、口ぐせは "Don’t mess around when you’re in the kitchen!" です。']
+  ]
+});
+
+</script>
+<script>
+/* Elias Reading Room — Season 2. Stories 13–14. */
+window.STORIES = window.STORIES || [];
+STORIES.push({
+  id: 'suggestion-box', no: 13, season: 2,
+  title: 'The Suggestion Box', ja: 'リムの目安箱',
+  cast: ['Rim', 'Shaydi', 'Selene', 'Canna', 'Master'], place: "Phantom Marsh · Rim's tower",
+  paras: [
+    [`Rim had decided that Phantom Marsh needed more order. So she placed a small wooden box at the entrance of her tower, with a sign: SUGGESTION BOX — YOUR OPINION MATTERS. ANONYMOUS SUGGESTIONS WELCOME.`,
+     `リムは、幽霊の沼にはもっと秩序が必要だと決めた。そこで自分の塔の入り口に小さな木箱を置き、看板を立てた。「目安箱 ― あなたの意見が大切です。匿名のご提案も歓迎します」`],
+    [`The Master, who had come to deliver the Order's monthly newsletter, read the sign twice. "A suggestion box? In Phantom Marsh?"`,
+     `教団の月報を届けに来た教主は、看板を2回読んだ。「目安箱？ 幽霊の沼に？」`],
+    [`"Order begins with listening," Rim said seriously. "If I know what bothers everyone, I can fix it. I am the phantom of balance, after all." She paused. "Some would even say I'm... well-balanced."`,
+     `「秩序は耳を傾けることから始まります」とリムは真剣に言った。「みんなが何に困っているかわかれば、直せますから。私はなにしろ均衡の幽霊ですので」彼女は一拍おいた。「バランス感覚がいい、と言う人もいるかも……しれません」`],
+    [`Silence. Her scythe, G, slowly turned away from her.`,
+     `沈黙。大鎌のGが、ゆっくりと彼女から顔をそむけた。`],
+    [`"I'm sorry," Rim whispered, quietly holding on to the Master's ankle. "It came out by itself."`,
+     `「すみません」リムは小声で言い、そっと教主の足首にしがみついた。「勝手に出てしまうんです」`],
+    [`By evening, the box was full. Rim sat on the steps of her tower and opened the suggestions one by one, reading each of them carefully.`,
+     `夕方には、箱はいっぱいになっていた。リムは塔の階段に座り、提案を1枚ずつ開いて丁寧に読んでいった。`],
+    [`The first note said: More chaos, please. The second said: Less Rim. The third was a drawing of Rim with a mustache.`,
+     `1枚目には「もっと混沌を」。2枚目には「リムを減らして」。3枚目は、ひげの生えたリムの絵だった。`],
+    [`"Very... valuable feedback," Rim said. Her voice was getting smaller.`,
+     `「とても……貴重なご意見です」とリムは言った。声がだんだん小さくなっていく。`],
+    [`The fourth note exploded into a cloud of pink glitter. When the glitter cleared, a message had appeared on the inside of the lid in large letters: THE TOP PRANKSTER WAS HERE. — S.`,
+     `4枚目は、ピンクのラメの雲になって爆発した。ラメが晴れると、ふたの内側に大きな字でメッセージが浮かび上がっていた。「いたずら界のトップ参上。― S」`],
+    [`"Shaydi," the Master said.`,
+     `「シェイディだ」と教主は言った。`],
+    [`A laugh came from somewhere behind a tree. "Your suggestion box is the funniest thing in the marsh, Rim! Nobody asks phantoms for their opinion!"`,
+     `どこかの木の陰から笑い声がした。「あんたの目安箱、この沼でいちばん面白いわよ、リム！ 幽霊に意見を聞くやつなんていないって！」`],
+    [`"Shaydi," Rim said patiently, "we are old enough to know better."`,
+     `「シェイディ」とリムは辛抱強く言った。「私たち、もう分別のある年でしょう」`],
+    [`"WE? Don't put me in your age group!" the tree shouted.`,
+     `「私たち？ あんたと同じ年代にしないでよ！」と木が叫んだ。`],
+    [`Then there was a click and a flash. Selene stepped out of the bushes holding a camera. "That expression you made just now was priceless," she said. "I'll call this one Order, Defeated."`,
+     `そのとき、カシャッという音とフラッシュ。カメラを持ったセリーネが茂みから出てきた。「今の表情、最高だったわ」と彼女は言った。「タイトルは『秩序、敗れたり』にしようっと」`],
+    [`Rim looked down at the pile of glittery paper. Her hands were shaking a little. (She really wanted this to work,) the Master thought.`,
+     `リムはラメまみれの紙の山を見下ろした。手が少し震えている。（本当にうまくいってほしかったんだな）と教主は思った。`],
+    [`Canna, who had come along for security, cracked her knuckles. "Command received. Shall I suppress them?"`,
+     `警備のためについてきたカンナが指を鳴らした。「命令を受領。制圧しますか？」`],
+    [`"No," Rim said quietly. "Suppressing phantoms only creates more chaos. That would be... unbalanced."`,
+     `「いいえ」とリムは静かに言った。「幽霊を制圧しても、混沌が増えるだけです。それは……均衡を欠きます」`],
+    [`The Master sat down next to her and helped sort the remaining notes. Most were jokes. One was a complaint about the smell of pumpkin soup. But at the very bottom of the box lay a small, neatly folded card with a strawberry drawn in one corner.`,
+     `教主は隣に座り、残りのメモを仕分けるのを手伝った。ほとんどは冗談だった。1枚はかぼちゃスープのにおいへの苦情だった。けれど箱のいちばん底に、すみにいちごの絵が描かれた、きちんと折りたたまれた小さなカードがあった。`],
+    [`Rim opened it. Please come and visit the Sprite Kingdom more often. The bakery has tables for four. — E.`,
+     `リムはそれを開いた。「もっと妖精王国に遊びに来てね。パン屋には4人がけのテーブルがあるから。― E」`],
+    [`Rim read it three times. "E," she said. "Who could E be?"`,
+     `リムはそれを3回読んだ。「E」と彼女は言った。「Eとは、いったい誰でしょう？」`],
+    [`"Someone who draws strawberries on everything," the Master said.`,
+     `「何にでもいちごを描く誰かだね」と教主は言った。`],
+    [`For the first time that evening, Rim smiled. She wrote a reply on the back of the card, then stood up and placed a new sign next to the box: SUGGESTIONS REVIEWED. ACTION TAKEN.`,
+     `その晩はじめて、リムはほほえんだ。カードの裏に返事を書くと、立ち上がって箱の隣に新しい看板を立てた。「ご提案を確認しました。対応済みです」`],
+    [`"What action?" Canna asked.`,
+     `「どんな対応だ？」とカンナが聞いた。`],
+    [`"I am going to the Sprite Kingdom tomorrow," Rim said. "I will bring pumpkin soup, and I will try not to make any puns." She thought for a moment. "For me, that will be a real... pun-ishment."`,
+     `「明日、妖精王国へ行きます」とリムは言った。「かぼちゃスープを持っていって、ダジャレは言わないように努力します」彼女は少し考えた。「私にとっては、本当の……罰（pun-ishment）になりますね」`],
+    [`G fell over on purpose.`,
+     `Gはわざと倒れた。`]
+  ],
+  vocab: [
+    ['suggestion', '提案', 'SUGGESTION|suggestions|SUGGESTIONS'], ['opinion', '意見', 'OPINION|opinion'], ['anonymous', '匿名の', 'ANONYMOUS'],
+    ['deliver', '届ける', 'deliver'], ['newsletter', '会報、月報', 'newsletter'], ['security', '警備', 'security'], ['valuable', '貴重な', 'valuable'],
+    ['feedback', '意見、感想', 'feedback'], ['suppress', '制圧する、抑える', 'suppress'], ['sort', '仕分ける', 'sort'],
+    ['complaint', '苦情', 'complaint'], ['reply', '返事', 'reply'], ['review', '確認する、検討する', 'REVIEWED'], ['action', '対応、行動', 'ACTION|action']
+  ],
+  qs: [
+    { q: 'Why did Rim place a box outside her tower?', c: ['To store pumpkin soup', 'To collect opinions from the residents of the marsh', 'To catch Shaydi', 'To sell tickets to a show'], a: 1,
+      ex: '看板の YOUR OPINION MATTERS と、「みんなが何に困っているかわかれば直せる」という発言が根拠です。' },
+    { q: 'Who most likely wrote the card with the strawberry?', c: ['Shaydi', 'Selene', 'Erpin', 'Canna'], a: 2,
+      ex: '妖精王国への招待、パン屋のテーブル、差出人の E、いちごの絵 ＝ エルフィンだと推測できます。' },
+    { q: 'What action did Rim decide to take?', c: ['She decided to visit the Sprite Kingdom.', 'She decided to remove the suggestion box.', 'She decided to punish Shaydi.', 'She decided to stop making soup.'], a: 0,
+      ex: 'I am going to the Sprite Kingdom tomorrow が根拠です。' }
+  ],
+  notes: [
+    ['リムとダジャレ', 'リムは「均衡（秩序）」の幽霊。第7章で初登場し、ダジャレを言っては気まずくなってエルフィンの足首にしがみつき謝ります。大鎌の名前はG。ダジャレを聞くたびに身を縮めます。'],
+    ['セリーネとシェイディ', 'セリーネは「挑発」の幽霊で、相手を怒らせて顔を撮るのが趣味。"That expression you made just now was priceless." が決め台詞です。シェイディは「混沌」の幽霊で、自称「いたずら界のトップ」。ダジャレが大嫌いで、リムがダジャレを言うたびにイラッとします。'],
+    ['エルフィンとリム', '第7章のエルフィンは「ダジャレがひどいから近づかない」と言っていたのに、観客の幽霊たちにリムがブーイングされると真っ先にかばい、はっきり「友達」と呼びます。シェイディとリムは最古参の幽霊どうしで、シェイディは年齢の話に敏感。このSSはその後日談のつもりで書きました。']
+  ]
+});
+
+STORIES.push({
+  id: 'annual-checkup', no: 14, season: 2,
+  title: 'The Annual Checkup', ja: '村長の健康診断',
+  cast: ['Diana', 'Hilde', 'Kommy', 'Butter', 'Amelia', 'Master'], place: 'Monatium University Hospital',
+  paras: [
+    [`Once a year, Monatium University Hospital offered free checkups to residents of every village in Elias. This year, the Master had made appointments for the Werebeast Village.`,
+     `年に一度、モナティウム大学病院はエーリアスのすべての村の住民に無料の健康診断を行っている。今年は、教主が獣人の村の予約を取っていた。`],
+    [`"I am perfectly healthy," Chief Diana said at the hospital entrance. "I don't need a checkup, dear. I need a nap."`,
+     `「私はいたって健康だよ」ディアナ村長は病院の入り口で言った。「健康診断なんていらないよ。いるのは昼寝さ」`],
+    [`"Kommy also needs a nap," said Kommy, who was already lying on a bench in the waiting room.`,
+     `「コミーも昼寝が必要です」とコミーが言った。彼女はもう待合室のベンチで横になっていた。`],
+    [`Butter ran around the lobby, reading every sign aloud. "Reception! Pharmacy! Radiology! Butter doesn't know what radiology is, but it sounds fun!"`,
+     `バターはロビーを走り回り、案内板を片っ端から読み上げた。「受付！ 薬局！ 放射線科！ 放射線科って何か知らないけど、楽しそう！」`],
+    [`A gentle elf in a white coat came out to greet them. It was Hilde, chief of the Medical Unit. "Hehe. Welcome," she said softly. "Are you ready for your treatment?"`,
+     `白衣を着た優しそうなエルフが出迎えに来た。医療班長のヒルデだ。「ふふ。ようこそ」と彼女はやわらかく言った。「治療の準備はいいですか？」`],
+    [`Diana took one step back. (Something about that smile is frightening,) the Master thought.`,
+     `ディアナが一歩下がった。（あの笑顔、なんだか怖い）と教主は思った。`],
+    [`The checkups began. Butter went first. The doctor tested her reflexes by tapping her knee, and Butter's tail wagged so hard that it knocked over a tray of instruments. "Excellent reflexes," Hilde noted.`,
+     `健康診断が始まった。最初はバター。医師がひざをたたいて反射を調べると、バターのしっぽが勢いよく揺れて、器具の載ったトレイをひっくり返した。「反射はとても良好ですね」とヒルデは記録した。`],
+    [`Kommy went second. She fell asleep inside the scanning machine, and the machine, following its instructions, waited politely until she woke up. It took three hours.`,
+     `2番目はコミー。彼女は検査装置の中で眠ってしまい、装置は指示どおり、彼女が起きるまで礼儀正しく待った。3時間かかった。`],
+    [`Diana was last. She sat in the chair with her arms crossed. "Just so you know," she said, "I have been the chief of my village for longer than your city has existed."`,
+     `最後はディアナ。彼女は腕を組んで椅子に座った。「言っておくけどね」と彼女は言った。「私は、あんたたちの街ができるより前から村長をやってるんだよ」`],
+    [`"Then you must be very strong," Hilde said kindly, and picked up a needle.`,
+     `「では、とてもお強いんですね」ヒルデは優しく言い、注射針を手に取った。`],
+    [`Diana went pale. The Master suddenly understood. (The chief isn't afraid of the checkup. She's afraid of needles.)`,
+     `ディアナの顔が青ざめた。教主はふと気づいた。（村長が怖いのは健康診断じゃない。注射なんだ）`],
+    [`"Could we try something else first?" the Master asked.`,
+     `「先に何か別のことをしてもいいかな？」と教主はたずねた。`],
+    [`Hilde smiled. "Of course. Some patients feel better if we talk first." She poured two cups of honey tea and began asking Diana gentle questions about the village. Diana talked about Butter's buried cans, Kommy's favorite sleeping spots, and the Chow Rebels' newest theory about the elves. Soon she was laughing.`,
+     `ヒルデはほほえんだ。「もちろんです。先にお話しすると落ち着く患者さんもいますから」彼女ははちみつティーを2杯いれ、村のことをディアナに穏やかにたずね始めた。ディアナは、バターが埋めた缶詰のこと、コミーのお気に入りの昼寝場所、Chow Rebels の最新のエルフ陰謀説のことを話した。やがて彼女は笑い出した。`],
+    [`While Diana was laughing, Hilde quietly finished the blood test. "Done," she said.`,
+     `ディアナが笑っているあいだに、ヒルデは静かに採血を終えた。「終わりましたよ」と彼女は言った。`],
+    [`Diana blinked. "When did you...?"`,
+     `ディアナはまばたきした。「いつの間に……？」`],
+    [`"Hehe. That was the treatment," Hilde said.`,
+     `「ふふ。今のが治療です」とヒルデは言った。`],
+    [`The results arrived an hour later. Butter: healthy and very energetic. Kommy: healthy, possibly part cat and part pillow. Diana: excellent health, but slightly high stress from worrying about everyone.`,
+     `1時間後に結果が出た。バター：健康、元気いっぱい。コミー：健康、半分は猫で半分は枕の可能性あり。ディアナ：非常に健康、ただしみんなの心配をしすぎてストレスがやや高め。`],
+    [`"Here is your prescription," Hilde said, handing Diana a small note. "One afternoon off every week. No worrying allowed."`,
+     `「処方箋です」ヒルデは小さなメモをディアナに手渡した。「毎週、午後を1回お休みすること。心配は禁止です」`],
+    [`Then Amelia, the mayor's secretary, appeared at the reception desk with an invoice. "Please note that the checkups are free. However, there is a fee for non-elf patients who fall asleep inside hospital equipment." She looked at Kommy. "Three hours."`,
+     `そこへ市長秘書のアメリアが、請求書を持って受付に現れた。「なお、健康診断は無料です。ただし、病院の機器の中で眠ってしまったエルフ以外の患者さんには料金がかかります」彼女はコミーを見た。「3時間分です」`],
+    [`Everyone looked at the invoice. Then everyone looked at Kommy. Kommy was asleep again.`,
+     `全員が請求書を見た。それから全員がコミーを見た。コミーはまた眠っていた。`],
+    [`In the end, the village paid with ten jars of honey tea, which Amelia accepted "as a special exception." On the way home, Diana walked a little more lightly than usual.`,
+     `結局、村ははちみつティー10瓶で支払い、アメリアはそれを「特例として」受け取った。帰り道、ディアナはいつもより少しだけ軽い足取りで歩いた。`],
+    [`"Master, dear," she said, "will you make the appointment again next year?"`,
+     `「教主様」と彼女は言った。「来年もまた、予約を取ってくれるかね？」`],
+    [`"Even though there's a needle?"`,
+     `「注射があるのに？」`],
+    [`Diana smiled. "Even closing my eyes has its limits. But for a good cup of honey tea, I can close them for one second."`,
+     `ディアナはほほえんだ。「目をつぶるのにも限度があるよ。でも、おいしいはちみつティーのためなら、1秒くらいはつぶってあげるさ」`]
+  ],
+  vocab: [
+    ['resident', '住民', 'residents'], ['appointment', '予約', 'appointments|appointment'], ['checkup', '健康診断', 'checkups|checkup'],
+    ['reception', '受付', 'Reception|reception'], ['pharmacy', '薬局', 'Pharmacy'], ['treatment', '治療', 'treatment'],
+    ['instrument', '器具', 'instruments'], ['instruction', '指示', 'instructions'], ['patient', '患者', 'patients'],
+    ['result', '結果', 'results'], ['prescription', '処方箋', 'prescription'], ['invoice', '請求書', 'invoice'],
+    ['fee', '料金', 'fee'], ['exception', '例外', 'exception']
+  ],
+  qs: [
+    { q: 'Why did the Master take the werebeasts to the hospital?', c: ['To deliver honey tea', "To visit Hilde's office", 'Because Butter was injured', 'For their free annual checkups'], a: 3,
+      ex: '冒頭の offered free checkups ... the Master had made appointments が根拠です。' },
+    { q: 'What was Diana really afraid of?', c: ['Needles', 'Elves', 'The scanning machine', 'The invoice'], a: 0,
+      ex: 'ヒルデが注射針を手に取った瞬間に青ざめ、教主は She’s afraid of needles と気づきます。' },
+    { q: 'Why did the hospital charge a fee?', c: ['Butter broke a window.', 'Diana refused treatment.', 'Kommy fell asleep inside hospital equipment.', 'The checkups were not really free.'], a: 2,
+      ex: 'a fee for non-elf patients who fall asleep inside hospital equipment と言いながら、アメリアはコミーを見ています。' }
+  ],
+  notes: [
+    ['医療班長ヒルデ', 'モナティウム大学病院に長く勤めるエルフの医師。やさしい心理療法が評判で、決め台詞は "Hehe. Are you ready for your treatment?"。'],
+    ['エルフ以外は高くつく病院', 'シュパンの使徒ストーリーでは、モナティウム大学病院がエルフ以外の患者に高額な料金を請求することが語られ、その費用をエシュールが払わされます。'],
+    ['ディアナ村長', 'シカの獣人で、獣人の村の村長。若いころはとても強く、今は母親のようにやさしいけれど、しつけには厳しい長老です。第2章では「村長は年老いて弱っている」と言われ、ティグに村のリーダーの座を狙われます。決め台詞は "Even closing my eyes has its limits."（目をつぶるのにも限度がある）。']
+  ]
+});
+
+</script>
+<script>
 /* roster.js — canon brief and character sheet used for story generation (researched from the global version). */
 window.ELIAS = {
   world: [
@@ -747,6 +1220,17 @@ window.ELIAS = {
     'canned chow (werebeast food), Candy and Star Candy.'
   ].join(' '),
   jaNames: 'Master=教主, Apostle=使徒, Yggdrasil=世界樹, Elias=エーリアス, Erpien=エルフィンランド, Sprite=妖精, Werebeast=獣人, Elf=エルフ, Elemental=精霊, Phantom=幽霊, Dragon=竜族, Witch=魔女',
+  // story craft distilled from STYLE-BIBLE.md (research on the voiced main story, events and the English script)
+  style: [
+    "1. Quirks in a chain reaction: every character has one extreme trait (gluttony, thrift, collecting, pranks, speed, research, puns). Let the traits collide so that a small problem snowballs.",
+    "2. 'When something goes wrong, suspect the elves first. You are usually right.' Elf schemes and gadgets (the smarterphone, the elPad, the Elfnet, drones, parts secretly built to break) always backfire in the end, and the Master is no longer surprised.",
+    "3. The Master is the straight man: calm, with deadpan inner comments in parentheses. In the end they still get dragged in or take the damage. A choice where both options lead to the same result is a classic gag.",
+    "4. After the chaos comes exactly one short heartfelt beat that shows a hidden sincere side (Erpin wants to be a good queen; Ashur cares about Erpin; Ner dotes on Erpin; Rim wants friends). Then end on a joke.",
+    "5. Nobody dies or gets really hurt: big accidents only knock people out. Bugs 'go to the Weekend Farm'.",
+    "Script style: dialogue-driven with short narration. Apostles can have inner-voice lines in parentheses too (Ner's are sharp and sarcastic). Light meta humor is fine.",
+    "Running gags: bean logs (sprites hate them; used as emergency food or even as salary); the Order's tiny budget and Ner's thrift; the diary of at least three sentences a day; Ner's punishments (kneel with both arms raised, or bean logs for three days); sugar shortages; canned chow (werebeasts love it, but its contents are suspicious); Candy and Star Candy; the Master is very tall and knows little about Elias, and Elias knows little about humans.",
+    "Never: retell scenes from the game, quote more than a short catchphrase, kill anyone, make the Master a romantic interest, or let an elf scheme truly succeed."
+  ].join('\n'),
   roster: [
     ['Erpin', 'エルフィン', 'Sprite', 'Innocent', 'Immature, gluttonous Queen of Erpien and a figurehead; announces herself as "the Guardian of Elias"; loves strawberry cake and chocolate ice cream, hates bean logs and pumpkins; secretly wants to be a good queen. Her big sister is Belita.'],
     ['Ner', 'ネル', 'Sprite', 'Mad', 'High Priestess of the Yggdrasil Order; strict orthodox perfectionist devoted to Yggdrasil ("For Yggdrasil, I\'ll do anything."); polite and formal, tightfisted with money; checks the diaries every morning; punishes troublemakers by making them kneel with arms raised; secretly loves melon bocconcini and mallow mocharons.'],
@@ -754,16 +1238,22 @@ window.ELIAS = {
     ['Shoupan', 'シュパン', 'Sprite', 'Vivacious', 'Speed-loving courier who rides her Segway, the "Shoupabolt"; her deliveries are always on time, but the contents are rarely intact.'],
     ['Mayo', 'マヨ', 'Sprite', 'Mad', 'Collector of unique (often stolen) goods who runs a shop; very hard to get anything back from her; quietly protective of the Master.'],
     ['Kyarot', 'キャロット', 'Sprite', 'Innocent', 'Priestess-gardener who grows gigantic crops by hand around Yggdrasil; cheerful ("Wanna come play in my garden?"); older sister of Carren.'],
-    ['Marie', 'マリー', 'Sprite', 'Vivacious', 'Explorer of ruins who solves most problems with explosives.'],
+    ['Marie', 'マリー', 'Sprite', 'Vivacious', 'Explorer of ruins who solves most problems with explosives, yet is scared of mice.'],
+    ['Patula', 'パトラ', 'Sprite', 'Composed', 'Hot-tempered apprentice baker who has studied under many bakers, Ashur among them ("Don\'t mess around when you\'re in the kitchen!"); a hardcore fan of mint.'],
     ['Kommy', 'コミー', 'Werebeast', 'Depressed', 'Lazy, sleepy cat werebeast who is surprisingly well-read and quotes books; speaks of herself in the third person ("Can Kommy sleep now?").'],
     ['Butter', 'バター', 'Werebeast', 'Vivacious', 'Cheerful golden-retriever werebeast who loves friends and games ("C\'mon, come play with me!"); sometimes speaks in the third person; buries cans of chow all over Elias; has a scary side if mistreated.'],
     ['Diana', 'ディアナ', 'Werebeast', 'Mad', 'Deer werebeast and chief of the village; a strict but motherly elder, once very powerful ("Even closing my eyes has its limits.").'],
     ['Mago', 'マーゴ', 'Werebeast', 'Innocent', 'Peace-loving sheep werebeast, friendly with every animal, avoids conflict ("Let\'s all get along and play together.").'],
+    ['Tig', 'ティグ', 'Werebeast', '-', 'Hot-blooded leader of the Chow Rebels, a trio that "rebels" against Chief Diana over the suspicious canned chow and secretly treats it all as a fun role-play; very strong in a fight but terrified of loud noises.'],
+    ['Rufo', 'ルポ', 'Werebeast', '-', 'Strategist of the Chow Rebels and a conspiracy theorist who wraps aluminum foil around her head to block magic (and is sometimes accidentally right).'],
+    ['Beni', 'ベニー', 'Werebeast', '-', 'Strong member of the Chow Rebels who pushes through obstacles by force and wears earplugs so nobody can talk her out of a plan; loves eating until full and then hibernating with Kommy.'],
+    ['Bana', 'バナ', 'Werebeast', 'Vivacious', 'Rodent-like werebeast blacksmith who runs the forge in the Werebeast Village; loves complicated machines and finds most modification plans "not nearly enough"; firmly believes "when something goes wrong, suspect the elves first".'],
     ['Elena', 'エレナ', 'Elf', 'Composed', 'Machiavellian mayor of Monatium and proud inventor-engineer; always for the benefit of the elves ("If necessary, a fair contract will be established."); her brain runs on coffee (frozen hot Americano).'],
     ['Amelia', 'アメリア', 'Elf', 'Composed', 'Elena\'s efficient, obsessively loyal secretary ("This is Amelia, the mayor\'s secretary."); loves space food.'],
     ['Canna', 'カンナ', 'Elf', 'Vivacious', 'Chief of Monatium\'s Suppression Unit and a former soldier ("Command received!"); jokes about blowing herself up when things get unbearable.'],
     ['Rohne', 'ローネ', 'Elf', 'Innocent', 'Spy of the Intelligence Unit who wears medieval armor ("It\'s your friendly neighborhood spy, Rohne!").'],
     ['Risty', 'リスティ', 'Elf', 'Depressed', 'Stay-at-home pro gamer and self-proclaimed hacker; her teddy bear holds an AI friend named Glove.'],
+    ['Hilde', 'ヒルデ', 'Elf', 'Depressed', 'Chief of the Medical Unit and long-time resident doctor at Monatium University Hospital (which charges non-elf patients a hefty fee); her gentle psychological treatments are in high demand ("Hehe. Are you ready for your treatment?").'],
     ['Speaki', 'スピッキー', 'Phantom', 'Innocent', 'Copycat phantom of identity who imitates others, especially Ner ("I\'m Ner, the priestess of Yggdrasil!"); only the Master, Youngchun and the person being copied can see through her disguises; tends a pumpkin patch and treats pumpkins as friends; when caught she protests "I didn\'t do anything that bad".'],
     ['Rim', 'リム', 'Phantom', 'Depressed', 'Phantom of balance and order who lives alone in a tower; cannot stop making terrible puns ("boo-ze"); her scythe is named G; likes pumpkin soup.'],
     ['Shaydi', 'シェイディ', 'Phantom', 'Mad', 'Phantom of chaos and self-proclaimed top prankster with a fan club; very sensitive about her age; hates puns.'],
@@ -884,7 +1374,8 @@ function normGen(d) {
   }).filter(Boolean).slice(0, 14);
   const qs = (Array.isArray(d.qs) ? d.qs : []).filter(q => q && Array.isArray(q.c) && q.c.length === 4 && Number(q.a) >= 0 && Number(q.a) < 4)
     .map(q => ({ q: s(q.q), c: q.c.map(s), a: Number(q.a), ex: s(q.ex) })).slice(0, 3);
-  return { title: s(d.title) || 'Untitled', ja: s(d.ja), place: s(d.place), cast: (Array.isArray(d.cast) ? d.cast : []).map(s).filter(Boolean), paras, vocab, qs };
+  const notes = (Array.isArray(d.notes) ? d.notes : []).map(n => [s(n && n.t), s(n && n.ja)]).filter(n => n[0] && n[1]).slice(0, 3);
+  return { title: s(d.title) || 'Untitled', ja: s(d.ja), place: s(d.place), cast: (Array.isArray(d.cast) ? d.cast : []).map(s).filter(Boolean), paras, vocab, qs, notes };
 }
 
 /* ---------- speech ---------- */
@@ -943,29 +1434,43 @@ const AI = {
     const sheet = E.roster.filter(r => cast.indexOf(r[0]) >= 0).map(r => `- ${r[0]} (${r[2]}, ${r[3]}; Japanese name ${r[1]}): ${r[4]}`).join('\n');
     const th = E.themes.find(t => t[0] === theme) || E.themes[E.themes.length - 1];
     const used = stories().map(s => s.title).join('; ');
+    // a random Season 2 opening as a tone reference (the research-based stories)
+    const pool = (window.STORIES || []).filter(s => s.season === 2);
+    const ref = pool.length ? pool[Math.floor(Math.random() * pool.length)] : null;
+    const excerpt = ref ? ref.paras.slice(0, 12).map(p => p[0]).join('\n') : '';
     return `You are writing an ORIGINAL, unofficial fan-made short story set in the world of the mobile game "Trickcal: Chibi Go" (global English version). The reader is a Japanese adult practicing English reading for the TOEIC test (goal: 800).
 
 CANON GUIDE (follow it; never contradict it):
 ${E.world}
 
-CHARACTERS IN THIS STORY (keep each exactly in character, including speech habits):
-- The Master: the player character. Gender-neutral: refer to them as "the Master" or "they/their". Their inner thoughts appear in parentheses, e.g. (Here we go again.)
-${sheet}
+HOW TO MAKE IT FEEL LIKE TRICKCAL (researched from the voiced main story, events and the global English script):
+${E.style}
 
+CHARACTERS IN THIS STORY (keep each exactly in character, including speech habits):
+- The Master: the player character. Gender-neutral: refer to them as "the Master" or "they/their". Their deadpan inner thoughts appear in parentheses, e.g. (Here we go again.)
+${sheet}
+${excerpt ? `
+STYLE SAMPLE: the opening of an earlier story in this collection. Match its rhythm, dialogue density and humor, but do NOT reuse its plot, jokes or lines.
+"""
+${excerpt}
+"""
+` : ''}
 THEME: ${th[2]}.
 
 REQUIREMENTS
-- 470 to 530 English words, split into 16 to 26 short paragraphs. Third-person narration with lively dialogue.
+- 470 to 530 English words, split into 18 to 28 short paragraphs. Mostly dialogue; keep narration short and concrete.
+- Structure: (1) a quick setup built on one character's quirk; (2) the cast's quirks collide and the problem snowballs; (3) the Master reacts with deadpan inner voice but still gets dragged in; (4) one short heartfelt beat; (5) a punchline in the last one or two paragraphs.
+- Keep each character's speech habits from the sheet (third-person self-reference, catchphrases, "...NOT!", puns and so on). Use each catchphrase at most once.
 - Natural modern English at CEFR B1+ to B2. Use at least 8 of these TOEIC words naturally: ${focus.join(', ')}.
-- Tone like the game's Apostle Stories: warm slice-of-life comedy, gentle slapstick, a small twist, and a funny or heart-warming ending. Nobody dies.
-- Original scenes only. Do not retell the game's main story. Short signature catchphrases are fine.
+- Original scenes only. Do not retell the game's story. Short signature catchphrases are fine.
 - Do not reuse these existing titles or their plots: ${used}.
 - For every paragraph give a natural Japanese translation. Use these Japanese names: ${E.jaNames}, and each character's Japanese name above.
 - "vocab": 10 to 14 useful words or phrases that appear in the story, with Japanese meanings and "forms" = the exact spellings used in the text.
 - "qs": 3 TOEIC Part 7 style questions (one detail, one inference, one vocabulary-in-context), 4 choices each, one clearly correct answer ("a" is its 0-based index), and a Japanese explanation quoting the evidence.
+- "notes": 2 or 3 short Japanese notes (a heading and one to three sentences each) explaining which canon details the story builds on. Use only facts stated in this prompt; never invent lore.
 
 Reply with only this JSON:
-{"title":"English title","ja":"日本語タイトル","place":"Place · detail","cast":["Name"],"paras":[{"en":"...","ja":"..."}],"vocab":[{"w":"invoice","ja":"請求書","forms":["invoice","invoices"]}],"qs":[{"q":"...","c":["","","",""],"a":0,"ex":"..."}]}`;
+{"title":"English title","ja":"日本語タイトル","place":"Place · detail","cast":["Name"],"paras":[{"en":"...","ja":"..."}],"vocab":[{"w":"invoice","ja":"請求書","forms":["invoice","invoices"]}],"qs":[{"q":"...","c":["","","",""],"a":0,"ex":"..."}],"notes":[{"t":"見出し","ja":"解説"}]}`;
   }
 };
 
@@ -1000,19 +1505,33 @@ views.shelf = () => {
         <div class="kpi"><b>${totalWords.toLocaleString()}</b><span>読んだ語数</span></div>
       </div>
     </section>
-    <div class="shelf">${all.map(s => {
-      const p = prog(s.id), w = words(s);
-      return `<button class="story" data-open="${esc(s.id)}">
-        <span class="no">${s.gen ? '<span class="chip cheek">Claude作</span>' : 'No.' + pad(s.no)}</span>
-        <h3>${esc(s.title)}</h3><span class="jt">${esc(s.ja)}</span>
-        <span class="meta">${s.cast.filter(c => c !== 'Master').map(c => `<span class="chip">${esc(c)}</span>`).join('')}</span>
-        <span class="foot"><span>${w}語・${Math.max(1, Math.round(w / S.settings.target))}分</span>${p.reads.length ? `<span class="done">読了 ${p.best}WPM${p.quiz ? '・' + p.quiz.score + '/' + p.quiz.total : ''}</span>` : '<span>未読</span>'}</span>
-      </button>`;
-    }).join('')}</div>
+    ${shelfGroups(all).map(([g, list]) => `<section class="season">
+      <div class="season-h"><h2>${esc(g.title)}${g.badge ? ` <span class="chip cheek">${esc(g.badge)}</span>` : ''}</h2><p class="note">${esc(g.sub)}</p></div>
+      <div class="shelf">${list.map(storyCard).join('')}</div>
+    </section>`).join('')}
     <p class="note">これは非公式の二次創作です。キャラクターと世界観の権利は EPIDGames に帰属します。</p>
   </div>`;
   view().querySelectorAll('[data-open]').forEach(b => { b.onclick = () => openStory(b.dataset.open); });
 };
+const SEASONS = [
+  { key: 2, title: '第2集　原作研究版', badge: '解説つき', sub: 'メインストーリーとイベントの字幕、英語版の台詞を調べ直して書いた6話。口調・定番ネタ・話の運び方を原作に寄せ、各話の最後に「原作ネタ解説」をつけました。' },
+  { key: 1, title: '第1集', sub: 'キャラクター紹介と世界観をもとに書いた最初の8話。' }
+];
+function shelfGroups(all) {
+  const byNo = (a, b) => a.no - b.no;
+  return SEASONS.map(g => [g, all.filter(s => !s.gen && (s.season || 1) === g.key).sort(byNo)])
+    .concat([[{ title: 'Claude が書いたお話', sub: '「新しいお話」タブで書いてもらったお話です。' }, all.filter(s => s.gen)]])
+    .filter(x => x[1].length);
+}
+function storyCard(s) {
+  const p = prog(s.id), w = words(s);
+  return `<button class="story" data-open="${esc(s.id)}">
+    <span class="no">${s.gen ? '<span class="chip cheek">Claude作</span>' : 'No.' + pad(s.no)}</span>
+    <h3>${esc(s.title)}</h3><span class="jt">${esc(s.ja)}</span>
+    <span class="meta">${s.cast.filter(c => c !== 'Master').map(c => `<span class="chip">${esc(c)}</span>`).join('')}</span>
+    <span class="foot"><span>${w}語・${Math.max(1, Math.round(w / S.settings.target))}分</span>${p.reads.length ? `<span class="done">読了 ${p.best}WPM${p.quiz ? '・' + p.quiz.score + '/' + p.quiz.total : ''}</span>` : '<span>未読</span>'}</span>
+  </button>`;
+}
 
 function markup(text, vocab, used) {
   const hits = [];
@@ -1038,7 +1557,7 @@ views.reader = st => {
   const used = new Set(), all = stories(), i = all.indexOf(st), p = prog(st.id), w = words(st);
   view().innerHTML = `<div class="stack">
     <div class="rhead">
-      <div class="row"><button class="btn sm ghost" id="back">← 本棚</button><span class="eyebrow">${st.gen ? 'Claude作' : 'Story ' + pad(st.no)}</span></div>
+      <div class="row"><button class="btn sm ghost" id="back">← 本棚</button><span class="eyebrow">${st.gen ? 'Claude作' : (st.season === 2 ? '第2集 · ' : '第1集 · ') + 'Story ' + pad(st.no)}</span></div>
       <h1>${esc(st.title)}</h1>
       <p class="note">${esc(st.ja)}・${esc(st.place)}</p>
       <div class="row">${st.cast.map(c => `<span class="chip ${c === 'Master' ? 'cheek' : 'acc'}">${esc(c)}</span>`).join('')}<span class="note">${w}語・目標 ${Math.max(1, Math.round(w / S.settings.target))}分（${S.settings.target}WPM）</span></div>
@@ -1061,6 +1580,9 @@ views.reader = st => {
       ${st.qs.map((q, qi) => `<div class="q"><p class="en">${qi + 1}. ${esc(q.q)}</p><div class="opts">${q.c.map((c, ci) => `<button class="opt" data-q="${qi}" data-c="${ci}"><span class="k">${'ABCD'[ci]}</span><span>${esc(c)}</span></button>`).join('')}</div><div class="ex" id="ex${qi}"></div></div>`).join('')}
       <p class="note" id="qscore" style="margin-top:8px">${p.quiz ? '前回：' + p.quiz.score + '/' + p.quiz.total + '問正解' : ''}</p>
     </section>
+    ${st.notes && st.notes.length ? `<section class="card"><div class="sec-h"><h2>原作ネタ解説</h2><span class="note">${st.gen ? 'Claude による解説' : 'このお話の元になった原作の設定'}</span></div>
+      <div class="notes">${st.notes.map(n => `<div class="n"><h3>${esc(n[0])}</h3><p>${esc(n[1])}</p></div>`).join('')}</div>
+    </section>` : ''}
     <section class="card"><div class="sec-h"><h2>重要語</h2><span class="note">緑の印＝Recall 1000 に収録</span></div>
       <table class="vtable">${st.vocab.map(v => `<tr><td>${esc(v[0])}</td><td>${esc(v[1])}${RECALL.has(v[0].toLowerCase()) ? ' <span class="chip acc">Recall 1000</span>' : ''}</td></tr>`).join('')}</table>
     </section>
@@ -1169,7 +1691,7 @@ views.write = () => {
     <section class="card">
       <div class="eyebrow">Write with Claude</div>
       <h1 class="disp" style="font-size:24px;margin-top:4px">新しいお話を書いてもらう</h1>
-      <p class="note" style="margin-top:8px">登場させたい使徒を1〜4人とテーマを選ぶと、Claude がこの本棚と同じ形式（約500語・段落ごとの訳・重要語・確認問題）で新しいお話を書きます。調べた原作設定とキャラクターの口調を守るよう指示しています。1話につき30秒〜2分ほどかかります。</p>
+      <p class="note" style="margin-top:8px">登場させたい使徒を1〜4人とテーマを選ぶと、Claude がこの本棚と同じ形式（約500語・段落ごとの訳・重要語・確認問題・原作ネタ解説）で新しいお話を書きます。第2集と同じ執筆ルール（原作の字幕と英語版の台詞から調べた口調・定番ネタ・話の運び方・書かないこと）を守るよう指示しています。1話につき30秒〜2分ほどかかります。</p>
       ${on ? '' : '<p class="note" style="margin-top:8px"><b>この表示では Claude の機能を使えません。</b>オンライン版（claude.ai）で使えます。書いてもらったお話はオンライン版に保存されます。</p>'}
     </section>
     <section class="card"><div class="sec-h"><h2>登場する使徒</h2><span class="note" id="pc">${picked.size}/4人（教主は必ず登場）</span></div>
